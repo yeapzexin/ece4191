@@ -1,5 +1,5 @@
 # Design01
-# 2023-09-04 05:47:00Z
+# 2023-09-05 05:26:36Z
 
 # IO_0@[IOP=(1)][IoId=(0)] is reserved: SWDDebugEnabled
 dont_use_io iocell 1 0
@@ -19,5 +19,5 @@ set_io "Motor_2_IN_4(0)" iocell 3 2
 set_io "Motor_2_ENB(0)" iocell 3 0
 set_io "Motor_2_Phase_A(0)" iocell 3 3
 set_io "Motor_2_Phase_B(0)" iocell 3 4
-set_io "Front_Trigger(0)" iocell 3 6
 set_io "Front_Echo(0)" iocell 3 5
+set_io "Front_Trigger(0)" iocell 3 6

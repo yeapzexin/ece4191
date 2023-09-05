@@ -31,8 +31,8 @@ double K_d = 0;
 float PWM_Master = 23000;
 float PWM_Slave = 23000;
 int is_moving = 0;
-uint16 front_det_count = 0;
-float front_measured, right_measured = 0;
+uint16 front_det_count_1, front_det_count_2, right_det_count, left_det_count = 0;
+float front_measured_1, front_measured_2, right_measured, left_measured = 0;
 double x_coord = 0;
 double y_coord = 0;
 int direction = 0;
@@ -62,15 +62,38 @@ CY_ISR (Speed_Control)
     //UART_1_PutString(string_3);
 }
 
-CY_ISR(dist_front_detection)
+CY_ISR(dist_front_detection_1)
 {
     Timer_2_ReadStatusRegister();
-    front_det_count = Timer_2_ReadCounter();
-    front_measured = (65535-front_det_count)/58;
-    sprintf(string_1, "front dist: %lf\n", front_measured);
-    UART_1_PutString(string_1);
+    front_det_count_1 = Timer_2_ReadCounter();
+    front_measured_1 = (65535-front_det_count_1)/58;
+    //sprintf(string_1, "front dist: %lf\n", front_measured_1);
+    //UART_1_PutString(string_1);
 }
-
+CY_ISR(dist_front_detection_2)
+{
+    Timer_2_ReadStatusRegister();
+    front_det_count_2 = Timer_2_ReadCounter();
+    front_measured_2 = (65535-front_det_count_2)/58;
+    //sprintf(string_1, "front dist: %lf\n", front_measured_2);
+    //UART_1_PutString(string_1);
+}
+CY_ISR(dist_right_detection)
+{
+    Timer_2_ReadStatusRegister();
+    right_det_count = Timer_2_ReadCounter();
+    front_measured_1 = (65535-right_det_count)/58;
+    //sprintf(string_1, "front dist: %lf\n", front_measured_1);
+    //UART_1_PutString(string_1);
+}
+CY_ISR(dist_left_detection)
+{
+    Timer_2_ReadStatusRegister();
+    left_det_count = Timer_2_ReadCounter();
+    front_measured_1 = (65535-left_det_count)/58;
+    //sprintf(string_1, "front dist: %lf\n", front_measured_1);
+    //UART_1_PutString(string_1);
+}
 void stop()
 {
     is_moving = 0;
@@ -194,7 +217,7 @@ void F_or_R_1(int dist_count, int flag_FR)
     //while(abs(Count_Master) <= dist_count && abs(Count_Slave) <= dist_count && front_measured>10)
     
     //while(abs(Count_Master) <= dist_count && abs(Count_Slave) <= dist_count && US_measured > min_distance && US_measured < max_distance)
-    while(abs(Count_Master) <= dist_count && abs(Count_Slave) <= dist_count && front_measured>10)
+    while(abs(Count_Master) <= dist_count && abs(Count_Slave) <= dist_count && front_measured_1>10)
     {
         // Place your application code here.
         Count_Master = QuadDec_1_GetCounter();
@@ -347,7 +370,14 @@ int main(void)
     /* Place your initialization/startup code here (e.g. MyInst_Start()) */
     Timer_1_Start();
     Timer_2_Start();
-    isr_2_StartEx(dist_front_detection);
+    Timer_3_Start();
+    Timer_4_Start();
+    Timer_5_Start();
+    isr_2_StartEx(dist_front_detection_1);
+    isr_3_StartEx(dist_right_detection);
+    isr_4_StartEx(dist_left_detection);
+    isr_5_StartEx(dist_front_detection_2);
+    
     PWM_Master_Start();
     PWM_Slave_Start();
     QuadDec_1_Start();
