@@ -32,7 +32,7 @@ float PWM_Master = 23000;
 float PWM_Slave = 23000;
 int is_moving = 0;
 uint16 front_det_count = 0;
-float front_measured = 0;
+float front_measured, right_measured = 0;
 double x_coord = 0;
 double y_coord = 0;
 int direction = 0;
@@ -115,6 +115,7 @@ void turn_clockwise()
     Motor_2_IN_3_Write(0);
     Motor_2_IN_4_Write(1);
 }
+/*
 void F_or_R(int dist_count, int flag_FR, int direction, int min_distance, int max_distance)
 {
     double avg_count, avg_dist;
@@ -130,10 +131,10 @@ void F_or_R(int dist_count, int flag_FR, int direction, int min_distance, int ma
     
     while(abs(Count_Master) <= dist_count && abs(Count_Slave) <= dist_count && US_measured > min_distance && US_measured < max_distance)
     {
-        /* Place your application code here. */
+        // Place your application code here. 
         Count_Master = QuadDec_1_GetCounter();
         Count_Slave = QuadDec_2_GetCounter();
-        /*
+        
         sprintf(string_1, "Right (Master): %d\n", Count_Master);
         UART_1_PutString(string_1);
         sprintf(string_2, "Left (Slave): %d\n", Count_Slave);
@@ -142,7 +143,7 @@ void F_or_R(int dist_count, int flag_FR, int direction, int min_distance, int ma
         UART_1_PutString(string_3);
 
         CyDelay(100);
-        */
+        
         if (flag_FR==1)
         {
             forward();
@@ -185,23 +186,124 @@ void F_or_R(int dist_count, int flag_FR, int direction, int min_distance, int ma
     //
     //QuadDec_2_SetCounter(0);
 }
+*/
+void F_or_R_1(int dist_count, int flag_FR)
+{
+    double avg_count, avg_dist;
+    int flag_stop = 0;
+    //while(abs(Count_Master) <= dist_count && abs(Count_Slave) <= dist_count && front_measured>10)
+    
+    //while(abs(Count_Master) <= dist_count && abs(Count_Slave) <= dist_count && US_measured > min_distance && US_measured < max_distance)
+    while(abs(Count_Master) <= dist_count && abs(Count_Slave) <= dist_count && front_measured>10)
+    {
+        // Place your application code here.
+        Count_Master = QuadDec_1_GetCounter();
+        Count_Slave = QuadDec_2_GetCounter();
+        if (flag_FR==1)
+        {
+            forward();
+        }
+        else
+        {
+            reverse();
+        }
+        CyDelay(50);
+        while(Front_Echo_Read()==0)
+        {
+            Front_Trigger_Write(1);
+            CyDelayUs(10);
+            Front_Trigger_Write(0);
+        }
+    }
+    stop();
+    avg_count = (QuadDec_1_GetCounter()+QuadDec_2_GetCounter())/2;
+    avg_dist = avg_count*(M_PI*WHEEL_DIAMETER/3667);
+    if (direction ==0)
+    {
+        y_coord = y_coord + avg_dist;
+    }
+    else if (direction ==1)
+    {
+        
+        x_coord = x_coord + avg_dist;
+    }
+    else if (direction ==2)
+    {
+        
+        y_coord = y_coord - avg_dist;
+    }
+    else if (direction ==3)
+    {
+        
+        x_coord = x_coord - avg_dist;
+    }
+    step = step +1;
+    //
+    //QuadDec_2_SetCounter(0);
+}
+
+void F_or_R_2(int dist_count, int flag_FR)
+{
+    double avg_count, avg_dist;
+    int flag_stop = 0;
+    //while(abs(Count_Master) <= dist_count && abs(Count_Slave) <= dist_count && front_measured>10)
+    
+    //while(abs(Count_Master) <= dist_count && abs(Count_Slave) <= dist_count && US_measured > min_distance && US_measured < max_distance)
+    while(abs(Count_Master) <= dist_count && abs(Count_Slave) <= dist_count && right_measured<30)
+    {
+        // Place your application code here.
+        Count_Master = QuadDec_1_GetCounter();
+        Count_Slave = QuadDec_2_GetCounter();
+        if (flag_FR==1)
+        {
+            forward();
+        }
+        else
+        {
+            reverse();
+        }
+        CyDelay(50);
+        while(Right_Echo_Read()==0)
+        {
+            Right_Trigger_Write(1);
+            CyDelayUs(10);
+            Right_Trigger_Write(0);
+        }
+    }
+    stop();
+    avg_count = (QuadDec_1_GetCounter()+QuadDec_2_GetCounter())/2;
+    avg_dist = avg_count*(M_PI*WHEEL_DIAMETER/3667);
+    if (direction ==0)
+    {
+        y_coord = y_coord + avg_dist;
+    }
+    else if (direction ==1)
+    {
+        
+        x_coord = x_coord + avg_dist;
+    }
+    else if (direction ==2)
+    {
+        
+        y_coord = y_coord - avg_dist;
+    }
+    else if (direction ==3)
+    {
+        
+        x_coord = x_coord - avg_dist;
+    }
+    step = step +1;
+    //
+    //QuadDec_2_SetCounter(0);
+}
+
 void CW(int PT_TURN_COUNT, int flag_CW)
 {
     while(abs(Count_Master) <= PT_TURN_COUNT && abs(Count_Slave) <= PT_TURN_COUNT)
     {
-        /* Place your application code here. */
+        //Place your application code here.
         Count_Master = QuadDec_1_GetCounter();
         Count_Slave = QuadDec_2_GetCounter();
-        /*
-        sprintf(string_1, "Right (Master): %d\n", Count_Master);
-        UART_1_PutString(string_1);
-        sprintf(string_2, "Left (Slave): %d\n", Count_Slave);
-        UART_1_PutString(string_2);
-        sprintf(string_3, "PWM_Slave: %f\n", PWM_Slave);
-        UART_1_PutString(string_3);
-
-        CyDelay(100);
-        */
         if (flag_CW == 1)
         {
             turn_clockwise();
@@ -289,20 +391,9 @@ int main(void)
     while (step == 0)
     {
         flag_FR = 1;
-        flag_CW = 1;
         dist_trav = 120;
         dist_count = dist_trav*CM_COUNT_CONV;
-        F_or_R(dist_count, flag_FR);
-        
-        //CW(PT_TURN_COUNT,flag_CW);
-        /*
-        CW(PT_TURN_COUNT, flag_CW);
-        dist_trav = 50;
-        dist_count = dist_trav*CM_COUNT_CONV;
-        flag_FR = 1;
-        F_or_R(dist_count, flag_FR);
-        step = step+1;*/
-    
+        F_or_R_1(dist_count, flag_FR);
     }
     CyDelay(500);
     QuadDec_1_SetCounter(0);
@@ -324,8 +415,13 @@ int main(void)
         flag_FR = 1;
         dist_trav = 120;
         dist_count = dist_trav*CM_COUNT_CONV;
-        F_or_R(dist_count, flag_FR);
+        F_or_R_2(dist_count, flag_FR);
     }
+    CyDelay(500);
+    QuadDec_1_SetCounter(0);
+    QuadDec_2_SetCounter(0);
+    Count_Master = 0;
+    Count_Slave = 0;
     
     
     
