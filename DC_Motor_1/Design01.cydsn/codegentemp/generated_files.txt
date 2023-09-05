@@ -90,8 +90,6 @@
   <file name="C:\Users\ASUS\Monash\Year 4 Sem 1 (July 2023)\ECE 4191\ece4191\DC_Motor_1\Design01.cydsn\codegentemp\Timer_3.c" value="SOURCE_C;CortexM3;;;;Timer_3" />
   <file name="C:\Users\ASUS\Monash\Year 4 Sem 1 (July 2023)\ECE 4191\ece4191\DC_Motor_1\Design01.cydsn\codegentemp\Timer_3.h" value="HEADER;;;;;Timer_3" />
   <file name="C:\Users\ASUS\Monash\Year 4 Sem 1 (July 2023)\ECE 4191\ece4191\DC_Motor_1\Design01.cydsn\codegentemp\Timer_3_PM.c" value="SOURCE_C;CortexM3;;;;Timer_3" />
-  <file name="C:\Users\ASUS\Monash\Year 4 Sem 1 (July 2023)\ECE 4191\ece4191\DC_Motor_1\Design01.cydsn\codegentemp\Clock_4.c" value="SOURCE_C;CortexM3;;;;Clock_4" />
-  <file name="C:\Users\ASUS\Monash\Year 4 Sem 1 (July 2023)\ECE 4191\ece4191\DC_Motor_1\Design01.cydsn\codegentemp\Clock_4.h" value="HEADER;;;;;Clock_4" />
   <file name="C:\Users\ASUS\Monash\Year 4 Sem 1 (July 2023)\ECE 4191\ece4191\DC_Motor_1\Design01.cydsn\codegentemp\Right_Trigger_aliases.h" value="HEADER;;;;;Right_Trigger" />
   <file name="C:\Users\ASUS\Monash\Year 4 Sem 1 (July 2023)\ECE 4191\ece4191\DC_Motor_1\Design01.cydsn\codegentemp\Right_Trigger.c" value="SOURCE_C;CortexM3;;;;Right_Trigger" />
   <file name="C:\Users\ASUS\Monash\Year 4 Sem 1 (July 2023)\ECE 4191\ece4191\DC_Motor_1\Design01.cydsn\codegentemp\Right_Trigger.h" value="HEADER;;;;;Right_Trigger" />
@@ -103,8 +101,6 @@
   <file name="C:\Users\ASUS\Monash\Year 4 Sem 1 (July 2023)\ECE 4191\ece4191\DC_Motor_1\Design01.cydsn\codegentemp\Timer_4.c" value="SOURCE_C;CortexM3;;;;Timer_4" />
   <file name="C:\Users\ASUS\Monash\Year 4 Sem 1 (July 2023)\ECE 4191\ece4191\DC_Motor_1\Design01.cydsn\codegentemp\Timer_4.h" value="HEADER;;;;;Timer_4" />
   <file name="C:\Users\ASUS\Monash\Year 4 Sem 1 (July 2023)\ECE 4191\ece4191\DC_Motor_1\Design01.cydsn\codegentemp\Timer_4_PM.c" value="SOURCE_C;CortexM3;;;;Timer_4" />
-  <file name="C:\Users\ASUS\Monash\Year 4 Sem 1 (July 2023)\ECE 4191\ece4191\DC_Motor_1\Design01.cydsn\codegentemp\Clock_5.c" value="SOURCE_C;CortexM3;;;;Clock_5" />
-  <file name="C:\Users\ASUS\Monash\Year 4 Sem 1 (July 2023)\ECE 4191\ece4191\DC_Motor_1\Design01.cydsn\codegentemp\Clock_5.h" value="HEADER;;;;;Clock_5" />
   <file name="C:\Users\ASUS\Monash\Year 4 Sem 1 (July 2023)\ECE 4191\ece4191\DC_Motor_1\Design01.cydsn\codegentemp\Left_Trigger_aliases.h" value="HEADER;;;;;Left_Trigger" />
   <file name="C:\Users\ASUS\Monash\Year 4 Sem 1 (July 2023)\ECE 4191\ece4191\DC_Motor_1\Design01.cydsn\codegentemp\Left_Trigger.c" value="SOURCE_C;CortexM3;;;;Left_Trigger" />
   <file name="C:\Users\ASUS\Monash\Year 4 Sem 1 (July 2023)\ECE 4191\ece4191\DC_Motor_1\Design01.cydsn\codegentemp\Left_Trigger.h" value="HEADER;;;;;Left_Trigger" />
@@ -116,8 +112,6 @@
   <file name="C:\Users\ASUS\Monash\Year 4 Sem 1 (July 2023)\ECE 4191\ece4191\DC_Motor_1\Design01.cydsn\codegentemp\Timer_5.c" value="SOURCE_C;CortexM3;;;;Timer_5" />
   <file name="C:\Users\ASUS\Monash\Year 4 Sem 1 (July 2023)\ECE 4191\ece4191\DC_Motor_1\Design01.cydsn\codegentemp\Timer_5.h" value="HEADER;;;;;Timer_5" />
   <file name="C:\Users\ASUS\Monash\Year 4 Sem 1 (July 2023)\ECE 4191\ece4191\DC_Motor_1\Design01.cydsn\codegentemp\Timer_5_PM.c" value="SOURCE_C;CortexM3;;;;Timer_5" />
-  <file name="C:\Users\ASUS\Monash\Year 4 Sem 1 (July 2023)\ECE 4191\ece4191\DC_Motor_1\Design01.cydsn\codegentemp\Clock_6.c" value="SOURCE_C;CortexM3;;;;Clock_6" />
-  <file name="C:\Users\ASUS\Monash\Year 4 Sem 1 (July 2023)\ECE 4191\ece4191\DC_Motor_1\Design01.cydsn\codegentemp\Clock_6.h" value="HEADER;;;;;Clock_6" />
   <file name="C:\Users\ASUS\Monash\Year 4 Sem 1 (July 2023)\ECE 4191\ece4191\DC_Motor_1\Design01.cydsn\codegentemp\Front_Trigger_2_aliases.h" value="HEADER;;;;;Front_Trigger_2" />
   <file name="C:\Users\ASUS\Monash\Year 4 Sem 1 (July 2023)\ECE 4191\ece4191\DC_Motor_1\Design01.cydsn\codegentemp\Front_Trigger_2.c" value="SOURCE_C;CortexM3;;;;Front_Trigger_2" />
   <file name="C:\Users\ASUS\Monash\Year 4 Sem 1 (July 2023)\ECE 4191\ece4191\DC_Motor_1\Design01.cydsn\codegentemp\Front_Trigger_2.h" value="HEADER;;;;;Front_Trigger_2" />
@@ -126,6 +120,34 @@
   <file name="C:\Users\ASUS\Monash\Year 4 Sem 1 (July 2023)\ECE 4191\ece4191\DC_Motor_1\Design01.cydsn\codegentemp\Front_Echo_1.h" value="HEADER;;;;;Front_Echo_1" />
   <file name="C:\Users\ASUS\Monash\Year 4 Sem 1 (July 2023)\ECE 4191\ece4191\DC_Motor_1\Design01.cydsn\codegentemp\isr_5.c" value="SOURCE_C;CortexM3;;;;isr_5" />
   <file name="C:\Users\ASUS\Monash\Year 4 Sem 1 (July 2023)\ECE 4191\ece4191\DC_Motor_1\Design01.cydsn\codegentemp\isr_5.h" value="HEADER;;;;;isr_5" />
+  <file name="C:\Users\ASUS\Monash\Year 4 Sem 1 (July 2023)\ECE 4191\ece4191\DC_Motor_1\Design01.cydsn\codegentemp\S0_aliases.h" value="HEADER;;;;;S0" />
+  <file name="C:\Users\ASUS\Monash\Year 4 Sem 1 (July 2023)\ECE 4191\ece4191\DC_Motor_1\Design01.cydsn\codegentemp\S0.c" value="SOURCE_C;CortexM3;;;;S0" />
+  <file name="C:\Users\ASUS\Monash\Year 4 Sem 1 (July 2023)\ECE 4191\ece4191\DC_Motor_1\Design01.cydsn\codegentemp\S0.h" value="HEADER;;;;;S0" />
+  <file name="C:\Users\ASUS\Monash\Year 4 Sem 1 (July 2023)\ECE 4191\ece4191\DC_Motor_1\Design01.cydsn\codegentemp\S1_aliases.h" value="HEADER;;;;;S1" />
+  <file name="C:\Users\ASUS\Monash\Year 4 Sem 1 (July 2023)\ECE 4191\ece4191\DC_Motor_1\Design01.cydsn\codegentemp\S1.c" value="SOURCE_C;CortexM3;;;;S1" />
+  <file name="C:\Users\ASUS\Monash\Year 4 Sem 1 (July 2023)\ECE 4191\ece4191\DC_Motor_1\Design01.cydsn\codegentemp\S1.h" value="HEADER;;;;;S1" />
+  <file name="C:\Users\ASUS\Monash\Year 4 Sem 1 (July 2023)\ECE 4191\ece4191\DC_Motor_1\Design01.cydsn\codegentemp\S2_aliases.h" value="HEADER;;;;;S2" />
+  <file name="C:\Users\ASUS\Monash\Year 4 Sem 1 (July 2023)\ECE 4191\ece4191\DC_Motor_1\Design01.cydsn\codegentemp\S2.c" value="SOURCE_C;CortexM3;;;;S2" />
+  <file name="C:\Users\ASUS\Monash\Year 4 Sem 1 (July 2023)\ECE 4191\ece4191\DC_Motor_1\Design01.cydsn\codegentemp\S2.h" value="HEADER;;;;;S2" />
+  <file name="C:\Users\ASUS\Monash\Year 4 Sem 1 (July 2023)\ECE 4191\ece4191\DC_Motor_1\Design01.cydsn\codegentemp\S3_aliases.h" value="HEADER;;;;;S3" />
+  <file name="C:\Users\ASUS\Monash\Year 4 Sem 1 (July 2023)\ECE 4191\ece4191\DC_Motor_1\Design01.cydsn\codegentemp\S3.c" value="SOURCE_C;CortexM3;;;;S3" />
+  <file name="C:\Users\ASUS\Monash\Year 4 Sem 1 (July 2023)\ECE 4191\ece4191\DC_Motor_1\Design01.cydsn\codegentemp\S3.h" value="HEADER;;;;;S3" />
+  <file name="C:\Users\ASUS\Monash\Year 4 Sem 1 (July 2023)\ECE 4191\ece4191\DC_Motor_1\Design01.cydsn\codegentemp\CS_OUT_aliases.h" value="HEADER;;;;;CS_OUT" />
+  <file name="C:\Users\ASUS\Monash\Year 4 Sem 1 (July 2023)\ECE 4191\ece4191\DC_Motor_1\Design01.cydsn\codegentemp\CS_OUT.c" value="SOURCE_C;CortexM3;;;;CS_OUT" />
+  <file name="C:\Users\ASUS\Monash\Year 4 Sem 1 (July 2023)\ECE 4191\ece4191\DC_Motor_1\Design01.cydsn\codegentemp\CS_OUT.h" value="HEADER;;;;;CS_OUT" />
+  <file name="C:\Users\ASUS\Monash\Year 4 Sem 1 (July 2023)\ECE 4191\ece4191\DC_Motor_1\Design01.cydsn\codegentemp\PWM_1.c" value="SOURCE_C;CortexM3;;;;PWM_1" />
+  <file name="C:\Users\ASUS\Monash\Year 4 Sem 1 (July 2023)\ECE 4191\ece4191\DC_Motor_1\Design01.cydsn\codegentemp\PWM_1.h" value="HEADER;;;;;PWM_1" />
+  <file name="C:\Users\ASUS\Monash\Year 4 Sem 1 (July 2023)\ECE 4191\ece4191\DC_Motor_1\Design01.cydsn\codegentemp\PWM_1_PM.c" value="SOURCE_C;CortexM3;;;;PWM_1" />
+  <file name="C:\Users\ASUS\Monash\Year 4 Sem 1 (July 2023)\ECE 4191\ece4191\DC_Motor_1\Design01.cydsn\codegentemp\Counter_1.c" value="SOURCE_C;CortexM3;;;;Counter_1" />
+  <file name="C:\Users\ASUS\Monash\Year 4 Sem 1 (July 2023)\ECE 4191\ece4191\DC_Motor_1\Design01.cydsn\codegentemp\Counter_1.h" value="HEADER;;;;;Counter_1" />
+  <file name="C:\Users\ASUS\Monash\Year 4 Sem 1 (July 2023)\ECE 4191\ece4191\DC_Motor_1\Design01.cydsn\codegentemp\Counter_1_PM.c" value="SOURCE_C;CortexM3;;;;Counter_1" />
+  <file name="C:\Users\ASUS\Monash\Year 4 Sem 1 (July 2023)\ECE 4191\ece4191\DC_Motor_1\Design01.cydsn\codegentemp\Clock_7.c" value="SOURCE_C;CortexM3;;;;Clock_7" />
+  <file name="C:\Users\ASUS\Monash\Year 4 Sem 1 (July 2023)\ECE 4191\ece4191\DC_Motor_1\Design01.cydsn\codegentemp\Clock_7.h" value="HEADER;;;;;Clock_7" />
+  <file name="C:\Users\ASUS\Monash\Year 4 Sem 1 (July 2023)\ECE 4191\ece4191\DC_Motor_1\Design01.cydsn\codegentemp\isr_cs.c" value="SOURCE_C;CortexM3;;;;isr_cs" />
+  <file name="C:\Users\ASUS\Monash\Year 4 Sem 1 (July 2023)\ECE 4191\ece4191\DC_Motor_1\Design01.cydsn\codegentemp\isr_cs.h" value="HEADER;;;;;isr_cs" />
+  <file name="C:\Users\ASUS\Monash\Year 4 Sem 1 (July 2023)\ECE 4191\ece4191\DC_Motor_1\Design01.cydsn\codegentemp\CS_LED_aliases.h" value="HEADER;;;;;CS_LED" />
+  <file name="C:\Users\ASUS\Monash\Year 4 Sem 1 (July 2023)\ECE 4191\ece4191\DC_Motor_1\Design01.cydsn\codegentemp\CS_LED.c" value="SOURCE_C;CortexM3;;;;CS_LED" />
+  <file name="C:\Users\ASUS\Monash\Year 4 Sem 1 (July 2023)\ECE 4191\ece4191\DC_Motor_1\Design01.cydsn\codegentemp\CS_LED.h" value="HEADER;;;;;CS_LED" />
   <file name="C:\Users\ASUS\Monash\Year 4 Sem 1 (July 2023)\ECE 4191\ece4191\DC_Motor_1\Design01.cydsn\codegentemp\QuadDec_1_Cnt16.c" value="SOURCE_C;CortexM3;;;;QuadDec_1_Cnt16" />
   <file name="C:\Users\ASUS\Monash\Year 4 Sem 1 (July 2023)\ECE 4191\ece4191\DC_Motor_1\Design01.cydsn\codegentemp\QuadDec_1_Cnt16.h" value="HEADER;;;;;QuadDec_1_Cnt16" />
   <file name="C:\Users\ASUS\Monash\Year 4 Sem 1 (July 2023)\ECE 4191\ece4191\DC_Motor_1\Design01.cydsn\codegentemp\QuadDec_1_Cnt16_PM.c" value="SOURCE_C;CortexM3;;;;QuadDec_1_Cnt16" />

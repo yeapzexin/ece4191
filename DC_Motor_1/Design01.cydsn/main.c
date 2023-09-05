@@ -452,7 +452,23 @@ int main(void)
     QuadDec_2_SetCounter(0);
     Count_Master = 0;
     Count_Slave = 0;
-    
+    while (step ==3)
+    {
+        flag_FR = 1;
+        dist_trav = 10;
+        dist_count = dist_trav*CM_COUNT_CONV;
+        F_or_R_2(dist_count, flag_FR);
+    }
+    CyDelay(500);
+    QuadDec_1_SetCounter(0);
+    QuadDec_2_SetCounter(0);
+    Count_Master = 0;
+    Count_Slave = 0;
+    while (step ==4)
+    {
+        flag_CW = 0;
+        CW(PT_TURN_COUNT,flag_CW);
+    }
     
     
     //stop();
