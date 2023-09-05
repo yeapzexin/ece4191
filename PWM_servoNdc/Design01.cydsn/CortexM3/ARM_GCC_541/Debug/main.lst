@@ -1,0 +1,3678 @@
+ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccoKtpNE.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"main.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.global	__aeabi_i2d
+  20              		.global	__aeabi_dmul
+  21              		.global	__aeabi_f2d
+  22              		.global	__aeabi_dadd
+  23              		.global	__aeabi_d2f
+  24              		.global	__aeabi_f2uiz
+  25              		.section	.text.Speed_Control,"ax",%progbits
+  26              		.align	2
+  27              		.global	Speed_Control
+  28              		.thumb
+  29              		.thumb_func
+  30              		.type	Speed_Control, %function
+  31              	Speed_Control:
+  32              	.LFB64:
+  33              		.file 1 "main.c"
+   1:main.c        **** /* ========================================
+   2:main.c        ****  *
+   3:main.c        ****  * Copyright YOUR COMPANY, THE YEAR
+   4:main.c        ****  * All Rights Reserved
+   5:main.c        ****  * UNPUBLISHED, LICENSED SOFTWARE.
+   6:main.c        ****  *
+   7:main.c        ****  * CONFIDENTIAL AND PROPRIETARY INFORMATION
+   8:main.c        ****  * WHICH IS THE PROPERTY OF your company.
+   9:main.c        ****  *
+  10:main.c        ****  * ========================================
+  11:main.c        **** */
+  12:main.c        **** #include "project.h"
+  13:main.c        **** #include <stdio.h>
+  14:main.c        **** #include <stdlib.h>
+  15:main.c        **** #include <math.h> 
+  16:main.c        **** 
+  17:main.c        **** const double WHEEL_DIAMETER = 5.4; //cm
+  18:main.c        **** int Count_Master = 0;
+  19:main.c        **** int Count_Slave = 0;
+  20:main.c        **** char string_1[20];
+  21:main.c        **** char string_2[20];
+  22:main.c        **** char string_3[20];
+  23:main.c        **** double error = 0;
+  24:main.c        **** double accumulated_error = 0;
+ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccoKtpNE.s 			page 2
+
+
+  25:main.c        **** double last_error = 0;
+  26:main.c        **** double derivative_error = 0;
+  27:main.c        **** double timer_period = 5;
+  28:main.c        **** double K_p = 50;
+  29:main.c        **** double K_i = 0;
+  30:main.c        **** double K_d = 0;
+  31:main.c        **** float PWM_Master = 23000;
+  32:main.c        **** float PWM_Slave = 23000;
+  33:main.c        **** int is_moving = 0;
+  34:main.c        **** uint16 front_det_count = 0;
+  35:main.c        **** float front_measured = 0;
+  36:main.c        **** double x_coord = 0;
+  37:main.c        **** double y_coord = 0;
+  38:main.c        **** int direction = 0;
+  39:main.c        **** int step = 0;
+  40:main.c        **** 
+  41:main.c        **** CY_ISR (Speed_Control)
+  42:main.c        **** {
+  34              		.loc 1 42 0
+  35              		.cfi_startproc
+  36              		@ args = 0, pretend = 0, frame = 0
+  37              		@ frame_needed = 0, uses_anonymous_args = 0
+  38 0000 F8B5     		push	{r3, r4, r5, r6, r7, lr}
+  39              		.cfi_def_cfa_offset 24
+  40              		.cfi_offset 3, -24
+  41              		.cfi_offset 4, -20
+  42              		.cfi_offset 5, -16
+  43              		.cfi_offset 6, -12
+  44              		.cfi_offset 7, -8
+  45              		.cfi_offset 14, -4
+  43:main.c        ****     if(is_moving == 1)
+  46              		.loc 1 43 0
+  47 0002 164B     		ldr	r3, .L4
+  48 0004 1B68     		ldr	r3, [r3]
+  49 0006 012B     		cmp	r3, #1
+  50 0008 27D1     		bne	.L1
+  44:main.c        ****     {
+  45:main.c        ****         error = abs(Count_Master) - abs(Count_Slave);
+  51              		.loc 1 45 0
+  52 000a 144C     		ldr	r4, .L4
+  53 000c 6068     		ldr	r0, [r4, #4]
+  54 000e 0028     		cmp	r0, #0
+  55 0010 B8BF     		it	lt
+  56 0012 4042     		rsblt	r0, r0, #0
+  57 0014 A368     		ldr	r3, [r4, #8]
+  58 0016 002B     		cmp	r3, #0
+  59 0018 B8BF     		it	lt
+  60 001a 5B42     		rsblt	r3, r3, #0
+  61 001c C01A     		subs	r0, r0, r3
+  62 001e FFF7FEFF 		bl	__aeabi_i2d
+  63              	.LVL0:
+  64 0022 C4E90401 		strd	r0, [r4, #16]
+  46:main.c        ****     	//accumulated_error = accumulated_error + (error*timer_period);
+  47:main.c        ****         //derivative_error = (error - last_error)/timer_period;
+  48:main.c        ****         //K_i = 1.2 * K_p / timer_period;
+  49:main.c        ****         //K_d = 0.075 * K_p * timer_period;
+  50:main.c        ****         //PWM_Slave = 25000 - (K_p*error + K_i*accumulated_error + K_d*derivative_error);
+ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccoKtpNE.s 			page 3
+
+
+  51:main.c        ****         PWM_Slave = PWM_Master + K_p*error;
+  65              		.loc 1 51 0
+  66 0026 0E4D     		ldr	r5, .L4+4
+  67 0028 D5E90023 		ldrd	r2, [r5]
+  68 002c FFF7FEFF 		bl	__aeabi_dmul
+  69              	.LVL1:
+  70 0030 0646     		mov	r6, r0
+  71 0032 0F46     		mov	r7, r1
+  72 0034 A868     		ldr	r0, [r5, #8]	@ float
+  73 0036 FFF7FEFF 		bl	__aeabi_f2d
+  74              	.LVL2:
+  75 003a 3246     		mov	r2, r6
+  76 003c 3B46     		mov	r3, r7
+  77 003e FFF7FEFF 		bl	__aeabi_dadd
+  78              	.LVL3:
+  79 0042 FFF7FEFF 		bl	__aeabi_d2f
+  80              	.LVL4:
+  81 0046 E860     		str	r0, [r5, #12]	@ float
+  52:main.c        ****         //if (PWM_Slave>25000)
+  53:main.c        ****         //{
+  54:main.c        ****         //    PWM_Slave = 23000;
+  55:main.c        ****         //}
+  56:main.c        ****     
+  57:main.c        ****         PWM_Slave_WriteCompare(PWM_Slave);
+  82              		.loc 1 57 0
+  83 0048 FFF7FEFF 		bl	__aeabi_f2uiz
+  84              	.LVL5:
+  85 004c 80B2     		uxth	r0, r0
+  86 004e FFF7FEFF 		bl	PWM_Slave_WriteCompare
+  87              	.LVL6:
+  58:main.c        ****         last_error = error;
+  88              		.loc 1 58 0
+  89 0052 D4E90423 		ldrd	r2, [r4, #16]
+  90 0056 C4E90623 		strd	r2, [r4, #24]
+  91              	.L1:
+  92 005a F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+  93              	.L5:
+  94              		.align	2
+  95              	.L4:
+  96 005c 00000000 		.word	.LANCHOR0
+  97 0060 00000000 		.word	.LANCHOR1
+  98              		.cfi_endproc
+  99              	.LFE64:
+ 100              		.size	Speed_Control, .-Speed_Control
+ 101              		.global	__aeabi_i2f
+ 102              		.section	.text.dist_front_detection,"ax",%progbits
+ 103              		.align	2
+ 104              		.global	dist_front_detection
+ 105              		.thumb
+ 106              		.thumb_func
+ 107              		.type	dist_front_detection, %function
+ 108              	dist_front_detection:
+ 109              	.LFB65:
+  59:main.c        ****     }
+  60:main.c        **** 
+  61:main.c        ****     //sprintf(string_3, "PWM_Slave: %f\n", PWM_Slave);
+  62:main.c        ****     //UART_1_PutString(string_3);
+ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccoKtpNE.s 			page 4
+
+
+  63:main.c        **** }
+  64:main.c        **** 
+  65:main.c        **** CY_ISR(dist_front_detection)
+  66:main.c        **** {
+ 110              		.loc 1 66 0
+ 111              		.cfi_startproc
+ 112              		@ args = 0, pretend = 0, frame = 0
+ 113              		@ frame_needed = 0, uses_anonymous_args = 0
+ 114 0000 10B5     		push	{r4, lr}
+ 115              		.cfi_def_cfa_offset 8
+ 116              		.cfi_offset 4, -8
+ 117              		.cfi_offset 14, -4
+  67:main.c        ****     Timer_2_ReadStatusRegister();
+ 118              		.loc 1 67 0
+ 119 0002 FFF7FEFF 		bl	Timer_2_ReadStatusRegister
+ 120              	.LVL7:
+  68:main.c        ****     front_det_count = Timer_2_ReadCounter();
+ 121              		.loc 1 68 0
+ 122 0006 FFF7FEFF 		bl	Timer_2_ReadCounter
+ 123              	.LVL8:
+ 124 000a 0E4C     		ldr	r4, .L8
+ 125 000c 2084     		strh	r0, [r4, #32]	@ movhi
+  69:main.c        ****     front_measured = (65535-front_det_count)/58;
+ 126              		.loc 1 69 0
+ 127 000e C0F57F43 		rsb	r3, r0, #65280
+ 128 0012 FF33     		adds	r3, r3, #255
+ 129 0014 0C48     		ldr	r0, .L8+4
+ 130 0016 80FB0320 		smull	r2, r0, r0, r3
+ 131 001a 1844     		add	r0, r0, r3
+ 132 001c DB17     		asrs	r3, r3, #31
+ 133 001e C3EB6010 		rsb	r0, r3, r0, asr #5
+ 134 0022 FFF7FEFF 		bl	__aeabi_i2f
+ 135              	.LVL9:
+ 136 0026 6062     		str	r0, [r4, #36]	@ float
+  70:main.c        ****     sprintf(string_1, "front dist: %lf\n", front_measured);
+ 137              		.loc 1 70 0
+ 138 0028 FFF7FEFF 		bl	__aeabi_f2d
+ 139              	.LVL10:
+ 140 002c 074C     		ldr	r4, .L8+8
+ 141 002e 0246     		mov	r2, r0
+ 142 0030 0B46     		mov	r3, r1
+ 143 0032 0749     		ldr	r1, .L8+12
+ 144 0034 2046     		mov	r0, r4
+ 145 0036 FFF7FEFF 		bl	sprintf
+ 146              	.LVL11:
+  71:main.c        ****     UART_1_PutString(string_1);
+ 147              		.loc 1 71 0
+ 148 003a 2046     		mov	r0, r4
+ 149 003c FFF7FEFF 		bl	UART_1_PutString
+ 150              	.LVL12:
+ 151 0040 10BD     		pop	{r4, pc}
+ 152              	.L9:
+ 153 0042 00BF     		.align	2
+ 154              	.L8:
+ 155 0044 00000000 		.word	.LANCHOR0
+ 156 0048 09CB3D8D 		.word	-1925330167
+ 157 004c 00000000 		.word	string_1
+ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccoKtpNE.s 			page 5
+
+
+ 158 0050 00000000 		.word	.LC0
+ 159              		.cfi_endproc
+ 160              	.LFE65:
+ 161              		.size	dist_front_detection, .-dist_front_detection
+ 162              		.section	.text.stop,"ax",%progbits
+ 163              		.align	2
+ 164              		.global	stop
+ 165              		.thumb
+ 166              		.thumb_func
+ 167              		.type	stop, %function
+ 168              	stop:
+ 169              	.LFB66:
+  72:main.c        **** }
+  73:main.c        **** 
+  74:main.c        **** void stop()
+  75:main.c        **** {
+ 170              		.loc 1 75 0
+ 171              		.cfi_startproc
+ 172              		@ args = 0, pretend = 0, frame = 0
+ 173              		@ frame_needed = 0, uses_anonymous_args = 0
+ 174 0000 10B5     		push	{r4, lr}
+ 175              		.cfi_def_cfa_offset 8
+ 176              		.cfi_offset 4, -8
+ 177              		.cfi_offset 14, -4
+  76:main.c        ****     is_moving = 0;
+ 178              		.loc 1 76 0
+ 179 0002 0024     		movs	r4, #0
+ 180 0004 074B     		ldr	r3, .L12
+ 181 0006 1C60     		str	r4, [r3]
+  77:main.c        ****     Motor_1_IN_1_Write(0);
+ 182              		.loc 1 77 0
+ 183 0008 2046     		mov	r0, r4
+ 184 000a FFF7FEFF 		bl	Motor_1_IN_1_Write
+ 185              	.LVL13:
+  78:main.c        ****     Motor_1_IN_2_Write(0);
+ 186              		.loc 1 78 0
+ 187 000e 2046     		mov	r0, r4
+ 188 0010 FFF7FEFF 		bl	Motor_1_IN_2_Write
+ 189              	.LVL14:
+  79:main.c        ****     Motor_2_IN_3_Write(0);
+ 190              		.loc 1 79 0
+ 191 0014 2046     		mov	r0, r4
+ 192 0016 FFF7FEFF 		bl	Motor_2_IN_3_Write
+ 193              	.LVL15:
+  80:main.c        ****     Motor_2_IN_4_Write(0);
+ 194              		.loc 1 80 0
+ 195 001a 2046     		mov	r0, r4
+ 196 001c FFF7FEFF 		bl	Motor_2_IN_4_Write
+ 197              	.LVL16:
+ 198 0020 10BD     		pop	{r4, pc}
+ 199              	.L13:
+ 200 0022 00BF     		.align	2
+ 201              	.L12:
+ 202 0024 00000000 		.word	.LANCHOR0
+ 203              		.cfi_endproc
+ 204              	.LFE66:
+ 205              		.size	stop, .-stop
+ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccoKtpNE.s 			page 6
+
+
+ 206              		.section	.text.forward,"ax",%progbits
+ 207              		.align	2
+ 208              		.global	forward
+ 209              		.thumb
+ 210              		.thumb_func
+ 211              		.type	forward, %function
+ 212              	forward:
+ 213              	.LFB67:
+  81:main.c        **** }
+  82:main.c        **** 
+  83:main.c        **** void forward()
+  84:main.c        **** {
+ 214              		.loc 1 84 0
+ 215              		.cfi_startproc
+ 216              		@ args = 0, pretend = 0, frame = 0
+ 217              		@ frame_needed = 0, uses_anonymous_args = 0
+ 218 0000 10B5     		push	{r4, lr}
+ 219              		.cfi_def_cfa_offset 8
+ 220              		.cfi_offset 4, -8
+ 221              		.cfi_offset 14, -4
+  85:main.c        ****     is_moving = 1;
+ 222              		.loc 1 85 0
+ 223 0002 0124     		movs	r4, #1
+ 224 0004 074B     		ldr	r3, .L16
+ 225 0006 1C60     		str	r4, [r3]
+  86:main.c        ****     Motor_1_IN_1_Write(0);
+ 226              		.loc 1 86 0
+ 227 0008 0020     		movs	r0, #0
+ 228 000a FFF7FEFF 		bl	Motor_1_IN_1_Write
+ 229              	.LVL17:
+  87:main.c        ****     Motor_1_IN_2_Write(1);
+ 230              		.loc 1 87 0
+ 231 000e 2046     		mov	r0, r4
+ 232 0010 FFF7FEFF 		bl	Motor_1_IN_2_Write
+ 233              	.LVL18:
+  88:main.c        ****     Motor_2_IN_3_Write(0);
+ 234              		.loc 1 88 0
+ 235 0014 0020     		movs	r0, #0
+ 236 0016 FFF7FEFF 		bl	Motor_2_IN_3_Write
+ 237              	.LVL19:
+  89:main.c        ****     Motor_2_IN_4_Write(1);
+ 238              		.loc 1 89 0
+ 239 001a 2046     		mov	r0, r4
+ 240 001c FFF7FEFF 		bl	Motor_2_IN_4_Write
+ 241              	.LVL20:
+ 242 0020 10BD     		pop	{r4, pc}
+ 243              	.L17:
+ 244 0022 00BF     		.align	2
+ 245              	.L16:
+ 246 0024 00000000 		.word	.LANCHOR0
+ 247              		.cfi_endproc
+ 248              	.LFE67:
+ 249              		.size	forward, .-forward
+ 250              		.section	.text.reverse,"ax",%progbits
+ 251              		.align	2
+ 252              		.global	reverse
+ 253              		.thumb
+ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccoKtpNE.s 			page 7
+
+
+ 254              		.thumb_func
+ 255              		.type	reverse, %function
+ 256              	reverse:
+ 257              	.LFB68:
+  90:main.c        **** }
+  91:main.c        **** 
+  92:main.c        **** void reverse()
+  93:main.c        **** {
+ 258              		.loc 1 93 0
+ 259              		.cfi_startproc
+ 260              		@ args = 0, pretend = 0, frame = 0
+ 261              		@ frame_needed = 0, uses_anonymous_args = 0
+ 262 0000 10B5     		push	{r4, lr}
+ 263              		.cfi_def_cfa_offset 8
+ 264              		.cfi_offset 4, -8
+ 265              		.cfi_offset 14, -4
+  94:main.c        ****     is_moving = 1;
+ 266              		.loc 1 94 0
+ 267 0002 0124     		movs	r4, #1
+ 268 0004 074B     		ldr	r3, .L20
+ 269 0006 1C60     		str	r4, [r3]
+  95:main.c        ****     Motor_1_IN_1_Write(1);
+ 270              		.loc 1 95 0
+ 271 0008 2046     		mov	r0, r4
+ 272 000a FFF7FEFF 		bl	Motor_1_IN_1_Write
+ 273              	.LVL21:
+  96:main.c        ****     Motor_1_IN_2_Write(0);
+ 274              		.loc 1 96 0
+ 275 000e 0020     		movs	r0, #0
+ 276 0010 FFF7FEFF 		bl	Motor_1_IN_2_Write
+ 277              	.LVL22:
+  97:main.c        ****     Motor_2_IN_3_Write(1);
+ 278              		.loc 1 97 0
+ 279 0014 2046     		mov	r0, r4
+ 280 0016 FFF7FEFF 		bl	Motor_2_IN_3_Write
+ 281              	.LVL23:
+  98:main.c        ****     Motor_2_IN_4_Write(0);
+ 282              		.loc 1 98 0
+ 283 001a 0020     		movs	r0, #0
+ 284 001c FFF7FEFF 		bl	Motor_2_IN_4_Write
+ 285              	.LVL24:
+ 286 0020 10BD     		pop	{r4, pc}
+ 287              	.L21:
+ 288 0022 00BF     		.align	2
+ 289              	.L20:
+ 290 0024 00000000 		.word	.LANCHOR0
+ 291              		.cfi_endproc
+ 292              	.LFE68:
+ 293              		.size	reverse, .-reverse
+ 294              		.section	.text.turn_anticlockwise,"ax",%progbits
+ 295              		.align	2
+ 296              		.global	turn_anticlockwise
+ 297              		.thumb
+ 298              		.thumb_func
+ 299              		.type	turn_anticlockwise, %function
+ 300              	turn_anticlockwise:
+ 301              	.LFB69:
+ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccoKtpNE.s 			page 8
+
+
+  99:main.c        **** }
+ 100:main.c        **** 
+ 101:main.c        **** void turn_anticlockwise()
+ 102:main.c        **** {
+ 302              		.loc 1 102 0
+ 303              		.cfi_startproc
+ 304              		@ args = 0, pretend = 0, frame = 0
+ 305              		@ frame_needed = 0, uses_anonymous_args = 0
+ 306 0000 10B5     		push	{r4, lr}
+ 307              		.cfi_def_cfa_offset 8
+ 308              		.cfi_offset 4, -8
+ 309              		.cfi_offset 14, -4
+ 103:main.c        ****     is_moving = 1;
+ 310              		.loc 1 103 0
+ 311 0002 0124     		movs	r4, #1
+ 312 0004 074B     		ldr	r3, .L24
+ 313 0006 1C60     		str	r4, [r3]
+ 104:main.c        ****     Motor_1_IN_1_Write(0);
+ 314              		.loc 1 104 0
+ 315 0008 0020     		movs	r0, #0
+ 316 000a FFF7FEFF 		bl	Motor_1_IN_1_Write
+ 317              	.LVL25:
+ 105:main.c        ****     Motor_1_IN_2_Write(1);
+ 318              		.loc 1 105 0
+ 319 000e 2046     		mov	r0, r4
+ 320 0010 FFF7FEFF 		bl	Motor_1_IN_2_Write
+ 321              	.LVL26:
+ 106:main.c        ****     Motor_2_IN_3_Write(1);
+ 322              		.loc 1 106 0
+ 323 0014 2046     		mov	r0, r4
+ 324 0016 FFF7FEFF 		bl	Motor_2_IN_3_Write
+ 325              	.LVL27:
+ 107:main.c        ****     Motor_2_IN_4_Write(0);
+ 326              		.loc 1 107 0
+ 327 001a 0020     		movs	r0, #0
+ 328 001c FFF7FEFF 		bl	Motor_2_IN_4_Write
+ 329              	.LVL28:
+ 330 0020 10BD     		pop	{r4, pc}
+ 331              	.L25:
+ 332 0022 00BF     		.align	2
+ 333              	.L24:
+ 334 0024 00000000 		.word	.LANCHOR0
+ 335              		.cfi_endproc
+ 336              	.LFE69:
+ 337              		.size	turn_anticlockwise, .-turn_anticlockwise
+ 338              		.section	.text.turn_clockwise,"ax",%progbits
+ 339              		.align	2
+ 340              		.global	turn_clockwise
+ 341              		.thumb
+ 342              		.thumb_func
+ 343              		.type	turn_clockwise, %function
+ 344              	turn_clockwise:
+ 345              	.LFB70:
+ 108:main.c        **** }
+ 109:main.c        **** 
+ 110:main.c        **** void turn_clockwise()
+ 111:main.c        **** {
+ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccoKtpNE.s 			page 9
+
+
+ 346              		.loc 1 111 0
+ 347              		.cfi_startproc
+ 348              		@ args = 0, pretend = 0, frame = 0
+ 349              		@ frame_needed = 0, uses_anonymous_args = 0
+ 350 0000 10B5     		push	{r4, lr}
+ 351              		.cfi_def_cfa_offset 8
+ 352              		.cfi_offset 4, -8
+ 353              		.cfi_offset 14, -4
+ 112:main.c        ****     is_moving = 1;
+ 354              		.loc 1 112 0
+ 355 0002 0124     		movs	r4, #1
+ 356 0004 074B     		ldr	r3, .L28
+ 357 0006 1C60     		str	r4, [r3]
+ 113:main.c        ****     Motor_1_IN_1_Write(1);
+ 358              		.loc 1 113 0
+ 359 0008 2046     		mov	r0, r4
+ 360 000a FFF7FEFF 		bl	Motor_1_IN_1_Write
+ 361              	.LVL29:
+ 114:main.c        ****     Motor_1_IN_2_Write(0);
+ 362              		.loc 1 114 0
+ 363 000e 0020     		movs	r0, #0
+ 364 0010 FFF7FEFF 		bl	Motor_1_IN_2_Write
+ 365              	.LVL30:
+ 115:main.c        ****     Motor_2_IN_3_Write(0);
+ 366              		.loc 1 115 0
+ 367 0014 0020     		movs	r0, #0
+ 368 0016 FFF7FEFF 		bl	Motor_2_IN_3_Write
+ 369              	.LVL31:
+ 116:main.c        ****     Motor_2_IN_4_Write(1);
+ 370              		.loc 1 116 0
+ 371 001a 2046     		mov	r0, r4
+ 372 001c FFF7FEFF 		bl	Motor_2_IN_4_Write
+ 373              	.LVL32:
+ 374 0020 10BD     		pop	{r4, pc}
+ 375              	.L29:
+ 376 0022 00BF     		.align	2
+ 377              	.L28:
+ 378 0024 00000000 		.word	.LANCHOR0
+ 379              		.cfi_endproc
+ 380              	.LFE70:
+ 381              		.size	turn_clockwise, .-turn_clockwise
+ 382              		.global	__aeabi_fcmpgt
+ 383              		.global	__aeabi_dsub
+ 384              		.section	.text.F_or_R,"ax",%progbits
+ 385              		.align	2
+ 386              		.global	F_or_R
+ 387              		.thumb
+ 388              		.thumb_func
+ 389              		.type	F_or_R, %function
+ 390              	F_or_R:
+ 391              	.LFB71:
+ 117:main.c        **** }
+ 118:main.c        **** void F_or_R(int dist_count, int flag_FR)
+ 119:main.c        **** {
+ 392              		.loc 1 119 0
+ 393              		.cfi_startproc
+ 394              		@ args = 0, pretend = 0, frame = 0
+ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccoKtpNE.s 			page 10
+
+
+ 395              		@ frame_needed = 0, uses_anonymous_args = 0
+ 396              	.LVL33:
+ 397 0000 70B5     		push	{r4, r5, r6, lr}
+ 398              		.cfi_def_cfa_offset 16
+ 399              		.cfi_offset 4, -16
+ 400              		.cfi_offset 5, -12
+ 401              		.cfi_offset 6, -8
+ 402              		.cfi_offset 14, -4
+ 403 0002 0546     		mov	r5, r0
+ 404 0004 0E46     		mov	r6, r1
+ 405              	.LVL34:
+ 120:main.c        ****     double avg_count, avg_dist;
+ 121:main.c        ****     int flag_stop = 0;
+ 122:main.c        ****     //while(abs(Count_Master) <= dist_count && abs(Count_Slave) <= dist_count && front_measured>10)
+ 123:main.c        ****     while(abs(Count_Master) <= dist_count && abs(Count_Slave) <= dist_count && front_measured>10)
+ 406              		.loc 1 123 0
+ 407 0006 1EE0     		b	.L31
+ 408              	.LVL35:
+ 409              	.L37:
+ 124:main.c        ****     {
+ 125:main.c        ****         /* Place your application code here. */
+ 126:main.c        ****         Count_Master = QuadDec_1_GetCounter();
+ 410              		.loc 1 126 0
+ 411 0008 FFF7FEFF 		bl	QuadDec_1_GetCounter
+ 412              	.LVL36:
+ 413 000c 3C4C     		ldr	r4, .L43+8
+ 414 000e 6060     		str	r0, [r4, #4]
+ 127:main.c        ****         Count_Slave = QuadDec_2_GetCounter();
+ 415              		.loc 1 127 0
+ 416 0010 FFF7FEFF 		bl	QuadDec_2_GetCounter
+ 417              	.LVL37:
+ 418 0014 A060     		str	r0, [r4, #8]
+ 128:main.c        ****         /*
+ 129:main.c        ****         sprintf(string_1, "Right (Master): %d\n", Count_Master);
+ 130:main.c        ****         UART_1_PutString(string_1);
+ 131:main.c        ****         sprintf(string_2, "Left (Slave): %d\n", Count_Slave);
+ 132:main.c        ****         UART_1_PutString(string_2);
+ 133:main.c        ****         sprintf(string_3, "PWM_Slave: %f\n", PWM_Slave);
+ 134:main.c        ****         UART_1_PutString(string_3);
+ 135:main.c        **** 
+ 136:main.c        ****         CyDelay(100);
+ 137:main.c        ****         */
+ 138:main.c        ****         
+ 139:main.c        ****         /*
+ 140:main.c        ****         if (front_measured <10)
+ 141:main.c        ****         {
+ 142:main.c        ****             flag_stop = flag_stop+1;
+ 143:main.c        ****         }
+ 144:main.c        ****         */
+ 145:main.c        ****         if (flag_FR==1)
+ 419              		.loc 1 145 0
+ 420 0016 012E     		cmp	r6, #1
+ 421 0018 02D1     		bne	.L32
+ 146:main.c        ****         {
+ 147:main.c        ****             forward();
+ 422              		.loc 1 147 0
+ 423 001a FFF7FEFF 		bl	forward
+ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccoKtpNE.s 			page 11
+
+
+ 424              	.LVL38:
+ 425 001e 01E0     		b	.L33
+ 426              	.L32:
+ 148:main.c        ****         }
+ 149:main.c        ****         else
+ 150:main.c        ****         {
+ 151:main.c        ****             reverse();
+ 427              		.loc 1 151 0
+ 428 0020 FFF7FEFF 		bl	reverse
+ 429              	.LVL39:
+ 430              	.L33:
+ 152:main.c        ****         }
+ 153:main.c        ****         CyDelay(50);
+ 431              		.loc 1 153 0
+ 432 0024 3220     		movs	r0, #50
+ 433 0026 FFF7FEFF 		bl	CyDelay
+ 434              	.LVL40:
+ 154:main.c        ****         while(Front_Echo_Read()==0)
+ 435              		.loc 1 154 0
+ 436 002a 08E0     		b	.L34
+ 437              	.L35:
+ 155:main.c        ****         {
+ 156:main.c        ****             Front_Trigger_Write(1);
+ 438              		.loc 1 156 0
+ 439 002c 0120     		movs	r0, #1
+ 440 002e FFF7FEFF 		bl	Front_Trigger_Write
+ 441              	.LVL41:
+ 157:main.c        ****             CyDelayUs(10);
+ 442              		.loc 1 157 0
+ 443 0032 0A20     		movs	r0, #10
+ 444 0034 FFF7FEFF 		bl	CyDelayUs
+ 445              	.LVL42:
+ 158:main.c        ****             Front_Trigger_Write(0);
+ 446              		.loc 1 158 0
+ 447 0038 0020     		movs	r0, #0
+ 448 003a FFF7FEFF 		bl	Front_Trigger_Write
+ 449              	.LVL43:
+ 450              	.L34:
+ 154:main.c        ****         {
+ 451              		.loc 1 154 0
+ 452 003e FFF7FEFF 		bl	Front_Echo_Read
+ 453              	.LVL44:
+ 454 0042 0028     		cmp	r0, #0
+ 455 0044 F2D0     		beq	.L35
+ 456              	.L31:
+ 123:main.c        ****     {
+ 457              		.loc 1 123 0
+ 458 0046 2E4B     		ldr	r3, .L43+8
+ 459 0048 5B68     		ldr	r3, [r3, #4]
+ 460 004a 002B     		cmp	r3, #0
+ 461 004c B8BF     		it	lt
+ 462 004e 5B42     		rsblt	r3, r3, #0
+ 463 0050 AB42     		cmp	r3, r5
+ 464 0052 0DDC     		bgt	.L36
+ 123:main.c        ****     {
+ 465              		.loc 1 123 0 is_stmt 0 discriminator 1
+ 466 0054 2A4B     		ldr	r3, .L43+8
+ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccoKtpNE.s 			page 12
+
+
+ 467 0056 9B68     		ldr	r3, [r3, #8]
+ 468 0058 002B     		cmp	r3, #0
+ 469 005a B8BF     		it	lt
+ 470 005c 5B42     		rsblt	r3, r3, #0
+ 471 005e 9D42     		cmp	r5, r3
+ 472 0060 06DB     		blt	.L36
+ 123:main.c        ****     {
+ 473              		.loc 1 123 0 discriminator 2
+ 474 0062 2849     		ldr	r1, .L43+12
+ 475 0064 264B     		ldr	r3, .L43+8
+ 476 0066 586A     		ldr	r0, [r3, #36]	@ float
+ 477 0068 FFF7FEFF 		bl	__aeabi_fcmpgt
+ 478              	.LVL45:
+ 479 006c 0028     		cmp	r0, #0
+ 480 006e CBD1     		bne	.L37
+ 481              	.L36:
+ 159:main.c        ****         }
+ 160:main.c        ****     }
+ 161:main.c        ****     stop();
+ 482              		.loc 1 161 0 is_stmt 1
+ 483 0070 FFF7FEFF 		bl	stop
+ 484              	.LVL46:
+ 162:main.c        ****     avg_count = (QuadDec_1_GetCounter()+QuadDec_2_GetCounter())/2;
+ 485              		.loc 1 162 0
+ 486 0074 FFF7FEFF 		bl	QuadDec_1_GetCounter
+ 487              	.LVL47:
+ 488 0078 0446     		mov	r4, r0
+ 489 007a FFF7FEFF 		bl	QuadDec_2_GetCounter
+ 490              	.LVL48:
+ 491 007e 2044     		add	r0, r0, r4
+ 492 0080 00EBD070 		add	r0, r0, r0, lsr #31
+ 493 0084 4010     		asrs	r0, r0, #1
+ 494 0086 FFF7FEFF 		bl	__aeabi_i2d
+ 495              	.LVL49:
+ 163:main.c        ****     avg_dist = avg_count*(M_PI*WHEEL_DIAMETER/3667);
+ 496              		.loc 1 163 0
+ 497 008a 1BA3     		adr	r3, .L43
+ 498 008c D3E90023 		ldrd	r2, [r3]
+ 499 0090 FFF7FEFF 		bl	__aeabi_dmul
+ 500              	.LVL50:
+ 164:main.c        ****     if (direction ==0)
+ 501              		.loc 1 164 0
+ 502 0094 1A4B     		ldr	r3, .L43+8
+ 503 0096 9B6A     		ldr	r3, [r3, #40]
+ 504 0098 3BB9     		cbnz	r3, .L38
+ 165:main.c        ****     {
+ 166:main.c        ****         y_coord = y_coord + avg_dist;
+ 505              		.loc 1 166 0
+ 506 009a 194C     		ldr	r4, .L43+8
+ 507 009c D4E90C23 		ldrd	r2, [r4, #48]
+ 508 00a0 FFF7FEFF 		bl	__aeabi_dadd
+ 509              	.LVL51:
+ 510 00a4 C4E90C01 		strd	r0, [r4, #48]
+ 511 00a8 20E0     		b	.L39
+ 512              	.LVL52:
+ 513              	.L38:
+ 167:main.c        ****     }
+ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccoKtpNE.s 			page 13
+
+
+ 168:main.c        ****     else if (direction ==1)
+ 514              		.loc 1 168 0
+ 515 00aa 012B     		cmp	r3, #1
+ 516 00ac 07D1     		bne	.L40
+ 169:main.c        ****     {
+ 170:main.c        ****         
+ 171:main.c        ****         x_coord = x_coord + avg_dist;
+ 517              		.loc 1 171 0
+ 518 00ae 144C     		ldr	r4, .L43+8
+ 519 00b0 D4E90E23 		ldrd	r2, [r4, #56]
+ 520 00b4 FFF7FEFF 		bl	__aeabi_dadd
+ 521              	.LVL53:
+ 522 00b8 C4E90E01 		strd	r0, [r4, #56]
+ 523 00bc 16E0     		b	.L39
+ 524              	.LVL54:
+ 525              	.L40:
+ 172:main.c        ****     }
+ 173:main.c        ****     else if (direction ==2)
+ 526              		.loc 1 173 0
+ 527 00be 022B     		cmp	r3, #2
+ 528 00c0 09D1     		bne	.L41
+ 174:main.c        ****     {
+ 175:main.c        ****         
+ 176:main.c        ****         y_coord = y_coord - avg_dist;
+ 529              		.loc 1 176 0
+ 530 00c2 0F4C     		ldr	r4, .L43+8
+ 531 00c4 0246     		mov	r2, r0
+ 532 00c6 0B46     		mov	r3, r1
+ 533 00c8 D4E90C01 		ldrd	r0, [r4, #48]
+ 534              	.LVL55:
+ 535 00cc FFF7FEFF 		bl	__aeabi_dsub
+ 536              	.LVL56:
+ 537 00d0 C4E90C01 		strd	r0, [r4, #48]
+ 538 00d4 0AE0     		b	.L39
+ 539              	.LVL57:
+ 540              	.L41:
+ 177:main.c        ****     }
+ 178:main.c        ****     else if (direction ==3)
+ 541              		.loc 1 178 0
+ 542 00d6 032B     		cmp	r3, #3
+ 543 00d8 08D1     		bne	.L39
+ 179:main.c        ****     {
+ 180:main.c        ****         
+ 181:main.c        ****         x_coord = x_coord - avg_dist;
+ 544              		.loc 1 181 0
+ 545 00da 094C     		ldr	r4, .L43+8
+ 546 00dc 0246     		mov	r2, r0
+ 547 00de 0B46     		mov	r3, r1
+ 548 00e0 D4E90E01 		ldrd	r0, [r4, #56]
+ 549              	.LVL58:
+ 550 00e4 FFF7FEFF 		bl	__aeabi_dsub
+ 551              	.LVL59:
+ 552 00e8 C4E90E01 		strd	r0, [r4, #56]
+ 553              	.L39:
+ 182:main.c        ****     }
+ 183:main.c        ****     step = step +1;
+ 554              		.loc 1 183 0
+ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccoKtpNE.s 			page 14
+
+
+ 555 00ec 044A     		ldr	r2, .L43+8
+ 556 00ee 136C     		ldr	r3, [r2, #64]
+ 557 00f0 0133     		adds	r3, r3, #1
+ 558 00f2 1364     		str	r3, [r2, #64]
+ 559 00f4 70BD     		pop	{r4, r5, r6, pc}
+ 560              	.LVL60:
+ 561              	.L44:
+ 562 00f6 00BF     		.align	3
+ 563              	.L43:
+ 564 00f8 269071E4 		.word	-462319578
+ 565 00fc 03F3723F 		.word	1064497923
+ 566 0100 00000000 		.word	.LANCHOR0
+ 567 0104 00002041 		.word	1092616192
+ 568              		.cfi_endproc
+ 569              	.LFE71:
+ 570              		.size	F_or_R, .-F_or_R
+ 571              		.section	.text.CW,"ax",%progbits
+ 572              		.align	2
+ 573              		.global	CW
+ 574              		.thumb
+ 575              		.thumb_func
+ 576              		.type	CW, %function
+ 577              	CW:
+ 578              	.LFB72:
+ 184:main.c        ****     //
+ 185:main.c        ****     //QuadDec_2_SetCounter(0);
+ 186:main.c        **** }
+ 187:main.c        **** void CW(int PT_TURN_COUNT, int flag_CW)
+ 188:main.c        **** {
+ 579              		.loc 1 188 0
+ 580              		.cfi_startproc
+ 581              		@ args = 0, pretend = 0, frame = 0
+ 582              		@ frame_needed = 0, uses_anonymous_args = 0
+ 583              	.LVL61:
+ 584 0000 70B5     		push	{r4, r5, r6, lr}
+ 585              		.cfi_def_cfa_offset 16
+ 586              		.cfi_offset 4, -16
+ 587              		.cfi_offset 5, -12
+ 588              		.cfi_offset 6, -8
+ 589              		.cfi_offset 14, -4
+ 590 0002 0546     		mov	r5, r0
+ 591 0004 0E46     		mov	r6, r1
+ 189:main.c        ****     while(abs(Count_Master) <= PT_TURN_COUNT && abs(Count_Slave) <= PT_TURN_COUNT)
+ 592              		.loc 1 189 0
+ 593 0006 0DE0     		b	.L46
+ 594              	.LVL62:
+ 595              	.L50:
+ 190:main.c        ****     {
+ 191:main.c        ****         /* Place your application code here. */
+ 192:main.c        ****         Count_Master = QuadDec_1_GetCounter();
+ 596              		.loc 1 192 0
+ 597 0008 FFF7FEFF 		bl	QuadDec_1_GetCounter
+ 598              	.LVL63:
+ 599 000c 1D4C     		ldr	r4, .L56
+ 600 000e 6060     		str	r0, [r4, #4]
+ 193:main.c        ****         Count_Slave = QuadDec_2_GetCounter();
+ 601              		.loc 1 193 0
+ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccoKtpNE.s 			page 15
+
+
+ 602 0010 FFF7FEFF 		bl	QuadDec_2_GetCounter
+ 603              	.LVL64:
+ 604 0014 A060     		str	r0, [r4, #8]
+ 194:main.c        ****         /*
+ 195:main.c        ****         sprintf(string_1, "Right (Master): %d\n", Count_Master);
+ 196:main.c        ****         UART_1_PutString(string_1);
+ 197:main.c        ****         sprintf(string_2, "Left (Slave): %d\n", Count_Slave);
+ 198:main.c        ****         UART_1_PutString(string_2);
+ 199:main.c        ****         sprintf(string_3, "PWM_Slave: %f\n", PWM_Slave);
+ 200:main.c        ****         UART_1_PutString(string_3);
+ 201:main.c        **** 
+ 202:main.c        ****         CyDelay(100);
+ 203:main.c        ****         */
+ 204:main.c        ****         if (flag_CW == 1)
+ 605              		.loc 1 204 0
+ 606 0016 012E     		cmp	r6, #1
+ 607 0018 02D1     		bne	.L47
+ 205:main.c        ****         {
+ 206:main.c        ****             turn_clockwise();
+ 608              		.loc 1 206 0
+ 609 001a FFF7FEFF 		bl	turn_clockwise
+ 610              	.LVL65:
+ 611 001e 01E0     		b	.L46
+ 612              	.L47:
+ 207:main.c        ****         }
+ 208:main.c        ****         else 
+ 209:main.c        ****         {
+ 210:main.c        ****             turn_anticlockwise();
+ 613              		.loc 1 210 0
+ 614 0020 FFF7FEFF 		bl	turn_anticlockwise
+ 615              	.LVL66:
+ 616              	.L46:
+ 189:main.c        ****     {
+ 617              		.loc 1 189 0
+ 618 0024 174B     		ldr	r3, .L56
+ 619 0026 5B68     		ldr	r3, [r3, #4]
+ 620 0028 002B     		cmp	r3, #0
+ 621 002a B8BF     		it	lt
+ 622 002c 5B42     		rsblt	r3, r3, #0
+ 623 002e AB42     		cmp	r3, r5
+ 624 0030 06DC     		bgt	.L49
+ 189:main.c        ****     {
+ 625              		.loc 1 189 0 is_stmt 0 discriminator 1
+ 626 0032 144B     		ldr	r3, .L56
+ 627 0034 9B68     		ldr	r3, [r3, #8]
+ 628 0036 002B     		cmp	r3, #0
+ 629 0038 B8BF     		it	lt
+ 630 003a 5B42     		rsblt	r3, r3, #0
+ 631 003c 9D42     		cmp	r5, r3
+ 632 003e E3DA     		bge	.L50
+ 633              	.L49:
+ 211:main.c        ****         }
+ 212:main.c        ****     }
+ 213:main.c        ****     stop();
+ 634              		.loc 1 213 0 is_stmt 1
+ 635 0040 FFF7FEFF 		bl	stop
+ 636              	.LVL67:
+ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccoKtpNE.s 			page 16
+
+
+ 214:main.c        ****     if (flag_CW == 1)
+ 637              		.loc 1 214 0
+ 638 0044 012E     		cmp	r6, #1
+ 639 0046 0BD1     		bne	.L51
+ 215:main.c        ****     {
+ 216:main.c        ****         if (direction == 3)
+ 640              		.loc 1 216 0
+ 641 0048 0E4B     		ldr	r3, .L56
+ 642 004a 9B6A     		ldr	r3, [r3, #40]
+ 643 004c 032B     		cmp	r3, #3
+ 644 004e 03D1     		bne	.L52
+ 217:main.c        ****         {
+ 218:main.c        ****             direction = 0;
+ 645              		.loc 1 218 0
+ 646 0050 0022     		movs	r2, #0
+ 647 0052 0C4B     		ldr	r3, .L56
+ 648 0054 9A62     		str	r2, [r3, #40]
+ 649 0056 0DE0     		b	.L53
+ 650              	.L52:
+ 219:main.c        ****         }
+ 220:main.c        ****         else
+ 221:main.c        ****         {
+ 222:main.c        ****             direction = direction +1;
+ 651              		.loc 1 222 0
+ 652 0058 0133     		adds	r3, r3, #1
+ 653 005a 0A4A     		ldr	r2, .L56
+ 654 005c 9362     		str	r3, [r2, #40]
+ 655 005e 09E0     		b	.L53
+ 656              	.L51:
+ 223:main.c        ****         }
+ 224:main.c        ****     }
+ 225:main.c        ****     else
+ 226:main.c        ****     {
+ 227:main.c        ****         if (direction ==0)
+ 657              		.loc 1 227 0
+ 658 0060 084B     		ldr	r3, .L56
+ 659 0062 9B6A     		ldr	r3, [r3, #40]
+ 660 0064 1BB9     		cbnz	r3, .L54
+ 228:main.c        ****         {
+ 229:main.c        ****             direction = 3;
+ 661              		.loc 1 229 0
+ 662 0066 0322     		movs	r2, #3
+ 663 0068 064B     		ldr	r3, .L56
+ 664 006a 9A62     		str	r2, [r3, #40]
+ 665 006c 02E0     		b	.L53
+ 666              	.L54:
+ 230:main.c        ****         }
+ 231:main.c        ****         else
+ 232:main.c        ****         {
+ 233:main.c        ****             direction = direction -1;
+ 667              		.loc 1 233 0
+ 668 006e 013B     		subs	r3, r3, #1
+ 669 0070 044A     		ldr	r2, .L56
+ 670 0072 9362     		str	r3, [r2, #40]
+ 671              	.L53:
+ 234:main.c        ****         }
+ 235:main.c        ****     }
+ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccoKtpNE.s 			page 17
+
+
+ 236:main.c        ****     QuadDec_1_SetCounter(0);
+ 672              		.loc 1 236 0
+ 673 0074 0020     		movs	r0, #0
+ 674 0076 FFF7FEFF 		bl	QuadDec_1_SetCounter
+ 675              	.LVL68:
+ 237:main.c        ****     QuadDec_2_SetCounter(0);
+ 676              		.loc 1 237 0
+ 677 007a 0020     		movs	r0, #0
+ 678 007c FFF7FEFF 		bl	QuadDec_2_SetCounter
+ 679              	.LVL69:
+ 680 0080 70BD     		pop	{r4, r5, r6, pc}
+ 681              	.LVL70:
+ 682              	.L57:
+ 683 0082 00BF     		.align	2
+ 684              	.L56:
+ 685 0084 00000000 		.word	.LANCHOR0
+ 686              		.cfi_endproc
+ 687              	.LFE72:
+ 688              		.size	CW, .-CW
+ 689              		.section	.text.main,"ax",%progbits
+ 690              		.align	2
+ 691              		.global	main
+ 692              		.thumb
+ 693              		.thumb_func
+ 694              		.type	main, %function
+ 695              	main:
+ 696              	.LFB73:
+ 238:main.c        **** }
+ 239:main.c        ****             
+ 240:main.c        **** int main(void)
+ 241:main.c        **** {
+ 697              		.loc 1 241 0
+ 698              		.cfi_startproc
+ 699              		@ args = 0, pretend = 0, frame = 0
+ 700              		@ frame_needed = 0, uses_anonymous_args = 0
+ 701 0000 10B5     		push	{r4, lr}
+ 702              		.cfi_def_cfa_offset 8
+ 703              		.cfi_offset 4, -8
+ 704              		.cfi_offset 14, -4
+ 242:main.c        ****     CyGlobalIntEnable; /* Enable global interrupts. */
+ 705              		.loc 1 242 0
+ 706              		.syntax unified
+ 707              	@ 242 "main.c" 1
+ 708 0002 62B6     		CPSIE   i
+ 709              	@ 0 "" 2
+ 243:main.c        ****     isr_1_StartEx(Speed_Control);
+ 710              		.loc 1 243 0
+ 711              		.thumb
+ 712              		.syntax unified
+ 713 0004 2748     		ldr	r0, .L64
+ 714 0006 FFF7FEFF 		bl	isr_1_StartEx
+ 715              	.LVL71:
+ 244:main.c        ****     /* Place your initialization/startup code here (e.g. MyInst_Start()) */
+ 245:main.c        ****     Timer_1_Start();
+ 716              		.loc 1 245 0
+ 717 000a FFF7FEFF 		bl	Timer_1_Start
+ 718              	.LVL72:
+ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccoKtpNE.s 			page 18
+
+
+ 246:main.c        ****     Timer_2_Start();
+ 719              		.loc 1 246 0
+ 720 000e FFF7FEFF 		bl	Timer_2_Start
+ 721              	.LVL73:
+ 247:main.c        ****     isr_2_StartEx(dist_front_detection);
+ 722              		.loc 1 247 0
+ 723 0012 2548     		ldr	r0, .L64+4
+ 724 0014 FFF7FEFF 		bl	isr_2_StartEx
+ 725              	.LVL74:
+ 248:main.c        ****     PWM_Master_Start();
+ 726              		.loc 1 248 0
+ 727 0018 FFF7FEFF 		bl	PWM_Master_Start
+ 728              	.LVL75:
+ 249:main.c        ****     PWM_Slave_Start();
+ 729              		.loc 1 249 0
+ 730 001c FFF7FEFF 		bl	PWM_Slave_Start
+ 731              	.LVL76:
+ 250:main.c        ****     QuadDec_1_Start();
+ 732              		.loc 1 250 0
+ 733 0020 FFF7FEFF 		bl	QuadDec_1_Start
+ 734              	.LVL77:
+ 251:main.c        ****     QuadDec_1_SetCounter(0);
+ 735              		.loc 1 251 0
+ 736 0024 0020     		movs	r0, #0
+ 737 0026 FFF7FEFF 		bl	QuadDec_1_SetCounter
+ 738              	.LVL78:
+ 252:main.c        ****     QuadDec_2_Start();
+ 739              		.loc 1 252 0
+ 740 002a FFF7FEFF 		bl	QuadDec_2_Start
+ 741              	.LVL79:
+ 253:main.c        ****     QuadDec_2_SetCounter(0);
+ 742              		.loc 1 253 0
+ 743 002e 0020     		movs	r0, #0
+ 744 0030 FFF7FEFF 		bl	QuadDec_2_SetCounter
+ 745              	.LVL80:
+ 254:main.c        ****     UART_1_Start();
+ 746              		.loc 1 254 0
+ 747 0034 FFF7FEFF 		bl	UART_1_Start
+ 748              	.LVL81:
+ 255:main.c        ****     
+ 256:main.c        ****     const double WHEEL_CIRCUMFERENCE = M_PI*WHEEL_DIAMETER;
+ 257:main.c        ****     const double COUNT_WHEEL = 3667; // Count per rotation
+ 258:main.c        ****     
+ 259:main.c        ****     const double CM_COUNT_CONV = COUNT_WHEEL/WHEEL_CIRCUMFERENCE;
+ 260:main.c        ****     const double DISTANCE_BETW_WHEEL = 22.30;
+ 261:main.c        ****     const double DISTANCE_PT_TURN = M_PI*DISTANCE_BETW_WHEEL/4;
+ 262:main.c        ****     const double PT_TURN_COUNT = COUNT_WHEEL * DISTANCE_PT_TURN/(M_PI*WHEEL_DIAMETER)-500;
+ 263:main.c        **** 
+ 264:main.c        ****     int flag_FR = 1;
+ 265:main.c        ****     int flag_CW = 1;
+ 266:main.c        ****     //Motor_1_IN_1_Write(1);
+ 267:main.c        ****     //Motor_1_IN_2_Write(0);
+ 268:main.c        ****     //Motor_2_IN_3_Write(1);
+ 269:main.c        ****     //Motor_2_IN_4_Write(0);
+ 270:main.c        ****     PWM_Master_WriteCompare(PWM_Master);
+ 749              		.loc 1 270 0
+ 750 0038 1C4C     		ldr	r4, .L64+8
+ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccoKtpNE.s 			page 19
+
+
+ 751 003a A068     		ldr	r0, [r4, #8]	@ float
+ 752 003c FFF7FEFF 		bl	__aeabi_f2uiz
+ 753              	.LVL82:
+ 754 0040 80B2     		uxth	r0, r0
+ 755 0042 FFF7FEFF 		bl	PWM_Master_WriteCompare
+ 756              	.LVL83:
+ 271:main.c        ****     PWM_Slave_WriteCompare(PWM_Master);
+ 757              		.loc 1 271 0
+ 758 0046 A068     		ldr	r0, [r4, #8]	@ float
+ 759 0048 FFF7FEFF 		bl	__aeabi_f2uiz
+ 760              	.LVL84:
+ 761 004c 80B2     		uxth	r0, r0
+ 762 004e FFF7FEFF 		bl	PWM_Slave_WriteCompare
+ 763              	.LVL85:
+ 272:main.c        ****     double dist_trav = 0;
+ 273:main.c        ****     double dist_count = dist_trav*CM_COUNT_CONV;
+ 274:main.c        ****     CyDelay(2000);
+ 764              		.loc 1 274 0
+ 765 0052 4FF4FA60 		mov	r0, #2000
+ 766 0056 FFF7FEFF 		bl	CyDelay
+ 767              	.LVL86:
+ 275:main.c        ****     /*
+ 276:main.c        ****     while(1)
+ 277:main.c        ****     {
+ 278:main.c        ****         CyDelay(50);
+ 279:main.c        ****         while(Front_Echo_Read()==0)
+ 280:main.c        ****         {
+ 281:main.c        ****             Front_Trigger_Write(1);
+ 282:main.c        ****             CyDelayUs(10);
+ 283:main.c        ****             Front_Trigger_Write(0);
+ 284:main.c        ****         }
+ 285:main.c        ****     }
+ 286:main.c        ****     */
+ 287:main.c        ****     
+ 288:main.c        ****     while (step == 0)
+ 768              		.loc 1 288 0
+ 769 005a 04E0     		b	.L59
+ 770              	.LVL87:
+ 771              	.L60:
+ 289:main.c        ****     {
+ 290:main.c        ****         flag_FR = 1;
+ 291:main.c        ****         flag_CW = 1;
+ 292:main.c        ****         dist_trav = 20;
+ 293:main.c        ****         dist_count = dist_trav*CM_COUNT_CONV;
+ 294:main.c        ****         F_or_R(dist_count, flag_FR);
+ 772              		.loc 1 294 0
+ 773 005c 0121     		movs	r1, #1
+ 774 005e 41F2E300 		movw	r0, #4323
+ 775 0062 FFF7FEFF 		bl	F_or_R
+ 776              	.LVL88:
+ 777              	.L59:
+ 288:main.c        ****     {
+ 778              		.loc 1 288 0
+ 779 0066 124B     		ldr	r3, .L64+12
+ 780 0068 1B6C     		ldr	r3, [r3, #64]
+ 781 006a 002B     		cmp	r3, #0
+ 782 006c F6D0     		beq	.L60
+ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccoKtpNE.s 			page 20
+
+
+ 295:main.c        ****         
+ 296:main.c        ****         //CW(PT_TURN_COUNT,flag_CW);
+ 297:main.c        ****         /*
+ 298:main.c        ****         CW(PT_TURN_COUNT, flag_CW);
+ 299:main.c        ****         dist_trav = 50;
+ 300:main.c        ****         dist_count = dist_trav*CM_COUNT_CONV;
+ 301:main.c        ****         flag_FR = 1;
+ 302:main.c        ****         F_or_R(dist_count, flag_FR);
+ 303:main.c        ****         step = step+1;*/
+ 304:main.c        ****     
+ 305:main.c        ****     }
+ 306:main.c        ****     CyDelay(500);
+ 783              		.loc 1 306 0
+ 784 006e 4FF4FA70 		mov	r0, #500
+ 785 0072 FFF7FEFF 		bl	CyDelay
+ 786              	.LVL89:
+ 307:main.c        ****     QuadDec_1_SetCounter(0);
+ 787              		.loc 1 307 0
+ 788 0076 0020     		movs	r0, #0
+ 789 0078 FFF7FEFF 		bl	QuadDec_1_SetCounter
+ 790              	.LVL90:
+ 308:main.c        ****     QuadDec_2_SetCounter(0);
+ 791              		.loc 1 308 0
+ 792 007c 0020     		movs	r0, #0
+ 793 007e FFF7FEFF 		bl	QuadDec_2_SetCounter
+ 794              	.LVL91:
+ 309:main.c        ****     Count_Master = 0;
+ 795              		.loc 1 309 0
+ 796 0082 0B4B     		ldr	r3, .L64+12
+ 797 0084 0022     		movs	r2, #0
+ 798 0086 5A60     		str	r2, [r3, #4]
+ 310:main.c        ****     Count_Slave = 0;
+ 799              		.loc 1 310 0
+ 800 0088 9A60     		str	r2, [r3, #8]
+ 311:main.c        ****         
+ 312:main.c        ****     while (step == 1)
+ 801              		.loc 1 312 0
+ 802 008a 04E0     		b	.L61
+ 803              	.L62:
+ 313:main.c        ****     {
+ 314:main.c        ****         flag_CW = 1;
+ 315:main.c        ****         CW(PT_TURN_COUNT,flag_CW);
+ 804              		.loc 1 315 0
+ 805 008c 0121     		movs	r1, #1
+ 806 008e 40F6D540 		movw	r0, #3285
+ 807 0092 FFF7FEFF 		bl	CW
+ 808              	.LVL92:
+ 809              	.L61:
+ 312:main.c        ****     {
+ 810              		.loc 1 312 0
+ 811 0096 064B     		ldr	r3, .L64+12
+ 812 0098 1B6C     		ldr	r3, [r3, #64]
+ 813 009a 012B     		cmp	r3, #1
+ 814 009c F6D0     		beq	.L62
+ 316:main.c        ****     }
+ 317:main.c        ****     
+ 318:main.c        ****     
+ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccoKtpNE.s 			page 21
+
+
+ 319:main.c        ****     
+ 320:main.c        ****     //stop();
+ 321:main.c        **** }
+ 815              		.loc 1 321 0
+ 816 009e 0020     		movs	r0, #0
+ 817 00a0 10BD     		pop	{r4, pc}
+ 818              	.L65:
+ 819 00a2 00BF     		.align	2
+ 820              	.L64:
+ 821 00a4 00000000 		.word	Speed_Control
+ 822 00a8 00000000 		.word	dist_front_detection
+ 823 00ac 00000000 		.word	.LANCHOR1
+ 824 00b0 00000000 		.word	.LANCHOR0
+ 825              		.cfi_endproc
+ 826              	.LFE73:
+ 827              		.size	main, .-main
+ 828              		.global	step
+ 829              		.global	direction
+ 830              		.global	y_coord
+ 831              		.global	x_coord
+ 832              		.global	front_measured
+ 833              		.global	front_det_count
+ 834              		.global	is_moving
+ 835              		.global	PWM_Slave
+ 836              		.global	PWM_Master
+ 837              		.global	K_d
+ 838              		.global	K_i
+ 839              		.global	K_p
+ 840              		.global	timer_period
+ 841              		.global	derivative_error
+ 842              		.global	last_error
+ 843              		.global	accumulated_error
+ 844              		.global	error
+ 845              		.comm	string_3,20,4
+ 846              		.comm	string_2,20,4
+ 847              		.comm	string_1,20,4
+ 848              		.global	Count_Slave
+ 849              		.global	Count_Master
+ 850              		.global	WHEEL_DIAMETER
+ 851              		.section	.rodata
+ 852              		.align	3
+ 853              		.type	WHEEL_DIAMETER, %object
+ 854              		.size	WHEEL_DIAMETER, 8
+ 855              	WHEEL_DIAMETER:
+ 856 0000 9A999999 		.word	-1717986918
+ 857 0004 99991540 		.word	1075157401
+ 858              		.data
+ 859              		.align	3
+ 860              		.set	.LANCHOR1,. + 0
+ 861              		.type	K_p, %object
+ 862              		.size	K_p, 8
+ 863              	K_p:
+ 864 0000 00000000 		.word	0
+ 865 0004 00004940 		.word	1078525952
+ 866              		.type	PWM_Master, %object
+ 867              		.size	PWM_Master, 4
+ 868              	PWM_Master:
+ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccoKtpNE.s 			page 22
+
+
+ 869 0008 00B0B346 		.word	1186181120
+ 870              		.type	PWM_Slave, %object
+ 871              		.size	PWM_Slave, 4
+ 872              	PWM_Slave:
+ 873 000c 00B0B346 		.word	1186181120
+ 874              		.type	timer_period, %object
+ 875              		.size	timer_period, 8
+ 876              	timer_period:
+ 877 0010 00000000 		.word	0
+ 878 0014 00001440 		.word	1075052544
+ 879              		.section	.rodata.str1.4,"aMS",%progbits,1
+ 880              		.align	2
+ 881              	.LC0:
+ 882 0000 66726F6E 		.ascii	"front dist: %lf\012\000"
+ 882      74206469 
+ 882      73743A20 
+ 882      256C660A 
+ 882      00
+ 883              		.bss
+ 884              		.align	3
+ 885              		.set	.LANCHOR0,. + 0
+ 886              		.type	is_moving, %object
+ 887              		.size	is_moving, 4
+ 888              	is_moving:
+ 889 0000 00000000 		.space	4
+ 890              		.type	Count_Master, %object
+ 891              		.size	Count_Master, 4
+ 892              	Count_Master:
+ 893 0004 00000000 		.space	4
+ 894              		.type	Count_Slave, %object
+ 895              		.size	Count_Slave, 4
+ 896              	Count_Slave:
+ 897 0008 00000000 		.space	4
+ 898 000c 00000000 		.space	4
+ 899              		.type	error, %object
+ 900              		.size	error, 8
+ 901              	error:
+ 902 0010 00000000 		.space	8
+ 902      00000000 
+ 903              		.type	last_error, %object
+ 904              		.size	last_error, 8
+ 905              	last_error:
+ 906 0018 00000000 		.space	8
+ 906      00000000 
+ 907              		.type	front_det_count, %object
+ 908              		.size	front_det_count, 2
+ 909              	front_det_count:
+ 910 0020 0000     		.space	2
+ 911 0022 0000     		.space	2
+ 912              		.type	front_measured, %object
+ 913              		.size	front_measured, 4
+ 914              	front_measured:
+ 915 0024 00000000 		.space	4
+ 916              		.type	direction, %object
+ 917              		.size	direction, 4
+ 918              	direction:
+ 919 0028 00000000 		.space	4
+ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccoKtpNE.s 			page 23
+
+
+ 920 002c 00000000 		.space	4
+ 921              		.type	y_coord, %object
+ 922              		.size	y_coord, 8
+ 923              	y_coord:
+ 924 0030 00000000 		.space	8
+ 924      00000000 
+ 925              		.type	x_coord, %object
+ 926              		.size	x_coord, 8
+ 927              	x_coord:
+ 928 0038 00000000 		.space	8
+ 928      00000000 
+ 929              		.type	step, %object
+ 930              		.size	step, 4
+ 931              	step:
+ 932 0040 00000000 		.space	4
+ 933 0044 00000000 		.space	4
+ 934              		.type	K_d, %object
+ 935              		.size	K_d, 8
+ 936              	K_d:
+ 937 0048 00000000 		.space	8
+ 937      00000000 
+ 938              		.type	K_i, %object
+ 939              		.size	K_i, 8
+ 940              	K_i:
+ 941 0050 00000000 		.space	8
+ 941      00000000 
+ 942              		.type	derivative_error, %object
+ 943              		.size	derivative_error, 8
+ 944              	derivative_error:
+ 945 0058 00000000 		.space	8
+ 945      00000000 
+ 946              		.type	accumulated_error, %object
+ 947              		.size	accumulated_error, 8
+ 948              	accumulated_error:
+ 949 0060 00000000 		.space	8
+ 949      00000000 
+ 950              		.text
+ 951              	.Letext0:
+ 952              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.
+ 953              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.
+ 954              		.file 4 "Generated_Source\\PSoC5/cytypes.h"
+ 955              		.file 5 "Generated_Source\\PSoC5/core_cm3.h"
+ 956              		.file 6 "Generated_Source\\PSoC5/PWM_Slave.h"
+ 957              		.file 7 "Generated_Source\\PSoC5/Timer_2.h"
+ 958              		.file 8 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.
+ 959              		.file 9 "Generated_Source\\PSoC5/UART_1.h"
+ 960              		.file 10 "Generated_Source\\PSoC5/Motor_1_IN_1.h"
+ 961              		.file 11 "Generated_Source\\PSoC5/Motor_1_IN_2.h"
+ 962              		.file 12 "Generated_Source\\PSoC5/Motor_2_IN_3.h"
+ 963              		.file 13 "Generated_Source\\PSoC5/Motor_2_IN_4.h"
+ 964              		.file 14 "Generated_Source\\PSoC5/QuadDec_1.h"
+ 965              		.file 15 "Generated_Source\\PSoC5/QuadDec_2.h"
+ 966              		.file 16 "Generated_Source\\PSoC5/CyLib.h"
+ 967              		.file 17 "Generated_Source\\PSoC5/Front_Trigger.h"
+ 968              		.file 18 "Generated_Source\\PSoC5/Front_Echo.h"
+ 969              		.file 19 "Generated_Source\\PSoC5/isr_1.h"
+ 970              		.file 20 "Generated_Source\\PSoC5/Timer_1.h"
+ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccoKtpNE.s 			page 24
+
+
+ 971              		.file 21 "Generated_Source\\PSoC5/isr_2.h"
+ 972              		.file 22 "Generated_Source\\PSoC5/PWM_Master.h"
+ 973              		.section	.debug_info,"",%progbits
+ 974              	.Ldebug_info0:
+ 975 0000 45090000 		.4byte	0x945
+ 976 0004 0400     		.2byte	0x4
+ 977 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 978 000a 04       		.byte	0x4
+ 979 000b 01       		.uleb128 0x1
+ 980 000c 35030000 		.4byte	.LASF86
+ 981 0010 0C       		.byte	0xc
+ 982 0011 6A040000 		.4byte	.LASF87
+ 983 0015 C8020000 		.4byte	.LASF88
+ 984 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 985 001d 00000000 		.4byte	0
+ 986 0021 00000000 		.4byte	.Ldebug_line0
+ 987 0025 02       		.uleb128 0x2
+ 988 0026 01       		.byte	0x1
+ 989 0027 06       		.byte	0x6
+ 990 0028 F3040000 		.4byte	.LASF0
+ 991 002c 02       		.uleb128 0x2
+ 992 002d 01       		.byte	0x1
+ 993 002e 08       		.byte	0x8
+ 994 002f 4F020000 		.4byte	.LASF1
+ 995 0033 02       		.uleb128 0x2
+ 996 0034 02       		.byte	0x2
+ 997 0035 05       		.byte	0x5
+ 998 0036 CA000000 		.4byte	.LASF2
+ 999 003a 02       		.uleb128 0x2
+ 1000 003b 02       		.byte	0x2
+ 1001 003c 07       		.byte	0x7
+ 1002 003d 48040000 		.4byte	.LASF3
+ 1003 0041 03       		.uleb128 0x3
+ 1004 0042 DF040000 		.4byte	.LASF9
+ 1005 0046 02       		.byte	0x2
+ 1006 0047 3F       		.byte	0x3f
+ 1007 0048 4C000000 		.4byte	0x4c
+ 1008 004c 02       		.uleb128 0x2
+ 1009 004d 04       		.byte	0x4
+ 1010 004e 05       		.byte	0x5
+ 1011 004f 93010000 		.4byte	.LASF4
+ 1012 0053 02       		.uleb128 0x2
+ 1013 0054 04       		.byte	0x4
+ 1014 0055 07       		.byte	0x7
+ 1015 0056 71040000 		.4byte	.LASF5
+ 1016 005a 02       		.uleb128 0x2
+ 1017 005b 08       		.byte	0x8
+ 1018 005c 05       		.byte	0x5
+ 1019 005d 54010000 		.4byte	.LASF6
+ 1020 0061 02       		.uleb128 0x2
+ 1021 0062 08       		.byte	0x8
+ 1022 0063 07       		.byte	0x7
+ 1023 0064 87020000 		.4byte	.LASF7
+ 1024 0068 04       		.uleb128 0x4
+ 1025 0069 04       		.byte	0x4
+ 1026 006a 05       		.byte	0x5
+ 1027 006b 696E7400 		.ascii	"int\000"
+ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccoKtpNE.s 			page 25
+
+
+ 1028 006f 02       		.uleb128 0x2
+ 1029 0070 04       		.byte	0x4
+ 1030 0071 07       		.byte	0x7
+ 1031 0072 9E020000 		.4byte	.LASF8
+ 1032 0076 03       		.uleb128 0x3
+ 1033 0077 E5030000 		.4byte	.LASF10
+ 1034 007b 03       		.byte	0x3
+ 1035 007c 2C       		.byte	0x2c
+ 1036 007d 41000000 		.4byte	0x41
+ 1037 0081 05       		.uleb128 0x5
+ 1038 0082 E4000000 		.4byte	.LASF11
+ 1039 0086 04       		.byte	0x4
+ 1040 0087 E901     		.2byte	0x1e9
+ 1041 0089 3A000000 		.4byte	0x3a
+ 1042 008d 02       		.uleb128 0x2
+ 1043 008e 04       		.byte	0x4
+ 1044 008f 04       		.byte	0x4
+ 1045 0090 33010000 		.4byte	.LASF12
+ 1046 0094 02       		.uleb128 0x2
+ 1047 0095 08       		.byte	0x8
+ 1048 0096 04       		.byte	0x4
+ 1049 0097 2A020000 		.4byte	.LASF13
+ 1050 009b 02       		.uleb128 0x2
+ 1051 009c 01       		.byte	0x1
+ 1052 009d 08       		.byte	0x8
+ 1053 009e 7D010000 		.4byte	.LASF14
+ 1054 00a2 02       		.uleb128 0x2
+ 1055 00a3 08       		.byte	0x8
+ 1056 00a4 04       		.byte	0x4
+ 1057 00a5 31020000 		.4byte	.LASF15
+ 1058 00a9 02       		.uleb128 0x2
+ 1059 00aa 04       		.byte	0x4
+ 1060 00ab 07       		.byte	0x7
+ 1061 00ac 4A000000 		.4byte	.LASF16
+ 1062 00b0 06       		.uleb128 0x6
+ 1063 00b1 F9000000 		.4byte	.LASF17
+ 1064 00b5 01       		.byte	0x1
+ 1065 00b6 29       		.byte	0x29
+ 1066 00b7 00000000 		.4byte	.LFB64
+ 1067 00bb 64000000 		.4byte	.LFE64-.LFB64
+ 1068 00bf 01       		.uleb128 0x1
+ 1069 00c0 9C       		.byte	0x9c
+ 1070 00c1 CF000000 		.4byte	0xcf
+ 1071 00c5 07       		.uleb128 0x7
+ 1072 00c6 52000000 		.4byte	.LVL6
+ 1073 00ca 1F080000 		.4byte	0x81f
+ 1074 00ce 00       		.byte	0
+ 1075 00cf 06       		.uleb128 0x6
+ 1076 00d0 83040000 		.4byte	.LASF18
+ 1077 00d4 01       		.byte	0x1
+ 1078 00d5 41       		.byte	0x41
+ 1079 00d6 00000000 		.4byte	.LFB65
+ 1080 00da 54000000 		.4byte	.LFE65-.LFB65
+ 1081 00de 01       		.uleb128 0x1
+ 1082 00df 9C       		.byte	0x9c
+ 1083 00e0 24010000 		.4byte	0x124
+ 1084 00e4 07       		.uleb128 0x7
+ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccoKtpNE.s 			page 26
+
+
+ 1085 00e5 06000000 		.4byte	.LVL7
+ 1086 00e9 2A080000 		.4byte	0x82a
+ 1087 00ed 07       		.uleb128 0x7
+ 1088 00ee 0A000000 		.4byte	.LVL8
+ 1089 00f2 35080000 		.4byte	0x835
+ 1090 00f6 08       		.uleb128 0x8
+ 1091 00f7 3A000000 		.4byte	.LVL11
+ 1092 00fb 40080000 		.4byte	0x840
+ 1093 00ff 13010000 		.4byte	0x113
+ 1094 0103 09       		.uleb128 0x9
+ 1095 0104 01       		.uleb128 0x1
+ 1096 0105 50       		.byte	0x50
+ 1097 0106 02       		.uleb128 0x2
+ 1098 0107 74       		.byte	0x74
+ 1099 0108 00       		.sleb128 0
+ 1100 0109 09       		.uleb128 0x9
+ 1101 010a 01       		.uleb128 0x1
+ 1102 010b 51       		.byte	0x51
+ 1103 010c 05       		.uleb128 0x5
+ 1104 010d 03       		.byte	0x3
+ 1105 010e 00000000 		.4byte	.LC0
+ 1106 0112 00       		.byte	0
+ 1107 0113 0A       		.uleb128 0xa
+ 1108 0114 40000000 		.4byte	.LVL12
+ 1109 0118 4B080000 		.4byte	0x84b
+ 1110 011c 09       		.uleb128 0x9
+ 1111 011d 01       		.uleb128 0x1
+ 1112 011e 50       		.byte	0x50
+ 1113 011f 02       		.uleb128 0x2
+ 1114 0120 74       		.byte	0x74
+ 1115 0121 00       		.sleb128 0
+ 1116 0122 00       		.byte	0
+ 1117 0123 00       		.byte	0
+ 1118 0124 0B       		.uleb128 0xb
+ 1119 0125 C3030000 		.4byte	.LASF19
+ 1120 0129 01       		.byte	0x1
+ 1121 012a 4A       		.byte	0x4a
+ 1122 012b 00000000 		.4byte	.LFB66
+ 1123 012f 28000000 		.4byte	.LFE66-.LFB66
+ 1124 0133 01       		.uleb128 0x1
+ 1125 0134 9C       		.byte	0x9c
+ 1126 0135 86010000 		.4byte	0x186
+ 1127 0139 08       		.uleb128 0x8
+ 1128 013a 0E000000 		.4byte	.LVL13
+ 1129 013e 56080000 		.4byte	0x856
+ 1130 0142 4D010000 		.4byte	0x14d
+ 1131 0146 09       		.uleb128 0x9
+ 1132 0147 01       		.uleb128 0x1
+ 1133 0148 50       		.byte	0x50
+ 1134 0149 02       		.uleb128 0x2
+ 1135 014a 74       		.byte	0x74
+ 1136 014b 00       		.sleb128 0
+ 1137 014c 00       		.byte	0
+ 1138 014d 08       		.uleb128 0x8
+ 1139 014e 14000000 		.4byte	.LVL14
+ 1140 0152 61080000 		.4byte	0x861
+ 1141 0156 61010000 		.4byte	0x161
+ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccoKtpNE.s 			page 27
+
+
+ 1142 015a 09       		.uleb128 0x9
+ 1143 015b 01       		.uleb128 0x1
+ 1144 015c 50       		.byte	0x50
+ 1145 015d 02       		.uleb128 0x2
+ 1146 015e 74       		.byte	0x74
+ 1147 015f 00       		.sleb128 0
+ 1148 0160 00       		.byte	0
+ 1149 0161 08       		.uleb128 0x8
+ 1150 0162 1A000000 		.4byte	.LVL15
+ 1151 0166 6C080000 		.4byte	0x86c
+ 1152 016a 75010000 		.4byte	0x175
+ 1153 016e 09       		.uleb128 0x9
+ 1154 016f 01       		.uleb128 0x1
+ 1155 0170 50       		.byte	0x50
+ 1156 0171 02       		.uleb128 0x2
+ 1157 0172 74       		.byte	0x74
+ 1158 0173 00       		.sleb128 0
+ 1159 0174 00       		.byte	0
+ 1160 0175 0A       		.uleb128 0xa
+ 1161 0176 20000000 		.4byte	.LVL16
+ 1162 017a 77080000 		.4byte	0x877
+ 1163 017e 09       		.uleb128 0x9
+ 1164 017f 01       		.uleb128 0x1
+ 1165 0180 50       		.byte	0x50
+ 1166 0181 02       		.uleb128 0x2
+ 1167 0182 74       		.byte	0x74
+ 1168 0183 00       		.sleb128 0
+ 1169 0184 00       		.byte	0
+ 1170 0185 00       		.byte	0
+ 1171 0186 0B       		.uleb128 0xb
+ 1172 0187 15000000 		.4byte	.LASF20
+ 1173 018b 01       		.byte	0x1
+ 1174 018c 53       		.byte	0x53
+ 1175 018d 00000000 		.4byte	.LFB67
+ 1176 0191 28000000 		.4byte	.LFE67-.LFB67
+ 1177 0195 01       		.uleb128 0x1
+ 1178 0196 9C       		.byte	0x9c
+ 1179 0197 E6010000 		.4byte	0x1e6
+ 1180 019b 08       		.uleb128 0x8
+ 1181 019c 0E000000 		.4byte	.LVL17
+ 1182 01a0 56080000 		.4byte	0x856
+ 1183 01a4 AE010000 		.4byte	0x1ae
+ 1184 01a8 09       		.uleb128 0x9
+ 1185 01a9 01       		.uleb128 0x1
+ 1186 01aa 50       		.byte	0x50
+ 1187 01ab 01       		.uleb128 0x1
+ 1188 01ac 30       		.byte	0x30
+ 1189 01ad 00       		.byte	0
+ 1190 01ae 08       		.uleb128 0x8
+ 1191 01af 14000000 		.4byte	.LVL18
+ 1192 01b3 61080000 		.4byte	0x861
+ 1193 01b7 C2010000 		.4byte	0x1c2
+ 1194 01bb 09       		.uleb128 0x9
+ 1195 01bc 01       		.uleb128 0x1
+ 1196 01bd 50       		.byte	0x50
+ 1197 01be 02       		.uleb128 0x2
+ 1198 01bf 74       		.byte	0x74
+ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccoKtpNE.s 			page 28
+
+
+ 1199 01c0 00       		.sleb128 0
+ 1200 01c1 00       		.byte	0
+ 1201 01c2 08       		.uleb128 0x8
+ 1202 01c3 1A000000 		.4byte	.LVL19
+ 1203 01c7 6C080000 		.4byte	0x86c
+ 1204 01cb D5010000 		.4byte	0x1d5
+ 1205 01cf 09       		.uleb128 0x9
+ 1206 01d0 01       		.uleb128 0x1
+ 1207 01d1 50       		.byte	0x50
+ 1208 01d2 01       		.uleb128 0x1
+ 1209 01d3 30       		.byte	0x30
+ 1210 01d4 00       		.byte	0
+ 1211 01d5 0A       		.uleb128 0xa
+ 1212 01d6 20000000 		.4byte	.LVL20
+ 1213 01da 77080000 		.4byte	0x877
+ 1214 01de 09       		.uleb128 0x9
+ 1215 01df 01       		.uleb128 0x1
+ 1216 01e0 50       		.byte	0x50
+ 1217 01e1 02       		.uleb128 0x2
+ 1218 01e2 74       		.byte	0x74
+ 1219 01e3 00       		.sleb128 0
+ 1220 01e4 00       		.byte	0
+ 1221 01e5 00       		.byte	0
+ 1222 01e6 0B       		.uleb128 0xb
+ 1223 01e7 C8030000 		.4byte	.LASF21
+ 1224 01eb 01       		.byte	0x1
+ 1225 01ec 5C       		.byte	0x5c
+ 1226 01ed 00000000 		.4byte	.LFB68
+ 1227 01f1 28000000 		.4byte	.LFE68-.LFB68
+ 1228 01f5 01       		.uleb128 0x1
+ 1229 01f6 9C       		.byte	0x9c
+ 1230 01f7 46020000 		.4byte	0x246
+ 1231 01fb 08       		.uleb128 0x8
+ 1232 01fc 0E000000 		.4byte	.LVL21
+ 1233 0200 56080000 		.4byte	0x856
+ 1234 0204 0F020000 		.4byte	0x20f
+ 1235 0208 09       		.uleb128 0x9
+ 1236 0209 01       		.uleb128 0x1
+ 1237 020a 50       		.byte	0x50
+ 1238 020b 02       		.uleb128 0x2
+ 1239 020c 74       		.byte	0x74
+ 1240 020d 00       		.sleb128 0
+ 1241 020e 00       		.byte	0
+ 1242 020f 08       		.uleb128 0x8
+ 1243 0210 14000000 		.4byte	.LVL22
+ 1244 0214 61080000 		.4byte	0x861
+ 1245 0218 22020000 		.4byte	0x222
+ 1246 021c 09       		.uleb128 0x9
+ 1247 021d 01       		.uleb128 0x1
+ 1248 021e 50       		.byte	0x50
+ 1249 021f 01       		.uleb128 0x1
+ 1250 0220 30       		.byte	0x30
+ 1251 0221 00       		.byte	0
+ 1252 0222 08       		.uleb128 0x8
+ 1253 0223 1A000000 		.4byte	.LVL23
+ 1254 0227 6C080000 		.4byte	0x86c
+ 1255 022b 36020000 		.4byte	0x236
+ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccoKtpNE.s 			page 29
+
+
+ 1256 022f 09       		.uleb128 0x9
+ 1257 0230 01       		.uleb128 0x1
+ 1258 0231 50       		.byte	0x50
+ 1259 0232 02       		.uleb128 0x2
+ 1260 0233 74       		.byte	0x74
+ 1261 0234 00       		.sleb128 0
+ 1262 0235 00       		.byte	0
+ 1263 0236 0A       		.uleb128 0xa
+ 1264 0237 20000000 		.4byte	.LVL24
+ 1265 023b 77080000 		.4byte	0x877
+ 1266 023f 09       		.uleb128 0x9
+ 1267 0240 01       		.uleb128 0x1
+ 1268 0241 50       		.byte	0x50
+ 1269 0242 01       		.uleb128 0x1
+ 1270 0243 30       		.byte	0x30
+ 1271 0244 00       		.byte	0
+ 1272 0245 00       		.byte	0
+ 1273 0246 0B       		.uleb128 0xb
+ 1274 0247 5D050000 		.4byte	.LASF22
+ 1275 024b 01       		.byte	0x1
+ 1276 024c 65       		.byte	0x65
+ 1277 024d 00000000 		.4byte	.LFB69
+ 1278 0251 28000000 		.4byte	.LFE69-.LFB69
+ 1279 0255 01       		.uleb128 0x1
+ 1280 0256 9C       		.byte	0x9c
+ 1281 0257 A6020000 		.4byte	0x2a6
+ 1282 025b 08       		.uleb128 0x8
+ 1283 025c 0E000000 		.4byte	.LVL25
+ 1284 0260 56080000 		.4byte	0x856
+ 1285 0264 6E020000 		.4byte	0x26e
+ 1286 0268 09       		.uleb128 0x9
+ 1287 0269 01       		.uleb128 0x1
+ 1288 026a 50       		.byte	0x50
+ 1289 026b 01       		.uleb128 0x1
+ 1290 026c 30       		.byte	0x30
+ 1291 026d 00       		.byte	0
+ 1292 026e 08       		.uleb128 0x8
+ 1293 026f 14000000 		.4byte	.LVL26
+ 1294 0273 61080000 		.4byte	0x861
+ 1295 0277 82020000 		.4byte	0x282
+ 1296 027b 09       		.uleb128 0x9
+ 1297 027c 01       		.uleb128 0x1
+ 1298 027d 50       		.byte	0x50
+ 1299 027e 02       		.uleb128 0x2
+ 1300 027f 74       		.byte	0x74
+ 1301 0280 00       		.sleb128 0
+ 1302 0281 00       		.byte	0
+ 1303 0282 08       		.uleb128 0x8
+ 1304 0283 1A000000 		.4byte	.LVL27
+ 1305 0287 6C080000 		.4byte	0x86c
+ 1306 028b 96020000 		.4byte	0x296
+ 1307 028f 09       		.uleb128 0x9
+ 1308 0290 01       		.uleb128 0x1
+ 1309 0291 50       		.byte	0x50
+ 1310 0292 02       		.uleb128 0x2
+ 1311 0293 74       		.byte	0x74
+ 1312 0294 00       		.sleb128 0
+ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccoKtpNE.s 			page 30
+
+
+ 1313 0295 00       		.byte	0
+ 1314 0296 0A       		.uleb128 0xa
+ 1315 0297 20000000 		.4byte	.LVL28
+ 1316 029b 77080000 		.4byte	0x877
+ 1317 029f 09       		.uleb128 0x9
+ 1318 02a0 01       		.uleb128 0x1
+ 1319 02a1 50       		.byte	0x50
+ 1320 02a2 01       		.uleb128 0x1
+ 1321 02a3 30       		.byte	0x30
+ 1322 02a4 00       		.byte	0
+ 1323 02a5 00       		.byte	0
+ 1324 02a6 0B       		.uleb128 0xb
+ 1325 02a7 AC010000 		.4byte	.LASF23
+ 1326 02ab 01       		.byte	0x1
+ 1327 02ac 6E       		.byte	0x6e
+ 1328 02ad 00000000 		.4byte	.LFB70
+ 1329 02b1 28000000 		.4byte	.LFE70-.LFB70
+ 1330 02b5 01       		.uleb128 0x1
+ 1331 02b6 9C       		.byte	0x9c
+ 1332 02b7 06030000 		.4byte	0x306
+ 1333 02bb 08       		.uleb128 0x8
+ 1334 02bc 0E000000 		.4byte	.LVL29
+ 1335 02c0 56080000 		.4byte	0x856
+ 1336 02c4 CF020000 		.4byte	0x2cf
+ 1337 02c8 09       		.uleb128 0x9
+ 1338 02c9 01       		.uleb128 0x1
+ 1339 02ca 50       		.byte	0x50
+ 1340 02cb 02       		.uleb128 0x2
+ 1341 02cc 74       		.byte	0x74
+ 1342 02cd 00       		.sleb128 0
+ 1343 02ce 00       		.byte	0
+ 1344 02cf 08       		.uleb128 0x8
+ 1345 02d0 14000000 		.4byte	.LVL30
+ 1346 02d4 61080000 		.4byte	0x861
+ 1347 02d8 E2020000 		.4byte	0x2e2
+ 1348 02dc 09       		.uleb128 0x9
+ 1349 02dd 01       		.uleb128 0x1
+ 1350 02de 50       		.byte	0x50
+ 1351 02df 01       		.uleb128 0x1
+ 1352 02e0 30       		.byte	0x30
+ 1353 02e1 00       		.byte	0
+ 1354 02e2 08       		.uleb128 0x8
+ 1355 02e3 1A000000 		.4byte	.LVL31
+ 1356 02e7 6C080000 		.4byte	0x86c
+ 1357 02eb F5020000 		.4byte	0x2f5
+ 1358 02ef 09       		.uleb128 0x9
+ 1359 02f0 01       		.uleb128 0x1
+ 1360 02f1 50       		.byte	0x50
+ 1361 02f2 01       		.uleb128 0x1
+ 1362 02f3 30       		.byte	0x30
+ 1363 02f4 00       		.byte	0
+ 1364 02f5 0A       		.uleb128 0xa
+ 1365 02f6 20000000 		.4byte	.LVL32
+ 1366 02fa 77080000 		.4byte	0x877
+ 1367 02fe 09       		.uleb128 0x9
+ 1368 02ff 01       		.uleb128 0x1
+ 1369 0300 50       		.byte	0x50
+ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccoKtpNE.s 			page 31
+
+
+ 1370 0301 02       		.uleb128 0x2
+ 1371 0302 74       		.byte	0x74
+ 1372 0303 00       		.sleb128 0
+ 1373 0304 00       		.byte	0
+ 1374 0305 00       		.byte	0
+ 1375 0306 06       		.uleb128 0x6
+ 1376 0307 1F050000 		.4byte	.LASF24
+ 1377 030b 01       		.byte	0x1
+ 1378 030c 76       		.byte	0x76
+ 1379 030d 00000000 		.4byte	.LFB71
+ 1380 0311 08010000 		.4byte	.LFE71-.LFB71
+ 1381 0315 01       		.uleb128 0x1
+ 1382 0316 9C       		.byte	0x9c
+ 1383 0317 F9030000 		.4byte	0x3f9
+ 1384 031b 0C       		.uleb128 0xc
+ 1385 031c 35000000 		.4byte	.LASF25
+ 1386 0320 01       		.byte	0x1
+ 1387 0321 76       		.byte	0x76
+ 1388 0322 68000000 		.4byte	0x68
+ 1389 0326 00000000 		.4byte	.LLST0
+ 1390 032a 0C       		.uleb128 0xc
+ 1391 032b 75010000 		.4byte	.LASF26
+ 1392 032f 01       		.byte	0x1
+ 1393 0330 76       		.byte	0x76
+ 1394 0331 68000000 		.4byte	0x68
+ 1395 0335 2C000000 		.4byte	.LLST1
+ 1396 0339 0D       		.uleb128 0xd
+ 1397 033a 8B000000 		.4byte	.LASF27
+ 1398 033e 01       		.byte	0x1
+ 1399 033f 78       		.byte	0x78
+ 1400 0340 94000000 		.4byte	0x94
+ 1401 0344 58000000 		.4byte	.LLST2
+ 1402 0348 0D       		.uleb128 0xd
+ 1403 0349 B3020000 		.4byte	.LASF28
+ 1404 034d 01       		.byte	0x1
+ 1405 034e 78       		.byte	0x78
+ 1406 034f 94000000 		.4byte	0x94
+ 1407 0353 70000000 		.4byte	.LLST3
+ 1408 0357 0E       		.uleb128 0xe
+ 1409 0358 40000000 		.4byte	.LASF29
+ 1410 035c 01       		.byte	0x1
+ 1411 035d 79       		.byte	0x79
+ 1412 035e 68000000 		.4byte	0x68
+ 1413 0362 00       		.byte	0
+ 1414 0363 07       		.uleb128 0x7
+ 1415 0364 0C000000 		.4byte	.LVL36
+ 1416 0368 82080000 		.4byte	0x882
+ 1417 036c 07       		.uleb128 0x7
+ 1418 036d 14000000 		.4byte	.LVL37
+ 1419 0371 8D080000 		.4byte	0x88d
+ 1420 0375 07       		.uleb128 0x7
+ 1421 0376 1E000000 		.4byte	.LVL38
+ 1422 037a 86010000 		.4byte	0x186
+ 1423 037e 07       		.uleb128 0x7
+ 1424 037f 24000000 		.4byte	.LVL39
+ 1425 0383 E6010000 		.4byte	0x1e6
+ 1426 0387 08       		.uleb128 0x8
+ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccoKtpNE.s 			page 32
+
+
+ 1427 0388 2A000000 		.4byte	.LVL40
+ 1428 038c 98080000 		.4byte	0x898
+ 1429 0390 9B030000 		.4byte	0x39b
+ 1430 0394 09       		.uleb128 0x9
+ 1431 0395 01       		.uleb128 0x1
+ 1432 0396 50       		.byte	0x50
+ 1433 0397 02       		.uleb128 0x2
+ 1434 0398 08       		.byte	0x8
+ 1435 0399 32       		.byte	0x32
+ 1436 039a 00       		.byte	0
+ 1437 039b 08       		.uleb128 0x8
+ 1438 039c 32000000 		.4byte	.LVL41
+ 1439 03a0 A3080000 		.4byte	0x8a3
+ 1440 03a4 AE030000 		.4byte	0x3ae
+ 1441 03a8 09       		.uleb128 0x9
+ 1442 03a9 01       		.uleb128 0x1
+ 1443 03aa 50       		.byte	0x50
+ 1444 03ab 01       		.uleb128 0x1
+ 1445 03ac 31       		.byte	0x31
+ 1446 03ad 00       		.byte	0
+ 1447 03ae 08       		.uleb128 0x8
+ 1448 03af 38000000 		.4byte	.LVL42
+ 1449 03b3 AE080000 		.4byte	0x8ae
+ 1450 03b7 C1030000 		.4byte	0x3c1
+ 1451 03bb 09       		.uleb128 0x9
+ 1452 03bc 01       		.uleb128 0x1
+ 1453 03bd 50       		.byte	0x50
+ 1454 03be 01       		.uleb128 0x1
+ 1455 03bf 3A       		.byte	0x3a
+ 1456 03c0 00       		.byte	0
+ 1457 03c1 08       		.uleb128 0x8
+ 1458 03c2 3E000000 		.4byte	.LVL43
+ 1459 03c6 A3080000 		.4byte	0x8a3
+ 1460 03ca D4030000 		.4byte	0x3d4
+ 1461 03ce 09       		.uleb128 0x9
+ 1462 03cf 01       		.uleb128 0x1
+ 1463 03d0 50       		.byte	0x50
+ 1464 03d1 01       		.uleb128 0x1
+ 1465 03d2 30       		.byte	0x30
+ 1466 03d3 00       		.byte	0
+ 1467 03d4 07       		.uleb128 0x7
+ 1468 03d5 42000000 		.4byte	.LVL44
+ 1469 03d9 B9080000 		.4byte	0x8b9
+ 1470 03dd 07       		.uleb128 0x7
+ 1471 03de 74000000 		.4byte	.LVL46
+ 1472 03e2 24010000 		.4byte	0x124
+ 1473 03e6 07       		.uleb128 0x7
+ 1474 03e7 78000000 		.4byte	.LVL47
+ 1475 03eb 82080000 		.4byte	0x882
+ 1476 03ef 07       		.uleb128 0x7
+ 1477 03f0 7E000000 		.4byte	.LVL48
+ 1478 03f4 8D080000 		.4byte	0x88d
+ 1479 03f8 00       		.byte	0
+ 1480 03f9 0F       		.uleb128 0xf
+ 1481 03fa 435700   		.ascii	"CW\000"
+ 1482 03fd 01       		.byte	0x1
+ 1483 03fe BB       		.byte	0xbb
+ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccoKtpNE.s 			page 33
+
+
+ 1484 03ff 00000000 		.4byte	.LFB72
+ 1485 0403 88000000 		.4byte	.LFE72-.LFB72
+ 1486 0407 01       		.uleb128 0x1
+ 1487 0408 9C       		.byte	0x9c
+ 1488 0409 7B040000 		.4byte	0x47b
+ 1489 040d 0C       		.uleb128 0xc
+ 1490 040e 53000000 		.4byte	.LASF30
+ 1491 0412 01       		.byte	0x1
+ 1492 0413 BB       		.byte	0xbb
+ 1493 0414 68000000 		.4byte	0x68
+ 1494 0418 B8000000 		.4byte	.LLST4
+ 1495 041c 0C       		.uleb128 0xc
+ 1496 041d AB020000 		.4byte	.LASF31
+ 1497 0421 01       		.byte	0x1
+ 1498 0422 BB       		.byte	0xbb
+ 1499 0423 68000000 		.4byte	0x68
+ 1500 0427 E4000000 		.4byte	.LLST5
+ 1501 042b 07       		.uleb128 0x7
+ 1502 042c 0C000000 		.4byte	.LVL63
+ 1503 0430 82080000 		.4byte	0x882
+ 1504 0434 07       		.uleb128 0x7
+ 1505 0435 14000000 		.4byte	.LVL64
+ 1506 0439 8D080000 		.4byte	0x88d
+ 1507 043d 07       		.uleb128 0x7
+ 1508 043e 1E000000 		.4byte	.LVL65
+ 1509 0442 A6020000 		.4byte	0x2a6
+ 1510 0446 07       		.uleb128 0x7
+ 1511 0447 24000000 		.4byte	.LVL66
+ 1512 044b 46020000 		.4byte	0x246
+ 1513 044f 07       		.uleb128 0x7
+ 1514 0450 44000000 		.4byte	.LVL67
+ 1515 0454 24010000 		.4byte	0x124
+ 1516 0458 08       		.uleb128 0x8
+ 1517 0459 7A000000 		.4byte	.LVL68
+ 1518 045d C4080000 		.4byte	0x8c4
+ 1519 0461 6B040000 		.4byte	0x46b
+ 1520 0465 09       		.uleb128 0x9
+ 1521 0466 01       		.uleb128 0x1
+ 1522 0467 50       		.byte	0x50
+ 1523 0468 01       		.uleb128 0x1
+ 1524 0469 30       		.byte	0x30
+ 1525 046a 00       		.byte	0
+ 1526 046b 0A       		.uleb128 0xa
+ 1527 046c 80000000 		.4byte	.LVL69
+ 1528 0470 CF080000 		.4byte	0x8cf
+ 1529 0474 09       		.uleb128 0x9
+ 1530 0475 01       		.uleb128 0x1
+ 1531 0476 50       		.byte	0x50
+ 1532 0477 01       		.uleb128 0x1
+ 1533 0478 30       		.byte	0x30
+ 1534 0479 00       		.byte	0
+ 1535 047a 00       		.byte	0
+ 1536 047b 10       		.uleb128 0x10
+ 1537 047c 86000000 		.4byte	.LASF89
+ 1538 0480 01       		.byte	0x1
+ 1539 0481 F0       		.byte	0xf0
+ 1540 0482 68000000 		.4byte	0x68
+ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccoKtpNE.s 			page 34
+
+
+ 1541 0486 00000000 		.4byte	.LFB73
+ 1542 048a B4000000 		.4byte	.LFE73-.LFB73
+ 1543 048e 01       		.uleb128 0x1
+ 1544 048f 9C       		.byte	0x9c
+ 1545 0490 72060000 		.4byte	0x672
+ 1546 0494 11       		.uleb128 0x11
+ 1547 0495 12010000 		.4byte	.LASF32
+ 1548 0499 01       		.byte	0x1
+ 1549 049a 0001     		.2byte	0x100
+ 1550 049c 72060000 		.4byte	0x672
+ 1551 04a0 08       		.byte	0x8
+ 1552 04a1 3D6B140C 		.4byte	0xc146b3d
+ 1553 04a5 F0F63040 		.4byte	0x4030f6f0
+ 1554 04a9 11       		.uleb128 0x11
+ 1555 04aa BC020000 		.4byte	.LASF33
+ 1556 04ae 01       		.byte	0x1
+ 1557 04af 0101     		.2byte	0x101
+ 1558 04b1 72060000 		.4byte	0x672
+ 1559 04b5 08       		.byte	0x8
+ 1560 04b6 00000000 		.4byte	0
+ 1561 04ba 00A6AC40 		.4byte	0x40aca600
+ 1562 04be 11       		.uleb128 0x11
+ 1563 04bf 11050000 		.4byte	.LASF34
+ 1564 04c3 01       		.byte	0x1
+ 1565 04c4 0301     		.2byte	0x103
+ 1566 04c6 72060000 		.4byte	0x672
+ 1567 04ca 08       		.byte	0x8
+ 1568 04cb 4B5051E1 		.4byte	0xe151504b
+ 1569 04cf FD046B40 		.4byte	0x406b04fd
+ 1570 04d3 11       		.uleb128 0x11
+ 1571 04d4 5D020000 		.4byte	.LASF35
+ 1572 04d8 01       		.byte	0x1
+ 1573 04d9 0401     		.2byte	0x104
+ 1574 04db 72060000 		.4byte	0x672
+ 1575 04df 08       		.byte	0x8
+ 1576 04e0 CDCCCCCC 		.4byte	0xcccccccd
+ 1577 04e4 CC4C3640 		.4byte	0x40364ccc
+ 1578 04e8 11       		.uleb128 0x11
+ 1579 04e9 B9000000 		.4byte	.LASF36
+ 1580 04ed 01       		.byte	0x1
+ 1581 04ee 0501     		.2byte	0x105
+ 1582 04f0 72060000 		.4byte	0x672
+ 1583 04f4 08       		.byte	0x8
+ 1584 04f5 D3B55258 		.4byte	0x5852b5d3
+ 1585 04f9 AE833140 		.4byte	0x403183ae
+ 1586 04fd 11       		.uleb128 0x11
+ 1587 04fe 53000000 		.4byte	.LASF30
+ 1588 0502 01       		.byte	0x1
+ 1589 0503 0601     		.2byte	0x106
+ 1590 0505 72060000 		.4byte	0x672
+ 1591 0509 08       		.byte	0x8
+ 1592 050a 5F427B09 		.4byte	0x97b425f
+ 1593 050e ADABA940 		.4byte	0x40a9abad
+ 1594 0512 12       		.uleb128 0x12
+ 1595 0513 75010000 		.4byte	.LASF26
+ 1596 0517 01       		.byte	0x1
+ 1597 0518 0801     		.2byte	0x108
+ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccoKtpNE.s 			page 35
+
+
+ 1598 051a 68000000 		.4byte	0x68
+ 1599 051e 01       		.byte	0x1
+ 1600 051f 12       		.uleb128 0x12
+ 1601 0520 AB020000 		.4byte	.LASF31
+ 1602 0524 01       		.byte	0x1
+ 1603 0525 0901     		.2byte	0x109
+ 1604 0527 68000000 		.4byte	0x68
+ 1605 052b 01       		.byte	0x1
+ 1606 052c 13       		.uleb128 0x13
+ 1607 052d ED010000 		.4byte	.LASF37
+ 1608 0531 01       		.byte	0x1
+ 1609 0532 1001     		.2byte	0x110
+ 1610 0534 94000000 		.4byte	0x94
+ 1611 0538 10010000 		.4byte	.LLST6
+ 1612 053c 13       		.uleb128 0x13
+ 1613 053d 35000000 		.4byte	.LASF25
+ 1614 0541 01       		.byte	0x1
+ 1615 0542 1101     		.2byte	0x111
+ 1616 0544 94000000 		.4byte	0x94
+ 1617 0548 40010000 		.4byte	.LLST7
+ 1618 054c 08       		.uleb128 0x8
+ 1619 054d 0A000000 		.4byte	.LVL71
+ 1620 0551 DA080000 		.4byte	0x8da
+ 1621 0555 63050000 		.4byte	0x563
+ 1622 0559 09       		.uleb128 0x9
+ 1623 055a 01       		.uleb128 0x1
+ 1624 055b 50       		.byte	0x50
+ 1625 055c 05       		.uleb128 0x5
+ 1626 055d 03       		.byte	0x3
+ 1627 055e 00000000 		.4byte	Speed_Control
+ 1628 0562 00       		.byte	0
+ 1629 0563 07       		.uleb128 0x7
+ 1630 0564 0E000000 		.4byte	.LVL72
+ 1631 0568 E5080000 		.4byte	0x8e5
+ 1632 056c 07       		.uleb128 0x7
+ 1633 056d 12000000 		.4byte	.LVL73
+ 1634 0571 F0080000 		.4byte	0x8f0
+ 1635 0575 08       		.uleb128 0x8
+ 1636 0576 18000000 		.4byte	.LVL74
+ 1637 057a FB080000 		.4byte	0x8fb
+ 1638 057e 8C050000 		.4byte	0x58c
+ 1639 0582 09       		.uleb128 0x9
+ 1640 0583 01       		.uleb128 0x1
+ 1641 0584 50       		.byte	0x50
+ 1642 0585 05       		.uleb128 0x5
+ 1643 0586 03       		.byte	0x3
+ 1644 0587 00000000 		.4byte	dist_front_detection
+ 1645 058b 00       		.byte	0
+ 1646 058c 07       		.uleb128 0x7
+ 1647 058d 1C000000 		.4byte	.LVL75
+ 1648 0591 06090000 		.4byte	0x906
+ 1649 0595 07       		.uleb128 0x7
+ 1650 0596 20000000 		.4byte	.LVL76
+ 1651 059a 11090000 		.4byte	0x911
+ 1652 059e 07       		.uleb128 0x7
+ 1653 059f 24000000 		.4byte	.LVL77
+ 1654 05a3 1C090000 		.4byte	0x91c
+ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccoKtpNE.s 			page 36
+
+
+ 1655 05a7 08       		.uleb128 0x8
+ 1656 05a8 2A000000 		.4byte	.LVL78
+ 1657 05ac C4080000 		.4byte	0x8c4
+ 1658 05b0 BA050000 		.4byte	0x5ba
+ 1659 05b4 09       		.uleb128 0x9
+ 1660 05b5 01       		.uleb128 0x1
+ 1661 05b6 50       		.byte	0x50
+ 1662 05b7 01       		.uleb128 0x1
+ 1663 05b8 30       		.byte	0x30
+ 1664 05b9 00       		.byte	0
+ 1665 05ba 07       		.uleb128 0x7
+ 1666 05bb 2E000000 		.4byte	.LVL79
+ 1667 05bf 27090000 		.4byte	0x927
+ 1668 05c3 08       		.uleb128 0x8
+ 1669 05c4 34000000 		.4byte	.LVL80
+ 1670 05c8 CF080000 		.4byte	0x8cf
+ 1671 05cc D6050000 		.4byte	0x5d6
+ 1672 05d0 09       		.uleb128 0x9
+ 1673 05d1 01       		.uleb128 0x1
+ 1674 05d2 50       		.byte	0x50
+ 1675 05d3 01       		.uleb128 0x1
+ 1676 05d4 30       		.byte	0x30
+ 1677 05d5 00       		.byte	0
+ 1678 05d6 07       		.uleb128 0x7
+ 1679 05d7 38000000 		.4byte	.LVL81
+ 1680 05db 32090000 		.4byte	0x932
+ 1681 05df 07       		.uleb128 0x7
+ 1682 05e0 46000000 		.4byte	.LVL83
+ 1683 05e4 3D090000 		.4byte	0x93d
+ 1684 05e8 07       		.uleb128 0x7
+ 1685 05e9 52000000 		.4byte	.LVL85
+ 1686 05ed 1F080000 		.4byte	0x81f
+ 1687 05f1 08       		.uleb128 0x8
+ 1688 05f2 5A000000 		.4byte	.LVL86
+ 1689 05f6 98080000 		.4byte	0x898
+ 1690 05fa 06060000 		.4byte	0x606
+ 1691 05fe 09       		.uleb128 0x9
+ 1692 05ff 01       		.uleb128 0x1
+ 1693 0600 50       		.byte	0x50
+ 1694 0601 03       		.uleb128 0x3
+ 1695 0602 0A       		.byte	0xa
+ 1696 0603 D007     		.2byte	0x7d0
+ 1697 0605 00       		.byte	0
+ 1698 0606 08       		.uleb128 0x8
+ 1699 0607 66000000 		.4byte	.LVL88
+ 1700 060b 06030000 		.4byte	0x306
+ 1701 060f 20060000 		.4byte	0x620
+ 1702 0613 09       		.uleb128 0x9
+ 1703 0614 01       		.uleb128 0x1
+ 1704 0615 50       		.byte	0x50
+ 1705 0616 03       		.uleb128 0x3
+ 1706 0617 0A       		.byte	0xa
+ 1707 0618 E310     		.2byte	0x10e3
+ 1708 061a 09       		.uleb128 0x9
+ 1709 061b 01       		.uleb128 0x1
+ 1710 061c 51       		.byte	0x51
+ 1711 061d 01       		.uleb128 0x1
+ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccoKtpNE.s 			page 37
+
+
+ 1712 061e 31       		.byte	0x31
+ 1713 061f 00       		.byte	0
+ 1714 0620 08       		.uleb128 0x8
+ 1715 0621 76000000 		.4byte	.LVL89
+ 1716 0625 98080000 		.4byte	0x898
+ 1717 0629 35060000 		.4byte	0x635
+ 1718 062d 09       		.uleb128 0x9
+ 1719 062e 01       		.uleb128 0x1
+ 1720 062f 50       		.byte	0x50
+ 1721 0630 03       		.uleb128 0x3
+ 1722 0631 0A       		.byte	0xa
+ 1723 0632 F401     		.2byte	0x1f4
+ 1724 0634 00       		.byte	0
+ 1725 0635 08       		.uleb128 0x8
+ 1726 0636 7C000000 		.4byte	.LVL90
+ 1727 063a C4080000 		.4byte	0x8c4
+ 1728 063e 48060000 		.4byte	0x648
+ 1729 0642 09       		.uleb128 0x9
+ 1730 0643 01       		.uleb128 0x1
+ 1731 0644 50       		.byte	0x50
+ 1732 0645 01       		.uleb128 0x1
+ 1733 0646 30       		.byte	0x30
+ 1734 0647 00       		.byte	0
+ 1735 0648 08       		.uleb128 0x8
+ 1736 0649 82000000 		.4byte	.LVL91
+ 1737 064d CF080000 		.4byte	0x8cf
+ 1738 0651 5B060000 		.4byte	0x65b
+ 1739 0655 09       		.uleb128 0x9
+ 1740 0656 01       		.uleb128 0x1
+ 1741 0657 50       		.byte	0x50
+ 1742 0658 01       		.uleb128 0x1
+ 1743 0659 30       		.byte	0x30
+ 1744 065a 00       		.byte	0
+ 1745 065b 0A       		.uleb128 0xa
+ 1746 065c 96000000 		.4byte	.LVL92
+ 1747 0660 F9030000 		.4byte	0x3f9
+ 1748 0664 09       		.uleb128 0x9
+ 1749 0665 01       		.uleb128 0x1
+ 1750 0666 50       		.byte	0x50
+ 1751 0667 03       		.uleb128 0x3
+ 1752 0668 0A       		.byte	0xa
+ 1753 0669 D50C     		.2byte	0xcd5
+ 1754 066b 09       		.uleb128 0x9
+ 1755 066c 01       		.uleb128 0x1
+ 1756 066d 51       		.byte	0x51
+ 1757 066e 01       		.uleb128 0x1
+ 1758 066f 31       		.byte	0x31
+ 1759 0670 00       		.byte	0
+ 1760 0671 00       		.byte	0
+ 1761 0672 14       		.uleb128 0x14
+ 1762 0673 94000000 		.4byte	0x94
+ 1763 0677 15       		.uleb128 0x15
+ 1764 0678 26050000 		.4byte	.LASF38
+ 1765 067c 05       		.byte	0x5
+ 1766 067d 1207     		.2byte	0x712
+ 1767 067f 83060000 		.4byte	0x683
+ 1768 0683 16       		.uleb128 0x16
+ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccoKtpNE.s 			page 38
+
+
+ 1769 0684 76000000 		.4byte	0x76
+ 1770 0688 17       		.uleb128 0x17
+ 1771 0689 29040000 		.4byte	.LASF39
+ 1772 068d 01       		.byte	0x1
+ 1773 068e 11       		.byte	0x11
+ 1774 068f 72060000 		.4byte	0x672
+ 1775 0693 05       		.uleb128 0x5
+ 1776 0694 03       		.byte	0x3
+ 1777 0695 00000000 		.4byte	WHEEL_DIAMETER
+ 1778 0699 17       		.uleb128 0x17
+ 1779 069a 70050000 		.4byte	.LASF40
+ 1780 069e 01       		.byte	0x1
+ 1781 069f 12       		.byte	0x12
+ 1782 06a0 68000000 		.4byte	0x68
+ 1783 06a4 05       		.uleb128 0x5
+ 1784 06a5 03       		.byte	0x3
+ 1785 06a6 00000000 		.4byte	Count_Master
+ 1786 06aa 17       		.uleb128 0x17
+ 1787 06ab FF040000 		.4byte	.LASF41
+ 1788 06af 01       		.byte	0x1
+ 1789 06b0 13       		.byte	0x13
+ 1790 06b1 68000000 		.4byte	0x68
+ 1791 06b5 05       		.uleb128 0x5
+ 1792 06b6 03       		.byte	0x3
+ 1793 06b7 00000000 		.4byte	Count_Slave
+ 1794 06bb 18       		.uleb128 0x18
+ 1795 06bc 9B000000 		.4byte	0x9b
+ 1796 06c0 CB060000 		.4byte	0x6cb
+ 1797 06c4 19       		.uleb128 0x19
+ 1798 06c5 A9000000 		.4byte	0xa9
+ 1799 06c9 13       		.byte	0x13
+ 1800 06ca 00       		.byte	0
+ 1801 06cb 17       		.uleb128 0x17
+ 1802 06cc 39010000 		.4byte	.LASF42
+ 1803 06d0 01       		.byte	0x1
+ 1804 06d1 14       		.byte	0x14
+ 1805 06d2 BB060000 		.4byte	0x6bb
+ 1806 06d6 05       		.uleb128 0x5
+ 1807 06d7 03       		.byte	0x3
+ 1808 06d8 00000000 		.4byte	string_1
+ 1809 06dc 17       		.uleb128 0x17
+ 1810 06dd 42010000 		.4byte	.LASF43
+ 1811 06e1 01       		.byte	0x1
+ 1812 06e2 15       		.byte	0x15
+ 1813 06e3 BB060000 		.4byte	0x6bb
+ 1814 06e7 05       		.uleb128 0x5
+ 1815 06e8 03       		.byte	0x3
+ 1816 06e9 00000000 		.4byte	string_2
+ 1817 06ed 17       		.uleb128 0x17
+ 1818 06ee 4B010000 		.4byte	.LASF44
+ 1819 06f2 01       		.byte	0x1
+ 1820 06f3 16       		.byte	0x16
+ 1821 06f4 BB060000 		.4byte	0x6bb
+ 1822 06f8 05       		.uleb128 0x5
+ 1823 06f9 03       		.byte	0x3
+ 1824 06fa 00000000 		.4byte	string_3
+ 1825 06fe 17       		.uleb128 0x17
+ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccoKtpNE.s 			page 39
+
+
+ 1826 06ff 0B050000 		.4byte	.LASF45
+ 1827 0703 01       		.byte	0x1
+ 1828 0704 17       		.byte	0x17
+ 1829 0705 94000000 		.4byte	0x94
+ 1830 0709 05       		.uleb128 0x5
+ 1831 070a 03       		.byte	0x3
+ 1832 070b 00000000 		.4byte	error
+ 1833 070f 17       		.uleb128 0x17
+ 1834 0710 18020000 		.4byte	.LASF46
+ 1835 0714 01       		.byte	0x1
+ 1836 0715 18       		.byte	0x18
+ 1837 0716 94000000 		.4byte	0x94
+ 1838 071a 05       		.uleb128 0x5
+ 1839 071b 03       		.byte	0x3
+ 1840 071c 00000000 		.4byte	accumulated_error
+ 1841 0720 17       		.uleb128 0x17
+ 1842 0721 98040000 		.4byte	.LASF47
+ 1843 0725 01       		.byte	0x1
+ 1844 0726 19       		.byte	0x19
+ 1845 0727 94000000 		.4byte	0x94
+ 1846 072b 05       		.uleb128 0x5
+ 1847 072c 03       		.byte	0x3
+ 1848 072d 00000000 		.4byte	last_error
+ 1849 0731 17       		.uleb128 0x17
+ 1850 0732 82010000 		.4byte	.LASF48
+ 1851 0736 01       		.byte	0x1
+ 1852 0737 1A       		.byte	0x1a
+ 1853 0738 94000000 		.4byte	0x94
+ 1854 073c 05       		.uleb128 0x5
+ 1855 073d 03       		.byte	0x3
+ 1856 073e 00000000 		.4byte	derivative_error
+ 1857 0742 17       		.uleb128 0x17
+ 1858 0743 D2040000 		.4byte	.LASF49
+ 1859 0747 01       		.byte	0x1
+ 1860 0748 1B       		.byte	0x1b
+ 1861 0749 94000000 		.4byte	0x94
+ 1862 074d 05       		.uleb128 0x5
+ 1863 074e 03       		.byte	0x3
+ 1864 074f 00000000 		.4byte	timer_period
+ 1865 0753 1A       		.uleb128 0x1a
+ 1866 0754 4B5F7000 		.ascii	"K_p\000"
+ 1867 0758 01       		.byte	0x1
+ 1868 0759 1C       		.byte	0x1c
+ 1869 075a 94000000 		.4byte	0x94
+ 1870 075e 05       		.uleb128 0x5
+ 1871 075f 03       		.byte	0x3
+ 1872 0760 00000000 		.4byte	K_p
+ 1873 0764 1A       		.uleb128 0x1a
+ 1874 0765 4B5F6900 		.ascii	"K_i\000"
+ 1875 0769 01       		.byte	0x1
+ 1876 076a 1D       		.byte	0x1d
+ 1877 076b 94000000 		.4byte	0x94
+ 1878 076f 05       		.uleb128 0x5
+ 1879 0770 03       		.byte	0x3
+ 1880 0771 00000000 		.4byte	K_i
+ 1881 0775 1A       		.uleb128 0x1a
+ 1882 0776 4B5F6400 		.ascii	"K_d\000"
+ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccoKtpNE.s 			page 40
+
+
+ 1883 077a 01       		.byte	0x1
+ 1884 077b 1E       		.byte	0x1e
+ 1885 077c 94000000 		.4byte	0x94
+ 1886 0780 05       		.uleb128 0x5
+ 1887 0781 03       		.byte	0x3
+ 1888 0782 00000000 		.4byte	K_d
+ 1889 0786 17       		.uleb128 0x17
+ 1890 0787 07010000 		.4byte	.LASF50
+ 1891 078b 01       		.byte	0x1
+ 1892 078c 1F       		.byte	0x1f
+ 1893 078d 8D000000 		.4byte	0x8d
+ 1894 0791 05       		.uleb128 0x5
+ 1895 0792 03       		.byte	0x3
+ 1896 0793 00000000 		.4byte	PWM_Master
+ 1897 0797 17       		.uleb128 0x17
+ 1898 0798 C8040000 		.4byte	.LASF51
+ 1899 079c 01       		.byte	0x1
+ 1900 079d 20       		.byte	0x20
+ 1901 079e 8D000000 		.4byte	0x8d
+ 1902 07a2 05       		.uleb128 0x5
+ 1903 07a3 03       		.byte	0x3
+ 1904 07a4 00000000 		.4byte	PWM_Slave
+ 1905 07a8 17       		.uleb128 0x17
+ 1906 07a9 E9040000 		.4byte	.LASF52
+ 1907 07ad 01       		.byte	0x1
+ 1908 07ae 21       		.byte	0x21
+ 1909 07af 68000000 		.4byte	0x68
+ 1910 07b3 05       		.uleb128 0x5
+ 1911 07b4 03       		.byte	0x3
+ 1912 07b5 00000000 		.4byte	is_moving
+ 1913 07b9 17       		.uleb128 0x17
+ 1914 07ba 9C010000 		.4byte	.LASF53
+ 1915 07be 01       		.byte	0x1
+ 1916 07bf 22       		.byte	0x22
+ 1917 07c0 81000000 		.4byte	0x81
+ 1918 07c4 05       		.uleb128 0x5
+ 1919 07c5 03       		.byte	0x3
+ 1920 07c6 00000000 		.4byte	front_det_count
+ 1921 07ca 17       		.uleb128 0x17
+ 1922 07cb 5B040000 		.4byte	.LASF54
+ 1923 07cf 01       		.byte	0x1
+ 1924 07d0 23       		.byte	0x23
+ 1925 07d1 8D000000 		.4byte	0x8d
+ 1926 07d5 05       		.uleb128 0x5
+ 1927 07d6 03       		.byte	0x3
+ 1928 07d7 00000000 		.4byte	front_measured
+ 1929 07db 17       		.uleb128 0x17
+ 1930 07dc 33050000 		.4byte	.LASF55
+ 1931 07e0 01       		.byte	0x1
+ 1932 07e1 24       		.byte	0x24
+ 1933 07e2 94000000 		.4byte	0x94
+ 1934 07e6 05       		.uleb128 0x5
+ 1935 07e7 03       		.byte	0x3
+ 1936 07e8 00000000 		.4byte	x_coord
+ 1937 07ec 17       		.uleb128 0x17
+ 1938 07ed 3D020000 		.4byte	.LASF56
+ 1939 07f1 01       		.byte	0x1
+ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccoKtpNE.s 			page 41
+
+
+ 1940 07f2 25       		.byte	0x25
+ 1941 07f3 94000000 		.4byte	0x94
+ 1942 07f7 05       		.uleb128 0x5
+ 1943 07f8 03       		.byte	0x3
+ 1944 07f9 00000000 		.4byte	y_coord
+ 1945 07fd 17       		.uleb128 0x17
+ 1946 07fe 7C000000 		.4byte	.LASF57
+ 1947 0802 01       		.byte	0x1
+ 1948 0803 26       		.byte	0x26
+ 1949 0804 68000000 		.4byte	0x68
+ 1950 0808 05       		.uleb128 0x5
+ 1951 0809 03       		.byte	0x3
+ 1952 080a 00000000 		.4byte	direction
+ 1953 080e 17       		.uleb128 0x17
+ 1954 080f 43050000 		.4byte	.LASF58
+ 1955 0813 01       		.byte	0x1
+ 1956 0814 27       		.byte	0x27
+ 1957 0815 68000000 		.4byte	0x68
+ 1958 0819 05       		.uleb128 0x5
+ 1959 081a 03       		.byte	0x3
+ 1960 081b 00000000 		.4byte	step
+ 1961 081f 1B       		.uleb128 0x1b
+ 1962 0820 ED030000 		.4byte	.LASF59
+ 1963 0824 ED030000 		.4byte	.LASF59
+ 1964 0828 06       		.byte	0x6
+ 1965 0829 C3       		.byte	0xc3
+ 1966 082a 1B       		.uleb128 0x1b
+ 1967 082b 61000000 		.4byte	.LASF60
+ 1968 082f 61000000 		.4byte	.LASF60
+ 1969 0833 07       		.byte	0x7
+ 1970 0834 5E       		.byte	0x5e
+ 1971 0835 1B       		.uleb128 0x1b
+ 1972 0836 95000000 		.4byte	.LASF61
+ 1973 083a 95000000 		.4byte	.LASF61
+ 1974 083e 07       		.byte	0x7
+ 1975 083f 69       		.byte	0x69
+ 1976 0840 1B       		.uleb128 0x1b
+ 1977 0841 71020000 		.4byte	.LASF62
+ 1978 0845 71020000 		.4byte	.LASF62
+ 1979 0849 08       		.byte	0x8
+ 1980 084a E7       		.byte	0xe7
+ 1981 084b 1B       		.uleb128 0x1b
+ 1982 084c B7040000 		.4byte	.LASF63
+ 1983 0850 B7040000 		.4byte	.LASF63
+ 1984 0854 09       		.byte	0x9
+ 1985 0855 8B       		.byte	0x8b
+ 1986 0856 1B       		.uleb128 0x1b
+ 1987 0857 62010000 		.4byte	.LASF64
+ 1988 085b 62010000 		.4byte	.LASF64
+ 1989 085f 0A       		.byte	0xa
+ 1990 0860 26       		.byte	0x26
+ 1991 0861 1B       		.uleb128 0x1b
+ 1992 0862 BB010000 		.4byte	.LASF65
+ 1993 0866 BB010000 		.4byte	.LASF65
+ 1994 086a 0B       		.byte	0xb
+ 1995 086b 26       		.byte	0x26
+ 1996 086c 1B       		.uleb128 0x1b
+ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccoKtpNE.s 			page 42
+
+
+ 1997 086d 05020000 		.4byte	.LASF66
+ 1998 0871 05020000 		.4byte	.LASF66
+ 1999 0875 0C       		.byte	0xc
+ 2000 0876 26       		.byte	0x26
+ 2001 0877 1B       		.uleb128 0x1b
+ 2002 0878 7D050000 		.4byte	.LASF67
+ 2003 087c 7D050000 		.4byte	.LASF67
+ 2004 0880 0D       		.byte	0xd
+ 2005 0881 26       		.byte	0x26
+ 2006 0882 1B       		.uleb128 0x1b
+ 2007 0883 D0030000 		.4byte	.LASF68
+ 2008 0887 D0030000 		.4byte	.LASF68
+ 2009 088b 0E       		.byte	0xe
+ 2010 088c 4E       		.byte	0x4e
+ 2011 088d 1B       		.uleb128 0x1b
+ 2012 088e 04040000 		.4byte	.LASF69
+ 2013 0892 04040000 		.4byte	.LASF69
+ 2014 0896 0F       		.byte	0xf
+ 2015 0897 4E       		.byte	0x4e
+ 2016 0898 1B       		.uleb128 0x1b
+ 2017 0899 3B050000 		.4byte	.LASF70
+ 2018 089d 3B050000 		.4byte	.LASF70
+ 2019 08a1 10       		.byte	0x10
+ 2020 08a2 76       		.byte	0x76
+ 2021 08a3 1B       		.uleb128 0x1b
+ 2022 08a4 A3040000 		.4byte	.LASF71
+ 2023 08a8 A3040000 		.4byte	.LASF71
+ 2024 08ac 11       		.byte	0x11
+ 2025 08ad 26       		.byte	0x26
+ 2026 08ae 1B       		.uleb128 0x1b
+ 2027 08af 45020000 		.4byte	.LASF72
+ 2028 08b3 45020000 		.4byte	.LASF72
+ 2029 08b7 10       		.byte	0x10
+ 2030 08b8 77       		.byte	0x77
+ 2031 08b9 1B       		.uleb128 0x1b
+ 2032 08ba 19040000 		.4byte	.LASF73
+ 2033 08be 19040000 		.4byte	.LASF73
+ 2034 08c2 12       		.byte	0x12
+ 2035 08c3 29       		.byte	0x29
+ 2036 08c4 1B       		.uleb128 0x1b
+ 2037 08c5 48050000 		.4byte	.LASF74
+ 2038 08c9 48050000 		.4byte	.LASF74
+ 2039 08cd 0E       		.byte	0xe
+ 2040 08ce 4F       		.byte	0x4f
+ 2041 08cf 1B       		.uleb128 0x1b
+ 2042 08d0 00000000 		.4byte	.LASF75
+ 2043 08d4 00000000 		.4byte	.LASF75
+ 2044 08d8 0F       		.byte	0xf
+ 2045 08d9 4F       		.byte	0x4f
+ 2046 08da 1B       		.uleb128 0x1b
+ 2047 08db CE010000 		.4byte	.LASF76
+ 2048 08df CE010000 		.4byte	.LASF76
+ 2049 08e3 13       		.byte	0x13
+ 2050 08e4 18       		.byte	0x18
+ 2051 08e5 1B       		.uleb128 0x1b
+ 2052 08e6 79020000 		.4byte	.LASF77
+ 2053 08ea 79020000 		.4byte	.LASF77
+ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccoKtpNE.s 			page 43
+
+
+ 2054 08ee 14       		.byte	0x14
+ 2055 08ef 5A       		.byte	0x5a
+ 2056 08f0 1B       		.uleb128 0x1b
+ 2057 08f1 EB000000 		.4byte	.LASF78
+ 2058 08f5 EB000000 		.4byte	.LASF78
+ 2059 08f9 07       		.byte	0x7
+ 2060 08fa 5A       		.byte	0x5a
+ 2061 08fb 1B       		.uleb128 0x1b
+ 2062 08fc F7010000 		.4byte	.LASF79
+ 2063 0900 F7010000 		.4byte	.LASF79
+ 2064 0904 15       		.byte	0x15
+ 2065 0905 18       		.byte	0x18
+ 2066 0906 1B       		.uleb128 0x1b
+ 2067 0907 DC010000 		.4byte	.LASF80
+ 2068 090b DC010000 		.4byte	.LASF80
+ 2069 090f 16       		.byte	0x16
+ 2070 0910 92       		.byte	0x92
+ 2071 0911 1B       		.uleb128 0x1b
+ 2072 0912 D4000000 		.4byte	.LASF81
+ 2073 0916 D4000000 		.4byte	.LASF81
+ 2074 091a 06       		.byte	0x6
+ 2075 091b 92       		.byte	0x92
+ 2076 091c 1B       		.uleb128 0x1b
+ 2077 091d A9000000 		.4byte	.LASF82
+ 2078 0921 A9000000 		.4byte	.LASF82
+ 2079 0925 0E       		.byte	0xe
+ 2080 0926 48       		.byte	0x48
+ 2081 0927 1B       		.uleb128 0x1b
+ 2082 0928 38040000 		.4byte	.LASF83
+ 2083 092c 38040000 		.4byte	.LASF83
+ 2084 0930 0F       		.byte	0xf
+ 2085 0931 48       		.byte	0x48
+ 2086 0932 1B       		.uleb128 0x1b
+ 2087 0933 26010000 		.4byte	.LASF84
+ 2088 0937 26010000 		.4byte	.LASF84
+ 2089 093b 09       		.byte	0x9
+ 2090 093c 54       		.byte	0x54
+ 2091 093d 1B       		.uleb128 0x1b
+ 2092 093e 1D000000 		.4byte	.LASF85
+ 2093 0942 1D000000 		.4byte	.LASF85
+ 2094 0946 16       		.byte	0x16
+ 2095 0947 C3       		.byte	0xc3
+ 2096 0948 00       		.byte	0
+ 2097              		.section	.debug_abbrev,"",%progbits
+ 2098              	.Ldebug_abbrev0:
+ 2099 0000 01       		.uleb128 0x1
+ 2100 0001 11       		.uleb128 0x11
+ 2101 0002 01       		.byte	0x1
+ 2102 0003 25       		.uleb128 0x25
+ 2103 0004 0E       		.uleb128 0xe
+ 2104 0005 13       		.uleb128 0x13
+ 2105 0006 0B       		.uleb128 0xb
+ 2106 0007 03       		.uleb128 0x3
+ 2107 0008 0E       		.uleb128 0xe
+ 2108 0009 1B       		.uleb128 0x1b
+ 2109 000a 0E       		.uleb128 0xe
+ 2110 000b 55       		.uleb128 0x55
+ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccoKtpNE.s 			page 44
+
+
+ 2111 000c 17       		.uleb128 0x17
+ 2112 000d 11       		.uleb128 0x11
+ 2113 000e 01       		.uleb128 0x1
+ 2114 000f 10       		.uleb128 0x10
+ 2115 0010 17       		.uleb128 0x17
+ 2116 0011 00       		.byte	0
+ 2117 0012 00       		.byte	0
+ 2118 0013 02       		.uleb128 0x2
+ 2119 0014 24       		.uleb128 0x24
+ 2120 0015 00       		.byte	0
+ 2121 0016 0B       		.uleb128 0xb
+ 2122 0017 0B       		.uleb128 0xb
+ 2123 0018 3E       		.uleb128 0x3e
+ 2124 0019 0B       		.uleb128 0xb
+ 2125 001a 03       		.uleb128 0x3
+ 2126 001b 0E       		.uleb128 0xe
+ 2127 001c 00       		.byte	0
+ 2128 001d 00       		.byte	0
+ 2129 001e 03       		.uleb128 0x3
+ 2130 001f 16       		.uleb128 0x16
+ 2131 0020 00       		.byte	0
+ 2132 0021 03       		.uleb128 0x3
+ 2133 0022 0E       		.uleb128 0xe
+ 2134 0023 3A       		.uleb128 0x3a
+ 2135 0024 0B       		.uleb128 0xb
+ 2136 0025 3B       		.uleb128 0x3b
+ 2137 0026 0B       		.uleb128 0xb
+ 2138 0027 49       		.uleb128 0x49
+ 2139 0028 13       		.uleb128 0x13
+ 2140 0029 00       		.byte	0
+ 2141 002a 00       		.byte	0
+ 2142 002b 04       		.uleb128 0x4
+ 2143 002c 24       		.uleb128 0x24
+ 2144 002d 00       		.byte	0
+ 2145 002e 0B       		.uleb128 0xb
+ 2146 002f 0B       		.uleb128 0xb
+ 2147 0030 3E       		.uleb128 0x3e
+ 2148 0031 0B       		.uleb128 0xb
+ 2149 0032 03       		.uleb128 0x3
+ 2150 0033 08       		.uleb128 0x8
+ 2151 0034 00       		.byte	0
+ 2152 0035 00       		.byte	0
+ 2153 0036 05       		.uleb128 0x5
+ 2154 0037 16       		.uleb128 0x16
+ 2155 0038 00       		.byte	0
+ 2156 0039 03       		.uleb128 0x3
+ 2157 003a 0E       		.uleb128 0xe
+ 2158 003b 3A       		.uleb128 0x3a
+ 2159 003c 0B       		.uleb128 0xb
+ 2160 003d 3B       		.uleb128 0x3b
+ 2161 003e 05       		.uleb128 0x5
+ 2162 003f 49       		.uleb128 0x49
+ 2163 0040 13       		.uleb128 0x13
+ 2164 0041 00       		.byte	0
+ 2165 0042 00       		.byte	0
+ 2166 0043 06       		.uleb128 0x6
+ 2167 0044 2E       		.uleb128 0x2e
+ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccoKtpNE.s 			page 45
+
+
+ 2168 0045 01       		.byte	0x1
+ 2169 0046 3F       		.uleb128 0x3f
+ 2170 0047 19       		.uleb128 0x19
+ 2171 0048 03       		.uleb128 0x3
+ 2172 0049 0E       		.uleb128 0xe
+ 2173 004a 3A       		.uleb128 0x3a
+ 2174 004b 0B       		.uleb128 0xb
+ 2175 004c 3B       		.uleb128 0x3b
+ 2176 004d 0B       		.uleb128 0xb
+ 2177 004e 27       		.uleb128 0x27
+ 2178 004f 19       		.uleb128 0x19
+ 2179 0050 11       		.uleb128 0x11
+ 2180 0051 01       		.uleb128 0x1
+ 2181 0052 12       		.uleb128 0x12
+ 2182 0053 06       		.uleb128 0x6
+ 2183 0054 40       		.uleb128 0x40
+ 2184 0055 18       		.uleb128 0x18
+ 2185 0056 9642     		.uleb128 0x2116
+ 2186 0058 19       		.uleb128 0x19
+ 2187 0059 01       		.uleb128 0x1
+ 2188 005a 13       		.uleb128 0x13
+ 2189 005b 00       		.byte	0
+ 2190 005c 00       		.byte	0
+ 2191 005d 07       		.uleb128 0x7
+ 2192 005e 898201   		.uleb128 0x4109
+ 2193 0061 00       		.byte	0
+ 2194 0062 11       		.uleb128 0x11
+ 2195 0063 01       		.uleb128 0x1
+ 2196 0064 31       		.uleb128 0x31
+ 2197 0065 13       		.uleb128 0x13
+ 2198 0066 00       		.byte	0
+ 2199 0067 00       		.byte	0
+ 2200 0068 08       		.uleb128 0x8
+ 2201 0069 898201   		.uleb128 0x4109
+ 2202 006c 01       		.byte	0x1
+ 2203 006d 11       		.uleb128 0x11
+ 2204 006e 01       		.uleb128 0x1
+ 2205 006f 31       		.uleb128 0x31
+ 2206 0070 13       		.uleb128 0x13
+ 2207 0071 01       		.uleb128 0x1
+ 2208 0072 13       		.uleb128 0x13
+ 2209 0073 00       		.byte	0
+ 2210 0074 00       		.byte	0
+ 2211 0075 09       		.uleb128 0x9
+ 2212 0076 8A8201   		.uleb128 0x410a
+ 2213 0079 00       		.byte	0
+ 2214 007a 02       		.uleb128 0x2
+ 2215 007b 18       		.uleb128 0x18
+ 2216 007c 9142     		.uleb128 0x2111
+ 2217 007e 18       		.uleb128 0x18
+ 2218 007f 00       		.byte	0
+ 2219 0080 00       		.byte	0
+ 2220 0081 0A       		.uleb128 0xa
+ 2221 0082 898201   		.uleb128 0x4109
+ 2222 0085 01       		.byte	0x1
+ 2223 0086 11       		.uleb128 0x11
+ 2224 0087 01       		.uleb128 0x1
+ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccoKtpNE.s 			page 46
+
+
+ 2225 0088 31       		.uleb128 0x31
+ 2226 0089 13       		.uleb128 0x13
+ 2227 008a 00       		.byte	0
+ 2228 008b 00       		.byte	0
+ 2229 008c 0B       		.uleb128 0xb
+ 2230 008d 2E       		.uleb128 0x2e
+ 2231 008e 01       		.byte	0x1
+ 2232 008f 3F       		.uleb128 0x3f
+ 2233 0090 19       		.uleb128 0x19
+ 2234 0091 03       		.uleb128 0x3
+ 2235 0092 0E       		.uleb128 0xe
+ 2236 0093 3A       		.uleb128 0x3a
+ 2237 0094 0B       		.uleb128 0xb
+ 2238 0095 3B       		.uleb128 0x3b
+ 2239 0096 0B       		.uleb128 0xb
+ 2240 0097 11       		.uleb128 0x11
+ 2241 0098 01       		.uleb128 0x1
+ 2242 0099 12       		.uleb128 0x12
+ 2243 009a 06       		.uleb128 0x6
+ 2244 009b 40       		.uleb128 0x40
+ 2245 009c 18       		.uleb128 0x18
+ 2246 009d 9742     		.uleb128 0x2117
+ 2247 009f 19       		.uleb128 0x19
+ 2248 00a0 01       		.uleb128 0x1
+ 2249 00a1 13       		.uleb128 0x13
+ 2250 00a2 00       		.byte	0
+ 2251 00a3 00       		.byte	0
+ 2252 00a4 0C       		.uleb128 0xc
+ 2253 00a5 05       		.uleb128 0x5
+ 2254 00a6 00       		.byte	0
+ 2255 00a7 03       		.uleb128 0x3
+ 2256 00a8 0E       		.uleb128 0xe
+ 2257 00a9 3A       		.uleb128 0x3a
+ 2258 00aa 0B       		.uleb128 0xb
+ 2259 00ab 3B       		.uleb128 0x3b
+ 2260 00ac 0B       		.uleb128 0xb
+ 2261 00ad 49       		.uleb128 0x49
+ 2262 00ae 13       		.uleb128 0x13
+ 2263 00af 02       		.uleb128 0x2
+ 2264 00b0 17       		.uleb128 0x17
+ 2265 00b1 00       		.byte	0
+ 2266 00b2 00       		.byte	0
+ 2267 00b3 0D       		.uleb128 0xd
+ 2268 00b4 34       		.uleb128 0x34
+ 2269 00b5 00       		.byte	0
+ 2270 00b6 03       		.uleb128 0x3
+ 2271 00b7 0E       		.uleb128 0xe
+ 2272 00b8 3A       		.uleb128 0x3a
+ 2273 00b9 0B       		.uleb128 0xb
+ 2274 00ba 3B       		.uleb128 0x3b
+ 2275 00bb 0B       		.uleb128 0xb
+ 2276 00bc 49       		.uleb128 0x49
+ 2277 00bd 13       		.uleb128 0x13
+ 2278 00be 02       		.uleb128 0x2
+ 2279 00bf 17       		.uleb128 0x17
+ 2280 00c0 00       		.byte	0
+ 2281 00c1 00       		.byte	0
+ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccoKtpNE.s 			page 47
+
+
+ 2282 00c2 0E       		.uleb128 0xe
+ 2283 00c3 34       		.uleb128 0x34
+ 2284 00c4 00       		.byte	0
+ 2285 00c5 03       		.uleb128 0x3
+ 2286 00c6 0E       		.uleb128 0xe
+ 2287 00c7 3A       		.uleb128 0x3a
+ 2288 00c8 0B       		.uleb128 0xb
+ 2289 00c9 3B       		.uleb128 0x3b
+ 2290 00ca 0B       		.uleb128 0xb
+ 2291 00cb 49       		.uleb128 0x49
+ 2292 00cc 13       		.uleb128 0x13
+ 2293 00cd 1C       		.uleb128 0x1c
+ 2294 00ce 0B       		.uleb128 0xb
+ 2295 00cf 00       		.byte	0
+ 2296 00d0 00       		.byte	0
+ 2297 00d1 0F       		.uleb128 0xf
+ 2298 00d2 2E       		.uleb128 0x2e
+ 2299 00d3 01       		.byte	0x1
+ 2300 00d4 3F       		.uleb128 0x3f
+ 2301 00d5 19       		.uleb128 0x19
+ 2302 00d6 03       		.uleb128 0x3
+ 2303 00d7 08       		.uleb128 0x8
+ 2304 00d8 3A       		.uleb128 0x3a
+ 2305 00d9 0B       		.uleb128 0xb
+ 2306 00da 3B       		.uleb128 0x3b
+ 2307 00db 0B       		.uleb128 0xb
+ 2308 00dc 27       		.uleb128 0x27
+ 2309 00dd 19       		.uleb128 0x19
+ 2310 00de 11       		.uleb128 0x11
+ 2311 00df 01       		.uleb128 0x1
+ 2312 00e0 12       		.uleb128 0x12
+ 2313 00e1 06       		.uleb128 0x6
+ 2314 00e2 40       		.uleb128 0x40
+ 2315 00e3 18       		.uleb128 0x18
+ 2316 00e4 9742     		.uleb128 0x2117
+ 2317 00e6 19       		.uleb128 0x19
+ 2318 00e7 01       		.uleb128 0x1
+ 2319 00e8 13       		.uleb128 0x13
+ 2320 00e9 00       		.byte	0
+ 2321 00ea 00       		.byte	0
+ 2322 00eb 10       		.uleb128 0x10
+ 2323 00ec 2E       		.uleb128 0x2e
+ 2324 00ed 01       		.byte	0x1
+ 2325 00ee 3F       		.uleb128 0x3f
+ 2326 00ef 19       		.uleb128 0x19
+ 2327 00f0 03       		.uleb128 0x3
+ 2328 00f1 0E       		.uleb128 0xe
+ 2329 00f2 3A       		.uleb128 0x3a
+ 2330 00f3 0B       		.uleb128 0xb
+ 2331 00f4 3B       		.uleb128 0x3b
+ 2332 00f5 0B       		.uleb128 0xb
+ 2333 00f6 27       		.uleb128 0x27
+ 2334 00f7 19       		.uleb128 0x19
+ 2335 00f8 49       		.uleb128 0x49
+ 2336 00f9 13       		.uleb128 0x13
+ 2337 00fa 11       		.uleb128 0x11
+ 2338 00fb 01       		.uleb128 0x1
+ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccoKtpNE.s 			page 48
+
+
+ 2339 00fc 12       		.uleb128 0x12
+ 2340 00fd 06       		.uleb128 0x6
+ 2341 00fe 40       		.uleb128 0x40
+ 2342 00ff 18       		.uleb128 0x18
+ 2343 0100 9642     		.uleb128 0x2116
+ 2344 0102 19       		.uleb128 0x19
+ 2345 0103 01       		.uleb128 0x1
+ 2346 0104 13       		.uleb128 0x13
+ 2347 0105 00       		.byte	0
+ 2348 0106 00       		.byte	0
+ 2349 0107 11       		.uleb128 0x11
+ 2350 0108 34       		.uleb128 0x34
+ 2351 0109 00       		.byte	0
+ 2352 010a 03       		.uleb128 0x3
+ 2353 010b 0E       		.uleb128 0xe
+ 2354 010c 3A       		.uleb128 0x3a
+ 2355 010d 0B       		.uleb128 0xb
+ 2356 010e 3B       		.uleb128 0x3b
+ 2357 010f 05       		.uleb128 0x5
+ 2358 0110 49       		.uleb128 0x49
+ 2359 0111 13       		.uleb128 0x13
+ 2360 0112 1C       		.uleb128 0x1c
+ 2361 0113 0A       		.uleb128 0xa
+ 2362 0114 00       		.byte	0
+ 2363 0115 00       		.byte	0
+ 2364 0116 12       		.uleb128 0x12
+ 2365 0117 34       		.uleb128 0x34
+ 2366 0118 00       		.byte	0
+ 2367 0119 03       		.uleb128 0x3
+ 2368 011a 0E       		.uleb128 0xe
+ 2369 011b 3A       		.uleb128 0x3a
+ 2370 011c 0B       		.uleb128 0xb
+ 2371 011d 3B       		.uleb128 0x3b
+ 2372 011e 05       		.uleb128 0x5
+ 2373 011f 49       		.uleb128 0x49
+ 2374 0120 13       		.uleb128 0x13
+ 2375 0121 1C       		.uleb128 0x1c
+ 2376 0122 0B       		.uleb128 0xb
+ 2377 0123 00       		.byte	0
+ 2378 0124 00       		.byte	0
+ 2379 0125 13       		.uleb128 0x13
+ 2380 0126 34       		.uleb128 0x34
+ 2381 0127 00       		.byte	0
+ 2382 0128 03       		.uleb128 0x3
+ 2383 0129 0E       		.uleb128 0xe
+ 2384 012a 3A       		.uleb128 0x3a
+ 2385 012b 0B       		.uleb128 0xb
+ 2386 012c 3B       		.uleb128 0x3b
+ 2387 012d 05       		.uleb128 0x5
+ 2388 012e 49       		.uleb128 0x49
+ 2389 012f 13       		.uleb128 0x13
+ 2390 0130 02       		.uleb128 0x2
+ 2391 0131 17       		.uleb128 0x17
+ 2392 0132 00       		.byte	0
+ 2393 0133 00       		.byte	0
+ 2394 0134 14       		.uleb128 0x14
+ 2395 0135 26       		.uleb128 0x26
+ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccoKtpNE.s 			page 49
+
+
+ 2396 0136 00       		.byte	0
+ 2397 0137 49       		.uleb128 0x49
+ 2398 0138 13       		.uleb128 0x13
+ 2399 0139 00       		.byte	0
+ 2400 013a 00       		.byte	0
+ 2401 013b 15       		.uleb128 0x15
+ 2402 013c 34       		.uleb128 0x34
+ 2403 013d 00       		.byte	0
+ 2404 013e 03       		.uleb128 0x3
+ 2405 013f 0E       		.uleb128 0xe
+ 2406 0140 3A       		.uleb128 0x3a
+ 2407 0141 0B       		.uleb128 0xb
+ 2408 0142 3B       		.uleb128 0x3b
+ 2409 0143 05       		.uleb128 0x5
+ 2410 0144 49       		.uleb128 0x49
+ 2411 0145 13       		.uleb128 0x13
+ 2412 0146 3F       		.uleb128 0x3f
+ 2413 0147 19       		.uleb128 0x19
+ 2414 0148 3C       		.uleb128 0x3c
+ 2415 0149 19       		.uleb128 0x19
+ 2416 014a 00       		.byte	0
+ 2417 014b 00       		.byte	0
+ 2418 014c 16       		.uleb128 0x16
+ 2419 014d 35       		.uleb128 0x35
+ 2420 014e 00       		.byte	0
+ 2421 014f 49       		.uleb128 0x49
+ 2422 0150 13       		.uleb128 0x13
+ 2423 0151 00       		.byte	0
+ 2424 0152 00       		.byte	0
+ 2425 0153 17       		.uleb128 0x17
+ 2426 0154 34       		.uleb128 0x34
+ 2427 0155 00       		.byte	0
+ 2428 0156 03       		.uleb128 0x3
+ 2429 0157 0E       		.uleb128 0xe
+ 2430 0158 3A       		.uleb128 0x3a
+ 2431 0159 0B       		.uleb128 0xb
+ 2432 015a 3B       		.uleb128 0x3b
+ 2433 015b 0B       		.uleb128 0xb
+ 2434 015c 49       		.uleb128 0x49
+ 2435 015d 13       		.uleb128 0x13
+ 2436 015e 3F       		.uleb128 0x3f
+ 2437 015f 19       		.uleb128 0x19
+ 2438 0160 02       		.uleb128 0x2
+ 2439 0161 18       		.uleb128 0x18
+ 2440 0162 00       		.byte	0
+ 2441 0163 00       		.byte	0
+ 2442 0164 18       		.uleb128 0x18
+ 2443 0165 01       		.uleb128 0x1
+ 2444 0166 01       		.byte	0x1
+ 2445 0167 49       		.uleb128 0x49
+ 2446 0168 13       		.uleb128 0x13
+ 2447 0169 01       		.uleb128 0x1
+ 2448 016a 13       		.uleb128 0x13
+ 2449 016b 00       		.byte	0
+ 2450 016c 00       		.byte	0
+ 2451 016d 19       		.uleb128 0x19
+ 2452 016e 21       		.uleb128 0x21
+ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccoKtpNE.s 			page 50
+
+
+ 2453 016f 00       		.byte	0
+ 2454 0170 49       		.uleb128 0x49
+ 2455 0171 13       		.uleb128 0x13
+ 2456 0172 2F       		.uleb128 0x2f
+ 2457 0173 0B       		.uleb128 0xb
+ 2458 0174 00       		.byte	0
+ 2459 0175 00       		.byte	0
+ 2460 0176 1A       		.uleb128 0x1a
+ 2461 0177 34       		.uleb128 0x34
+ 2462 0178 00       		.byte	0
+ 2463 0179 03       		.uleb128 0x3
+ 2464 017a 08       		.uleb128 0x8
+ 2465 017b 3A       		.uleb128 0x3a
+ 2466 017c 0B       		.uleb128 0xb
+ 2467 017d 3B       		.uleb128 0x3b
+ 2468 017e 0B       		.uleb128 0xb
+ 2469 017f 49       		.uleb128 0x49
+ 2470 0180 13       		.uleb128 0x13
+ 2471 0181 3F       		.uleb128 0x3f
+ 2472 0182 19       		.uleb128 0x19
+ 2473 0183 02       		.uleb128 0x2
+ 2474 0184 18       		.uleb128 0x18
+ 2475 0185 00       		.byte	0
+ 2476 0186 00       		.byte	0
+ 2477 0187 1B       		.uleb128 0x1b
+ 2478 0188 2E       		.uleb128 0x2e
+ 2479 0189 00       		.byte	0
+ 2480 018a 3F       		.uleb128 0x3f
+ 2481 018b 19       		.uleb128 0x19
+ 2482 018c 3C       		.uleb128 0x3c
+ 2483 018d 19       		.uleb128 0x19
+ 2484 018e 6E       		.uleb128 0x6e
+ 2485 018f 0E       		.uleb128 0xe
+ 2486 0190 03       		.uleb128 0x3
+ 2487 0191 0E       		.uleb128 0xe
+ 2488 0192 3A       		.uleb128 0x3a
+ 2489 0193 0B       		.uleb128 0xb
+ 2490 0194 3B       		.uleb128 0x3b
+ 2491 0195 0B       		.uleb128 0xb
+ 2492 0196 00       		.byte	0
+ 2493 0197 00       		.byte	0
+ 2494 0198 00       		.byte	0
+ 2495              		.section	.debug_loc,"",%progbits
+ 2496              	.Ldebug_loc0:
+ 2497              	.LLST0:
+ 2498 0000 00000000 		.4byte	.LVL33
+ 2499 0004 08000000 		.4byte	.LVL35
+ 2500 0008 0100     		.2byte	0x1
+ 2501 000a 50       		.byte	0x50
+ 2502 000b 08000000 		.4byte	.LVL35
+ 2503 000f F6000000 		.4byte	.LVL60
+ 2504 0013 0100     		.2byte	0x1
+ 2505 0015 55       		.byte	0x55
+ 2506 0016 F6000000 		.4byte	.LVL60
+ 2507 001a 08010000 		.4byte	.LFE71
+ 2508 001e 0400     		.2byte	0x4
+ 2509 0020 F3       		.byte	0xf3
+ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccoKtpNE.s 			page 51
+
+
+ 2510 0021 01       		.uleb128 0x1
+ 2511 0022 50       		.byte	0x50
+ 2512 0023 9F       		.byte	0x9f
+ 2513 0024 00000000 		.4byte	0
+ 2514 0028 00000000 		.4byte	0
+ 2515              	.LLST1:
+ 2516 002c 00000000 		.4byte	.LVL33
+ 2517 0030 08000000 		.4byte	.LVL35
+ 2518 0034 0100     		.2byte	0x1
+ 2519 0036 51       		.byte	0x51
+ 2520 0037 08000000 		.4byte	.LVL35
+ 2521 003b F6000000 		.4byte	.LVL60
+ 2522 003f 0100     		.2byte	0x1
+ 2523 0041 56       		.byte	0x56
+ 2524 0042 F6000000 		.4byte	.LVL60
+ 2525 0046 08010000 		.4byte	.LFE71
+ 2526 004a 0400     		.2byte	0x4
+ 2527 004c F3       		.byte	0xf3
+ 2528 004d 01       		.uleb128 0x1
+ 2529 004e 51       		.byte	0x51
+ 2530 004f 9F       		.byte	0x9f
+ 2531 0050 00000000 		.4byte	0
+ 2532 0054 00000000 		.4byte	0
+ 2533              	.LLST2:
+ 2534 0058 8A000000 		.4byte	.LVL49
+ 2535 005c 93000000 		.4byte	.LVL50-1
+ 2536 0060 0600     		.2byte	0x6
+ 2537 0062 50       		.byte	0x50
+ 2538 0063 93       		.byte	0x93
+ 2539 0064 04       		.uleb128 0x4
+ 2540 0065 51       		.byte	0x51
+ 2541 0066 93       		.byte	0x93
+ 2542 0067 04       		.uleb128 0x4
+ 2543 0068 00000000 		.4byte	0
+ 2544 006c 00000000 		.4byte	0
+ 2545              	.LLST3:
+ 2546 0070 94000000 		.4byte	.LVL50
+ 2547 0074 A3000000 		.4byte	.LVL51-1
+ 2548 0078 0600     		.2byte	0x6
+ 2549 007a 50       		.byte	0x50
+ 2550 007b 93       		.byte	0x93
+ 2551 007c 04       		.uleb128 0x4
+ 2552 007d 51       		.byte	0x51
+ 2553 007e 93       		.byte	0x93
+ 2554 007f 04       		.uleb128 0x4
+ 2555 0080 AA000000 		.4byte	.LVL52
+ 2556 0084 B7000000 		.4byte	.LVL53-1
+ 2557 0088 0600     		.2byte	0x6
+ 2558 008a 50       		.byte	0x50
+ 2559 008b 93       		.byte	0x93
+ 2560 008c 04       		.uleb128 0x4
+ 2561 008d 51       		.byte	0x51
+ 2562 008e 93       		.byte	0x93
+ 2563 008f 04       		.uleb128 0x4
+ 2564 0090 BE000000 		.4byte	.LVL54
+ 2565 0094 CC000000 		.4byte	.LVL55
+ 2566 0098 0600     		.2byte	0x6
+ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccoKtpNE.s 			page 52
+
+
+ 2567 009a 50       		.byte	0x50
+ 2568 009b 93       		.byte	0x93
+ 2569 009c 04       		.uleb128 0x4
+ 2570 009d 51       		.byte	0x51
+ 2571 009e 93       		.byte	0x93
+ 2572 009f 04       		.uleb128 0x4
+ 2573 00a0 D6000000 		.4byte	.LVL57
+ 2574 00a4 E4000000 		.4byte	.LVL58
+ 2575 00a8 0600     		.2byte	0x6
+ 2576 00aa 50       		.byte	0x50
+ 2577 00ab 93       		.byte	0x93
+ 2578 00ac 04       		.uleb128 0x4
+ 2579 00ad 51       		.byte	0x51
+ 2580 00ae 93       		.byte	0x93
+ 2581 00af 04       		.uleb128 0x4
+ 2582 00b0 00000000 		.4byte	0
+ 2583 00b4 00000000 		.4byte	0
+ 2584              	.LLST4:
+ 2585 00b8 00000000 		.4byte	.LVL61
+ 2586 00bc 08000000 		.4byte	.LVL62
+ 2587 00c0 0100     		.2byte	0x1
+ 2588 00c2 50       		.byte	0x50
+ 2589 00c3 08000000 		.4byte	.LVL62
+ 2590 00c7 82000000 		.4byte	.LVL70
+ 2591 00cb 0100     		.2byte	0x1
+ 2592 00cd 55       		.byte	0x55
+ 2593 00ce 82000000 		.4byte	.LVL70
+ 2594 00d2 88000000 		.4byte	.LFE72
+ 2595 00d6 0400     		.2byte	0x4
+ 2596 00d8 F3       		.byte	0xf3
+ 2597 00d9 01       		.uleb128 0x1
+ 2598 00da 50       		.byte	0x50
+ 2599 00db 9F       		.byte	0x9f
+ 2600 00dc 00000000 		.4byte	0
+ 2601 00e0 00000000 		.4byte	0
+ 2602              	.LLST5:
+ 2603 00e4 00000000 		.4byte	.LVL61
+ 2604 00e8 08000000 		.4byte	.LVL62
+ 2605 00ec 0100     		.2byte	0x1
+ 2606 00ee 51       		.byte	0x51
+ 2607 00ef 08000000 		.4byte	.LVL62
+ 2608 00f3 82000000 		.4byte	.LVL70
+ 2609 00f7 0100     		.2byte	0x1
+ 2610 00f9 56       		.byte	0x56
+ 2611 00fa 82000000 		.4byte	.LVL70
+ 2612 00fe 88000000 		.4byte	.LFE72
+ 2613 0102 0400     		.2byte	0x4
+ 2614 0104 F3       		.byte	0xf3
+ 2615 0105 01       		.uleb128 0x1
+ 2616 0106 51       		.byte	0x51
+ 2617 0107 9F       		.byte	0x9f
+ 2618 0108 00000000 		.4byte	0
+ 2619 010c 00000000 		.4byte	0
+ 2620              	.LLST6:
+ 2621 0110 52000000 		.4byte	.LVL85
+ 2622 0114 5C000000 		.4byte	.LVL87
+ 2623 0118 0A00     		.2byte	0xa
+ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccoKtpNE.s 			page 53
+
+
+ 2624 011a 9E       		.byte	0x9e
+ 2625 011b 08       		.uleb128 0x8
+ 2626 011c 00000000 		.4byte	0
+ 2627 0120 00000000 		.4byte	0
+ 2628 0124 5C000000 		.4byte	.LVL87
+ 2629 0128 66000000 		.4byte	.LVL88
+ 2630 012c 0A00     		.2byte	0xa
+ 2631 012e 9E       		.byte	0x9e
+ 2632 012f 08       		.uleb128 0x8
+ 2633 0130 00000000 		.4byte	0
+ 2634 0134 00003440 		.4byte	0x40340000
+ 2635 0138 00000000 		.4byte	0
+ 2636 013c 00000000 		.4byte	0
+ 2637              	.LLST7:
+ 2638 0140 52000000 		.4byte	.LVL85
+ 2639 0144 5C000000 		.4byte	.LVL87
+ 2640 0148 0A00     		.2byte	0xa
+ 2641 014a 9E       		.byte	0x9e
+ 2642 014b 08       		.uleb128 0x8
+ 2643 014c 00000000 		.4byte	0
+ 2644 0150 00000000 		.4byte	0
+ 2645 0154 5C000000 		.4byte	.LVL87
+ 2646 0158 66000000 		.4byte	.LVL88
+ 2647 015c 0A00     		.2byte	0xa
+ 2648 015e 9E       		.byte	0x9e
+ 2649 015f 08       		.uleb128 0x8
+ 2650 0160 2FD2D2AC 		.4byte	0xacd2d22f
+ 2651 0164 1EE3B040 		.4byte	0x40b0e31e
+ 2652 0168 00000000 		.4byte	0
+ 2653 016c 00000000 		.4byte	0
+ 2654              		.section	.debug_aranges,"",%progbits
+ 2655 0000 64000000 		.4byte	0x64
+ 2656 0004 0200     		.2byte	0x2
+ 2657 0006 00000000 		.4byte	.Ldebug_info0
+ 2658 000a 04       		.byte	0x4
+ 2659 000b 00       		.byte	0
+ 2660 000c 0000     		.2byte	0
+ 2661 000e 0000     		.2byte	0
+ 2662 0010 00000000 		.4byte	.LFB64
+ 2663 0014 64000000 		.4byte	.LFE64-.LFB64
+ 2664 0018 00000000 		.4byte	.LFB65
+ 2665 001c 54000000 		.4byte	.LFE65-.LFB65
+ 2666 0020 00000000 		.4byte	.LFB66
+ 2667 0024 28000000 		.4byte	.LFE66-.LFB66
+ 2668 0028 00000000 		.4byte	.LFB67
+ 2669 002c 28000000 		.4byte	.LFE67-.LFB67
+ 2670 0030 00000000 		.4byte	.LFB68
+ 2671 0034 28000000 		.4byte	.LFE68-.LFB68
+ 2672 0038 00000000 		.4byte	.LFB69
+ 2673 003c 28000000 		.4byte	.LFE69-.LFB69
+ 2674 0040 00000000 		.4byte	.LFB70
+ 2675 0044 28000000 		.4byte	.LFE70-.LFB70
+ 2676 0048 00000000 		.4byte	.LFB71
+ 2677 004c 08010000 		.4byte	.LFE71-.LFB71
+ 2678 0050 00000000 		.4byte	.LFB72
+ 2679 0054 88000000 		.4byte	.LFE72-.LFB72
+ 2680 0058 00000000 		.4byte	.LFB73
+ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccoKtpNE.s 			page 54
+
+
+ 2681 005c B4000000 		.4byte	.LFE73-.LFB73
+ 2682 0060 00000000 		.4byte	0
+ 2683 0064 00000000 		.4byte	0
+ 2684              		.section	.debug_ranges,"",%progbits
+ 2685              	.Ldebug_ranges0:
+ 2686 0000 00000000 		.4byte	.LFB64
+ 2687 0004 64000000 		.4byte	.LFE64
+ 2688 0008 00000000 		.4byte	.LFB65
+ 2689 000c 54000000 		.4byte	.LFE65
+ 2690 0010 00000000 		.4byte	.LFB66
+ 2691 0014 28000000 		.4byte	.LFE66
+ 2692 0018 00000000 		.4byte	.LFB67
+ 2693 001c 28000000 		.4byte	.LFE67
+ 2694 0020 00000000 		.4byte	.LFB68
+ 2695 0024 28000000 		.4byte	.LFE68
+ 2696 0028 00000000 		.4byte	.LFB69
+ 2697 002c 28000000 		.4byte	.LFE69
+ 2698 0030 00000000 		.4byte	.LFB70
+ 2699 0034 28000000 		.4byte	.LFE70
+ 2700 0038 00000000 		.4byte	.LFB71
+ 2701 003c 08010000 		.4byte	.LFE71
+ 2702 0040 00000000 		.4byte	.LFB72
+ 2703 0044 88000000 		.4byte	.LFE72
+ 2704 0048 00000000 		.4byte	.LFB73
+ 2705 004c B4000000 		.4byte	.LFE73
+ 2706 0050 00000000 		.4byte	0
+ 2707 0054 00000000 		.4byte	0
+ 2708              		.section	.debug_line,"",%progbits
+ 2709              	.Ldebug_line0:
+ 2710 0000 E5030000 		.section	.debug_str,"MS",%progbits,1
+ 2710      0200AE02 
+ 2710      00000201 
+ 2710      FB0E0D00 
+ 2710      01010101 
+ 2711              	.LASF75:
+ 2712 0000 51756164 		.ascii	"QuadDec_2_SetCounter\000"
+ 2712      4465635F 
+ 2712      325F5365 
+ 2712      74436F75 
+ 2712      6E746572 
+ 2713              	.LASF20:
+ 2714 0015 666F7277 		.ascii	"forward\000"
+ 2714      61726400 
+ 2715              	.LASF85:
+ 2716 001d 50574D5F 		.ascii	"PWM_Master_WriteCompare\000"
+ 2716      4D617374 
+ 2716      65725F57 
+ 2716      72697465 
+ 2716      436F6D70 
+ 2717              	.LASF25:
+ 2718 0035 64697374 		.ascii	"dist_count\000"
+ 2718      5F636F75 
+ 2718      6E7400
+ 2719              	.LASF29:
+ 2720 0040 666C6167 		.ascii	"flag_stop\000"
+ 2720      5F73746F 
+ 2720      7000
+ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccoKtpNE.s 			page 55
+
+
+ 2721              	.LASF16:
+ 2722 004a 73697A65 		.ascii	"sizetype\000"
+ 2722      74797065 
+ 2722      00
+ 2723              	.LASF30:
+ 2724 0053 50545F54 		.ascii	"PT_TURN_COUNT\000"
+ 2724      55524E5F 
+ 2724      434F554E 
+ 2724      5400
+ 2725              	.LASF60:
+ 2726 0061 54696D65 		.ascii	"Timer_2_ReadStatusRegister\000"
+ 2726      725F325F 
+ 2726      52656164 
+ 2726      53746174 
+ 2726      75735265 
+ 2727              	.LASF57:
+ 2728 007c 64697265 		.ascii	"direction\000"
+ 2728      6374696F 
+ 2728      6E00
+ 2729              	.LASF89:
+ 2730 0086 6D61696E 		.ascii	"main\000"
+ 2730      00
+ 2731              	.LASF27:
+ 2732 008b 6176675F 		.ascii	"avg_count\000"
+ 2732      636F756E 
+ 2732      7400
+ 2733              	.LASF61:
+ 2734 0095 54696D65 		.ascii	"Timer_2_ReadCounter\000"
+ 2734      725F325F 
+ 2734      52656164 
+ 2734      436F756E 
+ 2734      74657200 
+ 2735              	.LASF82:
+ 2736 00a9 51756164 		.ascii	"QuadDec_1_Start\000"
+ 2736      4465635F 
+ 2736      315F5374 
+ 2736      61727400 
+ 2737              	.LASF36:
+ 2738 00b9 44495354 		.ascii	"DISTANCE_PT_TURN\000"
+ 2738      414E4345 
+ 2738      5F50545F 
+ 2738      5455524E 
+ 2738      00
+ 2739              	.LASF2:
+ 2740 00ca 73686F72 		.ascii	"short int\000"
+ 2740      7420696E 
+ 2740      7400
+ 2741              	.LASF81:
+ 2742 00d4 50574D5F 		.ascii	"PWM_Slave_Start\000"
+ 2742      536C6176 
+ 2742      655F5374 
+ 2742      61727400 
+ 2743              	.LASF11:
+ 2744 00e4 75696E74 		.ascii	"uint16\000"
+ 2744      313600
+ 2745              	.LASF78:
+ 2746 00eb 54696D65 		.ascii	"Timer_2_Start\000"
+ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccoKtpNE.s 			page 56
+
+
+ 2746      725F325F 
+ 2746      53746172 
+ 2746      7400
+ 2747              	.LASF17:
+ 2748 00f9 53706565 		.ascii	"Speed_Control\000"
+ 2748      645F436F 
+ 2748      6E74726F 
+ 2748      6C00
+ 2749              	.LASF50:
+ 2750 0107 50574D5F 		.ascii	"PWM_Master\000"
+ 2750      4D617374 
+ 2750      657200
+ 2751              	.LASF32:
+ 2752 0112 57484545 		.ascii	"WHEEL_CIRCUMFERENCE\000"
+ 2752      4C5F4349 
+ 2752      5243554D 
+ 2752      46455245 
+ 2752      4E434500 
+ 2753              	.LASF84:
+ 2754 0126 55415254 		.ascii	"UART_1_Start\000"
+ 2754      5F315F53 
+ 2754      74617274 
+ 2754      00
+ 2755              	.LASF12:
+ 2756 0133 666C6F61 		.ascii	"float\000"
+ 2756      7400
+ 2757              	.LASF42:
+ 2758 0139 73747269 		.ascii	"string_1\000"
+ 2758      6E675F31 
+ 2758      00
+ 2759              	.LASF43:
+ 2760 0142 73747269 		.ascii	"string_2\000"
+ 2760      6E675F32 
+ 2760      00
+ 2761              	.LASF44:
+ 2762 014b 73747269 		.ascii	"string_3\000"
+ 2762      6E675F33 
+ 2762      00
+ 2763              	.LASF6:
+ 2764 0154 6C6F6E67 		.ascii	"long long int\000"
+ 2764      206C6F6E 
+ 2764      6720696E 
+ 2764      7400
+ 2765              	.LASF64:
+ 2766 0162 4D6F746F 		.ascii	"Motor_1_IN_1_Write\000"
+ 2766      725F315F 
+ 2766      494E5F31 
+ 2766      5F577269 
+ 2766      746500
+ 2767              	.LASF26:
+ 2768 0175 666C6167 		.ascii	"flag_FR\000"
+ 2768      5F465200 
+ 2769              	.LASF14:
+ 2770 017d 63686172 		.ascii	"char\000"
+ 2770      00
+ 2771              	.LASF48:
+ 2772 0182 64657269 		.ascii	"derivative_error\000"
+ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccoKtpNE.s 			page 57
+
+
+ 2772      76617469 
+ 2772      76655F65 
+ 2772      72726F72 
+ 2772      00
+ 2773              	.LASF4:
+ 2774 0193 6C6F6E67 		.ascii	"long int\000"
+ 2774      20696E74 
+ 2774      00
+ 2775              	.LASF53:
+ 2776 019c 66726F6E 		.ascii	"front_det_count\000"
+ 2776      745F6465 
+ 2776      745F636F 
+ 2776      756E7400 
+ 2777              	.LASF23:
+ 2778 01ac 7475726E 		.ascii	"turn_clockwise\000"
+ 2778      5F636C6F 
+ 2778      636B7769 
+ 2778      736500
+ 2779              	.LASF65:
+ 2780 01bb 4D6F746F 		.ascii	"Motor_1_IN_2_Write\000"
+ 2780      725F315F 
+ 2780      494E5F32 
+ 2780      5F577269 
+ 2780      746500
+ 2781              	.LASF76:
+ 2782 01ce 6973725F 		.ascii	"isr_1_StartEx\000"
+ 2782      315F5374 
+ 2782      61727445 
+ 2782      7800
+ 2783              	.LASF80:
+ 2784 01dc 50574D5F 		.ascii	"PWM_Master_Start\000"
+ 2784      4D617374 
+ 2784      65725F53 
+ 2784      74617274 
+ 2784      00
+ 2785              	.LASF37:
+ 2786 01ed 64697374 		.ascii	"dist_trav\000"
+ 2786      5F747261 
+ 2786      7600
+ 2787              	.LASF79:
+ 2788 01f7 6973725F 		.ascii	"isr_2_StartEx\000"
+ 2788      325F5374 
+ 2788      61727445 
+ 2788      7800
+ 2789              	.LASF66:
+ 2790 0205 4D6F746F 		.ascii	"Motor_2_IN_3_Write\000"
+ 2790      725F325F 
+ 2790      494E5F33 
+ 2790      5F577269 
+ 2790      746500
+ 2791              	.LASF46:
+ 2792 0218 61636375 		.ascii	"accumulated_error\000"
+ 2792      6D756C61 
+ 2792      7465645F 
+ 2792      6572726F 
+ 2792      7200
+ 2793              	.LASF13:
+ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccoKtpNE.s 			page 58
+
+
+ 2794 022a 646F7562 		.ascii	"double\000"
+ 2794      6C6500
+ 2795              	.LASF15:
+ 2796 0231 6C6F6E67 		.ascii	"long double\000"
+ 2796      20646F75 
+ 2796      626C6500 
+ 2797              	.LASF56:
+ 2798 023d 795F636F 		.ascii	"y_coord\000"
+ 2798      6F726400 
+ 2799              	.LASF72:
+ 2800 0245 43794465 		.ascii	"CyDelayUs\000"
+ 2800      6C617955 
+ 2800      7300
+ 2801              	.LASF1:
+ 2802 024f 756E7369 		.ascii	"unsigned char\000"
+ 2802      676E6564 
+ 2802      20636861 
+ 2802      7200
+ 2803              	.LASF35:
+ 2804 025d 44495354 		.ascii	"DISTANCE_BETW_WHEEL\000"
+ 2804      414E4345 
+ 2804      5F424554 
+ 2804      575F5748 
+ 2804      45454C00 
+ 2805              	.LASF62:
+ 2806 0271 73707269 		.ascii	"sprintf\000"
+ 2806      6E746600 
+ 2807              	.LASF77:
+ 2808 0279 54696D65 		.ascii	"Timer_1_Start\000"
+ 2808      725F315F 
+ 2808      53746172 
+ 2808      7400
+ 2809              	.LASF7:
+ 2810 0287 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 2810      206C6F6E 
+ 2810      6720756E 
+ 2810      7369676E 
+ 2810      65642069 
+ 2811              	.LASF8:
+ 2812 029e 756E7369 		.ascii	"unsigned int\000"
+ 2812      676E6564 
+ 2812      20696E74 
+ 2812      00
+ 2813              	.LASF31:
+ 2814 02ab 666C6167 		.ascii	"flag_CW\000"
+ 2814      5F435700 
+ 2815              	.LASF28:
+ 2816 02b3 6176675F 		.ascii	"avg_dist\000"
+ 2816      64697374 
+ 2816      00
+ 2817              	.LASF33:
+ 2818 02bc 434F554E 		.ascii	"COUNT_WHEEL\000"
+ 2818      545F5748 
+ 2818      45454C00 
+ 2819              	.LASF88:
+ 2820 02c8 433A5C55 		.ascii	"C:\\Users\\ASUS\\Monash\\Year 4 Sem 1 (July 2023)\\"
+ 2820      73657273 
+ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccoKtpNE.s 			page 59
+
+
+ 2820      5C415355 
+ 2820      535C4D6F 
+ 2820      6E617368 
+ 2821 02f6 45434520 		.ascii	"ECE 4191\\PSoC Creator\\Robot_Movement\\DC_Motor_1\\"
+ 2821      34313931 
+ 2821      5C50536F 
+ 2821      43204372 
+ 2821      6561746F 
+ 2822 0326 44657369 		.ascii	"Design01.cydsn\000"
+ 2822      676E3031 
+ 2822      2E637964 
+ 2822      736E00
+ 2823              	.LASF86:
+ 2824 0335 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 2824      43313120 
+ 2824      352E342E 
+ 2824      31203230 
+ 2824      31363036 
+ 2825 0368 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 2825      20726576 
+ 2825      6973696F 
+ 2825      6E203233 
+ 2825      37373135 
+ 2826 039b 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 2826      66756E63 
+ 2826      74696F6E 
+ 2826      2D736563 
+ 2826      74696F6E 
+ 2827              	.LASF19:
+ 2828 03c3 73746F70 		.ascii	"stop\000"
+ 2828      00
+ 2829              	.LASF21:
+ 2830 03c8 72657665 		.ascii	"reverse\000"
+ 2830      72736500 
+ 2831              	.LASF68:
+ 2832 03d0 51756164 		.ascii	"QuadDec_1_GetCounter\000"
+ 2832      4465635F 
+ 2832      315F4765 
+ 2832      74436F75 
+ 2832      6E746572 
+ 2833              	.LASF10:
+ 2834 03e5 696E7433 		.ascii	"int32_t\000"
+ 2834      325F7400 
+ 2835              	.LASF59:
+ 2836 03ed 50574D5F 		.ascii	"PWM_Slave_WriteCompare\000"
+ 2836      536C6176 
+ 2836      655F5772 
+ 2836      69746543 
+ 2836      6F6D7061 
+ 2837              	.LASF69:
+ 2838 0404 51756164 		.ascii	"QuadDec_2_GetCounter\000"
+ 2838      4465635F 
+ 2838      325F4765 
+ 2838      74436F75 
+ 2838      6E746572 
+ 2839              	.LASF73:
+ 2840 0419 46726F6E 		.ascii	"Front_Echo_Read\000"
+ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccoKtpNE.s 			page 60
+
+
+ 2840      745F4563 
+ 2840      686F5F52 
+ 2840      65616400 
+ 2841              	.LASF39:
+ 2842 0429 57484545 		.ascii	"WHEEL_DIAMETER\000"
+ 2842      4C5F4449 
+ 2842      414D4554 
+ 2842      455200
+ 2843              	.LASF83:
+ 2844 0438 51756164 		.ascii	"QuadDec_2_Start\000"
+ 2844      4465635F 
+ 2844      325F5374 
+ 2844      61727400 
+ 2845              	.LASF3:
+ 2846 0448 73686F72 		.ascii	"short unsigned int\000"
+ 2846      7420756E 
+ 2846      7369676E 
+ 2846      65642069 
+ 2846      6E7400
+ 2847              	.LASF54:
+ 2848 045b 66726F6E 		.ascii	"front_measured\000"
+ 2848      745F6D65 
+ 2848      61737572 
+ 2848      656400
+ 2849              	.LASF87:
+ 2850 046a 6D61696E 		.ascii	"main.c\000"
+ 2850      2E6300
+ 2851              	.LASF5:
+ 2852 0471 6C6F6E67 		.ascii	"long unsigned int\000"
+ 2852      20756E73 
+ 2852      69676E65 
+ 2852      6420696E 
+ 2852      7400
+ 2853              	.LASF18:
+ 2854 0483 64697374 		.ascii	"dist_front_detection\000"
+ 2854      5F66726F 
+ 2854      6E745F64 
+ 2854      65746563 
+ 2854      74696F6E 
+ 2855              	.LASF47:
+ 2856 0498 6C617374 		.ascii	"last_error\000"
+ 2856      5F657272 
+ 2856      6F7200
+ 2857              	.LASF71:
+ 2858 04a3 46726F6E 		.ascii	"Front_Trigger_Write\000"
+ 2858      745F5472 
+ 2858      69676765 
+ 2858      725F5772 
+ 2858      69746500 
+ 2859              	.LASF63:
+ 2860 04b7 55415254 		.ascii	"UART_1_PutString\000"
+ 2860      5F315F50 
+ 2860      75745374 
+ 2860      72696E67 
+ 2860      00
+ 2861              	.LASF51:
+ 2862 04c8 50574D5F 		.ascii	"PWM_Slave\000"
+ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccoKtpNE.s 			page 61
+
+
+ 2862      536C6176 
+ 2862      6500
+ 2863              	.LASF49:
+ 2864 04d2 74696D65 		.ascii	"timer_period\000"
+ 2864      725F7065 
+ 2864      72696F64 
+ 2864      00
+ 2865              	.LASF9:
+ 2866 04df 5F5F696E 		.ascii	"__int32_t\000"
+ 2866      7433325F 
+ 2866      7400
+ 2867              	.LASF52:
+ 2868 04e9 69735F6D 		.ascii	"is_moving\000"
+ 2868      6F76696E 
+ 2868      6700
+ 2869              	.LASF0:
+ 2870 04f3 7369676E 		.ascii	"signed char\000"
+ 2870      65642063 
+ 2870      68617200 
+ 2871              	.LASF41:
+ 2872 04ff 436F756E 		.ascii	"Count_Slave\000"
+ 2872      745F536C 
+ 2872      61766500 
+ 2873              	.LASF45:
+ 2874 050b 6572726F 		.ascii	"error\000"
+ 2874      7200
+ 2875              	.LASF34:
+ 2876 0511 434D5F43 		.ascii	"CM_COUNT_CONV\000"
+ 2876      4F554E54 
+ 2876      5F434F4E 
+ 2876      5600
+ 2877              	.LASF24:
+ 2878 051f 465F6F72 		.ascii	"F_or_R\000"
+ 2878      5F5200
+ 2879              	.LASF38:
+ 2880 0526 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 2880      52784275 
+ 2880      66666572 
+ 2880      00
+ 2881              	.LASF55:
+ 2882 0533 785F636F 		.ascii	"x_coord\000"
+ 2882      6F726400 
+ 2883              	.LASF70:
+ 2884 053b 43794465 		.ascii	"CyDelay\000"
+ 2884      6C617900 
+ 2885              	.LASF58:
+ 2886 0543 73746570 		.ascii	"step\000"
+ 2886      00
+ 2887              	.LASF74:
+ 2888 0548 51756164 		.ascii	"QuadDec_1_SetCounter\000"
+ 2888      4465635F 
+ 2888      315F5365 
+ 2888      74436F75 
+ 2888      6E746572 
+ 2889              	.LASF22:
+ 2890 055d 7475726E 		.ascii	"turn_anticlockwise\000"
+ 2890      5F616E74 
+ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccoKtpNE.s 			page 62
+
+
+ 2890      69636C6F 
+ 2890      636B7769 
+ 2890      736500
+ 2891              	.LASF40:
+ 2892 0570 436F756E 		.ascii	"Count_Master\000"
+ 2892      745F4D61 
+ 2892      73746572 
+ 2892      00
+ 2893              	.LASF67:
+ 2894 057d 4D6F746F 		.ascii	"Motor_2_IN_4_Write\000"
+ 2894      725F325F 
+ 2894      494E5F34 
+ 2894      5F577269 
+ 2894      746500
+ 2895              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

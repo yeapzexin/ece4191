@@ -1,11 +1,12 @@
--- Project:   C:\Users\yeapz\OneDrive - Southwestern College\Documents\ECE4191 Integrated Design\PWM_Servo\Design01.cydsn\Design01.cyprj
--- Generated: 09/04/2023 16:42:42
+-- Project:   C:\Users\yeapz\ece4191\PWM_Servo\Design01.cydsn\Design01.cyprj
+-- Generated: 09/05/2023 18:21:35
 -- PSoC Creator  4.4
 
 ENTITY Design01 IS
     PORT(
         Pin_1(0)_PAD : IN std_ulogic;
-        Pin_2(0)_PAD : OUT std_ulogic);
+        small_servo(0)_PAD : OUT std_ulogic;
+        big_servo(0)_PAD : OUT std_ulogic);
     ATTRIBUTE voltage_VDDABUF OF __DEFAULT__ : ENTITY IS 5e0;
     ATTRIBUTE voltage_VDDA OF __DEFAULT__ : ENTITY IS 5e0;
     ATTRIBUTE voltage_VUSB OF __DEFAULT__ : ENTITY IS 5e0;
@@ -30,6 +31,7 @@ ARCHITECTURE __DEFAULT__ OF Design01 IS
     SIGNAL ClockBlock_XTAL : bit;
     SIGNAL ClockBlock_XTAL_32KHZ : bit;
     SIGNAL Net_1 : bit;
+    SIGNAL Net_100 : bit;
     SIGNAL Net_2 : bit;
     ATTRIBUTE udbclken_assigned OF Net_2 : SIGNAL IS "True";
     ATTRIBUTE global_signal OF Net_2 : SIGNAL IS true;
@@ -40,33 +42,43 @@ ARCHITECTURE __DEFAULT__ OF Design01 IS
     SIGNAL Net_31 : bit;
     SIGNAL Net_4 : bit;
     ATTRIBUTE placement_force OF Net_4 : SIGNAL IS "U(0,4,A)0";
+    SIGNAL Net_93 : bit;
+    ATTRIBUTE global_signal OF Net_93 : SIGNAL IS true;
+    SIGNAL Net_93_local : bit;
     SIGNAL Pin_1(0)__PA : bit;
-    SIGNAL Pin_2(0)__PA : bit;
     SIGNAL \Debouncer_1:DEBOUNCER[0]:d_sync_0\ : bit;
     ATTRIBUTE placement_force OF \Debouncer_1:DEBOUNCER[0]:d_sync_0\ : SIGNAL IS "U(0,4,A)2";
     SIGNAL \Debouncer_1:DEBOUNCER[0]:d_sync_1\ : bit;
     ATTRIBUTE placement_force OF \Debouncer_1:DEBOUNCER[0]:d_sync_1\ : SIGNAL IS "U(0,4,A)1";
     SIGNAL \PWM_1:Net_54\ : bit;
     SIGNAL \PWM_1:Net_63\ : bit;
+    SIGNAL \PWM_2:Net_54\ : bit;
+    SIGNAL \PWM_2:Net_63\ : bit;
     SIGNAL __ONE__ : bit;
     ATTRIBUTE placement_force OF __ONE__ : SIGNAL IS "U(0,4,A)3";
     ATTRIBUTE POWER OF __ONE__ : SIGNAL IS true;
     SIGNAL __ZERO__ : bit;
     ATTRIBUTE GROUND OF __ZERO__ : SIGNAL IS true;
+    SIGNAL big_servo(0)__PA : bit;
+    SIGNAL small_servo(0)__PA : bit;
     SIGNAL tmpOE__Pin_1_net_0 : bit;
     ATTRIBUTE POWER OF tmpOE__Pin_1_net_0 : SIGNAL IS true;
     SIGNAL zero : bit;
     ATTRIBUTE GROUND OF zero : SIGNAL IS true;
     SIGNAL \ClockBlock.dclk_glb_ff_0__sig\ : bit;
+    SIGNAL \ClockBlock.dclk_glb_ff_1__sig\ : bit;
     ATTRIBUTE Location OF ClockBlock : LABEL IS "F(Clock,0)";
     ATTRIBUTE lib_model OF Pin_1(0) : LABEL IS "iocell1";
     ATTRIBUTE Location OF Pin_1(0) : LABEL IS "P2[2]";
-    ATTRIBUTE lib_model OF Pin_2(0) : LABEL IS "iocell2";
-    ATTRIBUTE Location OF Pin_2(0) : LABEL IS "P1[6]";
+    ATTRIBUTE lib_model OF small_servo(0) : LABEL IS "iocell2";
+    ATTRIBUTE Location OF small_servo(0) : LABEL IS "P1[6]";
+    ATTRIBUTE lib_model OF big_servo(0) : LABEL IS "iocell3";
+    ATTRIBUTE Location OF big_servo(0) : LABEL IS "P2[7]";
     ATTRIBUTE lib_model OF __ONE__ : LABEL IS "macrocell1";
     ATTRIBUTE Location OF __ONE__ : LABEL IS "U(0,4)";
     ATTRIBUTE Location OF isr_1 : LABEL IS "[IntrContainer=(0)][IntrId=(0)]";
     ATTRIBUTE Location OF \PWM_1:PWMHW\ : LABEL IS "F(Timer,0)";
+    ATTRIBUTE Location OF \PWM_2:PWMHW\ : LABEL IS "F(Timer,1)";
     ATTRIBUTE lib_model OF \Debouncer_1:DEBOUNCER[0]:d_sync_0\ : LABEL IS "macrocell2";
     ATTRIBUTE Location OF \Debouncer_1:DEBOUNCER[0]:d_sync_0\ : LABEL IS "U(0,4)";
     ATTRIBUTE lib_model OF \Debouncer_1:DEBOUNCER[0]:d_sync_1\ : LABEL IS "macrocell3";
@@ -263,9 +275,12 @@ BEGIN
             dsi_glb_div => open,
             dclk_glb_0 => Net_24,
             dclk_0 => Net_24_local,
-            dclk_glb_1 => Net_2,
-            dclk_1 => Net_2_local,
-            dclk_glb_ff_0 => \ClockBlock.dclk_glb_ff_0__sig\);
+            dclk_glb_1 => Net_93,
+            dclk_1 => Net_93_local,
+            dclk_glb_2 => Net_2,
+            dclk_2 => Net_2_local,
+            dclk_glb_ff_0 => \ClockBlock.dclk_glb_ff_0__sig\,
+            dclk_glb_ff_1 => \ClockBlock.dclk_glb_ff_1__sig\);
 
     Pin_1:logicalport
         GENERIC MAP(
@@ -358,7 +373,7 @@ BEGIN
             out_clock_en => '1',
             out_reset => '0');
 
-    Pin_2:logicalport
+    small_servo:logicalport
         GENERIC MAP(
             drive_mode => "110",
             ibuf_enabled => "1",
@@ -429,20 +444,112 @@ BEGIN
             out_clock_en => open,
             out_reset => open);
 
-    Pin_2(0):iocell
+    small_servo(0):iocell
         GENERIC MAP(
             in_sync_mode => 0,
             out_sync_mode => 0,
             oe_sync_mode => 0,
-            logicalport => "Pin_2",
+            logicalport => "small_servo",
             logicalport_pin_id => 0,
             io_capabilities => "0000000000000000000000000000000000000000000000000000000000000101")
         PORT MAP(
-            pa_out => Pin_2(0)__PA,
+            pa_out => small_servo(0)__PA,
             oe => open,
             pin_input => Net_31,
-            pad_out => Pin_2(0)_PAD,
-            pad_in => Pin_2(0)_PAD,
+            pad_out => small_servo(0)_PAD,
+            pad_in => small_servo(0)_PAD,
+            in_clock => open,
+            in_clock_en => '1',
+            in_reset => '0',
+            out_clock => open,
+            out_clock_en => '1',
+            out_reset => '0');
+
+    big_servo:logicalport
+        GENERIC MAP(
+            drive_mode => "110",
+            ibuf_enabled => "1",
+            id => "1802cc23-2d5e-4428-b7e7-bf2fdf21f586",
+            init_dr_st => "0",
+            input_buffer_sel => "00",
+            input_clk_en => 0,
+            input_sync => "1",
+            input_sync_mode => "0",
+            intr_mode => "00",
+            invert_in_clock => 0,
+            invert_in_clock_en => 0,
+            invert_in_reset => 0,
+            invert_out_clock => 0,
+            invert_out_clock_en => 0,
+            invert_out_reset => 0,
+            io_voltage => "",
+            layout_mode => "CONTIGUOUS",
+            oe_conn => "0",
+            oe_reset => 0,
+            oe_sync => "0",
+            output_clk_en => 0,
+            output_clock_mode => "0",
+            output_conn => "1",
+            output_mode => "0",
+            output_reset => 0,
+            output_sync => "0",
+            ovt_hyst_trim => "0",
+            ovt_needed => "0",
+            ovt_slew_control => "00",
+            pa_in_clock => -1,
+            pa_in_clock_en => -1,
+            pa_in_reset => -1,
+            pa_out_clock => -1,
+            pa_out_clock_en => -1,
+            pa_out_reset => -1,
+            pin_aliases => "",
+            pin_mode => "O",
+            por_state => 4,
+            port_alias_group => "",
+            port_alias_required => 0,
+            sio_group_cnt => 0,
+            sio_hifreq => "00000000",
+            sio_hyst => "1",
+            sio_ibuf => "00000000",
+            sio_info => "00",
+            sio_obuf => "00000000",
+            sio_refsel => "00000000",
+            sio_vohsel => "00000000",
+            sio_vtrip => "00000000",
+            slew_rate => "0",
+            spanning => 0,
+            sw_only => 0,
+            use_annotation => "0",
+            vtrip => "10",
+            width => 1,
+            in_clk_inv => 0,
+            in_clken_inv => 0,
+            in_clken_mode => 1,
+            in_rst_inv => 0,
+            out_clk_inv => 0,
+            out_clken_inv => 0,
+            out_clken_mode => 1,
+            out_rst_inv => 0)
+        PORT MAP(
+            in_clock_en => open,
+            in_reset => open,
+            out_clock_en => open,
+            out_reset => open);
+
+    big_servo(0):iocell
+        GENERIC MAP(
+            in_sync_mode => 0,
+            out_sync_mode => 0,
+            oe_sync_mode => 0,
+            logicalport => "big_servo",
+            logicalport_pin_id => 0,
+            io_capabilities => "0000000000000000000000000000000000000000000000000000000000000101")
+        PORT MAP(
+            pa_out => big_servo(0)__PA,
+            oe => open,
+            pin_input => Net_100,
+            pad_out => big_servo(0)_PAD,
+            pad_in => big_servo(0)_PAD,
             in_clock => open,
             in_clock_en => '1',
             in_reset => '0',
@@ -478,6 +585,19 @@ BEGIN
             tc => \PWM_1:Net_63\,
             cmp => Net_31,
             irq => \PWM_1:Net_54\);
+
+    \PWM_2:PWMHW\:timercell
+        GENERIC MAP(
+            cy_registers => "")
+        PORT MAP(
+            clock => \ClockBlock.dclk_glb_ff_1__sig\,
+            kill => open,
+            enable => __ONE__,
+            capture => open,
+            timer_reset => open,
+            tc => \PWM_2:Net_63\,
+            cmp => Net_100,
+            irq => \PWM_2:Net_54\);
 
     \Debouncer_1:DEBOUNCER[0]:d_sync_0\:macrocell
         GENERIC MAP(

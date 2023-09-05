@@ -6,7 +6,7 @@
 
 #Build Date:         Sep  9 2019 11:47:43
 
-#File Generated:     Sep 4 2023 16:42:40
+#File Generated:     Sep 5 2023 18:21:33
 
 #Purpose:            
 
@@ -55,7 +55,7 @@ Design Statistics after Packing
 Device Utilization Summary after Packing
     Macrocells                  :	4/192
     UDBS                        :	1/24
-    IOs                         :	2/72
+    IOs                         :	3/72
 
 
 D2088: Phase 3, elapsed time : 0.0 (sec)
@@ -79,10 +79,12 @@ analysis after routing.
 ######################################################################
                      Clock Summary 
 ======================================================================
-Number of clocks: 8
+Number of clocks: 10
 Clock: Clock_1              | Frequency: 142.8 MHz | Target:   0.0 MHz
 Clock: Clock_2              | Frequency: N/A       | Target:   0.1 MHz
 Clock: Clock_2(fixed-function) | Frequency: N/A       | Target:   0.1 MHz
+Clock: Clock_3              | Frequency: N/A       | Target:   0.1 MHz
+Clock: Clock_3(fixed-function) | Frequency: N/A       | Target:   0.1 MHz
 Clock: CyBUS_CLK            | Frequency: N/A       | Target:  24.0 MHz
 Clock: CyILO                | Frequency: N/A       | Target:   0.0 MHz
 Clock: CyIMO                | Frequency: N/A       | Target:   3.0 MHz
@@ -99,10 +101,12 @@ Phase 7
 ######################################################################
                      Clock Summary 
 ======================================================================
-Number of clocks: 8
+Number of clocks: 10
 Clock: Clock_1              | Frequency: 142.8 MHz | Target:   0.0 MHz
 Clock: Clock_2              | Frequency: N/A       | Target:   0.1 MHz
 Clock: Clock_2(fixed-function) | Frequency: N/A       | Target:   0.1 MHz
+Clock: Clock_3              | Frequency: N/A       | Target:   0.1 MHz
+Clock: Clock_3(fixed-function) | Frequency: N/A       | Target:   0.1 MHz
 Clock: CyBUS_CLK            | Frequency: N/A       | Target:  24.0 MHz
 Clock: CyILO                | Frequency: N/A       | Target:   0.0 MHz
 Clock: CyIMO                | Frequency: N/A       | Target:   3.0 MHz
@@ -122,11 +126,11 @@ Final Design Statistics
     Number of Status            	:	0
     Number of SyncCells         	:	0
     Number of count7cells       	:	0
-    Number of IOs       	:	2
+    Number of IOs       	:	3
 
 Device Utilization Summary
     Macrocells                  :	4/192
-    IOs                         :	2/72
+    IOs                         :	3/72
 
 
 
@@ -142,10 +146,12 @@ analysis after routing.
 ######################################################################
                      Clock Summary 
 ======================================================================
-Number of clocks: 8
+Number of clocks: 10
 Clock: Clock_1              | Frequency: 142.8 MHz | Target:   0.0 MHz
 Clock: Clock_2              | Frequency: N/A       | Target:   0.1 MHz
 Clock: Clock_2(fixed-function) | Frequency: N/A       | Target:   0.1 MHz
+Clock: Clock_3              | Frequency: N/A       | Target:   0.1 MHz
+Clock: Clock_3(fixed-function) | Frequency: N/A       | Target:   0.1 MHz
 Clock: CyBUS_CLK            | Frequency: N/A       | Target:  24.0 MHz
 Clock: CyILO                | Frequency: N/A       | Target:   0.0 MHz
 Clock: CyIMO                | Frequency: N/A       | Target:   3.0 MHz
