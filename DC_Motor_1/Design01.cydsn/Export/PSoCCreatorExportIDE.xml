@@ -25,7 +25,7 @@
       <Tool Name="postbuild" Command="" Options="" />
     </Toolchain>
   </Toolchains>
-  <Project Name="Design01" Path="C:\Users\ASUS\Monash\Year 4 Sem 1 (July 2023)\ECE 4191\ece4191\DC_Motor_1\Design01.cydsn" Version="6.0" Type="Normal">
+  <Project Name="Design01" Path="C:\Users\weiro\OneDrive - Monash University\Monash\Y4_S1\ECE4191\ece4191\ece4191\DC_Motor_1\Design01.cydsn" Version="6.0" Type="Normal">
     <CMSIS_SVD_File>Design01.svd</CMSIS_SVD_File>
     <Datasheet />
     <LinkerFiles>
@@ -34,14 +34,14 @@
       <LinkerFile Toolchain="ARM IAR Generic">.\Generated_Source\PSoC5\Cm3Iar.icf</LinkerFile>
     </LinkerFiles>
     <Folders>
-      <Folder BuildType="STRICT" Path="C:\Users\ASUS\Monash\Year 4 Sem 1 (July 2023)\ECE 4191\ece4191\DC_Motor_1\Design01.cydsn">
-        <Files Root="C:\Users\ASUS\Monash\Year 4 Sem 1 (July 2023)\ECE 4191\ece4191\DC_Motor_1\Design01.cydsn">
+      <Folder BuildType="STRICT" Path="C:\Users\weiro\OneDrive - Monash University\Monash\Y4_S1\ECE4191\ece4191\ece4191\DC_Motor_1\Design01.cydsn">
+        <Files Root="C:\Users\weiro\OneDrive - Monash University\Monash\Y4_S1\ECE4191\ece4191\ece4191\DC_Motor_1\Design01.cydsn">
           <File BuildType="BUILD" Toolchain="">main.c</File>
           <File BuildType="BUILD" Toolchain="">cyapicallbacks.h</File>
         </Files>
       </Folder>
-      <Folder BuildType="STRICT" Path="C:\Users\ASUS\Monash\Year 4 Sem 1 (July 2023)\ECE 4191\ece4191\DC_Motor_1\Design01.cydsn\Generated_Source\PSoC5">
-        <Files Root="C:\Users\ASUS\Monash\Year 4 Sem 1 (July 2023)\ECE 4191\ece4191\DC_Motor_1\Design01.cydsn">
+      <Folder BuildType="STRICT" Path="C:\Users\weiro\OneDrive - Monash University\Monash\Y4_S1\ECE4191\ece4191\ece4191\DC_Motor_1\Design01.cydsn\Generated_Source\PSoC5">
+        <Files Root="C:\Users\weiro\OneDrive - Monash University\Monash\Y4_S1\ECE4191\ece4191\ece4191\DC_Motor_1\Design01.cydsn">
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\cyfitter_cfg.h</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\cyfitter_cfg.c</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\cymetadata.c</File>
@@ -97,9 +97,6 @@
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\cycodeshareimport.ld</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\cycodeshareexport.ld</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\cycodeshareimport.scat</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\PWM_1.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\PWM_1.h</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\PWM_1_PM.c</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Clock_1.c</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Clock_1.h</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Motor_1_ENA_aliases.h</File>
@@ -165,12 +162,6 @@
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Clock_3.h</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\isr_2.c</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\isr_2.h</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Front_Trigger_aliases.h</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Front_Trigger.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Front_Trigger.h</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Front_Echo_aliases.h</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Front_Echo.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Front_Echo.h</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Timer_3.c</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Timer_3.h</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Timer_3_PM.c</File>
@@ -204,77 +195,101 @@
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Right_Trigger_aliases.h</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Right_Trigger.c</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Right_Trigger.h</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\S0_aliases.h</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\S0.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\S0.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\PWM_ColorSensor.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\PWM_ColorSensor.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\PWM_ColorSensor_PM.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Counter_ColorSensor.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Counter_ColorSensor.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Counter_ColorSensor_PM.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Clock_7.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Clock_7.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\isr_6.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\isr_6.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Control_Reg_1.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Control_Reg_1.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Control_Reg_1_PM.c</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\S1_aliases.h</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\S1.c</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\S1.h</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\S2_aliases.h</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\S2.c</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\S2.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\S0_aliases.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\S0.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\S0.h</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\S3_aliases.h</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\S3.c</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\S3.h</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\CS_OUT_aliases.h</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\CS_OUT.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\CS_OUT.h</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Counter_1.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Counter_1.h</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Counter_1_PM.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Clock_7.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Clock_7.h</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\isr_cs.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\isr_cs.h</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\CS_LED_aliases.h</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\CS_LED.c</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\CS_LED.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\CS_out_aliases.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\CS_out.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\CS_out.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\IR_input_aliases.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\IR_input.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\IR_input.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\led_green_aliases.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\led_green.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\led_green.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\led_red_aliases.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\led_red.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\led_red.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\led_blue_aliases.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\led_blue.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\led_blue.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Front_Trigger_1_aliases.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Front_Trigger_1.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Front_Trigger_1.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Front_Echo_2_aliases.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Front_Echo_2.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Front_Echo_2.h</File>
         </Files>
       </Folder>
-      <Folder BuildType="STRICT" Path="C:\Users\ASUS\Monash\Year 4 Sem 1 (July 2023)\ECE 4191\ece4191\DC_Motor_1\Design01.cydsn\Export\ARM_GCC_Generic">
-        <Files Root="C:\Users\ASUS\Monash\Year 4 Sem 1 (July 2023)\ECE 4191\ece4191\DC_Motor_1\Design01.cydsn">
+      <Folder BuildType="STRICT" Path="C:\Users\weiro\OneDrive - Monash University\Monash\Y4_S1\ECE4191\ece4191\ece4191\DC_Motor_1\Design01.cydsn\Export\ARM_GCC_Generic">
+        <Files Root="C:\Users\weiro\OneDrive - Monash University\Monash\Y4_S1\ECE4191\ece4191\ece4191\DC_Motor_1\Design01.cydsn">
           <File BuildType="BUILD" Toolchain="ARM GCC Generic">.\Export\ARM_GCC_Generic\CyComponentLibrary.a</File>
         </Files>
       </Folder>
-      <Folder BuildType="STRICT" Path="C:\Users\ASUS\Monash\Year 4 Sem 1 (July 2023)\ECE 4191\ece4191\DC_Motor_1\Design01.cydsn\Export\ARM_MDK_Generic">
-        <Files Root="C:\Users\ASUS\Monash\Year 4 Sem 1 (July 2023)\ECE 4191\ece4191\DC_Motor_1\Design01.cydsn">
+      <Folder BuildType="STRICT" Path="C:\Users\weiro\OneDrive - Monash University\Monash\Y4_S1\ECE4191\ece4191\ece4191\DC_Motor_1\Design01.cydsn\Export\ARM_MDK_Generic">
+        <Files Root="C:\Users\weiro\OneDrive - Monash University\Monash\Y4_S1\ECE4191\ece4191\ece4191\DC_Motor_1\Design01.cydsn">
           <File BuildType="BUILD" Toolchain="ARM MDK Generic">.\Export\ARM_MDK_Generic\CyComponentLibrary.a</File>
         </Files>
       </Folder>
-      <Folder BuildType="STRICT" Path="C:\Users\ASUS\Monash\Year 4 Sem 1 (July 2023)\ECE 4191\ece4191\DC_Motor_1\Design01.cydsn\Export\ARM_IAR_Generic">
-        <Files Root="C:\Users\ASUS\Monash\Year 4 Sem 1 (July 2023)\ECE 4191\ece4191\DC_Motor_1\Design01.cydsn">
+      <Folder BuildType="STRICT" Path="C:\Users\weiro\OneDrive - Monash University\Monash\Y4_S1\ECE4191\ece4191\ece4191\DC_Motor_1\Design01.cydsn\Export\ARM_IAR_Generic">
+        <Files Root="C:\Users\weiro\OneDrive - Monash University\Monash\Y4_S1\ECE4191\ece4191\ece4191\DC_Motor_1\Design01.cydsn">
           <File BuildType="BUILD" Toolchain="ARM IAR Generic">.\Export\ARM_IAR_Generic\CyComponentLibrary.a</File>
         </Files>
       </Folder>
       <Folder BuildType="EXCLUDE" Path=".\codegentemp">
-        <Files Root="C:\Users\ASUS\Monash\Year 4 Sem 1 (July 2023)\ECE 4191\ece4191\DC_Motor_1\Design01.cydsn" />
+        <Files Root="C:\Users\weiro\OneDrive - Monash University\Monash\Y4_S1\ECE4191\ece4191\ece4191\DC_Motor_1\Design01.cydsn" />
       </Folder>
       <Folder BuildType="EXCLUDE" Path=".\ARM_GCC_441">
-        <Files Root="C:\Users\ASUS\Monash\Year 4 Sem 1 (July 2023)\ECE 4191\ece4191\DC_Motor_1\Design01.cydsn" />
+        <Files Root="C:\Users\weiro\OneDrive - Monash University\Monash\Y4_S1\ECE4191\ece4191\ece4191\DC_Motor_1\Design01.cydsn" />
       </Folder>
       <Folder BuildType="EXCLUDE" Path=".\ARM_GCC_473">
-        <Files Root="C:\Users\ASUS\Monash\Year 4 Sem 1 (July 2023)\ECE 4191\ece4191\DC_Motor_1\Design01.cydsn" />
+        <Files Root="C:\Users\weiro\OneDrive - Monash University\Monash\Y4_S1\ECE4191\ece4191\ece4191\DC_Motor_1\Design01.cydsn" />
       </Folder>
       <Folder BuildType="EXCLUDE" Path=".\DP8051_Keil_952">
-        <Files Root="C:\Users\ASUS\Monash\Year 4 Sem 1 (July 2023)\ECE 4191\ece4191\DC_Motor_1\Design01.cydsn" />
+        <Files Root="C:\Users\weiro\OneDrive - Monash University\Monash\Y4_S1\ECE4191\ece4191\ece4191\DC_Motor_1\Design01.cydsn" />
       </Folder>
       <Folder BuildType="EXCLUDE" Path=".\DP8051">
-        <Files Root="C:\Users\ASUS\Monash\Year 4 Sem 1 (July 2023)\ECE 4191\ece4191\DC_Motor_1\Design01.cydsn" />
+        <Files Root="C:\Users\weiro\OneDrive - Monash University\Monash\Y4_S1\ECE4191\ece4191\ece4191\DC_Motor_1\Design01.cydsn" />
       </Folder>
       <Folder BuildType="EXCLUDE" Path=".\CortexM0">
-        <Files Root="C:\Users\ASUS\Monash\Year 4 Sem 1 (July 2023)\ECE 4191\ece4191\DC_Motor_1\Design01.cydsn" />
+        <Files Root="C:\Users\weiro\OneDrive - Monash University\Monash\Y4_S1\ECE4191\ece4191\ece4191\DC_Motor_1\Design01.cydsn" />
       </Folder>
       <Folder BuildType="EXCLUDE" Path=".\CortexM0p">
-        <Files Root="C:\Users\ASUS\Monash\Year 4 Sem 1 (July 2023)\ECE 4191\ece4191\DC_Motor_1\Design01.cydsn" />
+        <Files Root="C:\Users\weiro\OneDrive - Monash University\Monash\Y4_S1\ECE4191\ece4191\ece4191\DC_Motor_1\Design01.cydsn" />
       </Folder>
       <Folder BuildType="EXCLUDE" Path=".\CortexM3">
-        <Files Root="C:\Users\ASUS\Monash\Year 4 Sem 1 (July 2023)\ECE 4191\ece4191\DC_Motor_1\Design01.cydsn" />
+        <Files Root="C:\Users\weiro\OneDrive - Monash University\Monash\Y4_S1\ECE4191\ece4191\ece4191\DC_Motor_1\Design01.cydsn" />
       </Folder>
       <Folder BuildType="EXCLUDE" Path=".\CortexM4">
-        <Files Root="C:\Users\ASUS\Monash\Year 4 Sem 1 (July 2023)\ECE 4191\ece4191\DC_Motor_1\Design01.cydsn" />
+        <Files Root="C:\Users\weiro\OneDrive - Monash University\Monash\Y4_S1\ECE4191\ece4191\ece4191\DC_Motor_1\Design01.cydsn" />
       </Folder>
       <Folder BuildType="EXCLUDE" Path=".\CortexM7">
-        <Files Root="C:\Users\ASUS\Monash\Year 4 Sem 1 (July 2023)\ECE 4191\ece4191\DC_Motor_1\Design01.cydsn" />
+        <Files Root="C:\Users\weiro\OneDrive - Monash University\Monash\Y4_S1\ECE4191\ece4191\ece4191\DC_Motor_1\Design01.cydsn" />
       </Folder>
     </Folders>
   </Project>

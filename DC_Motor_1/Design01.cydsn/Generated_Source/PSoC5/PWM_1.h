@@ -29,10 +29,10 @@ extern uint8 PWM_1_initVar;
 * Conditional Compilation Parameters
 ***************************************/
 #define PWM_1_Resolution                     (16u)
-#define PWM_1_UsingFixedFunction             (0u)
+#define PWM_1_UsingFixedFunction             (1u)
 #define PWM_1_DeadBandMode                   (0u)
 #define PWM_1_KillModeMinTime                (0u)
-#define PWM_1_KillMode                       (0u)
+#define PWM_1_KillMode                       (1u)
 #define PWM_1_PWMMode                        (0u)
 #define PWM_1_PWMModeIsCenterAligned         (0u)
 #define PWM_1_DeadBandUsed                   (0u)
@@ -226,19 +226,19 @@ void PWM_1_RestoreConfig(void) ;
 /***************************************
 *         Initialization Values
 **************************************/
-#define PWM_1_INIT_PERIOD_VALUE          (9999u)
-#define PWM_1_INIT_COMPARE_VALUE1        (4999u)
+#define PWM_1_INIT_PERIOD_VALUE          (25000u)
+#define PWM_1_INIT_COMPARE_VALUE1        (12500u)
 #define PWM_1_INIT_COMPARE_VALUE2        (63u)
 #define PWM_1_INIT_INTERRUPTS_MODE       (uint8)(((uint8)(0u <<   \
                                                     PWM_1_STATUS_TC_INT_EN_MASK_SHIFT)) | \
                                                     (uint8)((uint8)(0u <<  \
                                                     PWM_1_STATUS_CMP2_INT_EN_MASK_SHIFT)) | \
-                                                    (uint8)((uint8)(1u <<  \
+                                                    (uint8)((uint8)(0u <<  \
                                                     PWM_1_STATUS_CMP1_INT_EN_MASK_SHIFT )) | \
                                                     (uint8)((uint8)(0u <<  \
                                                     PWM_1_STATUS_KILL_INT_EN_MASK_SHIFT )))
 #define PWM_1_DEFAULT_COMPARE2_MODE      (uint8)((uint8)1u <<  PWM_1_CTRL_CMPMODE2_SHIFT)
-#define PWM_1_DEFAULT_COMPARE1_MODE      (uint8)((uint8)2u <<  PWM_1_CTRL_CMPMODE1_SHIFT)
+#define PWM_1_DEFAULT_COMPARE1_MODE      (uint8)((uint8)1u <<  PWM_1_CTRL_CMPMODE1_SHIFT)
 #define PWM_1_INIT_DEAD_TIME             (1u)
 
 

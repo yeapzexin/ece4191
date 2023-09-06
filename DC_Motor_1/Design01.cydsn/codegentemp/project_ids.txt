@@ -1,6 +1,6 @@
-C:\Users\ASUS\Monash\Year 4 Sem 1 (July 2023)\ECE 4191\ece4191\DC_Motor_1\Design01.cydsn\Design01.cyprj|e70b6b50-58a6-4d23-8c62-76f3702234a3
-C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|8cd3bb44-707e-4680-b44d-246d903ff215
-C:\Users\ASUS\OneDrive\Documents\PSoC Creator\4.4\Downloads ( 4.4).cylib\Downloads ( 4.4).cyprj|b01826aa-a691-476c-b3ee-c9c464409476
-C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|221c9b89-09e9-4189-8a51-9e47c1e29a1d
-C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|41416e5f-561f-406c-ad36-593adce63f30
-C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|055cd65d-f726-4121-b2e3-9ac23e31f3ed
+C:\Users\weiro\OneDrive - Monash University\Monash\Y4_S1\ECE4191\ece4191\ece4191\DC_Motor_1\Design01.cydsn\Design01.cyprj|79dfdf0b-b8a4-4d35-a24a-71953fb29af9
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|da55b813-243e-42d4-afad-4b602a40f5d0
+C:\Users\weiro\OneDrive\Documents\PSoC Creator\4.4\Downloads ( 4.4).cylib\Downloads ( 4.4).cyprj|d7a658ae-4c88-4a9e-9895-9eae243a1e64
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|09f24d78-a750-47c6-858f-c85f2b58b3c3
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|5df13bdd-0958-461e-9366-0c2e7a0bac08
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|5f1185cf-3911-4501-99b7-4b0ed8249fd0

@@ -1,5 +1,5 @@
 /*******************************************************************************
-* File Name: CS_OUT.c  
+* File Name: CS_out.c  
 * Version 2.20
 *
 * Description:
@@ -15,15 +15,15 @@
 *******************************************************************************/
 
 #include "cytypes.h"
-#include "CS_OUT.h"
+#include "CS_out.h"
 
 /* APIs are not generated for P15[7:6] on PSoC 5 */
 #if !(CY_PSOC5A &&\
-	 CS_OUT__PORT == 15 && ((CS_OUT__MASK & 0xC0) != 0))
+	 CS_out__PORT == 15 && ((CS_out__MASK & 0xC0) != 0))
 
 
 /*******************************************************************************
-* Function Name: CS_OUT_Write
+* Function Name: CS_out_Write
 ****************************************************************************//**
 *
 * \brief Writes the value to the physical port (data output register), masking
@@ -52,17 +52,17 @@
 *  this function.
 *
 * \funcusage
-*  \snippet CS_OUT_SUT.c usage_CS_OUT_Write
+*  \snippet CS_out_SUT.c usage_CS_out_Write
 *******************************************************************************/
-void CS_OUT_Write(uint8 value)
+void CS_out_Write(uint8 value)
 {
-    uint8 staticBits = (CS_OUT_DR & (uint8)(~CS_OUT_MASK));
-    CS_OUT_DR = staticBits | ((uint8)(value << CS_OUT_SHIFT) & CS_OUT_MASK);
+    uint8 staticBits = (CS_out_DR & (uint8)(~CS_out_MASK));
+    CS_out_DR = staticBits | ((uint8)(value << CS_out_SHIFT) & CS_out_MASK);
 }
 
 
 /*******************************************************************************
-* Function Name: CS_OUT_SetDriveMode
+* Function Name: CS_out_SetDriveMode
 ****************************************************************************//**
 *
 * \brief Sets the drive mode for each of the Pins component's pins.
@@ -85,16 +85,16 @@ void CS_OUT_Write(uint8 value)
 *  APIs (primary method) or disable interrupts around this function.
 *
 * \funcusage
-*  \snippet CS_OUT_SUT.c usage_CS_OUT_SetDriveMode
+*  \snippet CS_out_SUT.c usage_CS_out_SetDriveMode
 *******************************************************************************/
-void CS_OUT_SetDriveMode(uint8 mode)
+void CS_out_SetDriveMode(uint8 mode)
 {
-	CyPins_SetPinDriveMode(CS_OUT_0, mode);
+	CyPins_SetPinDriveMode(CS_out_0, mode);
 }
 
 
 /*******************************************************************************
-* Function Name: CS_OUT_Read
+* Function Name: CS_out_Read
 ****************************************************************************//**
 *
 * \brief Reads the associated physical port (pin status register) and masks 
@@ -108,16 +108,16 @@ void CS_OUT_SetDriveMode(uint8 mode)
 *  The current value for the pins in the component as a right justified number.
 *
 * \funcusage
-*  \snippet CS_OUT_SUT.c usage_CS_OUT_Read  
+*  \snippet CS_out_SUT.c usage_CS_out_Read  
 *******************************************************************************/
-uint8 CS_OUT_Read(void)
+uint8 CS_out_Read(void)
 {
-    return (CS_OUT_PS & CS_OUT_MASK) >> CS_OUT_SHIFT;
+    return (CS_out_PS & CS_out_MASK) >> CS_out_SHIFT;
 }
 
 
 /*******************************************************************************
-* Function Name: CS_OUT_ReadDataReg
+* Function Name: CS_out_ReadDataReg
 ****************************************************************************//**
 *
 * \brief Reads the associated physical port's data output register and masks 
@@ -126,8 +126,8 @@ uint8 CS_OUT_Read(void)
 *
 * The data output register controls the signal applied to the physical pin in 
 * conjunction with the drive mode parameter. This is not the same as the 
-* preferred CS_OUT_Read() API because the 
-* CS_OUT_ReadDataReg() reads the data register instead of the status 
+* preferred CS_out_Read() API because the 
+* CS_out_ReadDataReg() reads the data register instead of the status 
 * register. For output pins this is a useful function to determine the value 
 * just written to the pin.
 *
@@ -136,19 +136,19 @@ uint8 CS_OUT_Read(void)
 *  justified number for the component instance.
 *
 * \funcusage
-*  \snippet CS_OUT_SUT.c usage_CS_OUT_ReadDataReg 
+*  \snippet CS_out_SUT.c usage_CS_out_ReadDataReg 
 *******************************************************************************/
-uint8 CS_OUT_ReadDataReg(void)
+uint8 CS_out_ReadDataReg(void)
 {
-    return (CS_OUT_DR & CS_OUT_MASK) >> CS_OUT_SHIFT;
+    return (CS_out_DR & CS_out_MASK) >> CS_out_SHIFT;
 }
 
 
 /* If interrupt is connected for this Pins component */ 
-#if defined(CS_OUT_INTSTAT) 
+#if defined(CS_out_INTSTAT) 
 
     /*******************************************************************************
-    * Function Name: CS_OUT_SetInterruptMode
+    * Function Name: CS_out_SetInterruptMode
     ****************************************************************************//**
     *
     * \brief Configures the interrupt mode for each of the Pins component's
@@ -161,12 +161,12 @@ uint8 CS_OUT_ReadDataReg(void)
     * \param position
     *  The pin position as listed in the Pins component. You may OR these to be 
     *  able to configure the interrupt mode of multiple pins within a Pins 
-    *  component. Or you may use CS_OUT_INTR_ALL to configure the
+    *  component. Or you may use CS_out_INTR_ALL to configure the
     *  interrupt mode of all the pins in the Pins component.       
-    *  - CS_OUT_0_INTR       (First pin in the list)
-    *  - CS_OUT_1_INTR       (Second pin in the list)
+    *  - CS_out_0_INTR       (First pin in the list)
+    *  - CS_out_1_INTR       (Second pin in the list)
     *  - ...
-    *  - CS_OUT_INTR_ALL     (All pins in Pins component)
+    *  - CS_out_INTR_ALL     (All pins in Pins component)
     *
     * \param mode
     *  Interrupt mode for the selected pins. Valid options are documented in
@@ -182,19 +182,19 @@ uint8 CS_OUT_ReadDataReg(void)
     *  port.
     *
     * \funcusage
-    *  \snippet CS_OUT_SUT.c usage_CS_OUT_SetInterruptMode
+    *  \snippet CS_out_SUT.c usage_CS_out_SetInterruptMode
     *******************************************************************************/
-    void CS_OUT_SetInterruptMode(uint16 position, uint16 mode)
+    void CS_out_SetInterruptMode(uint16 position, uint16 mode)
     {
-		if((position & CS_OUT_0_INTR) != 0u) 
+		if((position & CS_out_0_INTR) != 0u) 
 		{ 
-			 CS_OUT_0_INTTYPE_REG = (uint8)mode; 
+			 CS_out_0_INTTYPE_REG = (uint8)mode; 
 		}
     }
     
     
     /*******************************************************************************
-    * Function Name: CS_OUT_ClearInterrupt
+    * Function Name: CS_out_ClearInterrupt
     ****************************************************************************//**
     *
     * \brief Clears any active interrupts attached with the component and returns 
@@ -211,11 +211,11 @@ uint8 CS_OUT_ReadDataReg(void)
     *  those associated with the Pins component.
     *
     * \funcusage
-    *  \snippet CS_OUT_SUT.c usage_CS_OUT_ClearInterrupt
+    *  \snippet CS_out_SUT.c usage_CS_out_ClearInterrupt
     *******************************************************************************/
-    uint8 CS_OUT_ClearInterrupt(void)
+    uint8 CS_out_ClearInterrupt(void)
     {
-        return (CS_OUT_INTSTAT & CS_OUT_MASK) >> CS_OUT_SHIFT;
+        return (CS_out_INTSTAT & CS_out_MASK) >> CS_out_SHIFT;
     }
 
 #endif /* If Interrupts Are Enabled for this Pins component */ 

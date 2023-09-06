@@ -59,18 +59,18 @@
 <v>DC_Motor_1\Design01\Generated_Source\PSoC5\Clock_2</v>
 <v>DC_Motor_1\Design01\Generated_Source\PSoC5\Clock_3</v>
 <v>DC_Motor_1\Design01\Generated_Source\PSoC5\Clock_7</v>
-<v>DC_Motor_1\Design01\Generated_Source\PSoC5\Counter_1</v>
+<v>DC_Motor_1\Design01\Generated_Source\PSoC5\Control_Reg_1</v>
+<v>DC_Motor_1\Design01\Generated_Source\PSoC5\Counter_ColorSensor</v>
 <v>DC_Motor_1\Design01\Generated_Source\PSoC5\CS_LED</v>
-<v>DC_Motor_1\Design01\Generated_Source\PSoC5\CS_OUT</v>
+<v>DC_Motor_1\Design01\Generated_Source\PSoC5\CS_out</v>
 <v>DC_Motor_1\Design01\Generated_Source\PSoC5\cy_boot</v>
 <v>DC_Motor_1\Design01\Generated_Source\PSoC5\Em_EEPROM_Dynamic</v>
 <v>DC_Motor_1\Design01\Generated_Source\PSoC5\Front_Echo</v>
 <v>DC_Motor_1\Design01\Generated_Source\PSoC5\Front_Echo_1</v>
 <v>DC_Motor_1\Design01\Generated_Source\PSoC5\Front_Trigger</v>
 <v>DC_Motor_1\Design01\Generated_Source\PSoC5\Front_Trigger_2</v>
+<v>DC_Motor_1\Design01\Generated_Source\PSoC5\IR_input</v>
 <v>DC_Motor_1\Design01\Generated_Source\PSoC5\isr_1</v>
-<v>DC_Motor_1\Design01\Generated_Source\PSoC5\isr_2</v>
-<v>DC_Motor_1\Design01\Generated_Source\PSoC5\isr_3</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 <CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
@@ -100,10 +100,12 @@
 <v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\Clock_3.lst</v>
 <v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\Clock_7.lst</v>
 <v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\Cm3Start.lst</v>
-<v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\Counter_1.lst</v>
-<v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\Counter_1_PM.lst</v>
+<v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\Control_Reg_1.lst</v>
+<v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\Control_Reg_1_PM.lst</v>
+<v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\Counter_ColorSensor.lst</v>
+<v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\Counter_ColorSensor_PM.lst</v>
 <v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\CS_LED.lst</v>
-<v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\CS_OUT.lst</v>
+<v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\CS_out.lst</v>
 <v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\cy_em_eeprom.lst</v>
 <v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\CyBootAsmGnu.lst</v>
 <v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\CyDmac.lst</v>
@@ -118,12 +120,16 @@
 <v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\Front_Echo_1.lst</v>
 <v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\Front_Trigger.lst</v>
 <v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\Front_Trigger_2.lst</v>
+<v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\IR_input.lst</v>
 <v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\isr_1.lst</v>
 <v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\isr_2.lst</v>
 <v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\isr_3.lst</v>
 <v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\isr_4.lst</v>
 <v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\isr_5.lst</v>
-<v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\isr_cs.lst</v>
+<v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\isr_6.lst</v>
+<v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\led_blue.lst</v>
+<v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\led_green.lst</v>
+<v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\led_red.lst</v>
 <v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\Left_Echo.lst</v>
 <v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\Left_Trigger.lst</v>
 <v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\main.lst</v>
@@ -137,8 +143,8 @@
 <v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\Motor_2_IN_4.lst</v>
 <v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\Motor_2_Phase_A.lst</v>
 <v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\Motor_2_Phase_B.lst</v>
-<v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\PWM_1.lst</v>
-<v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\PWM_1_PM.lst</v>
+<v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\PWM_ColorSensor.lst</v>
+<v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\PWM_ColorSensor_PM.lst</v>
 <v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\PWM_Master.lst</v>
 <v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\PWM_Master_PM.lst</v>
 <v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\PWM_Slave.lst</v>
@@ -191,10 +197,12 @@
 <v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\Clock_3.lst</v>
 <v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\Clock_7.lst</v>
 <v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\Cm3Start.lst</v>
-<v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\Counter_1.lst</v>
-<v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\Counter_1_PM.lst</v>
+<v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\Control_Reg_1.lst</v>
+<v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\Control_Reg_1_PM.lst</v>
+<v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\Counter_ColorSensor.lst</v>
+<v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\Counter_ColorSensor_PM.lst</v>
 <v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\CS_LED.lst</v>
-<v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\CS_OUT.lst</v>
+<v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\CS_out.lst</v>
 <v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\cy_em_eeprom.lst</v>
 <v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\CyBootAsmGnu.lst</v>
 <v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\CyDmac.lst</v>
@@ -209,12 +217,10 @@
 <v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\Front_Echo_1.lst</v>
 <v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\Front_Trigger.lst</v>
 <v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\Front_Trigger_2.lst</v>
+<v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\IR_input.lst</v>
 <v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\isr_1.lst</v>
 <v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\isr_2.lst</v>
 <v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\isr_3.lst</v>
-<v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\isr_4.lst</v>
-<v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\isr_5.lst</v>
-<v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\isr_cs.lst</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 </TreeStates>
@@ -239,6 +245,7 @@
 <v>DC_Motor_1\Design01\cy_isr_v1_70\cy_isr_v1_70.pdf</v>
 <v>DC_Motor_1\Design01\cy_pins_v2_20</v>
 <v>DC_Motor_1\Design01\cy_pins_v2_20\cy_pins_v2_20.pdf</v>
+<v>DC_Motor_1\Design01\CyControlReg_v1_80.pdf</v>
 <v>DC_Motor_1\Design01\PWM_v3_30</v>
 <v>DC_Motor_1\Design01\PWM_v3_30\PWM_v3_30.pdf</v>
 <v>DC_Motor_1\Design01\QuadDec_v3_0</v>
@@ -264,6 +271,7 @@
 <v>DC_Motor_1\Design01\cy_isr_v1_70\cy_isr_v1_70.pdf</v>
 <v>DC_Motor_1\Design01\cy_pins_v2_20</v>
 <v>DC_Motor_1\Design01\cy_pins_v2_20\cy_pins_v2_20.pdf</v>
+<v>DC_Motor_1\Design01\CyControlReg_v1_80.pdf</v>
 <v>DC_Motor_1\Design01\PWM_v3_30</v>
 <v>DC_Motor_1\Design01\PWM_v3_30\PWM_v3_30.pdf</v>
 <v>DC_Motor_1\Design01\QuadDec_v3_0</v>
@@ -296,6 +304,7 @@
 </CyGuid_fdba8dfd-b15b-4469-9bbb-9e40c3e70997>
 <Unloaded />
 <OpenDocs>
+<name v=".\Design01.cydsn\Design01.cydwr" />
 <name v=".\Design01.cydsn\TopDesign\TopDesign.cysch" />
 <name v=".\Design01.cydsn\main.c" />
 </OpenDocs>
@@ -305,7 +314,7 @@
   Copyright (c) 2001-2016 Actipro Software LLC.  All rights reserved.
   http://www.actiprosoftware.com
 
---><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Horizontal"><TabbedMdiContainer Size="1129, 487" SelectedTabbedMdiWindow="80775a9c-4d76-49fd-b457-0111415ab9c9"><ToolWindow Key="Start Page:bd4649ab-da6b-4d04-a663-c722b8bf99db:Start Page" Guid="fefca7bd-a4e6-42b3-b0a0-7634106ba9ab" /><DocumentWindow Key="C:\Users\ASUS\Monash\Year 4 Sem 1 (July 2023)\ECE 4191\PSoC Creator\Robot_Movement\DC_Motor_1\Design01.cydsn\TopDesign\TopDesign.cysch" Guid="2f685455-38fe-4d22-ac0b-5545b0dacd1f" /><DocumentWindow Key="C:\Users\ASUS\Monash\Year 4 Sem 1 (July 2023)\ECE 4191\PSoC Creator\Robot_Movement\DC_Motor_1\Design01.cydsn\main.c" Guid="80775a9c-4d76-49fd-b457-0111415ab9c9" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
+--><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Horizontal"><TabbedMdiContainer Size="1233, 487" SelectedTabbedMdiWindow="0e8e9773-db92-4800-abae-36f43fe03470"><ToolWindow Key="Start Page:bd4649ab-da6b-4d04-a663-c722b8bf99db:Start Page" Guid="fefca7bd-a4e6-42b3-b0a0-7634106ba9ab" /><DocumentWindow Key="C:\Users\ASUS\Monash\Year 4 Sem 1 (July 2023)\ECE 4191\ece4191\DC_Motor_1\Design01.cydsn\Design01.cydwr" Guid="15c6b3ff-307d-4601-a5a6-fd5a0648a95b" /><DocumentWindow Key="C:\Users\ASUS\Monash\Year 4 Sem 1 (July 2023)\ECE 4191\ece4191\DC_Motor_1\Design01.cydsn\TopDesign\TopDesign.cysch" Guid="8a526646-72b0-4a16-b3e4-47981ecb4610" /><DocumentWindow Key="C:\Users\ASUS\Monash\Year 4 Sem 1 (July 2023)\ECE 4191\ece4191\DC_Motor_1\Design01.cydsn\main.c" Guid="0e8e9773-db92-4800-abae-36f43fe03470" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
 <config v="" />
 <AutoUpdate v="true" />
 </CyGuid_843a90a4-0c4b-4e44-991d-05e7fb117a21>

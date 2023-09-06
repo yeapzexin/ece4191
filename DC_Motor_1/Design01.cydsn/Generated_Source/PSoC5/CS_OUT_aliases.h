@@ -1,5 +1,5 @@
 /*******************************************************************************
-* File Name: CS_OUT.h  
+* File Name: CS_out.h  
 * Version 2.20
 *
 * Description:
@@ -15,8 +15,8 @@
 * the software package with which this file was provided.
 *******************************************************************************/
 
-#if !defined(CY_PINS_CS_OUT_ALIASES_H) /* Pins CS_OUT_ALIASES_H */
-#define CY_PINS_CS_OUT_ALIASES_H
+#if !defined(CY_PINS_CS_out_ALIASES_H) /* Pins CS_out_ALIASES_H */
+#define CY_PINS_CS_out_ALIASES_H
 
 #include "cytypes.h"
 #include "cyfitter.h"
@@ -25,12 +25,12 @@
 /***************************************
 *              Constants        
 ***************************************/
-#define CS_OUT_0			(CS_OUT__0__PC)
-#define CS_OUT_0_INTR	((uint16)((uint16)0x0001u << CS_OUT__0__SHIFT))
+#define CS_out_0			(CS_out__0__PC)
+#define CS_out_0_INTR	((uint16)((uint16)0x0001u << CS_out__0__SHIFT))
 
-#define CS_OUT_INTR_ALL	 ((uint16)(CS_OUT_0_INTR))
+#define CS_out_INTR_ALL	 ((uint16)(CS_out_0_INTR))
 
-#endif /* End Pins CS_OUT_ALIASES_H */
+#endif /* End Pins CS_out_ALIASES_H */
 
 
 /* [] END OF FILE */
