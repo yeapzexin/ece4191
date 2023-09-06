@@ -13,7 +13,7 @@
 <v>Output</v>
 </TreeKeys>
 <TreeStates>
-<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="DC_Motor_1\Design01\Source Files\main.c">
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
 <ExpandedNodeIds>
 <v>DC_Motor_1</v>
 <v>DC_Motor_1\Design01</v>
@@ -285,13 +285,13 @@
 <CyGuid_5f2be1a5-0687-4501-bb8c-cf21cb8211bf type_name="CyDesigner.Common.ProjMgmt.GUI.CyBookmarkData" version="1">
 <indicators>
 <CyGuid_67999771-01c6-4f62-90b3-2054bb36a318 type_name="CyDesigner.Framework.CyBookmark" version="1">
-<CyGuid_a1027fc4-3497-43a6-85d7-b91ffa0029b7 type_name="CyDesigner.Framework.CySerializableMarginIndicator" version="1" LineNumber="147" DocumentName=".\Design01.cydsn\main.c" />
+<CyGuid_a1027fc4-3497-43a6-85d7-b91ffa0029b7 type_name="CyDesigner.Framework.CySerializableMarginIndicator" version="1" LineNumber="148" DocumentName=".\Design01.cydsn\main.c" />
 </CyGuid_67999771-01c6-4f62-90b3-2054bb36a318>
 <CyGuid_67999771-01c6-4f62-90b3-2054bb36a318 type_name="CyDesigner.Framework.CyBookmark" version="1">
-<CyGuid_a1027fc4-3497-43a6-85d7-b91ffa0029b7 type_name="CyDesigner.Framework.CySerializableMarginIndicator" version="1" LineNumber="166" DocumentName=".\Design01.cydsn\main.c" />
+<CyGuid_a1027fc4-3497-43a6-85d7-b91ffa0029b7 type_name="CyDesigner.Framework.CySerializableMarginIndicator" version="1" LineNumber="167" DocumentName=".\Design01.cydsn\main.c" />
 </CyGuid_67999771-01c6-4f62-90b3-2054bb36a318>
 <CyGuid_67999771-01c6-4f62-90b3-2054bb36a318 type_name="CyDesigner.Framework.CyBookmark" version="1">
-<CyGuid_a1027fc4-3497-43a6-85d7-b91ffa0029b7 type_name="CyDesigner.Framework.CySerializableMarginIndicator" version="1" LineNumber="394" DocumentName=".\Design01.cydsn\main.c" />
+<CyGuid_a1027fc4-3497-43a6-85d7-b91ffa0029b7 type_name="CyDesigner.Framework.CySerializableMarginIndicator" version="1" LineNumber="395" DocumentName=".\Design01.cydsn\main.c" />
 </CyGuid_67999771-01c6-4f62-90b3-2054bb36a318>
 </indicators>
 </CyGuid_5f2be1a5-0687-4501-bb8c-cf21cb8211bf>
@@ -301,8 +301,6 @@
 <Unloaded />
 <OpenDocs>
 <name v=".\Design01.cydsn\main.c" />
-<name v=".\Design01.cydsn\TopDesign\TopDesign.cysch" />
-<name v=".\Design01.cydsn\Design01.cydwr" />
 </OpenDocs>
 <OpenDocsLayout><![CDATA[<?xml version="1.0"?><!--
 
@@ -310,7 +308,7 @@
   Copyright (c) 2001-2016 Actipro Software LLC.  All rights reserved.
   http://www.actiprosoftware.com
 
---><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Horizontal"><TabbedMdiContainer Size="1332, 487" SelectedTabbedMdiWindow="d8666866-bd1f-4c99-b2bd-4ceb9257e4e5"><ToolWindow Key="Start Page:bd4649ab-da6b-4d04-a663-c722b8bf99db:Start Page" Guid="fefca7bd-a4e6-42b3-b0a0-7634106ba9ab" /><DocumentWindow Key="C:\Users\ASUS\Monash\Year 4 Sem 1 (July 2023)\ECE 4191\ece4191\DC_Motor_1\Design01.cydsn\main.c" Guid="a3acb040-1c95-4747-b892-c5b182c07ea5" /><DocumentWindow Key="C:\Users\ASUS\Monash\Year 4 Sem 1 (July 2023)\ECE 4191\ece4191\DC_Motor_1\Design01.cydsn\TopDesign\TopDesign.cysch" Guid="2300fee7-b624-4043-bf20-834d29f9e955" /><DocumentWindow Key="C:\Users\ASUS\Monash\Year 4 Sem 1 (July 2023)\ECE 4191\ece4191\DC_Motor_1\Design01.cydsn\Design01.cydwr" Guid="d8666866-bd1f-4c99-b2bd-4ceb9257e4e5" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
+--><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Horizontal"><TabbedMdiContainer Size="1233, 487" SelectedTabbedMdiWindow="0e8e9773-db92-4800-abae-36f43fe03470"><DocumentWindow Key="C:\Users\ASUS\Monash\Year 4 Sem 1 (July 2023)\ECE 4191\ece4191\DC_Motor_1\Design01.cydsn\main.c" Guid="0e8e9773-db92-4800-abae-36f43fe03470" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
 <config v="" />
 <AutoUpdate v="true" />
 </CyGuid_843a90a4-0c4b-4e44-991d-05e7fb117a21>
