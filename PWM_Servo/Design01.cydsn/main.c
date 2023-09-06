@@ -97,12 +97,19 @@ void turn_clockwise()
 }
 CY_ISR(ISR_Handler_1)
 {
-    if (PWM_SmallServo_ReadCompare() ==open_small )
+    if (PWM_SmallServo_ReadCompare() ==open_small )//when button pressed
     {
+        forward();
+        CyDelay(1000);
+        stop();
         PWM_SmallServo_WriteCompare(close_small );
         CyDelay(1000);
         //CyDelay(500);
         PWM_BigServo_WriteCompare(up_big );
+        forward();
+        CyDelay(1000);
+        stop();
+        
     }
     else
     {
@@ -119,6 +126,13 @@ int main(void)
     /* Place your initialization/startup code here (e.g. MyInst_Start()) */
     PWM_SmallServo_Start();
     PWM_BigServo_Start();
+    PWM_Master_Start();
+    PWM_Slave_Start();
+    QuadDec_1_Start();
+    QuadDec_1_SetCounter(0);
+    QuadDec_2_Start();
+    QuadDec_2_SetCounter(0);
+    UART_1_Start();
     isr_1_StartEx(ISR_Handler_1);
     for(;;)
     {
