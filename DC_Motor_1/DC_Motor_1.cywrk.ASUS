@@ -107,6 +107,7 @@
 <v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\Counter_ColorSensor.lst</v>
 <v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\Counter_ColorSensor_PM.lst</v>
 <v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\CS_LED.lst</v>
+<v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\CS_out.lst</v>
 <v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\cy_em_eeprom.lst</v>
 <v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\CyBootAsmGnu.lst</v>
 <v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\CyDmac.lst</v>
@@ -210,6 +211,7 @@
 <v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\Counter_ColorSensor.lst</v>
 <v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\Counter_ColorSensor_PM.lst</v>
 <v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\CS_LED.lst</v>
+<v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\CS_out.lst</v>
 <v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\cy_em_eeprom.lst</v>
 <v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\CyBootAsmGnu.lst</v>
 <v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\CyDmac.lst</v>
@@ -226,7 +228,6 @@
 <v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\Front_Trigger_2.lst</v>
 <v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\IR_input.lst</v>
 <v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\isr_1.lst</v>
-<v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\isr_2.lst</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 </TreeStates>
@@ -318,7 +319,7 @@
   Copyright (c) 2001-2016 Actipro Software LLC.  All rights reserved.
   http://www.actiprosoftware.com
 
---><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Horizontal"><TabbedMdiContainer Size="1233, 487" SelectedTabbedMdiWindow="0e8e9773-db92-4800-abae-36f43fe03470"><DocumentWindow Key="C:\Users\ASUS\Monash\Year 4 Sem 1 (July 2023)\ECE 4191\ece4191\DC_Motor_1\Design01.cydsn\main.c" Guid="0e8e9773-db92-4800-abae-36f43fe03470" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
+--><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Horizontal"><TabbedMdiContainer Size="1233, 487" SelectedTabbedMdiWindow="0e8e9773-db92-4800-abae-36f43fe03470"><DocumentWindow Key="C:\Users\ASUS\Monash\Year 4 Sem 1 (July 2023)\ECE 4191\ece4191\DC_Motor_1\Design01.cydsn\main.c" Guid="0e8e9773-db92-4800-abae-36f43fe03470" /><ToolWindow Key="Start Page:bd4649ab-da6b-4d04-a663-c722b8bf99db:Start Page" Guid="fefca7bd-a4e6-42b3-b0a0-7634106ba9ab" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
 <config v="" />
 <AutoUpdate v="true" />
 </CyGuid_843a90a4-0c4b-4e44-991d-05e7fb117a21>
