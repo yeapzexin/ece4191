@@ -1,10 +1,10 @@
-C:/Users/weiro/OneDrive\ -\ Monash\ University/Monash/Y4_S1/ECE4191/ece4191/ece4191/DC_Motor_1/Design01.cydsn/CortexM3/ARM_GCC_541/Debug/CyBootAsmGnu.o : C:/Users/weiro/OneDrive\ -\ Monash\ University/Monash/Y4_S1/ECE4191/ece4191/ece4191/DC_Motor_1/Design01.cydsn/Generated_Source/PSoC5/CyBootAsmGnu.s C:/Users/weiro/OneDrive\ -\ Monash\ University/Monash/Y4_S1/ECE4191/ece4191/ece4191/DC_Motor_1/Design01.cydsn/Generated_Source/PSoC5/cydevicegnu.inc C:/Users/weiro/OneDrive\ -\ Monash\ University/Monash/Y4_S1/ECE4191/ece4191/ece4191/DC_Motor_1/Design01.cydsn/Generated_Source/PSoC5/cydevicegnu_trm.inc C:/Users/weiro/OneDrive\ -\ Monash\ University/Monash/Y4_S1/ECE4191/ece4191/ece4191/DC_Motor_1/Design01.cydsn/Generated_Source/PSoC5/cyfittergnu.inc 
+C:/Users/weiro/code\ repository\ for\ ece4191/ece4191/DC_Motor_1/Design01.cydsn/CortexM3/ARM_GCC_541/Debug/CyBootAsmGnu.o : C:/Users/weiro/code\ repository\ for\ ece4191/ece4191/DC_Motor_1/Design01.cydsn/Generated_Source/PSoC5/CyBootAsmGnu.s C:/Users/weiro/code\ repository\ for\ ece4191/ece4191/DC_Motor_1/Design01.cydsn/Generated_Source/PSoC5/cydevicegnu.inc C:/Users/weiro/code\ repository\ for\ ece4191/ece4191/DC_Motor_1/Design01.cydsn/Generated_Source/PSoC5/cydevicegnu_trm.inc C:/Users/weiro/code\ repository\ for\ ece4191/ece4191/DC_Motor_1/Design01.cydsn/Generated_Source/PSoC5/cyfittergnu.inc 
 
-C:/Users/weiro/OneDrive\ -\ Monash\ University/Monash/Y4_S1/ECE4191/ece4191/ece4191/DC_Motor_1/Design01.cydsn/Generated_Source/PSoC5/CyBootAsmGnu.s : 
+C:/Users/weiro/code\ repository\ for\ ece4191/ece4191/DC_Motor_1/Design01.cydsn/Generated_Source/PSoC5/CyBootAsmGnu.s : 
 
-C:/Users/weiro/OneDrive\ -\ Monash\ University/Monash/Y4_S1/ECE4191/ece4191/ece4191/DC_Motor_1/Design01.cydsn/Generated_Source/PSoC5/cydevicegnu.inc : 
+C:/Users/weiro/code\ repository\ for\ ece4191/ece4191/DC_Motor_1/Design01.cydsn/Generated_Source/PSoC5/cydevicegnu.inc : 
 
-C:/Users/weiro/OneDrive\ -\ Monash\ University/Monash/Y4_S1/ECE4191/ece4191/ece4191/DC_Motor_1/Design01.cydsn/Generated_Source/PSoC5/cydevicegnu_trm.inc : 
+C:/Users/weiro/code\ repository\ for\ ece4191/ece4191/DC_Motor_1/Design01.cydsn/Generated_Source/PSoC5/cydevicegnu_trm.inc : 
 
-C:/Users/weiro/OneDrive\ -\ Monash\ University/Monash/Y4_S1/ECE4191/ece4191/ece4191/DC_Motor_1/Design01.cydsn/Generated_Source/PSoC5/cyfittergnu.inc : 
+C:/Users/weiro/code\ repository\ for\ ece4191/ece4191/DC_Motor_1/Design01.cydsn/Generated_Source/PSoC5/cyfittergnu.inc : 
 

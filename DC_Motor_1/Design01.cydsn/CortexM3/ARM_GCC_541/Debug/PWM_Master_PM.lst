@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccHtQMOx.s 			page 1
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccj4TKel.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccHtQMOx.s 			page 1
   28:Generated_Source\PSoC5/PWM_Master_PM.c **** *  Saves the current user configuration of the component.
   29:Generated_Source\PSoC5/PWM_Master_PM.c **** *
   30:Generated_Source\PSoC5/PWM_Master_PM.c **** * Parameters:
-ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccHtQMOx.s 			page 2
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccj4TKel.s 			page 2
 
 
   31:Generated_Source\PSoC5/PWM_Master_PM.c **** *  None
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccHtQMOx.s 			page 1
   68:Generated_Source\PSoC5/PWM_Master_PM.c **** 
   69:Generated_Source\PSoC5/PWM_Master_PM.c **** 
   70:Generated_Source\PSoC5/PWM_Master_PM.c **** /*******************************************************************************
-ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccHtQMOx.s 			page 3
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccj4TKel.s 			page 3
 
 
   71:Generated_Source\PSoC5/PWM_Master_PM.c **** * Function Name: PWM_Master_RestoreConfig
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccHtQMOx.s 			page 1
  108:Generated_Source\PSoC5/PWM_Master_PM.c ****             #endif /* (PWM_Master_KillModeMinTime) */
  109:Generated_Source\PSoC5/PWM_Master_PM.c **** 
  110:Generated_Source\PSoC5/PWM_Master_PM.c ****             #if(PWM_Master_UseControl)
-ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccHtQMOx.s 			page 4
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccj4TKel.s 			page 4
 
 
  111:Generated_Source\PSoC5/PWM_Master_PM.c ****                 PWM_Master_WriteControlRegister(PWM_Master_backup.PWMControlRegister);
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccHtQMOx.s 			page 1
  145:Generated_Source\PSoC5/PWM_Master_PM.c ****         {
  146:Generated_Source\PSoC5/PWM_Master_PM.c ****             /* Component is disabled */
  147:Generated_Source\PSoC5/PWM_Master_PM.c ****             PWM_Master_backup.PWMEnableState = 0u;
-ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccHtQMOx.s 			page 5
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccj4TKel.s 			page 5
 
 
   82              		.loc 1 147 0
@@ -258,7 +258,7 @@ ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccHtQMOx.s 			page 1
   91              	.L8:
   92              		.align	2
   93              	.L7:
-  94 0020 004F0040 		.word	1073762048
+  94 0020 0C4F0040 		.word	1073762060
   95 0024 00000000 		.word	.LANCHOR0
   96              		.cfi_endproc
   97              	.LFE2:
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccHtQMOx.s 			page 1
  177:Generated_Source\PSoC5/PWM_Master_PM.c **** *******************************************************************************/
  178:Generated_Source\PSoC5/PWM_Master_PM.c **** void PWM_Master_Wakeup(void) 
  179:Generated_Source\PSoC5/PWM_Master_PM.c **** {
-ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccHtQMOx.s 			page 6
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccj4TKel.s 			page 6
 
 
  107              		.loc 1 179 0
@@ -350,28 +350,28 @@ ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccHtQMOx.s 			page 1
  146 0006 00000000 		.4byte	.Ldebug_abbrev0
  147 000a 04       		.byte	0x4
  148 000b 01       		.uleb128 0x1
- 149 000c 93000000 		.4byte	.LASF23
+ 149 000c 6C000000 		.4byte	.LASF23
  150 0010 0C       		.byte	0xc
- 151 0011 6C000000 		.4byte	.LASF24
- 152 0015 FE010000 		.4byte	.LASF25
+ 151 0011 24020000 		.4byte	.LASF24
+ 152 0015 41010000 		.4byte	.LASF25
  153 0019 00000000 		.4byte	.Ldebug_ranges0+0
  154 001d 00000000 		.4byte	0
  155 0021 00000000 		.4byte	.Ldebug_line0
  156 0025 02       		.uleb128 0x2
-ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccHtQMOx.s 			page 7
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccj4TKel.s 			page 7
 
 
  157 0026 01       		.byte	0x1
  158 0027 06       		.byte	0x6
- 159 0028 C5010000 		.4byte	.LASF0
+ 159 0028 EB010000 		.4byte	.LASF0
  160 002c 02       		.uleb128 0x2
  161 002d 01       		.byte	0x1
  162 002e 08       		.byte	0x8
- 163 002f 8F010000 		.4byte	.LASF1
+ 163 002f B5010000 		.4byte	.LASF1
  164 0033 02       		.uleb128 0x2
  165 0034 02       		.byte	0x2
  166 0035 05       		.byte	0x5
- 167 0036 EF010000 		.4byte	.LASF2
+ 167 0036 15020000 		.4byte	.LASF2
  168 003a 02       		.uleb128 0x2
  169 003b 02       		.byte	0x2
  170 003c 07       		.byte	0x7
@@ -379,11 +379,11 @@ ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccHtQMOx.s 			page 1
  172 0041 02       		.uleb128 0x2
  173 0042 04       		.byte	0x4
  174 0043 05       		.byte	0x5
- 175 0044 AF010000 		.4byte	.LASF4
+ 175 0044 D5010000 		.4byte	.LASF4
  176 0048 02       		.uleb128 0x2
  177 0049 04       		.byte	0x4
  178 004a 07       		.byte	0x7
- 179 004b 39010000 		.4byte	.LASF5
+ 179 004b 12010000 		.4byte	.LASF5
  180 004f 02       		.uleb128 0x2
  181 0050 08       		.byte	0x8
  182 0051 05       		.byte	0x5
@@ -391,7 +391,7 @@ ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccHtQMOx.s 			page 1
  184 0056 02       		.uleb128 0x2
  185 0057 08       		.byte	0x8
  186 0058 07       		.byte	0x7
- 187 0059 4B010000 		.4byte	.LASF7
+ 187 0059 24010000 		.4byte	.LASF7
  188 005d 03       		.uleb128 0x3
  189 005e 04       		.byte	0x4
  190 005f 05       		.byte	0x5
@@ -401,27 +401,27 @@ ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccHtQMOx.s 			page 1
  194 0066 07       		.byte	0x7
  195 0067 21000000 		.4byte	.LASF8
  196 006b 04       		.uleb128 0x4
- 197 006c BF010000 		.4byte	.LASF12
+ 197 006c E5010000 		.4byte	.LASF12
  198 0070 02       		.byte	0x2
  199 0071 E801     		.2byte	0x1e8
  200 0073 2C000000 		.4byte	0x2c
  201 0077 02       		.uleb128 0x2
  202 0078 04       		.byte	0x4
  203 0079 04       		.byte	0x4
- 204 007a 62010000 		.4byte	.LASF9
+ 204 007a 3B010000 		.4byte	.LASF9
  205 007e 02       		.uleb128 0x2
  206 007f 08       		.byte	0x8
  207 0080 04       		.byte	0x4
- 208 0081 B8010000 		.4byte	.LASF10
+ 208 0081 DE010000 		.4byte	.LASF10
  209 0085 02       		.uleb128 0x2
  210 0086 01       		.byte	0x1
  211 0087 08       		.byte	0x8
- 212 0088 8A010000 		.4byte	.LASF11
+ 212 0088 B0010000 		.4byte	.LASF11
  213 008c 04       		.uleb128 0x4
-ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccHtQMOx.s 			page 8
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccj4TKel.s 			page 8
 
 
- 214 008d F9010000 		.4byte	.LASF13
+ 214 008d 1F020000 		.4byte	.LASF13
  215 0091 02       		.byte	0x2
  216 0092 9202     		.2byte	0x292
  217 0094 98000000 		.4byte	0x98
@@ -430,11 +430,11 @@ ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccHtQMOx.s 			page 1
  220 009d 02       		.uleb128 0x2
  221 009e 08       		.byte	0x8
  222 009f 04       		.byte	0x4
- 223 00a0 E3010000 		.4byte	.LASF14
+ 223 00a0 09020000 		.4byte	.LASF14
  224 00a4 02       		.uleb128 0x2
  225 00a5 04       		.byte	0x4
  226 00a6 07       		.byte	0x7
- 227 00a7 69020000 		.4byte	.LASF15
+ 227 00a7 4B020000 		.4byte	.LASF15
  228 00ab 06       		.uleb128 0x6
  229 00ac 01       		.byte	0x1
  230 00ad 03       		.byte	0x3
@@ -448,7 +448,7 @@ ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccHtQMOx.s 			page 1
  238 00be 00       		.byte	0
  239 00bf 00       		.byte	0
  240 00c0 08       		.uleb128 0x8
- 241 00c1 21010000 		.4byte	.LASF16
+ 241 00c1 FA000000 		.4byte	.LASF16
  242 00c5 03       		.byte	0x3
  243 00c6 8B       		.byte	0x8b
  244 00c7 AB000000 		.4byte	0xab
@@ -469,7 +469,7 @@ ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccHtQMOx.s 			page 1
  259 00eb 01       		.uleb128 0x1
  260 00ec 9C       		.byte	0x9c
  261 00ed 0A       		.uleb128 0xa
- 262 00ee 72020000 		.4byte	.LASF19
+ 262 00ee 54020000 		.4byte	.LASF19
  263 00f2 01       		.byte	0x1
  264 00f3 88       		.byte	0x88
  265 00f4 00000000 		.4byte	.LFB2
@@ -478,14 +478,14 @@ ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccHtQMOx.s 			page 1
  268 00fd 9C       		.byte	0x9c
  269 00fe 0C010000 		.4byte	0x10c
  270 0102 0B       		.uleb128 0xb
-ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccHtQMOx.s 			page 9
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccj4TKel.s 			page 9
 
 
  271 0103 1E000000 		.4byte	.LVL0
  272 0107 3C010000 		.4byte	0x13c
  273 010b 00       		.byte	0
  274 010c 0A       		.uleb128 0xa
- 275 010d 9D010000 		.4byte	.LASF20
+ 275 010d C3010000 		.4byte	.LASF20
  276 0111 01       		.byte	0x1
  277 0112 B2       		.byte	0xb2
  278 0113 00000000 		.4byte	.LFB3
@@ -498,7 +498,7 @@ ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccHtQMOx.s 			page 1
  285 0126 47010000 		.4byte	0x147
  286 012a 00       		.byte	0
  287 012b 0C       		.uleb128 0xc
- 288 012c 78010000 		.4byte	.LASF27
+ 288 012c 9E010000 		.4byte	.LASF27
  289 0130 01       		.byte	0x1
  290 0131 14       		.byte	0x14
  291 0132 C0000000 		.4byte	0xc0
@@ -506,13 +506,13 @@ ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccHtQMOx.s 			page 1
  293 0137 03       		.byte	0x3
  294 0138 00000000 		.4byte	PWM_Master_backup
  295 013c 0D       		.uleb128 0xd
- 296 013d 68010000 		.4byte	.LASF21
- 297 0141 68010000 		.4byte	.LASF21
+ 296 013d 8E010000 		.4byte	.LASF21
+ 297 0141 8E010000 		.4byte	.LASF21
  298 0145 03       		.byte	0x3
  299 0146 93       		.byte	0x93
  300 0147 0D       		.uleb128 0xd
- 301 0148 D1010000 		.4byte	.LASF22
- 302 014c D1010000 		.4byte	.LASF22
+ 301 0148 F7010000 		.4byte	.LASF22
+ 302 014c F7010000 		.4byte	.LASF22
  303 0150 03       		.byte	0x3
  304 0151 DB       		.byte	0xdb
  305 0152 00       		.byte	0
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccHtQMOx.s 			page 1
  325 0011 00       		.byte	0
  326 0012 00       		.byte	0
  327 0013 02       		.uleb128 0x2
-ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccHtQMOx.s 			page 10
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccj4TKel.s 			page 10
 
 
  328 0014 24       		.uleb128 0x24
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccHtQMOx.s 			page 1
  382 004a 07       		.uleb128 0x7
  383 004b 0D       		.uleb128 0xd
  384 004c 00       		.byte	0
-ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccHtQMOx.s 			page 11
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccj4TKel.s 			page 11
 
 
  385 004d 03       		.uleb128 0x3
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccHtQMOx.s 			page 1
  439 0084 0E       		.uleb128 0xe
  440 0085 3A       		.uleb128 0x3a
  441 0086 0B       		.uleb128 0xb
-ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccHtQMOx.s 			page 12
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccj4TKel.s 			page 12
 
 
  442 0087 3B       		.uleb128 0x3b
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccHtQMOx.s 			page 1
  496 00c0 0B       		.uleb128 0xb
  497 00c1 00       		.byte	0
  498 00c2 00       		.byte	0
-ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccHtQMOx.s 			page 13
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccj4TKel.s 			page 13
 
 
  499 00c3 00       		.byte	0
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccHtQMOx.s 			page 1
  539              	.LASF26:
  540 002e 50574D45 		.ascii	"PWMEnableState\000"
  540      6E61626C 
-ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccHtQMOx.s 			page 14
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccj4TKel.s 			page 14
 
 
  540      65537461 
@@ -795,134 +795,130 @@ ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccHtQMOx.s 			page 1
  544      65725F52 
  544      6573746F 
  544      7265436F 
- 545              	.LASF24:
- 546 006c 47656E65 		.ascii	"Generated_Source\\PSoC5\\PWM_Master_PM.c\000"
- 546      72617465 
- 546      645F536F 
- 546      75726365 
- 546      5C50536F 
- 547              	.LASF23:
- 548 0093 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
- 548      43313120 
- 548      352E342E 
- 548      31203230 
- 548      31363036 
- 549 00c6 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
- 549      20726576 
- 549      6973696F 
- 549      6E203233 
- 549      37373135 
- 550 00f9 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
- 550      66756E63 
- 550      74696F6E 
- 550      2D736563 
- 550      74696F6E 
- 551              	.LASF16:
- 552 0121 50574D5F 		.ascii	"PWM_Master_backupStruct\000"
- 552      4D617374 
- 552      65725F62 
- 552      61636B75 
- 552      70537472 
- 553              	.LASF5:
- 554 0139 6C6F6E67 		.ascii	"long unsigned int\000"
- 554      20756E73 
- 554      69676E65 
- 554      6420696E 
- 554      7400
- 555              	.LASF7:
- 556 014b 6C6F6E67 		.ascii	"long long unsigned int\000"
- 556      206C6F6E 
- 556      6720756E 
- 556      7369676E 
- 556      65642069 
- 557              	.LASF9:
- 558 0162 666C6F61 		.ascii	"float\000"
- 558      7400
-ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccHtQMOx.s 			page 15
+ 545              	.LASF23:
+ 546 006c 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 546      43313120 
+ 546      352E342E 
+ 546      31203230 
+ 546      31363036 
+ 547 009f 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 547      20726576 
+ 547      6973696F 
+ 547      6E203233 
+ 547      37373135 
+ 548 00d2 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 548      66756E63 
+ 548      74696F6E 
+ 548      2D736563 
+ 548      74696F6E 
+ 549              	.LASF16:
+ 550 00fa 50574D5F 		.ascii	"PWM_Master_backupStruct\000"
+ 550      4D617374 
+ 550      65725F62 
+ 550      61636B75 
+ 550      70537472 
+ 551              	.LASF5:
+ 552 0112 6C6F6E67 		.ascii	"long unsigned int\000"
+ 552      20756E73 
+ 552      69676E65 
+ 552      6420696E 
+ 552      7400
+ 553              	.LASF7:
+ 554 0124 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 554      206C6F6E 
+ 554      6720756E 
+ 554      7369676E 
+ 554      65642069 
+ 555              	.LASF9:
+ 556 013b 666C6F61 		.ascii	"float\000"
+ 556      7400
+ 557              	.LASF25:
+ 558 0141 433A5C55 		.ascii	"C:\\Users\\weiro\\code repository for ece4191\\ece4"
+ 558      73657273 
+ 558      5C776569 
+ 558      726F5C63 
+ 558      6F646520 
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccj4TKel.s 			page 15
 
 
- 559              	.LASF21:
- 560 0168 50574D5F 		.ascii	"PWM_Master_Stop\000"
- 560      4D617374 
- 560      65725F53 
- 560      746F7000 
- 561              	.LASF27:
- 562 0178 50574D5F 		.ascii	"PWM_Master_backup\000"
- 562      4D617374 
- 562      65725F62 
- 562      61636B75 
- 562      7000
- 563              	.LASF11:
- 564 018a 63686172 		.ascii	"char\000"
- 564      00
- 565              	.LASF1:
- 566 018f 756E7369 		.ascii	"unsigned char\000"
- 566      676E6564 
- 566      20636861 
- 566      7200
- 567              	.LASF20:
- 568 019d 50574D5F 		.ascii	"PWM_Master_Wakeup\000"
- 568      4D617374 
- 568      65725F57 
- 568      616B6575 
- 568      7000
- 569              	.LASF4:
- 570 01af 6C6F6E67 		.ascii	"long int\000"
- 570      20696E74 
- 570      00
- 571              	.LASF10:
- 572 01b8 646F7562 		.ascii	"double\000"
- 572      6C6500
- 573              	.LASF12:
- 574 01bf 75696E74 		.ascii	"uint8\000"
- 574      3800
- 575              	.LASF0:
- 576 01c5 7369676E 		.ascii	"signed char\000"
- 576      65642063 
- 576      68617200 
- 577              	.LASF22:
- 578 01d1 50574D5F 		.ascii	"PWM_Master_Enable\000"
- 578      4D617374 
- 578      65725F45 
- 578      6E61626C 
- 578      6500
- 579              	.LASF14:
- 580 01e3 6C6F6E67 		.ascii	"long double\000"
- 580      20646F75 
- 580      626C6500 
- 581              	.LASF2:
- 582 01ef 73686F72 		.ascii	"short int\000"
- 582      7420696E 
- 582      7400
- 583              	.LASF13:
- 584 01f9 72656738 		.ascii	"reg8\000"
- 584      00
- 585              	.LASF25:
-ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccHtQMOx.s 			page 16
+ 559 0170 3139315C 		.ascii	"191\\DC_Motor_1\\Design01.cydsn\000"
+ 559      44435F4D 
+ 559      6F746F72 
+ 559      5F315C44 
+ 559      65736967 
+ 560              	.LASF21:
+ 561 018e 50574D5F 		.ascii	"PWM_Master_Stop\000"
+ 561      4D617374 
+ 561      65725F53 
+ 561      746F7000 
+ 562              	.LASF27:
+ 563 019e 50574D5F 		.ascii	"PWM_Master_backup\000"
+ 563      4D617374 
+ 563      65725F62 
+ 563      61636B75 
+ 563      7000
+ 564              	.LASF11:
+ 565 01b0 63686172 		.ascii	"char\000"
+ 565      00
+ 566              	.LASF1:
+ 567 01b5 756E7369 		.ascii	"unsigned char\000"
+ 567      676E6564 
+ 567      20636861 
+ 567      7200
+ 568              	.LASF20:
+ 569 01c3 50574D5F 		.ascii	"PWM_Master_Wakeup\000"
+ 569      4D617374 
+ 569      65725F57 
+ 569      616B6575 
+ 569      7000
+ 570              	.LASF4:
+ 571 01d5 6C6F6E67 		.ascii	"long int\000"
+ 571      20696E74 
+ 571      00
+ 572              	.LASF10:
+ 573 01de 646F7562 		.ascii	"double\000"
+ 573      6C6500
+ 574              	.LASF12:
+ 575 01e5 75696E74 		.ascii	"uint8\000"
+ 575      3800
+ 576              	.LASF0:
+ 577 01eb 7369676E 		.ascii	"signed char\000"
+ 577      65642063 
+ 577      68617200 
+ 578              	.LASF22:
+ 579 01f7 50574D5F 		.ascii	"PWM_Master_Enable\000"
+ 579      4D617374 
+ 579      65725F45 
+ 579      6E61626C 
+ 579      6500
+ 580              	.LASF14:
+ 581 0209 6C6F6E67 		.ascii	"long double\000"
+ 581      20646F75 
+ 581      626C6500 
+ 582              	.LASF2:
+ 583 0215 73686F72 		.ascii	"short int\000"
+ 583      7420696E 
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccj4TKel.s 			page 16
 
 
- 586 01fe 433A5C55 		.ascii	"C:\\Users\\weiro\\OneDrive - Monash University\\Mon"
- 586      73657273 
- 586      5C776569 
- 586      726F5C4F 
- 586      6E654472 
- 587 022d 6173685C 		.ascii	"ash\\Y4_S1\\ECE4191\\ece4191\\ece4191\\DC_Motor_1\\"
- 587      59345F53 
- 587      315C4543 
- 587      45343139 
- 587      315C6563 
- 588 025a 44657369 		.ascii	"Design01.cydsn\000"
- 588      676E3031 
- 588      2E637964 
- 588      736E00
- 589              	.LASF15:
- 590 0269 73697A65 		.ascii	"sizetype\000"
- 590      74797065 
- 590      00
- 591              	.LASF19:
- 592 0272 50574D5F 		.ascii	"PWM_Master_Sleep\000"
- 592      4D617374 
- 592      65725F53 
- 592      6C656570 
- 592      00
- 593              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran
+ 583      7400
+ 584              	.LASF13:
+ 585 021f 72656738 		.ascii	"reg8\000"
+ 585      00
+ 586              	.LASF24:
+ 587 0224 47656E65 		.ascii	"Generated_Source\\PSoC5\\PWM_Master_PM.c\000"
+ 587      72617465 
+ 587      645F536F 
+ 587      75726365 
+ 587      5C50536F 
+ 588              	.LASF15:
+ 589 024b 73697A65 		.ascii	"sizetype\000"
+ 589      74797065 
+ 589      00
+ 590              	.LASF19:
+ 591 0254 50574D5F 		.ascii	"PWM_Master_Sleep\000"
+ 591      4D617374 
+ 591      65725F53 
+ 591      6C656570 
+ 591      00
+ 592              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

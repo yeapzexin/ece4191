@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccRhvmkx.s 			page 1
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccjPkiys.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccRhvmkx.s 			page 1
   28:Generated_Source\PSoC5/Timer_3_PM.c **** * Summary:
   29:Generated_Source\PSoC5/Timer_3_PM.c **** *     Save the current user configuration
   30:Generated_Source\PSoC5/Timer_3_PM.c **** *
-ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccRhvmkx.s 			page 2
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccjPkiys.s 			page 2
 
 
   31:Generated_Source\PSoC5/Timer_3_PM.c **** * Parameters:
@@ -110,7 +110,7 @@ ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccRhvmkx.s 			page 1
   51              		.align	2
   52              	.L3:
   53 0018 00000000 		.word	.LANCHOR0
-  54 001c 85640040 		.word	1073767557
+  54 001c 84640040 		.word	1073767556
   55              		.cfi_endproc
   56              	.LFE0:
   57              		.size	Timer_3_SaveConfig, .-Timer_3_SaveConfig
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccRhvmkx.s 			page 1
   59              		.align	2
   60              		.global	Timer_3_RestoreConfig
   61              		.thumb
-ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccRhvmkx.s 			page 3
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccjPkiys.s 			page 3
 
 
   62              		.thumb_func
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccRhvmkx.s 			page 1
   87:Generated_Source\PSoC5/Timer_3_PM.c ****         #if(!Timer_3_UDB_CONTROL_REG_REMOVED)
   88:Generated_Source\PSoC5/Timer_3_PM.c ****             Timer_3_WriteControlRegister(Timer_3_backup.TimerControlRegister);
   83              		.loc 1 88 0
-ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccRhvmkx.s 			page 4
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccjPkiys.s 			page 4
 
 
   84 0010 6079     		ldrb	r0, [r4, #5]	@ zero_extendqisi2
@@ -189,7 +189,7 @@ ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccRhvmkx.s 			page 1
   89              		.align	2
   90              	.L7:
   91 0018 00000000 		.word	.LANCHOR0
-  92 001c 85640040 		.word	1073767557
+  92 001c 84640040 		.word	1073767556
   93              		.cfi_endproc
   94              	.LFE1:
   95              		.size	Timer_3_RestoreConfig, .-Timer_3_RestoreConfig
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccRhvmkx.s 			page 1
  115:Generated_Source\PSoC5/Timer_3_PM.c ****         /* Save Counter's enable state */
  116:Generated_Source\PSoC5/Timer_3_PM.c ****         if(Timer_3_CTRL_ENABLE == (Timer_3_CONTROL & Timer_3_CTRL_ENABLE))
  112              		.loc 1 116 0
-ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccRhvmkx.s 			page 5
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccjPkiys.s 			page 5
 
 
  113 0002 084B     		ldr	r3, .L13
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccRhvmkx.s 			page 1
  133:Generated_Source\PSoC5/Timer_3_PM.c **** * Function Name: Timer_3_Wakeup
  134:Generated_Source\PSoC5/Timer_3_PM.c **** ********************************************************************************
  135:Generated_Source\PSoC5/Timer_3_PM.c **** *
-ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccRhvmkx.s 			page 6
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccjPkiys.s 			page 6
 
 
  136:Generated_Source\PSoC5/Timer_3_PM.c **** * Summary:
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccRhvmkx.s 			page 1
  184              	Timer_3_backup:
  185 0000 00000000 		.space	6
  185      0000
-ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccRhvmkx.s 			page 7
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccjPkiys.s 			page 7
 
 
  186              		.text
@@ -372,25 +372,25 @@ ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccRhvmkx.s 			page 1
  194 0006 00000000 		.4byte	.Ldebug_abbrev0
  195 000a 04       		.byte	0x4
  196 000b 01       		.uleb128 0x1
- 197 000c 44010000 		.4byte	.LASF32
+ 197 000c D9000000 		.4byte	.LASF32
  198 0010 0C       		.byte	0xc
- 199 0011 0C010000 		.4byte	.LASF33
- 200 0015 84000000 		.4byte	.LASF34
+ 199 0011 A1000000 		.4byte	.LASF33
+ 200 0015 84010000 		.4byte	.LASF34
  201 0019 00000000 		.4byte	.Ldebug_ranges0+0
  202 001d 00000000 		.4byte	0
  203 0021 00000000 		.4byte	.Ldebug_line0
  204 0025 02       		.uleb128 0x2
  205 0026 01       		.byte	0x1
  206 0027 06       		.byte	0x6
- 207 0028 D0020000 		.4byte	.LASF0
+ 207 0028 B2020000 		.4byte	.LASF0
  208 002c 02       		.uleb128 0x2
  209 002d 01       		.byte	0x1
  210 002e 08       		.byte	0x8
- 211 002f 36010000 		.4byte	.LASF1
+ 211 002f CB000000 		.4byte	.LASF1
  212 0033 02       		.uleb128 0x2
  213 0034 02       		.byte	0x2
  214 0035 05       		.byte	0x5
- 215 0036 94020000 		.4byte	.LASF2
+ 215 0036 76020000 		.4byte	.LASF2
  216 003a 02       		.uleb128 0x2
  217 003b 02       		.byte	0x2
  218 003c 07       		.byte	0x7
@@ -398,19 +398,19 @@ ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccRhvmkx.s 			page 1
  220 0041 02       		.uleb128 0x2
  221 0042 04       		.byte	0x4
  222 0043 05       		.byte	0x5
- 223 0044 BB020000 		.4byte	.LASF4
+ 223 0044 9D020000 		.4byte	.LASF4
  224 0048 02       		.uleb128 0x2
  225 0049 04       		.byte	0x4
  226 004a 07       		.byte	0x7
- 227 004b D7010000 		.4byte	.LASF5
+ 227 004b 6C010000 		.4byte	.LASF5
  228 004f 02       		.uleb128 0x2
  229 0050 08       		.byte	0x8
  230 0051 05       		.byte	0x5
- 231 0052 81020000 		.4byte	.LASF6
+ 231 0052 63020000 		.4byte	.LASF6
  232 0056 02       		.uleb128 0x2
  233 0057 08       		.byte	0x8
  234 0058 07       		.byte	0x7
- 235 0059 36020000 		.4byte	.LASF7
+ 235 0059 18020000 		.4byte	.LASF7
  236 005d 03       		.uleb128 0x3
  237 005e 04       		.byte	0x4
  238 005f 05       		.byte	0x5
@@ -418,34 +418,34 @@ ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccRhvmkx.s 			page 1
  240 0064 02       		.uleb128 0x2
  241 0065 04       		.byte	0x4
  242 0066 07       		.byte	0x7
-ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccRhvmkx.s 			page 8
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccjPkiys.s 			page 8
 
 
- 243 0067 29020000 		.4byte	.LASF8
+ 243 0067 0B020000 		.4byte	.LASF8
  244 006b 04       		.uleb128 0x4
- 245 006c E9010000 		.4byte	.LASF9
+ 245 006c 7E010000 		.4byte	.LASF9
  246 0070 02       		.byte	0x2
  247 0071 E801     		.2byte	0x1e8
  248 0073 2C000000 		.4byte	0x2c
  249 0077 04       		.uleb128 0x4
- 250 0078 05020000 		.4byte	.LASF10
+ 250 0078 E7010000 		.4byte	.LASF10
  251 007c 02       		.byte	0x2
  252 007d E901     		.2byte	0x1e9
  253 007f 3A000000 		.4byte	0x3a
  254 0083 02       		.uleb128 0x2
  255 0084 04       		.byte	0x4
  256 0085 04       		.byte	0x4
- 257 0086 30010000 		.4byte	.LASF11
+ 257 0086 C5000000 		.4byte	.LASF11
  258 008a 02       		.uleb128 0x2
  259 008b 08       		.byte	0x8
  260 008c 04       		.byte	0x4
- 261 008d FE010000 		.4byte	.LASF12
+ 261 008d E0010000 		.4byte	.LASF12
  262 0091 02       		.uleb128 0x2
  263 0092 01       		.byte	0x1
  264 0093 08       		.byte	0x8
- 265 0094 8F020000 		.4byte	.LASF13
+ 265 0094 71020000 		.4byte	.LASF13
  266 0098 04       		.uleb128 0x4
- 267 0099 D2010000 		.4byte	.LASF14
+ 267 0099 67010000 		.4byte	.LASF14
  268 009d 02       		.byte	0x2
  269 009e 9202     		.2byte	0x292
  270 00a0 A4000000 		.4byte	0xa4
@@ -454,11 +454,11 @@ ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccRhvmkx.s 			page 1
  273 00a9 02       		.uleb128 0x2
  274 00aa 08       		.byte	0x8
  275 00ab 04       		.byte	0x4
- 276 00ac C4020000 		.4byte	.LASF15
+ 276 00ac A6020000 		.4byte	.LASF15
  277 00b0 02       		.uleb128 0x2
  278 00b1 04       		.byte	0x4
  279 00b2 07       		.byte	0x7
- 280 00b3 78020000 		.4byte	.LASF16
+ 280 00b3 5A020000 		.4byte	.LASF16
  281 00b7 06       		.uleb128 0x6
  282 00b8 06       		.byte	0x6
  283 00b9 03       		.byte	0x3
@@ -471,14 +471,14 @@ ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccRhvmkx.s 			page 1
  290 00c6 6B000000 		.4byte	0x6b
  291 00ca 00       		.byte	0
  292 00cb 07       		.uleb128 0x7
- 293 00cc EF000000 		.4byte	.LASF18
+ 293 00cc 84000000 		.4byte	.LASF18
  294 00d0 03       		.byte	0x3
  295 00d1 48       		.byte	0x48
  296 00d2 77000000 		.4byte	0x77
  297 00d6 02       		.byte	0x2
  298 00d7 07       		.uleb128 0x7
- 299 00d8 DC020000 		.4byte	.LASF19
-ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccRhvmkx.s 			page 9
+ 299 00d8 BE020000 		.4byte	.LASF19
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccjPkiys.s 			page 9
 
 
  300 00dc 03       		.byte	0x3
@@ -486,7 +486,7 @@ ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccRhvmkx.s 			page 1
  302 00de 6B000000 		.4byte	0x6b
  303 00e2 04       		.byte	0x4
  304 00e3 07       		.uleb128 0x7
- 305 00e4 EF020000 		.4byte	.LASF20
+ 305 00e4 D1020000 		.4byte	.LASF20
  306 00e8 03       		.byte	0x3
  307 00e9 4F       		.byte	0x4f
  308 00ea 6B000000 		.4byte	0x6b
@@ -514,7 +514,7 @@ ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccRhvmkx.s 			page 1
  330 011e B7010000 		.4byte	0x1b7
  331 0122 00       		.byte	0
  332 0123 09       		.uleb128 0x9
- 333 0124 4D020000 		.4byte	.LASF23
+ 333 0124 2F020000 		.4byte	.LASF23
  334 0128 01       		.byte	0x1
  335 0129 4D       		.byte	0x4d
  336 012a 00000000 		.4byte	.LFB1
@@ -530,7 +530,7 @@ ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccRhvmkx.s 			page 1
  346 0146 CD010000 		.4byte	0x1cd
  347 014a 00       		.byte	0
  348 014b 09       		.uleb128 0x9
- 349 014c 1B020000 		.4byte	.LASF24
+ 349 014c FD010000 		.4byte	.LASF24
  350 0150 01       		.byte	0x1
  351 0151 70       		.byte	0x70
  352 0152 00000000 		.4byte	.LFB2
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccRhvmkx.s 			page 1
  354 015a 01       		.uleb128 0x1
  355 015b 9C       		.byte	0x9c
  356 015c 73010000 		.4byte	0x173
-ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccRhvmkx.s 			page 10
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccjPkiys.s 			page 10
 
 
  357 0160 0A       		.uleb128 0xa
@@ -549,7 +549,7 @@ ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccRhvmkx.s 			page 1
  362 016e FB000000 		.4byte	0xfb
  363 0172 00       		.byte	0
  364 0173 09       		.uleb128 0x9
- 365 0174 0C020000 		.4byte	.LASF25
+ 365 0174 EE010000 		.4byte	.LASF25
  366 0178 01       		.byte	0x1
  367 0179 96       		.byte	0x96
  368 017a 00000000 		.4byte	.LFB3
@@ -565,7 +565,7 @@ ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccRhvmkx.s 			page 1
  378 0196 E3010000 		.4byte	0x1e3
  379 019a 00       		.byte	0
  380 019b 0B       		.uleb128 0xb
- 381 019c EF010000 		.4byte	.LASF35
+ 381 019c D1010000 		.4byte	.LASF35
  382 01a0 01       		.byte	0x1
  383 01a1 15       		.byte	0x15
  384 01a2 F0000000 		.4byte	0xf0
@@ -573,8 +573,8 @@ ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccRhvmkx.s 			page 1
  386 01a7 03       		.byte	0x3
  387 01a8 00000000 		.4byte	Timer_3_backup
  388 01ac 0C       		.uleb128 0xc
- 389 01ad F8000000 		.4byte	.LASF26
- 390 01b1 F8000000 		.4byte	.LASF26
+ 389 01ad 8D000000 		.4byte	.LASF26
+ 390 01b1 8D000000 		.4byte	.LASF26
  391 01b5 03       		.byte	0x3
  392 01b6 69       		.byte	0x69
  393 01b7 0C       		.uleb128 0xc
@@ -583,13 +583,13 @@ ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccRhvmkx.s 			page 1
  396 01c0 03       		.byte	0x3
  397 01c1 63       		.byte	0x63
  398 01c2 0C       		.uleb128 0xc
- 399 01c3 63020000 		.4byte	.LASF28
- 400 01c7 63020000 		.4byte	.LASF28
+ 399 01c3 45020000 		.4byte	.LASF28
+ 400 01c7 45020000 		.4byte	.LASF28
  401 01cb 03       		.byte	0x3
  402 01cc 6A       		.byte	0x6a
  403 01cd 0C       		.uleb128 0xc
- 404 01ce 9E020000 		.4byte	.LASF29
- 405 01d2 9E020000 		.4byte	.LASF29
+ 404 01ce 80020000 		.4byte	.LASF29
+ 405 01d2 80020000 		.4byte	.LASF29
  406 01d6 03       		.byte	0x3
  407 01d7 64       		.byte	0x64
  408 01d8 0C       		.uleb128 0xc
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccRhvmkx.s 			page 1
  411 01e1 03       		.byte	0x3
  412 01e2 5B       		.byte	0x5b
  413 01e3 0C       		.uleb128 0xc
-ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccRhvmkx.s 			page 11
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccjPkiys.s 			page 11
 
 
  414 01e4 46000000 		.4byte	.LASF31
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccRhvmkx.s 			page 1
  468 002f 0B       		.uleb128 0xb
  469 0030 3B       		.uleb128 0x3b
  470 0031 05       		.uleb128 0x5
-ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccRhvmkx.s 			page 12
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccjPkiys.s 			page 12
 
 
  471 0032 49       		.uleb128 0x49
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccRhvmkx.s 			page 1
  525 0068 01       		.byte	0x1
  526 0069 3F       		.uleb128 0x3f
  527 006a 19       		.uleb128 0x19
-ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccRhvmkx.s 			page 13
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccjPkiys.s 			page 13
 
 
  528 006b 03       		.uleb128 0x3
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccRhvmkx.s 			page 1
  582 00a4 0E       		.uleb128 0xe
  583 00a5 3A       		.uleb128 0x3a
  584 00a6 0B       		.uleb128 0xb
-ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccRhvmkx.s 			page 14
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccjPkiys.s 			page 14
 
 
  585 00a7 3B       		.uleb128 0x3b
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccRhvmkx.s 			page 1
  628 001e 54696D65 		.ascii	"Timer_3_SaveConfig\000"
  628      725F335F 
  628      53617665 
-ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccRhvmkx.s 			page 15
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccjPkiys.s 			page 15
 
 
  628      436F6E66 
@@ -866,170 +866,166 @@ ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccRhvmkx.s 			page 1
  636      7369676E 
  636      65642069 
  636      6E7400
- 637              	.LASF34:
- 638 0084 433A5C55 		.ascii	"C:\\Users\\weiro\\OneDrive - Monash University\\Mon"
- 638      73657273 
- 638      5C776569 
- 638      726F5C4F 
- 638      6E654472 
- 639 00b3 6173685C 		.ascii	"ash\\Y4_S1\\ECE4191\\ece4191\\ece4191\\DC_Motor_1\\"
- 639      59345F53 
- 639      315C4543 
- 639      45343139 
- 639      315C6563 
- 640 00e0 44657369 		.ascii	"Design01.cydsn\000"
- 640      676E3031 
- 640      2E637964 
- 640      736E00
- 641              	.LASF18:
- 642 00ef 54696D65 		.ascii	"TimerUdb\000"
- 642      72556462 
- 642      00
- 643              	.LASF26:
- 644 00f8 54696D65 		.ascii	"Timer_3_ReadCounter\000"
- 644      725F335F 
- 644      52656164 
- 644      436F756E 
- 644      74657200 
- 645              	.LASF33:
- 646 010c 47656E65 		.ascii	"Generated_Source\\PSoC5\\Timer_3_PM.c\000"
- 646      72617465 
- 646      645F536F 
- 646      75726365 
- 646      5C50536F 
- 647              	.LASF11:
-ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccRhvmkx.s 			page 16
+ 637              	.LASF18:
+ 638 0084 54696D65 		.ascii	"TimerUdb\000"
+ 638      72556462 
+ 638      00
+ 639              	.LASF26:
+ 640 008d 54696D65 		.ascii	"Timer_3_ReadCounter\000"
+ 640      725F335F 
+ 640      52656164 
+ 640      436F756E 
+ 640      74657200 
+ 641              	.LASF33:
+ 642 00a1 47656E65 		.ascii	"Generated_Source\\PSoC5\\Timer_3_PM.c\000"
+ 642      72617465 
+ 642      645F536F 
+ 642      75726365 
+ 642      5C50536F 
+ 643              	.LASF11:
+ 644 00c5 666C6F61 		.ascii	"float\000"
+ 644      7400
+ 645              	.LASF1:
+ 646 00cb 756E7369 		.ascii	"unsigned char\000"
+ 646      676E6564 
+ 646      20636861 
+ 646      7200
+ 647              	.LASF32:
+ 648 00d9 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 648      43313120 
+ 648      352E342E 
+ 648      31203230 
+ 648      31363036 
+ 649 010c 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 649      20726576 
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccjPkiys.s 			page 16
 
 
- 648 0130 666C6F61 		.ascii	"float\000"
- 648      7400
- 649              	.LASF1:
- 650 0136 756E7369 		.ascii	"unsigned char\000"
- 650      676E6564 
- 650      20636861 
- 650      7200
- 651              	.LASF32:
- 652 0144 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
- 652      43313120 
- 652      352E342E 
- 652      31203230 
- 652      31363036 
- 653 0177 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
- 653      20726576 
- 653      6973696F 
- 653      6E203233 
- 653      37373135 
- 654 01aa 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
- 654      66756E63 
- 654      74696F6E 
- 654      2D736563 
- 654      74696F6E 
- 655              	.LASF14:
- 656 01d2 72656738 		.ascii	"reg8\000"
- 656      00
- 657              	.LASF5:
- 658 01d7 6C6F6E67 		.ascii	"long unsigned int\000"
- 658      20756E73 
- 658      69676E65 
- 658      6420696E 
- 658      7400
- 659              	.LASF9:
- 660 01e9 75696E74 		.ascii	"uint8\000"
- 660      3800
- 661              	.LASF35:
- 662 01ef 54696D65 		.ascii	"Timer_3_backup\000"
- 662      725F335F 
- 662      6261636B 
- 662      757000
- 663              	.LASF12:
- 664 01fe 646F7562 		.ascii	"double\000"
- 664      6C6500
- 665              	.LASF10:
- 666 0205 75696E74 		.ascii	"uint16\000"
- 666      313600
- 667              	.LASF25:
- 668 020c 54696D65 		.ascii	"Timer_3_Wakeup\000"
- 668      725F335F 
- 668      57616B65 
- 668      757000
- 669              	.LASF24:
- 670 021b 54696D65 		.ascii	"Timer_3_Sleep\000"
- 670      725F335F 
- 670      536C6565 
- 670      7000
- 671              	.LASF8:
-ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccRhvmkx.s 			page 17
+ 649      6973696F 
+ 649      6E203233 
+ 649      37373135 
+ 650 013f 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 650      66756E63 
+ 650      74696F6E 
+ 650      2D736563 
+ 650      74696F6E 
+ 651              	.LASF14:
+ 652 0167 72656738 		.ascii	"reg8\000"
+ 652      00
+ 653              	.LASF5:
+ 654 016c 6C6F6E67 		.ascii	"long unsigned int\000"
+ 654      20756E73 
+ 654      69676E65 
+ 654      6420696E 
+ 654      7400
+ 655              	.LASF9:
+ 656 017e 75696E74 		.ascii	"uint8\000"
+ 656      3800
+ 657              	.LASF34:
+ 658 0184 433A5C55 		.ascii	"C:\\Users\\weiro\\code repository for ece4191\\ece4"
+ 658      73657273 
+ 658      5C776569 
+ 658      726F5C63 
+ 658      6F646520 
+ 659 01b3 3139315C 		.ascii	"191\\DC_Motor_1\\Design01.cydsn\000"
+ 659      44435F4D 
+ 659      6F746F72 
+ 659      5F315C44 
+ 659      65736967 
+ 660              	.LASF35:
+ 661 01d1 54696D65 		.ascii	"Timer_3_backup\000"
+ 661      725F335F 
+ 661      6261636B 
+ 661      757000
+ 662              	.LASF12:
+ 663 01e0 646F7562 		.ascii	"double\000"
+ 663      6C6500
+ 664              	.LASF10:
+ 665 01e7 75696E74 		.ascii	"uint16\000"
+ 665      313600
+ 666              	.LASF25:
+ 667 01ee 54696D65 		.ascii	"Timer_3_Wakeup\000"
+ 667      725F335F 
+ 667      57616B65 
+ 667      757000
+ 668              	.LASF24:
+ 669 01fd 54696D65 		.ascii	"Timer_3_Sleep\000"
+ 669      725F335F 
+ 669      536C6565 
+ 669      7000
+ 670              	.LASF8:
+ 671 020b 756E7369 		.ascii	"unsigned int\000"
+ 671      676E6564 
+ 671      20696E74 
+ 671      00
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccjPkiys.s 			page 17
 
 
- 672 0229 756E7369 		.ascii	"unsigned int\000"
- 672      676E6564 
- 672      20696E74 
- 672      00
- 673              	.LASF7:
- 674 0236 6C6F6E67 		.ascii	"long long unsigned int\000"
- 674      206C6F6E 
- 674      6720756E 
- 674      7369676E 
- 674      65642069 
- 675              	.LASF23:
- 676 024d 54696D65 		.ascii	"Timer_3_RestoreConfig\000"
- 676      725F335F 
- 676      52657374 
- 676      6F726543 
- 676      6F6E6669 
- 677              	.LASF28:
- 678 0263 54696D65 		.ascii	"Timer_3_WriteCounter\000"
- 678      725F335F 
- 678      57726974 
- 678      65436F75 
- 678      6E746572 
- 679              	.LASF16:
- 680 0278 73697A65 		.ascii	"sizetype\000"
- 680      74797065 
- 680      00
- 681              	.LASF6:
- 682 0281 6C6F6E67 		.ascii	"long long int\000"
- 682      206C6F6E 
- 682      6720696E 
- 682      7400
- 683              	.LASF13:
- 684 028f 63686172 		.ascii	"char\000"
- 684      00
- 685              	.LASF2:
- 686 0294 73686F72 		.ascii	"short int\000"
- 686      7420696E 
- 686      7400
- 687              	.LASF29:
- 688 029e 54696D65 		.ascii	"Timer_3_WriteControlRegister\000"
- 688      725F335F 
- 688      57726974 
- 688      65436F6E 
- 688      74726F6C 
- 689              	.LASF4:
- 690 02bb 6C6F6E67 		.ascii	"long int\000"
- 690      20696E74 
- 690      00
- 691              	.LASF15:
- 692 02c4 6C6F6E67 		.ascii	"long double\000"
- 692      20646F75 
- 692      626C6500 
- 693              	.LASF0:
- 694 02d0 7369676E 		.ascii	"signed char\000"
- 694      65642063 
- 694      68617200 
- 695              	.LASF19:
-ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccRhvmkx.s 			page 18
+ 672              	.LASF7:
+ 673 0218 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 673      206C6F6E 
+ 673      6720756E 
+ 673      7369676E 
+ 673      65642069 
+ 674              	.LASF23:
+ 675 022f 54696D65 		.ascii	"Timer_3_RestoreConfig\000"
+ 675      725F335F 
+ 675      52657374 
+ 675      6F726543 
+ 675      6F6E6669 
+ 676              	.LASF28:
+ 677 0245 54696D65 		.ascii	"Timer_3_WriteCounter\000"
+ 677      725F335F 
+ 677      57726974 
+ 677      65436F75 
+ 677      6E746572 
+ 678              	.LASF16:
+ 679 025a 73697A65 		.ascii	"sizetype\000"
+ 679      74797065 
+ 679      00
+ 680              	.LASF6:
+ 681 0263 6C6F6E67 		.ascii	"long long int\000"
+ 681      206C6F6E 
+ 681      6720696E 
+ 681      7400
+ 682              	.LASF13:
+ 683 0271 63686172 		.ascii	"char\000"
+ 683      00
+ 684              	.LASF2:
+ 685 0276 73686F72 		.ascii	"short int\000"
+ 685      7420696E 
+ 685      7400
+ 686              	.LASF29:
+ 687 0280 54696D65 		.ascii	"Timer_3_WriteControlRegister\000"
+ 687      725F335F 
+ 687      57726974 
+ 687      65436F6E 
+ 687      74726F6C 
+ 688              	.LASF4:
+ 689 029d 6C6F6E67 		.ascii	"long int\000"
+ 689      20696E74 
+ 689      00
+ 690              	.LASF15:
+ 691 02a6 6C6F6E67 		.ascii	"long double\000"
+ 691      20646F75 
+ 691      626C6500 
+ 692              	.LASF0:
+ 693 02b2 7369676E 		.ascii	"signed char\000"
+ 693      65642063 
+ 693      68617200 
+ 694              	.LASF19:
+ 695 02be 496E7465 		.ascii	"InterruptMaskValue\000"
+ 695      72727570 
+ 695      744D6173 
+ 695      6B56616C 
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccjPkiys.s 			page 18
 
 
- 696 02dc 496E7465 		.ascii	"InterruptMaskValue\000"
- 696      72727570 
- 696      744D6173 
- 696      6B56616C 
- 696      756500
- 697              	.LASF20:
- 698 02ef 54696D65 		.ascii	"TimerControlRegister\000"
- 698      72436F6E 
- 698      74726F6C 
- 698      52656769 
- 698      73746572 
- 699              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran
+ 695      756500
+ 696              	.LASF20:
+ 697 02d1 54696D65 		.ascii	"TimerControlRegister\000"
+ 697      72436F6E 
+ 697      74726F6C 
+ 697      52656769 
+ 697      73746572 
+ 698              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

@@ -16,13 +16,14 @@
 #include <stdlib.h>
 #include <math.h> 
 
-const double WHEEL_DIAMETER = 5.4; //cm
-const double WHEEL_CIRCUMFERENCE = M_PI*WHEEL_DIAMETER;
-const double COUNT_WHEEL = 3667; // Count per rotation
-const double CM_COUNT_CONV = COUNT_WHEEL/WHEEL_CIRCUMFERENCE;
-const double DISTANCE_BETW_WHEEL = 22.30;
-const double DISTANCE_PT_TURN = M_PI*DISTANCE_BETW_WHEEL/4;
-const double PT_TURN_COUNT = COUNT_WHEEL * DISTANCE_PT_TURN/(M_PI*WHEEL_DIAMETER)-500;
+double WHEEL_DIAMETER = 5.4; //cm
+double WHEEL_CIRCUMFERENCE = 0;
+
+double COUNT_WHEEL = 3667; // Count per rotation
+double CM_COUNT_CONV = 0;
+double DISTANCE_BETW_WHEEL = 22.30;
+double DISTANCE_PT_TURN = 0;
+double PT_TURN_COUNT = 0;
 int Count_Master = 0;
 int Count_Slave = 0;
 char string_1[20];
@@ -49,6 +50,10 @@ int compare_ready = 0;
 int color_detected = 0; // 1-red, 2-green, 3-blue
 int wall_detected_10 = 0;
 int slit_detected = 0;
+int down_big = 615;
+int up_big = 525;
+int open_small = 980;
+int close_small  = 940;
 
 CY_ISR(Color_sensing)
 {
@@ -100,7 +105,7 @@ CY_ISR(dist_front_detection_1)
 /*
 CY_ISR(dist_front_detection_2)
 {
-    Timer_2_ReadStatusRegister();
+    Timer_2_ReadStatusRegister(); // havent modify
     front_det_count_2 = Timer_2_ReadCounter();
     front_measured_2 = (65535-front_det_count_2)/58;
     sprintf(string_1, "Front dist 2: %lf\n", front_measured_2);
@@ -109,7 +114,7 @@ CY_ISR(dist_front_detection_2)
 
 CY_ISR(dist_right_detection)
 {
-    Timer_2_ReadStatusRegister();
+    Timer_2_ReadStatusRegister(); // havent modify
     right_det_count = Timer_2_ReadCounter();
     front_measured_1 = (65535-right_det_count)/58;
     //sprintf(string_1, "front dist: %lf\n", front_measured_1);
@@ -409,7 +414,7 @@ void move2puck()
     }
     reset_count();
 }
-
+/*
 void F_or_R_1(int dist_count, int flag_FR)
 {
     double avg_count, avg_dist;
@@ -572,7 +577,7 @@ void F_or_R_3(int dist_count, int flag_FR)
     //
     //QuadDec_2_SetCounter(0);
 }
-
+*/
 void CW(int PT_TURN_COUNT, int flag_CW)
 {
     while(abs(Count_Master) <= PT_TURN_COUNT && abs(Count_Slave) <= PT_TURN_COUNT)
@@ -698,6 +703,10 @@ void Color_Sensing_Function()
 int main(void)
 {
     CyGlobalIntEnable; /* Enable global interrupts. */
+    WHEEL_CIRCUMFERENCE = M_PI*WHEEL_DIAMETER;
+    DISTANCE_PT_TURN = M_PI*DISTANCE_BETW_WHEEL/4;
+    CM_COUNT_CONV = COUNT_WHEEL/WHEEL_CIRCUMFERENCE;
+    PT_TURN_COUNT = COUNT_WHEEL * DISTANCE_PT_TURN/(M_PI*WHEEL_DIAMETER)-500;
     isr_1_StartEx(Speed_Control);
     isr_6_StartEx(Color_sensing);
     Timer_1_Start();
@@ -713,6 +722,8 @@ int main(void)
     Counter_ColorSensor_Start();
     PWM_Master_Start();
     PWM_Slave_Start();
+    PWM_SmallServo_Start();
+    PWM_BigServo_Start();
     QuadDec_1_Start();
     QuadDec_1_SetCounter(0);
     QuadDec_2_Start();
@@ -800,33 +811,42 @@ int main(void)
     }
     CyDelay(500);
     
-    // color sensing
+    // color sensing & light up LED
     while (step == 4)
     {
         Color_Sensing_Function();
+        if (color_detected == 1) // red
+        {
+            led_red_Write(1);
+        }
+        else if (color_detected == 2) // green
+        {
+            led_green_Write(1);
+        }
+        else if (color_detected == 3) // blue
+        {
+            led_blue_Write(1);   
+        }
+        step++;
     }
     CyDelay(500);
     
     // move forward & pick up puck
-    while (step ==5)
+    while (step == 5)
     {
         flag_FR = 1;
-        dist_trav = 30;
-        dist_count = dist_trav*CM_COUNT_CONV;
-        F_or_R_3(dist_count, flag_FR);
+        dist_trav = 17.5; // distance from color sensor to gripper center
+        move_fixed_dist(dist_trav, flag_FR);
+        PWM_BigServo_WriteCompare(down_big);
+        CyDelay(500);
+        PWM_SmallServo_WriteCompare(close_small);
+        CyDelay(500);
+        PWM_BigServo_WriteCompare(up_big);
+        step++;
     }
     CyDelay(500);
-    QuadDec_1_SetCounter(0);
-    QuadDec_2_SetCounter(0);
-    Count_Master = 0;
-    Count_Slave = 0;
     
-    
-    while (step ==6)
-    {
-        Color_Sensing_Function();
-    }
-    //stop();
+    // go home?
 }
 
 /* [] END OF FILE */
