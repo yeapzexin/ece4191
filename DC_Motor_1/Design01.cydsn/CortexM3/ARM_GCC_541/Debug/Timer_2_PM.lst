@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccGtZ9NP.s 			page 1
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccY25CWI.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccGtZ9NP.s 			page 1
   28:Generated_Source\PSoC5/Timer_2_PM.c **** * Summary:
   29:Generated_Source\PSoC5/Timer_2_PM.c **** *     Save the current user configuration
   30:Generated_Source\PSoC5/Timer_2_PM.c **** *
-ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccGtZ9NP.s 			page 2
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccY25CWI.s 			page 2
 
 
   31:Generated_Source\PSoC5/Timer_2_PM.c **** * Parameters:
@@ -110,7 +110,7 @@ ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccGtZ9NP.s 			page 1
   51              		.align	2
   52              	.L3:
   53 0018 00000000 		.word	.LANCHOR0
-  54 001c 8F640040 		.word	1073767567
+  54 001c 87640040 		.word	1073767559
   55              		.cfi_endproc
   56              	.LFE0:
   57              		.size	Timer_2_SaveConfig, .-Timer_2_SaveConfig
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccGtZ9NP.s 			page 1
   59              		.align	2
   60              		.global	Timer_2_RestoreConfig
   61              		.thumb
-ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccGtZ9NP.s 			page 3
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccY25CWI.s 			page 3
 
 
   62              		.thumb_func
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccGtZ9NP.s 			page 1
   87:Generated_Source\PSoC5/Timer_2_PM.c ****         #if(!Timer_2_UDB_CONTROL_REG_REMOVED)
   88:Generated_Source\PSoC5/Timer_2_PM.c ****             Timer_2_WriteControlRegister(Timer_2_backup.TimerControlRegister);
   83              		.loc 1 88 0
-ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccGtZ9NP.s 			page 4
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccY25CWI.s 			page 4
 
 
   84 0010 6079     		ldrb	r0, [r4, #5]	@ zero_extendqisi2
@@ -189,7 +189,7 @@ ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccGtZ9NP.s 			page 1
   89              		.align	2
   90              	.L7:
   91 0018 00000000 		.word	.LANCHOR0
-  92 001c 8F640040 		.word	1073767567
+  92 001c 87640040 		.word	1073767559
   93              		.cfi_endproc
   94              	.LFE1:
   95              		.size	Timer_2_RestoreConfig, .-Timer_2_RestoreConfig
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccGtZ9NP.s 			page 1
  115:Generated_Source\PSoC5/Timer_2_PM.c ****         /* Save Counter's enable state */
  116:Generated_Source\PSoC5/Timer_2_PM.c ****         if(Timer_2_CTRL_ENABLE == (Timer_2_CONTROL & Timer_2_CTRL_ENABLE))
  112              		.loc 1 116 0
-ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccGtZ9NP.s 			page 5
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccY25CWI.s 			page 5
 
 
  113 0002 084B     		ldr	r3, .L13
@@ -278,7 +278,7 @@ ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccGtZ9NP.s 			page 1
  135              	.L14:
  136              		.align	2
  137              	.L13:
- 138 0024 7B640040 		.word	1073767547
+ 138 0024 76650040 		.word	1073767798
  139 0028 00000000 		.word	.LANCHOR0
  140              		.cfi_endproc
  141              	.LFE2:
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccGtZ9NP.s 			page 1
  133:Generated_Source\PSoC5/Timer_2_PM.c **** * Function Name: Timer_2_Wakeup
  134:Generated_Source\PSoC5/Timer_2_PM.c **** ********************************************************************************
  135:Generated_Source\PSoC5/Timer_2_PM.c **** *
-ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccGtZ9NP.s 			page 6
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccY25CWI.s 			page 6
 
 
  136:Generated_Source\PSoC5/Timer_2_PM.c **** * Summary:
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccGtZ9NP.s 			page 1
  184              	Timer_2_backup:
  185 0000 00000000 		.space	6
  185      0000
-ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccGtZ9NP.s 			page 7
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccY25CWI.s 			page 7
 
 
  186              		.text
@@ -372,25 +372,25 @@ ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccGtZ9NP.s 			page 1
  194 0006 00000000 		.4byte	.Ldebug_abbrev0
  195 000a 04       		.byte	0x4
  196 000b 01       		.uleb128 0x1
- 197 000c 9D000000 		.4byte	.LASF32
+ 197 000c EA000000 		.4byte	.LASF32
  198 0010 0C       		.byte	0xc
- 199 0011 D4010000 		.4byte	.LASF33
- 200 0015 F8010000 		.4byte	.LASF34
+ 199 0011 21020000 		.4byte	.LASF33
+ 200 0015 73000000 		.4byte	.LASF34
  201 0019 00000000 		.4byte	.Ldebug_ranges0+0
  202 001d 00000000 		.4byte	0
  203 0021 00000000 		.4byte	.Ldebug_line0
  204 0025 02       		.uleb128 0x2
  205 0026 01       		.byte	0x1
  206 0027 06       		.byte	0x6
- 207 0028 BE020000 		.4byte	.LASF0
+ 207 0028 B2020000 		.4byte	.LASF0
  208 002c 02       		.uleb128 0x2
  209 002d 01       		.byte	0x1
  210 002e 08       		.byte	0x8
- 211 002f 8F000000 		.4byte	.LASF1
+ 211 002f DC000000 		.4byte	.LASF1
  212 0033 02       		.uleb128 0x2
  213 0034 02       		.byte	0x2
  214 0035 05       		.byte	0x5
- 215 0036 83020000 		.4byte	.LASF2
+ 215 0036 77020000 		.4byte	.LASF2
  216 003a 02       		.uleb128 0x2
  217 003b 02       		.byte	0x2
  218 003c 07       		.byte	0x7
@@ -398,19 +398,19 @@ ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccGtZ9NP.s 			page 1
  220 0041 02       		.uleb128 0x2
  221 0042 04       		.byte	0x4
  222 0043 05       		.byte	0x5
- 223 0044 A9020000 		.4byte	.LASF4
+ 223 0044 9D020000 		.4byte	.LASF4
  224 0048 02       		.uleb128 0x2
  225 0049 04       		.byte	0x4
  226 004a 07       		.byte	0x7
- 227 004b 30010000 		.4byte	.LASF5
+ 227 004b 7D010000 		.4byte	.LASF5
  228 004f 02       		.uleb128 0x2
  229 0050 08       		.byte	0x8
  230 0051 05       		.byte	0x5
- 231 0052 70020000 		.4byte	.LASF6
+ 231 0052 64020000 		.4byte	.LASF6
  232 0056 02       		.uleb128 0x2
  233 0057 08       		.byte	0x8
  234 0058 07       		.byte	0x7
- 235 0059 9A010000 		.4byte	.LASF7
+ 235 0059 E7010000 		.4byte	.LASF7
  236 005d 03       		.uleb128 0x3
  237 005e 04       		.byte	0x4
  238 005f 05       		.byte	0x5
@@ -418,17 +418,17 @@ ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccGtZ9NP.s 			page 1
  240 0064 02       		.uleb128 0x2
  241 0065 04       		.byte	0x4
  242 0066 07       		.byte	0x7
-ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccGtZ9NP.s 			page 8
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccY25CWI.s 			page 8
 
 
- 243 0067 7A010000 		.4byte	.LASF8
+ 243 0067 C7010000 		.4byte	.LASF8
  244 006b 04       		.uleb128 0x4
- 245 006c 42010000 		.4byte	.LASF9
+ 245 006c 8F010000 		.4byte	.LASF9
  246 0070 02       		.byte	0x2
  247 0071 E801     		.2byte	0x1e8
  248 0073 2C000000 		.4byte	0x2c
  249 0077 04       		.uleb128 0x4
- 250 0078 5E010000 		.4byte	.LASF10
+ 250 0078 AB010000 		.4byte	.LASF10
  251 007c 02       		.byte	0x2
  252 007d E901     		.2byte	0x1e9
  253 007f 3A000000 		.4byte	0x3a
@@ -439,13 +439,13 @@ ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccGtZ9NP.s 			page 1
  258 008a 02       		.uleb128 0x2
  259 008b 08       		.byte	0x8
  260 008c 04       		.byte	0x4
- 261 008d 57010000 		.4byte	.LASF12
+ 261 008d A4010000 		.4byte	.LASF12
  262 0091 02       		.uleb128 0x2
  263 0092 01       		.byte	0x1
  264 0093 08       		.byte	0x8
- 265 0094 7E020000 		.4byte	.LASF13
+ 265 0094 72020000 		.4byte	.LASF13
  266 0098 04       		.uleb128 0x4
- 267 0099 2B010000 		.4byte	.LASF14
+ 267 0099 78010000 		.4byte	.LASF14
  268 009d 02       		.byte	0x2
  269 009e 9202     		.2byte	0x292
  270 00a0 A4000000 		.4byte	0xa4
@@ -454,11 +454,11 @@ ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccGtZ9NP.s 			page 1
  273 00a9 02       		.uleb128 0x2
  274 00aa 08       		.byte	0x8
  275 00ab 04       		.byte	0x4
- 276 00ac B2020000 		.4byte	.LASF15
+ 276 00ac A6020000 		.4byte	.LASF15
  277 00b0 02       		.uleb128 0x2
  278 00b1 04       		.byte	0x4
  279 00b2 07       		.byte	0x7
- 280 00b3 67020000 		.4byte	.LASF16
+ 280 00b3 5B020000 		.4byte	.LASF16
  281 00b7 06       		.uleb128 0x6
  282 00b8 06       		.byte	0x6
  283 00b9 03       		.byte	0x3
@@ -477,8 +477,8 @@ ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccGtZ9NP.s 			page 1
  296 00d2 77000000 		.4byte	0x77
  297 00d6 02       		.byte	0x2
  298 00d7 07       		.uleb128 0x7
- 299 00d8 CA020000 		.4byte	.LASF19
-ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccGtZ9NP.s 			page 9
+ 299 00d8 BE020000 		.4byte	.LASF19
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccY25CWI.s 			page 9
 
 
  300 00dc 03       		.byte	0x3
@@ -486,19 +486,19 @@ ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccGtZ9NP.s 			page 1
  302 00de 6B000000 		.4byte	0x6b
  303 00e2 04       		.byte	0x4
  304 00e3 07       		.uleb128 0x7
- 305 00e4 DD020000 		.4byte	.LASF20
+ 305 00e4 D1020000 		.4byte	.LASF20
  306 00e8 03       		.byte	0x3
  307 00e9 4F       		.byte	0x4f
  308 00ea 6B000000 		.4byte	0x6b
  309 00ee 05       		.byte	0x5
  310 00ef 00       		.byte	0
  311 00f0 08       		.uleb128 0x8
- 312 00f1 65010000 		.4byte	.LASF21
+ 312 00f1 B2010000 		.4byte	.LASF21
  313 00f5 03       		.byte	0x3
  314 00f6 53       		.byte	0x53
  315 00f7 B7000000 		.4byte	0xb7
  316 00fb 09       		.uleb128 0x9
- 317 00fc 87010000 		.4byte	.LASF22
+ 317 00fc D4010000 		.4byte	.LASF22
  318 0100 01       		.byte	0x1
  319 0101 2B       		.byte	0x2b
  320 0102 00000000 		.4byte	.LFB0
@@ -514,7 +514,7 @@ ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccGtZ9NP.s 			page 1
  330 011e B7010000 		.4byte	0x1b7
  331 0122 00       		.byte	0
  332 0123 09       		.uleb128 0x9
- 333 0124 51020000 		.4byte	.LASF23
+ 333 0124 45020000 		.4byte	.LASF23
  334 0128 01       		.byte	0x1
  335 0129 4D       		.byte	0x4d
  336 012a 00000000 		.4byte	.LFB1
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccGtZ9NP.s 			page 1
  354 015a 01       		.uleb128 0x1
  355 015b 9C       		.byte	0x9c
  356 015c 73010000 		.4byte	0x173
-ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccGtZ9NP.s 			page 10
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccY25CWI.s 			page 10
 
 
  357 0160 0A       		.uleb128 0xa
@@ -549,7 +549,7 @@ ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccGtZ9NP.s 			page 1
  362 016e FB000000 		.4byte	0xfb
  363 0172 00       		.byte	0
  364 0173 09       		.uleb128 0x9
- 365 0174 48010000 		.4byte	.LASF25
+ 365 0174 95010000 		.4byte	.LASF25
  366 0178 01       		.byte	0x1
  367 0179 96       		.byte	0x96
  368 017a 00000000 		.4byte	.LFB3
@@ -565,7 +565,7 @@ ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccGtZ9NP.s 			page 1
  378 0196 E3010000 		.4byte	0x1e3
  379 019a 00       		.byte	0
  380 019b 0B       		.uleb128 0xb
- 381 019c B1010000 		.4byte	.LASF35
+ 381 019c FE010000 		.4byte	.LASF35
  382 01a0 01       		.byte	0x1
  383 01a1 15       		.byte	0x15
  384 01a2 F0000000 		.4byte	0xf0
@@ -573,13 +573,13 @@ ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccGtZ9NP.s 			page 1
  386 01a7 03       		.byte	0x3
  387 01a8 00000000 		.4byte	Timer_2_backup
  388 01ac 0C       		.uleb128 0xc
- 389 01ad C0010000 		.4byte	.LASF26
- 390 01b1 C0010000 		.4byte	.LASF26
+ 389 01ad 0D020000 		.4byte	.LASF26
+ 390 01b1 0D020000 		.4byte	.LASF26
  391 01b5 03       		.byte	0x3
  392 01b6 69       		.byte	0x69
  393 01b7 0C       		.uleb128 0xc
- 394 01b8 8D020000 		.4byte	.LASF27
- 395 01bc 8D020000 		.4byte	.LASF27
+ 394 01b8 81020000 		.4byte	.LASF27
+ 395 01bc 81020000 		.4byte	.LASF27
  396 01c0 03       		.byte	0x3
  397 01c1 63       		.byte	0x63
  398 01c2 0C       		.uleb128 0xc
@@ -593,16 +593,16 @@ ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccGtZ9NP.s 			page 1
  406 01d6 03       		.byte	0x3
  407 01d7 64       		.byte	0x64
  408 01d8 0C       		.uleb128 0xc
- 409 01d9 82000000 		.4byte	.LASF30
- 410 01dd 82000000 		.4byte	.LASF30
+ 409 01d9 CF000000 		.4byte	.LASF30
+ 410 01dd CF000000 		.4byte	.LASF30
  411 01e1 03       		.byte	0x3
  412 01e2 5B       		.byte	0x5b
  413 01e3 0C       		.uleb128 0xc
-ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccGtZ9NP.s 			page 11
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccY25CWI.s 			page 11
 
 
- 414 01e4 73000000 		.4byte	.LASF31
- 415 01e8 73000000 		.4byte	.LASF31
+ 414 01e4 C0000000 		.4byte	.LASF31
+ 415 01e8 C0000000 		.4byte	.LASF31
  416 01ec 03       		.byte	0x3
  417 01ed 8B       		.byte	0x8b
  418 01ee 00       		.byte	0
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccGtZ9NP.s 			page 1
  468 002f 0B       		.uleb128 0xb
  469 0030 3B       		.uleb128 0x3b
  470 0031 05       		.uleb128 0x5
-ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccGtZ9NP.s 			page 12
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccY25CWI.s 			page 12
 
 
  471 0032 49       		.uleb128 0x49
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccGtZ9NP.s 			page 1
  525 0068 01       		.byte	0x1
  526 0069 3F       		.uleb128 0x3f
  527 006a 19       		.uleb128 0x19
-ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccGtZ9NP.s 			page 13
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccY25CWI.s 			page 13
 
 
  528 006b 03       		.uleb128 0x3
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccGtZ9NP.s 			page 1
  582 00a4 0E       		.uleb128 0xe
  583 00a5 3A       		.uleb128 0x3a
  584 00a6 0B       		.uleb128 0xb
-ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccGtZ9NP.s 			page 14
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccY25CWI.s 			page 14
 
 
  585 00a7 3B       		.uleb128 0x3b
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccGtZ9NP.s 			page 1
  628      57726974 
  628      65436F75 
  628      6E746572 
-ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccGtZ9NP.s 			page 15
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccY25CWI.s 			page 15
 
 
  629              	.LASF24:
@@ -862,168 +862,168 @@ ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccGtZ9NP.s 			page 1
  636 006a 54696D65 		.ascii	"TimerUdb\000"
  636      72556462 
  636      00
- 637              	.LASF31:
- 638 0073 54696D65 		.ascii	"Timer_2_Enable\000"
- 638      725F325F 
- 638      456E6162 
- 638      6C6500
- 639              	.LASF30:
- 640 0082 54696D65 		.ascii	"Timer_2_Stop\000"
- 640      725F325F 
- 640      53746F70 
- 640      00
- 641              	.LASF1:
- 642 008f 756E7369 		.ascii	"unsigned char\000"
- 642      676E6564 
- 642      20636861 
- 642      7200
- 643              	.LASF32:
- 644 009d 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
- 644      43313120 
- 644      352E342E 
- 644      31203230 
- 644      31363036 
- 645 00d0 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
- 645      20726576 
- 645      6973696F 
- 645      6E203233 
- 645      37373135 
- 646 0103 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
- 646      66756E63 
- 646      74696F6E 
- 646      2D736563 
- 646      74696F6E 
- 647              	.LASF14:
- 648 012b 72656738 		.ascii	"reg8\000"
- 648      00
- 649              	.LASF5:
- 650 0130 6C6F6E67 		.ascii	"long unsigned int\000"
-ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccGtZ9NP.s 			page 16
+ 637              	.LASF34:
+ 638 0073 433A5C55 		.ascii	"C:\\Users\\weiro\\code repository for ece4191\\ece4"
+ 638      73657273 
+ 638      5C776569 
+ 638      726F5C63 
+ 638      6F646520 
+ 639 00a2 3139315C 		.ascii	"191\\DC_Motor_1\\Design01.cydsn\000"
+ 639      44435F4D 
+ 639      6F746F72 
+ 639      5F315C44 
+ 639      65736967 
+ 640              	.LASF31:
+ 641 00c0 54696D65 		.ascii	"Timer_2_Enable\000"
+ 641      725F325F 
+ 641      456E6162 
+ 641      6C6500
+ 642              	.LASF30:
+ 643 00cf 54696D65 		.ascii	"Timer_2_Stop\000"
+ 643      725F325F 
+ 643      53746F70 
+ 643      00
+ 644              	.LASF1:
+ 645 00dc 756E7369 		.ascii	"unsigned char\000"
+ 645      676E6564 
+ 645      20636861 
+ 645      7200
+ 646              	.LASF32:
+ 647 00ea 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 647      43313120 
+ 647      352E342E 
+ 647      31203230 
+ 647      31363036 
+ 648 011d 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 648      20726576 
+ 648      6973696F 
+ 648      6E203233 
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccY25CWI.s 			page 16
 
 
- 650      20756E73 
- 650      69676E65 
- 650      6420696E 
- 650      7400
- 651              	.LASF9:
- 652 0142 75696E74 		.ascii	"uint8\000"
- 652      3800
- 653              	.LASF25:
- 654 0148 54696D65 		.ascii	"Timer_2_Wakeup\000"
- 654      725F325F 
- 654      57616B65 
- 654      757000
- 655              	.LASF12:
- 656 0157 646F7562 		.ascii	"double\000"
- 656      6C6500
- 657              	.LASF10:
- 658 015e 75696E74 		.ascii	"uint16\000"
- 658      313600
- 659              	.LASF21:
- 660 0165 54696D65 		.ascii	"Timer_2_backupStruct\000"
- 660      725F325F 
- 660      6261636B 
- 660      75705374 
- 660      72756374 
- 661              	.LASF8:
- 662 017a 756E7369 		.ascii	"unsigned int\000"
- 662      676E6564 
- 662      20696E74 
- 662      00
- 663              	.LASF22:
- 664 0187 54696D65 		.ascii	"Timer_2_SaveConfig\000"
- 664      725F325F 
- 664      53617665 
- 664      436F6E66 
- 664      696700
- 665              	.LASF7:
- 666 019a 6C6F6E67 		.ascii	"long long unsigned int\000"
- 666      206C6F6E 
- 666      6720756E 
- 666      7369676E 
- 666      65642069 
- 667              	.LASF35:
- 668 01b1 54696D65 		.ascii	"Timer_2_backup\000"
- 668      725F325F 
- 668      6261636B 
- 668      757000
- 669              	.LASF26:
- 670 01c0 54696D65 		.ascii	"Timer_2_ReadCounter\000"
- 670      725F325F 
- 670      52656164 
- 670      436F756E 
- 670      74657200 
- 671              	.LASF33:
- 672 01d4 47656E65 		.ascii	"Generated_Source\\PSoC5\\Timer_2_PM.c\000"
- 672      72617465 
- 672      645F536F 
- 672      75726365 
-ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccGtZ9NP.s 			page 17
+ 648      37373135 
+ 649 0150 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 649      66756E63 
+ 649      74696F6E 
+ 649      2D736563 
+ 649      74696F6E 
+ 650              	.LASF14:
+ 651 0178 72656738 		.ascii	"reg8\000"
+ 651      00
+ 652              	.LASF5:
+ 653 017d 6C6F6E67 		.ascii	"long unsigned int\000"
+ 653      20756E73 
+ 653      69676E65 
+ 653      6420696E 
+ 653      7400
+ 654              	.LASF9:
+ 655 018f 75696E74 		.ascii	"uint8\000"
+ 655      3800
+ 656              	.LASF25:
+ 657 0195 54696D65 		.ascii	"Timer_2_Wakeup\000"
+ 657      725F325F 
+ 657      57616B65 
+ 657      757000
+ 658              	.LASF12:
+ 659 01a4 646F7562 		.ascii	"double\000"
+ 659      6C6500
+ 660              	.LASF10:
+ 661 01ab 75696E74 		.ascii	"uint16\000"
+ 661      313600
+ 662              	.LASF21:
+ 663 01b2 54696D65 		.ascii	"Timer_2_backupStruct\000"
+ 663      725F325F 
+ 663      6261636B 
+ 663      75705374 
+ 663      72756374 
+ 664              	.LASF8:
+ 665 01c7 756E7369 		.ascii	"unsigned int\000"
+ 665      676E6564 
+ 665      20696E74 
+ 665      00
+ 666              	.LASF22:
+ 667 01d4 54696D65 		.ascii	"Timer_2_SaveConfig\000"
+ 667      725F325F 
+ 667      53617665 
+ 667      436F6E66 
+ 667      696700
+ 668              	.LASF7:
+ 669 01e7 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 669      206C6F6E 
+ 669      6720756E 
+ 669      7369676E 
+ 669      65642069 
+ 670              	.LASF35:
+ 671 01fe 54696D65 		.ascii	"Timer_2_backup\000"
+ 671      725F325F 
+ 671      6261636B 
+ 671      757000
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccY25CWI.s 			page 17
 
 
- 672      5C50536F 
- 673              	.LASF34:
- 674 01f8 433A5C55 		.ascii	"C:\\Users\\ASUS\\Monash\\Year 4 Sem 1 (July 2023)\\"
- 674      73657273 
- 674      5C415355 
- 674      535C4D6F 
- 674      6E617368 
- 675 0226 45434520 		.ascii	"ECE 4191\\ece4191\\DC_Motor_1\\Design01.cydsn\000"
- 675      34313931 
- 675      5C656365 
- 675      34313931 
- 675      5C44435F 
+ 672              	.LASF26:
+ 673 020d 54696D65 		.ascii	"Timer_2_ReadCounter\000"
+ 673      725F325F 
+ 673      52656164 
+ 673      436F756E 
+ 673      74657200 
+ 674              	.LASF33:
+ 675 0221 47656E65 		.ascii	"Generated_Source\\PSoC5\\Timer_2_PM.c\000"
+ 675      72617465 
+ 675      645F536F 
+ 675      75726365 
+ 675      5C50536F 
  676              	.LASF23:
- 677 0251 54696D65 		.ascii	"Timer_2_RestoreConfig\000"
+ 677 0245 54696D65 		.ascii	"Timer_2_RestoreConfig\000"
  677      725F325F 
  677      52657374 
  677      6F726543 
  677      6F6E6669 
  678              	.LASF16:
- 679 0267 73697A65 		.ascii	"sizetype\000"
+ 679 025b 73697A65 		.ascii	"sizetype\000"
  679      74797065 
  679      00
  680              	.LASF6:
- 681 0270 6C6F6E67 		.ascii	"long long int\000"
+ 681 0264 6C6F6E67 		.ascii	"long long int\000"
  681      206C6F6E 
  681      6720696E 
  681      7400
  682              	.LASF13:
- 683 027e 63686172 		.ascii	"char\000"
+ 683 0272 63686172 		.ascii	"char\000"
  683      00
  684              	.LASF2:
- 685 0283 73686F72 		.ascii	"short int\000"
+ 685 0277 73686F72 		.ascii	"short int\000"
  685      7420696E 
  685      7400
  686              	.LASF27:
- 687 028d 54696D65 		.ascii	"Timer_2_ReadControlRegister\000"
+ 687 0281 54696D65 		.ascii	"Timer_2_ReadControlRegister\000"
  687      725F325F 
  687      52656164 
  687      436F6E74 
  687      726F6C52 
  688              	.LASF4:
- 689 02a9 6C6F6E67 		.ascii	"long int\000"
+ 689 029d 6C6F6E67 		.ascii	"long int\000"
  689      20696E74 
  689      00
  690              	.LASF15:
- 691 02b2 6C6F6E67 		.ascii	"long double\000"
+ 691 02a6 6C6F6E67 		.ascii	"long double\000"
  691      20646F75 
  691      626C6500 
  692              	.LASF0:
- 693 02be 7369676E 		.ascii	"signed char\000"
+ 693 02b2 7369676E 		.ascii	"signed char\000"
  693      65642063 
  693      68617200 
  694              	.LASF19:
- 695 02ca 496E7465 		.ascii	"InterruptMaskValue\000"
+ 695 02be 496E7465 		.ascii	"InterruptMaskValue\000"
  695      72727570 
  695      744D6173 
  695      6B56616C 
-ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccGtZ9NP.s 			page 18
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccY25CWI.s 			page 18
 
 
  695      756500
  696              	.LASF20:
- 697 02dd 54696D65 		.ascii	"TimerControlRegister\000"
+ 697 02d1 54696D65 		.ascii	"TimerControlRegister\000"
  697      72436F6E 
  697      74726F6C 
  697      52656769 

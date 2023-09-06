@@ -1,6 +1,6 @@
-C:\Users\ASUS\Monash\Year 4 Sem 1 (July 2023)\ECE 4191\ece4191\DC_Motor_1\Design01.cydsn\Design01.cyprj|d5585ebe-8292-4124-8090-1fbdc6b8d62a
-C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|08d6ca53-76fa-440f-9882-5c8f94cbe516
-C:\Users\ASUS\OneDrive\Documents\PSoC Creator\4.4\Downloads ( 4.4).cylib\Downloads ( 4.4).cyprj|9f5e6da7-3169-4eac-85aa-e52e834fbbaf
-C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|e13b107a-d5eb-4e2f-92c4-40919d7df403
-C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|f8b3068b-f056-40f2-9fc5-e1e91f66298d
-C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|bc217b16-c232-4663-861f-c3a3d9ec597d
+C:\Users\weiro\code repository for ece4191\ece4191\DC_Motor_1\Design01.cydsn\Design01.cyprj|c49cfabe-7346-41a3-b5b5-f2d21d91c67c
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|1e3bf5fb-f4ff-4fb3-ae56-7b1f44b1a934
+C:\Users\weiro\OneDrive\Documents\PSoC Creator\4.4\Downloads ( 4.4).cylib\Downloads ( 4.4).cyprj|e4867d66-11e2-4bf8-ac02-f39dfaca4e09
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|d5af0b85-844c-41d9-9a05-35c8b67c8261
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|0fbe3103-c070-4aa9-bcca-dc8a722e75f2
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|1ffd0938-0453-4e60-ba5c-90f173d3c72c

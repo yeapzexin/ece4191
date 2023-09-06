@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\ASUS\AppData\Local\Temp\cc0yIgCS.s 			page 1
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\cch5bFkv.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\ASUS\AppData\Local\Temp\cc0yIgCS.s 			page 1
   28:Generated_Source\PSoC5/PWM_Slave.c ****     #error PWM_v3_30 detected with a constant 0 for the enable or \
   29:Generated_Source\PSoC5/PWM_Slave.c ****          constant 1 for reset. This will prevent the component from operating.
   30:Generated_Source\PSoC5/PWM_Slave.c **** #endif /* PWM_Slave_PWMUDB_genblk1_ctrlreg__REMOVED */
-ARM GAS  C:\Users\ASUS\AppData\Local\Temp\cc0yIgCS.s 			page 2
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\cch5bFkv.s 			page 2
 
 
   31:Generated_Source\PSoC5/PWM_Slave.c **** 
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\ASUS\AppData\Local\Temp\cc0yIgCS.s 			page 1
   85:Generated_Source\PSoC5/PWM_Slave.c **** {
   86:Generated_Source\PSoC5/PWM_Slave.c ****     #if (PWM_Slave_UsingFixedFunction || PWM_Slave_UseControl)
   87:Generated_Source\PSoC5/PWM_Slave.c ****         uint8 ctrl;
-ARM GAS  C:\Users\ASUS\AppData\Local\Temp\cc0yIgCS.s 			page 3
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\cch5bFkv.s 			page 3
 
 
   88:Generated_Source\PSoC5/PWM_Slave.c ****     #endif /* (PWM_Slave_UsingFixedFunction || PWM_Slave_UseControl) */
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\ASUS\AppData\Local\Temp\cc0yIgCS.s 			page 1
  142:Generated_Source\PSoC5/PWM_Slave.c ****             PWM_Slave_WriteCompare2(PWM_Slave_INIT_COMPARE_VALUE2);
  143:Generated_Source\PSoC5/PWM_Slave.c ****         #endif /* (PWM_Slave_UseOneCompareMode) */
  144:Generated_Source\PSoC5/PWM_Slave.c **** 
-ARM GAS  C:\Users\ASUS\AppData\Local\Temp\cc0yIgCS.s 			page 4
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\cch5bFkv.s 			page 4
 
 
  145:Generated_Source\PSoC5/PWM_Slave.c ****         #if (PWM_Slave_KillModeMinTime)
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\ASUS\AppData\Local\Temp\cc0yIgCS.s 			page 1
  199:Generated_Source\PSoC5/PWM_Slave.c **** void PWM_Slave_Enable(void) 
  200:Generated_Source\PSoC5/PWM_Slave.c **** {
   28              		.loc 1 200 0
-ARM GAS  C:\Users\ASUS\AppData\Local\Temp\cc0yIgCS.s 			page 5
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\cch5bFkv.s 			page 5
 
 
   29              		.cfi_startproc
@@ -251,13 +251,13 @@ ARM GAS  C:\Users\ASUS\AppData\Local\Temp\cc0yIgCS.s 			page 1
   33              		.loc 1 203 0
   34 0000 084A     		ldr	r2, .L2
   35 0002 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
-  36 0004 43F00203 		orr	r3, r3, #2
+  36 0004 43F00403 		orr	r3, r3, #4
   37 0008 1370     		strb	r3, [r2]
  204:Generated_Source\PSoC5/PWM_Slave.c ****         PWM_Slave_GLOBAL_STBY_ENABLE |= PWM_Slave_BLOCK_STBY_EN_MASK;
   38              		.loc 1 204 0
   39 000a 1032     		adds	r2, r2, #16
   40 000c 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
-  41 000e 43F00203 		orr	r3, r3, #2
+  41 000e 43F00403 		orr	r3, r3, #4
   42 0012 1370     		strb	r3, [r2]
  205:Generated_Source\PSoC5/PWM_Slave.c ****     #endif /* (PWM_Slave_UsingFixedFunction) */
  206:Generated_Source\PSoC5/PWM_Slave.c **** 
@@ -265,7 +265,7 @@ ARM GAS  C:\Users\ASUS\AppData\Local\Temp\cc0yIgCS.s 			page 1
  208:Generated_Source\PSoC5/PWM_Slave.c ****     #if (PWM_Slave_UseControl || PWM_Slave_UsingFixedFunction)
  209:Generated_Source\PSoC5/PWM_Slave.c ****         PWM_Slave_CONTROL |= PWM_Slave_CTRL_ENABLE;
   43              		.loc 1 209 0
-  44 0014 02F65932 		addw	r2, r2, #2905
+  44 0014 02F66532 		addw	r2, r2, #2917
   45 0018 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
   46 001a 43F00103 		orr	r3, r3, #1
   47 001e 1370     		strb	r3, [r2]
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\ASUS\AppData\Local\Temp\cc0yIgCS.s 			page 1
  220:Generated_Source\PSoC5/PWM_Slave.c **** *  interrupts.
  221:Generated_Source\PSoC5/PWM_Slave.c **** *
  222:Generated_Source\PSoC5/PWM_Slave.c **** * Parameters:
-ARM GAS  C:\Users\ASUS\AppData\Local\Temp\cc0yIgCS.s 			page 6
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\cch5bFkv.s 			page 6
 
 
  223:Generated_Source\PSoC5/PWM_Slave.c **** *  None
@@ -331,21 +331,21 @@ ARM GAS  C:\Users\ASUS\AppData\Local\Temp\cc0yIgCS.s 			page 1
  240:Generated_Source\PSoC5/PWM_Slave.c ****     #if (PWM_Slave_UsingFixedFunction)
  241:Generated_Source\PSoC5/PWM_Slave.c ****         PWM_Slave_GLOBAL_ENABLE &= ((uint8)(~PWM_Slave_BLOCK_EN_MASK));
   74              		.loc 1 241 0
-  75 000a A2F66932 		subw	r2, r2, #2921
+  75 000a A2F67532 		subw	r2, r2, #2933
   76 000e 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
-  77 0010 03F0FD03 		and	r3, r3, #253
+  77 0010 03F0FB03 		and	r3, r3, #251
   78 0014 1370     		strb	r3, [r2]
  242:Generated_Source\PSoC5/PWM_Slave.c ****         PWM_Slave_GLOBAL_STBY_ENABLE &= ((uint8)(~PWM_Slave_BLOCK_STBY_EN_MASK));
   79              		.loc 1 242 0
   80 0016 1032     		adds	r2, r2, #16
   81 0018 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
-  82 001a 03F0FD03 		and	r3, r3, #253
+  82 001a 03F0FB03 		and	r3, r3, #251
   83 001e 1370     		strb	r3, [r2]
   84 0020 7047     		bx	lr
   85              	.L6:
   86 0022 00BF     		.align	2
   87              	.L5:
-  88 0024 0C4F0040 		.word	1073762060
+  88 0024 184F0040 		.word	1073762072
   89              		.cfi_endproc
   90              	.LFE3:
   91              		.size	PWM_Slave_Stop, .-PWM_Slave_Stop
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\ASUS\AppData\Local\Temp\cc0yIgCS.s 			page 1
   98              	PWM_Slave_WritePeriod:
   99              	.LFB4:
  243:Generated_Source\PSoC5/PWM_Slave.c ****     #endif /* (PWM_Slave_UsingFixedFunction) */
-ARM GAS  C:\Users\ASUS\AppData\Local\Temp\cc0yIgCS.s 			page 7
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\cch5bFkv.s 			page 7
 
 
  244:Generated_Source\PSoC5/PWM_Slave.c **** }
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\ASUS\AppData\Local\Temp\cc0yIgCS.s 			page 1
  298:Generated_Source\PSoC5/PWM_Slave.c ****                 PWM_Slave_CONTROL |= (comparemode1masked | comparemode2masked);
  299:Generated_Source\PSoC5/PWM_Slave.c **** 
  300:Generated_Source\PSoC5/PWM_Slave.c ****             #else
-ARM GAS  C:\Users\ASUS\AppData\Local\Temp\cc0yIgCS.s 			page 8
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\cch5bFkv.s 			page 8
 
 
  301:Generated_Source\PSoC5/PWM_Slave.c ****                 uint8 temp = comparemode;
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\ASUS\AppData\Local\Temp\cc0yIgCS.s 			page 1
  355:Generated_Source\PSoC5/PWM_Slave.c ****     *
  356:Generated_Source\PSoC5/PWM_Slave.c ****     * Return:
  357:Generated_Source\PSoC5/PWM_Slave.c ****     *  None
-ARM GAS  C:\Users\ASUS\AppData\Local\Temp\cc0yIgCS.s 			page 9
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\cch5bFkv.s 			page 9
 
 
  358:Generated_Source\PSoC5/PWM_Slave.c ****     *
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\ASUS\AppData\Local\Temp\cc0yIgCS.s 			page 1
  412:Generated_Source\PSoC5/PWM_Slave.c ****     ********************************************************************************
  413:Generated_Source\PSoC5/PWM_Slave.c ****     *
  414:Generated_Source\PSoC5/PWM_Slave.c ****     * Summary:
-ARM GAS  C:\Users\ASUS\AppData\Local\Temp\cc0yIgCS.s 			page 10
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\cch5bFkv.s 			page 10
 
 
  415:Generated_Source\PSoC5/PWM_Slave.c ****     *  This function returns the current value of the counter.  It doesn't matter
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\ASUS\AppData\Local\Temp\cc0yIgCS.s 			page 1
  469:Generated_Source\PSoC5/PWM_Slave.c **** *
  470:Generated_Source\PSoC5/PWM_Slave.c **** * Summary:
  471:Generated_Source\PSoC5/PWM_Slave.c **** *  This function is used to change the period of the counter.  The new period
-ARM GAS  C:\Users\ASUS\AppData\Local\Temp\cc0yIgCS.s 			page 11
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\cch5bFkv.s 			page 11
 
 
  472:Generated_Source\PSoC5/PWM_Slave.c **** *  will be loaded the next time terminal count is detected.
@@ -628,7 +628,7 @@ ARM GAS  C:\Users\ASUS\AppData\Local\Temp\cc0yIgCS.s 			page 1
  110              	.L9:
  111 0006 00BF     		.align	2
  112              	.L8:
- 113 0008 104F0040 		.word	1073762064
+ 113 0008 1C4F0040 		.word	1073762076
  114              		.cfi_endproc
  115              	.LFE4:
  116              		.size	PWM_Slave_WritePeriod, .-PWM_Slave_WritePeriod
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\ASUS\AppData\Local\Temp\cc0yIgCS.s 			page 1
  501:Generated_Source\PSoC5/PWM_Slave.c ****     *  The compare output will be driven high when the present counter value is
  502:Generated_Source\PSoC5/PWM_Slave.c ****     *  compared to the compare value based on the compare mode defined in
  503:Generated_Source\PSoC5/PWM_Slave.c ****     *  Dither Mode.
-ARM GAS  C:\Users\ASUS\AppData\Local\Temp\cc0yIgCS.s 			page 12
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\cch5bFkv.s 			page 12
 
 
  504:Generated_Source\PSoC5/PWM_Slave.c ****     *
@@ -691,7 +691,7 @@ ARM GAS  C:\Users\ASUS\AppData\Local\Temp\cc0yIgCS.s 			page 1
  135              	.L12:
  136 0006 00BF     		.align	2
  137              	.L11:
- 138 0008 124F0040 		.word	1073762066
+ 138 0008 1E4F0040 		.word	1073762078
  139              		.cfi_endproc
  140              	.LFE5:
  141              		.size	PWM_Slave_WriteCompare, .-PWM_Slave_WriteCompare
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\ASUS\AppData\Local\Temp\cc0yIgCS.s 			page 1
  533:Generated_Source\PSoC5/PWM_Slave.c **** 
  534:Generated_Source\PSoC5/PWM_Slave.c **** 
  535:Generated_Source\PSoC5/PWM_Slave.c **** #else
-ARM GAS  C:\Users\ASUS\AppData\Local\Temp\cc0yIgCS.s 			page 13
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\cch5bFkv.s 			page 13
 
 
  536:Generated_Source\PSoC5/PWM_Slave.c **** 
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\ASUS\AppData\Local\Temp\cc0yIgCS.s 			page 1
  590:Generated_Source\PSoC5/PWM_Slave.c ****             CY_SET_REG16(PWM_Slave_COMPARE2_LSB_PTR, compare);
  591:Generated_Source\PSoC5/PWM_Slave.c ****         #endif /* (PWM_Slave_UsingFixedFunction) */
  592:Generated_Source\PSoC5/PWM_Slave.c ****     }
-ARM GAS  C:\Users\ASUS\AppData\Local\Temp\cc0yIgCS.s 			page 14
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\cch5bFkv.s 			page 14
 
 
  593:Generated_Source\PSoC5/PWM_Slave.c **** #endif /* UseOneCompareMode */
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\ASUS\AppData\Local\Temp\cc0yIgCS.s 			page 1
  647:Generated_Source\PSoC5/PWM_Slave.c ****     *******************************************************************************/
  648:Generated_Source\PSoC5/PWM_Slave.c ****     uint8 PWM_Slave_ReadDeadTime(void) 
  649:Generated_Source\PSoC5/PWM_Slave.c ****     {
-ARM GAS  C:\Users\ASUS\AppData\Local\Temp\cc0yIgCS.s 			page 15
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\cch5bFkv.s 			page 15
 
 
  650:Generated_Source\PSoC5/PWM_Slave.c ****         /* If using the Dead Band 1-255 mode then just read the register */
@@ -891,14 +891,14 @@ ARM GAS  C:\Users\ASUS\AppData\Local\Temp\cc0yIgCS.s 			page 1
  160              	.L15:
  161 0006 00BF     		.align	2
  162              	.L14:
- 163 0008 0F4F0040 		.word	1073762063
+ 163 0008 1B4F0040 		.word	1073762075
  164              		.cfi_endproc
  165              	.LFE6:
  166              		.size	PWM_Slave_SetInterruptMode, .-PWM_Slave_SetInterruptMode
  167              		.section	.text.PWM_Slave_Init,"ax",%progbits
  168              		.align	2
  169              		.global	PWM_Slave_Init
-ARM GAS  C:\Users\ASUS\AppData\Local\Temp\cc0yIgCS.s 			page 16
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\cch5bFkv.s 			page 16
 
 
  170              		.thumb
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\ASUS\AppData\Local\Temp\cc0yIgCS.s 			page 1
  215 003c 46F2A810 		movw	r0, #25000
  216 0040 FFF7FEFF 		bl	PWM_Slave_WritePeriod
  217              	.LVL5:
-ARM GAS  C:\Users\ASUS\AppData\Local\Temp\cc0yIgCS.s 			page 17
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\cch5bFkv.s 			page 17
 
 
  139:Generated_Source\PSoC5/PWM_Slave.c ****         #else
@@ -975,11 +975,11 @@ ARM GAS  C:\Users\ASUS\AppData\Local\Temp\cc0yIgCS.s 			page 1
  226              		.loc 1 159 0
  227 0052 084A     		ldr	r2, .L18+8
  228 0054 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
- 229 0056 43F00203 		orr	r3, r3, #2
+ 229 0056 43F00403 		orr	r3, r3, #4
  230 005a 1370     		strb	r3, [r2]
  161:Generated_Source\PSoC5/PWM_Slave.c ****     #else
  231              		.loc 1 161 0
- 232 005c 02F66A32 		addw	r2, r2, #2922
+ 232 005c 02F67632 		addw	r2, r2, #2934
  233 0060 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
  234 0062 43F00103 		orr	r3, r3, #1
  235 0066 1370     		strb	r3, [r2]
@@ -987,8 +987,8 @@ ARM GAS  C:\Users\ASUS\AppData\Local\Temp\cc0yIgCS.s 			page 1
  237              	.L19:
  238 006a 00BF     		.align	2
  239              	.L18:
- 240 006c 0C4F0040 		.word	1073762060
- 241 0070 174F0040 		.word	1073762071
+ 240 006c 184F0040 		.word	1073762072
+ 241 0070 234F0040 		.word	1073762083
  242 0074 A3430040 		.word	1073759139
  243              		.cfi_endproc
  244              	.LFE1:
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\ASUS\AppData\Local\Temp\cc0yIgCS.s 			page 1
   60:Generated_Source\PSoC5/PWM_Slave.c ****         PWM_Slave_initVar = 1u;
  266              		.loc 1 60 0
  267 0008 FFF7FEFF 		bl	PWM_Slave_Init
-ARM GAS  C:\Users\ASUS\AppData\Local\Temp\cc0yIgCS.s 			page 18
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\cch5bFkv.s 			page 18
 
 
  268              	.LVL8:
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\ASUS\AppData\Local\Temp\cc0yIgCS.s 			page 1
  294              		.cfi_startproc
  295              		@ args = 0, pretend = 0, frame = 0
  296              		@ frame_needed = 0, uses_anonymous_args = 0
-ARM GAS  C:\Users\ASUS\AppData\Local\Temp\cc0yIgCS.s 			page 19
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\cch5bFkv.s 			page 19
 
 
  297              		@ link register save eliminated.
@@ -1092,7 +1092,7 @@ ARM GAS  C:\Users\ASUS\AppData\Local\Temp\cc0yIgCS.s 			page 1
  303              	.L27:
  304 0006 00BF     		.align	2
  305              	.L26:
- 306 0008 0F4F0040 		.word	1073762063
+ 306 0008 1B4F0040 		.word	1073762075
  307              		.cfi_endproc
  308              	.LFE7:
  309              		.size	PWM_Slave_ReadStatusRegister, .-PWM_Slave_ReadStatusRegister
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\ASUS\AppData\Local\Temp\cc0yIgCS.s 			page 1
  741:Generated_Source\PSoC5/PWM_Slave.c ****         result = CY_GET_REG8(PWM_Slave_CONTROL_PTR);
  323              		.loc 1 741 0
  324 0000 014B     		ldr	r3, .L29
-ARM GAS  C:\Users\ASUS\AppData\Local\Temp\cc0yIgCS.s 			page 20
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\cch5bFkv.s 			page 20
 
 
  325 0002 1878     		ldrb	r0, [r3]	@ zero_extendqisi2
@@ -1150,7 +1150,7 @@ ARM GAS  C:\Users\ASUS\AppData\Local\Temp\cc0yIgCS.s 			page 1
  329              	.L30:
  330 0006 00BF     		.align	2
  331              	.L29:
- 332 0008 0C4F0040 		.word	1073762060
+ 332 0008 184F0040 		.word	1073762072
  333              		.cfi_endproc
  334              	.LFE8:
  335              		.size	PWM_Slave_ReadControlRegister, .-PWM_Slave_ReadControlRegister
@@ -1198,11 +1198,11 @@ ARM GAS  C:\Users\ASUS\AppData\Local\Temp\cc0yIgCS.s 			page 1
  353 0004 7047     		bx	lr
  354              	.L33:
  355 0006 00BF     		.align	2
-ARM GAS  C:\Users\ASUS\AppData\Local\Temp\cc0yIgCS.s 			page 21
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\cch5bFkv.s 			page 21
 
 
  356              	.L32:
- 357 0008 0C4F0040 		.word	1073762060
+ 357 0008 184F0040 		.word	1073762072
  358              		.cfi_endproc
  359              	.LFE9:
  360              		.size	PWM_Slave_WriteControlRegister, .-PWM_Slave_WriteControlRegister
@@ -1258,7 +1258,7 @@ ARM GAS  C:\Users\ASUS\AppData\Local\Temp\cc0yIgCS.s 			page 1
  809:Generated_Source\PSoC5/PWM_Slave.c ****     * Parameters:
  810:Generated_Source\PSoC5/PWM_Slave.c ****     *  None
  811:Generated_Source\PSoC5/PWM_Slave.c ****     *
-ARM GAS  C:\Users\ASUS\AppData\Local\Temp\cc0yIgCS.s 			page 22
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\cch5bFkv.s 			page 22
 
 
  812:Generated_Source\PSoC5/PWM_Slave.c ****     * Return:
@@ -1287,7 +1287,7 @@ ARM GAS  C:\Users\ASUS\AppData\Local\Temp\cc0yIgCS.s 			page 1
  380              	.L36:
  381              		.align	2
  382              	.L35:
- 383 0008 124F0040 		.word	1073762066
+ 383 0008 1E4F0040 		.word	1073762078
  384              		.cfi_endproc
  385              	.LFE10:
  386              		.size	PWM_Slave_ReadCompare, .-PWM_Slave_ReadCompare
@@ -1318,7 +1318,7 @@ ARM GAS  C:\Users\ASUS\AppData\Local\Temp\cc0yIgCS.s 			page 1
  840:Generated_Source\PSoC5/PWM_Slave.c ****     *
  841:Generated_Source\PSoC5/PWM_Slave.c ****     *******************************************************************************/
  842:Generated_Source\PSoC5/PWM_Slave.c ****     uint16 PWM_Slave_ReadCompare1(void) 
-ARM GAS  C:\Users\ASUS\AppData\Local\Temp\cc0yIgCS.s 			page 23
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\cch5bFkv.s 			page 23
 
 
  843:Generated_Source\PSoC5/PWM_Slave.c ****     {
@@ -1378,7 +1378,7 @@ ARM GAS  C:\Users\ASUS\AppData\Local\Temp\cc0yIgCS.s 			page 1
  889:Generated_Source\PSoC5/PWM_Slave.c ****         return (CY_GET_REG16(PWM_Slave_PERIOD_LSB_PTR));
  890:Generated_Source\PSoC5/PWM_Slave.c ****     #endif /* (PWM_Slave_UsingFixedFunction) */
  891:Generated_Source\PSoC5/PWM_Slave.c **** }
-ARM GAS  C:\Users\ASUS\AppData\Local\Temp\cc0yIgCS.s 			page 24
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\cch5bFkv.s 			page 24
 
 
  403              		.loc 1 891 0
@@ -1387,7 +1387,7 @@ ARM GAS  C:\Users\ASUS\AppData\Local\Temp\cc0yIgCS.s 			page 1
  406              	.L39:
  407              		.align	2
  408              	.L38:
- 409 0008 104F0040 		.word	1073762064
+ 409 0008 1C4F0040 		.word	1073762076
  410              		.cfi_endproc
  411              	.LFE11:
  412              		.size	PWM_Slave_ReadPeriod, .-PWM_Slave_ReadPeriod
@@ -1408,48 +1408,48 @@ ARM GAS  C:\Users\ASUS\AppData\Local\Temp\cc0yIgCS.s 			page 1
  427 0006 00000000 		.4byte	.Ldebug_abbrev0
  428 000a 04       		.byte	0x4
  429 000b 01       		.uleb128 0x1
- 430 000c 94000000 		.4byte	.LASF35
+ 430 000c EE000000 		.4byte	.LASF35
  431 0010 0C       		.byte	0xc
- 432 0011 31020000 		.4byte	.LASF36
- 433 0015 BA010000 		.4byte	.LASF37
+ 432 0011 25020000 		.4byte	.LASF36
+ 433 0015 6F000000 		.4byte	.LASF37
  434 0019 00000000 		.4byte	.Ldebug_ranges0+0
  435 001d 00000000 		.4byte	0
  436 0021 00000000 		.4byte	.Ldebug_line0
  437 0025 02       		.uleb128 0x2
  438 0026 01       		.byte	0x1
  439 0027 06       		.byte	0x6
- 440 0028 DD020000 		.4byte	.LASF0
+ 440 0028 D1020000 		.4byte	.LASF0
  441 002c 02       		.uleb128 0x2
  442 002d 01       		.byte	0x1
  443 002e 08       		.byte	0x8
- 444 002f 86000000 		.4byte	.LASF1
+ 444 002f E0000000 		.4byte	.LASF1
  445 0033 02       		.uleb128 0x2
  446 0034 02       		.byte	0x2
  447 0035 05       		.byte	0x5
- 448 0036 A3020000 		.4byte	.LASF2
+ 448 0036 97020000 		.4byte	.LASF2
  449 003a 02       		.uleb128 0x2
  450 003b 02       		.byte	0x2
  451 003c 07       		.byte	0x7
- 452 003d 19000000 		.4byte	.LASF3
+ 452 003d 26000000 		.4byte	.LASF3
  453 0041 02       		.uleb128 0x2
  454 0042 04       		.byte	0x4
  455 0043 05       		.byte	0x5
- 456 0044 B2020000 		.4byte	.LASF4
+ 456 0044 A6020000 		.4byte	.LASF4
  457 0048 02       		.uleb128 0x2
  458 0049 04       		.byte	0x4
  459 004a 07       		.byte	0x7
-ARM GAS  C:\Users\ASUS\AppData\Local\Temp\cc0yIgCS.s 			page 25
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\cch5bFkv.s 			page 25
 
 
- 460 004b 31010000 		.4byte	.LASF5
+ 460 004b 8B010000 		.4byte	.LASF5
  461 004f 02       		.uleb128 0x2
  462 0050 08       		.byte	0x8
  463 0051 05       		.byte	0x5
- 464 0052 54020000 		.4byte	.LASF6
+ 464 0052 48020000 		.4byte	.LASF6
  465 0056 02       		.uleb128 0x2
  466 0057 08       		.byte	0x8
  467 0058 07       		.byte	0x7
- 468 0059 94010000 		.4byte	.LASF7
+ 468 0059 DC010000 		.4byte	.LASF7
  469 005d 03       		.uleb128 0x3
  470 005e 04       		.byte	0x4
  471 005f 05       		.byte	0x5
@@ -1457,31 +1457,31 @@ ARM GAS  C:\Users\ASUS\AppData\Local\Temp\cc0yIgCS.s 			page 1
  473 0064 02       		.uleb128 0x2
  474 0065 04       		.byte	0x4
  475 0066 07       		.byte	0x7
- 476 0067 87010000 		.4byte	.LASF8
+ 476 0067 CF010000 		.4byte	.LASF8
  477 006b 04       		.uleb128 0x4
- 478 006c 43010000 		.4byte	.LASF9
+ 478 006c 9D010000 		.4byte	.LASF9
  479 0070 02       		.byte	0x2
  480 0071 E801     		.2byte	0x1e8
  481 0073 2C000000 		.4byte	0x2c
  482 0077 04       		.uleb128 0x4
- 483 0078 80010000 		.4byte	.LASF10
+ 483 0078 C8010000 		.4byte	.LASF10
  484 007c 02       		.byte	0x2
  485 007d E901     		.2byte	0x1e9
  486 007f 3A000000 		.4byte	0x3a
  487 0083 02       		.uleb128 0x2
  488 0084 04       		.byte	0x4
  489 0085 04       		.byte	0x4
- 490 0086 62000000 		.4byte	.LASF11
+ 490 0086 BC000000 		.4byte	.LASF11
  491 008a 02       		.uleb128 0x2
  492 008b 08       		.byte	0x8
  493 008c 04       		.byte	0x4
- 494 008d 79010000 		.4byte	.LASF12
+ 494 008d C1010000 		.4byte	.LASF12
  495 0091 02       		.uleb128 0x2
  496 0092 01       		.byte	0x1
  497 0093 08       		.byte	0x8
- 498 0094 BB020000 		.4byte	.LASF13
+ 498 0094 AF020000 		.4byte	.LASF13
  499 0098 04       		.uleb128 0x4
- 500 0099 06000000 		.4byte	.LASF14
+ 500 0099 02020000 		.4byte	.LASF14
  501 009d 02       		.byte	0x2
  502 009e 9202     		.2byte	0x292
  503 00a0 A4000000 		.4byte	0xa4
@@ -1497,16 +1497,16 @@ ARM GAS  C:\Users\ASUS\AppData\Local\Temp\cc0yIgCS.s 			page 1
  513 00ba 02       		.uleb128 0x2
  514 00bb 08       		.byte	0x8
  515 00bc 04       		.byte	0x4
- 516 00bd D1020000 		.4byte	.LASF16
-ARM GAS  C:\Users\ASUS\AppData\Local\Temp\cc0yIgCS.s 			page 26
+ 516 00bd C5020000 		.4byte	.LASF16
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\cch5bFkv.s 			page 26
 
 
  517 00c1 02       		.uleb128 0x2
  518 00c2 04       		.byte	0x4
  519 00c3 07       		.byte	0x7
- 520 00c4 28020000 		.4byte	.LASF17
+ 520 00c4 1C020000 		.4byte	.LASF17
  521 00c8 06       		.uleb128 0x6
- 522 00c9 C0020000 		.4byte	.LASF18
+ 522 00c9 B4020000 		.4byte	.LASF18
  523 00cd 01       		.byte	0x1
  524 00ce C7       		.byte	0xc7
  525 00cf 00000000 		.4byte	.LFB2
@@ -1514,7 +1514,7 @@ ARM GAS  C:\Users\ASUS\AppData\Local\Temp\cc0yIgCS.s 			page 1
  527 00d7 01       		.uleb128 0x1
  528 00d8 9C       		.byte	0x9c
  529 00d9 06       		.uleb128 0x6
- 530 00da 22010000 		.4byte	.LASF19
+ 530 00da 7C010000 		.4byte	.LASF19
  531 00de 01       		.byte	0x1
  532 00df E9       		.byte	0xe9
  533 00e0 00000000 		.4byte	.LFB3
@@ -1522,7 +1522,7 @@ ARM GAS  C:\Users\ASUS\AppData\Local\Temp\cc0yIgCS.s 			page 1
  535 00e8 01       		.uleb128 0x1
  536 00e9 9C       		.byte	0x9c
  537 00ea 07       		.uleb128 0x7
- 538 00eb 63010000 		.4byte	.LASF20
+ 538 00eb AB010000 		.4byte	.LASF20
  539 00ef 01       		.byte	0x1
  540 00f0 E201     		.2byte	0x1e2
  541 00f2 00000000 		.4byte	.LFB4
@@ -1531,7 +1531,7 @@ ARM GAS  C:\Users\ASUS\AppData\Local\Temp\cc0yIgCS.s 			page 1
  544 00fb 9C       		.byte	0x9c
  545 00fc 0F010000 		.4byte	0x10f
  546 0100 08       		.uleb128 0x8
- 547 0101 12000000 		.4byte	.LASF22
+ 547 0101 1F000000 		.4byte	.LASF22
  548 0105 01       		.byte	0x1
  549 0106 E201     		.2byte	0x1e2
  550 0108 77000000 		.4byte	0x77
@@ -1539,7 +1539,7 @@ ARM GAS  C:\Users\ASUS\AppData\Local\Temp\cc0yIgCS.s 			page 1
  552 010d 50       		.byte	0x50
  553 010e 00       		.byte	0
  554 010f 07       		.uleb128 0x7
- 555 0110 4B000000 		.4byte	.LASF21
+ 555 0110 58000000 		.4byte	.LASF21
  556 0114 01       		.byte	0x1
  557 0115 0402     		.2byte	0x204
  558 0117 00000000 		.4byte	.LFB5
@@ -1548,7 +1548,7 @@ ARM GAS  C:\Users\ASUS\AppData\Local\Temp\cc0yIgCS.s 			page 1
  561 0120 9C       		.byte	0x9c
  562 0121 34010000 		.4byte	0x134
  563 0125 08       		.uleb128 0x8
- 564 0126 E9020000 		.4byte	.LASF23
+ 564 0126 DD020000 		.4byte	.LASF23
  565 012a 01       		.byte	0x1
  566 012b 0402     		.2byte	0x204
  567 012d 77000000 		.4byte	0x77
@@ -1556,9 +1556,9 @@ ARM GAS  C:\Users\ASUS\AppData\Local\Temp\cc0yIgCS.s 			page 1
  569 0132 50       		.byte	0x50
  570 0133 00       		.byte	0
  571 0134 07       		.uleb128 0x7
- 572 0135 F1020000 		.4byte	.LASF24
+ 572 0135 E5020000 		.4byte	.LASF24
  573 0139 01       		.byte	0x1
-ARM GAS  C:\Users\ASUS\AppData\Local\Temp\cc0yIgCS.s 			page 27
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\cch5bFkv.s 			page 27
 
 
  574 013a AC02     		.2byte	0x2ac
@@ -1568,7 +1568,7 @@ ARM GAS  C:\Users\ASUS\AppData\Local\Temp\cc0yIgCS.s 			page 1
  578 0145 9C       		.byte	0x9c
  579 0146 59010000 		.4byte	0x159
  580 014a 08       		.uleb128 0x8
- 581 014b 7F020000 		.4byte	.LASF25
+ 581 014b 73020000 		.4byte	.LASF25
  582 014f 01       		.byte	0x1
  583 0150 AC02     		.2byte	0x2ac
  584 0152 6B000000 		.4byte	0x6b
@@ -1576,7 +1576,7 @@ ARM GAS  C:\Users\ASUS\AppData\Local\Temp\cc0yIgCS.s 			page 1
  586 0157 50       		.byte	0x50
  587 0158 00       		.byte	0
  588 0159 09       		.uleb128 0x9
- 589 015a AB010000 		.4byte	.LASF26
+ 589 015a F3010000 		.4byte	.LASF26
  590 015e 01       		.byte	0x1
  591 015f 54       		.byte	0x54
  592 0160 00000000 		.4byte	.LFB1
@@ -1585,7 +1585,7 @@ ARM GAS  C:\Users\ASUS\AppData\Local\Temp\cc0yIgCS.s 			page 1
  595 0169 9C       		.byte	0x9c
  596 016a B7010000 		.4byte	0x1b7
  597 016e 0A       		.uleb128 0xa
- 598 016f AD020000 		.4byte	.LASF28
+ 598 016f A1020000 		.4byte	.LASF28
  599 0173 01       		.byte	0x1
  600 0174 57       		.byte	0x57
  601 0175 6B000000 		.4byte	0x6b
@@ -1618,7 +1618,7 @@ ARM GAS  C:\Users\ASUS\AppData\Local\Temp\cc0yIgCS.s 			page 1
  628 01b0 0C       		.uleb128 0xc
  629 01b1 01       		.uleb128 0x1
  630 01b2 50       		.byte	0x50
-ARM GAS  C:\Users\ASUS\AppData\Local\Temp\cc0yIgCS.s 			page 28
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\cch5bFkv.s 			page 28
 
 
  631 01b3 01       		.uleb128 0x1
@@ -1626,7 +1626,7 @@ ARM GAS  C:\Users\ASUS\AppData\Local\Temp\cc0yIgCS.s 			page 1
  633 01b5 00       		.byte	0
  634 01b6 00       		.byte	0
  635 01b7 09       		.uleb128 0x9
- 636 01b8 0C030000 		.4byte	.LASF27
+ 636 01b8 00030000 		.4byte	.LASF27
  637 01bc 01       		.byte	0x1
  638 01bd 37       		.byte	0x37
  639 01be 00000000 		.4byte	.LFB0
@@ -1642,7 +1642,7 @@ ARM GAS  C:\Users\ASUS\AppData\Local\Temp\cc0yIgCS.s 			page 1
  649 01da C8000000 		.4byte	0xc8
  650 01de 00       		.byte	0
  651 01df 0F       		.uleb128 0xf
- 652 01e0 62020000 		.4byte	.LASF32
+ 652 01e0 56020000 		.4byte	.LASF32
  653 01e4 01       		.byte	0x1
  654 01e5 C702     		.2byte	0x2c7
  655 01e7 6B000000 		.4byte	0x6b
@@ -1651,7 +1651,7 @@ ARM GAS  C:\Users\ASUS\AppData\Local\Temp\cc0yIgCS.s 			page 1
  658 01f3 01       		.uleb128 0x1
  659 01f4 9C       		.byte	0x9c
  660 01f5 10       		.uleb128 0x10
- 661 01f6 68000000 		.4byte	.LASF38
+ 661 01f6 C2000000 		.4byte	.LASF38
  662 01fa 01       		.byte	0x1
  663 01fb E102     		.2byte	0x2e1
  664 01fd 6B000000 		.4byte	0x6b
@@ -1661,7 +1661,7 @@ ARM GAS  C:\Users\ASUS\AppData\Local\Temp\cc0yIgCS.s 			page 1
  668 020a 9C       		.byte	0x9c
  669 020b 1E020000 		.4byte	0x21e
  670 020f 11       		.uleb128 0x11
- 671 0210 0B000000 		.4byte	.LASF29
+ 671 0210 18000000 		.4byte	.LASF29
  672 0214 01       		.byte	0x1
  673 0215 E302     		.2byte	0x2e3
  674 0217 6B000000 		.4byte	0x6b
@@ -1669,7 +1669,7 @@ ARM GAS  C:\Users\ASUS\AppData\Local\Temp\cc0yIgCS.s 			page 1
  676 021c 50       		.byte	0x50
  677 021d 00       		.byte	0
  678 021e 07       		.uleb128 0x7
- 679 021f 2C000000 		.4byte	.LASF30
+ 679 021f 39000000 		.4byte	.LASF30
  680 0223 01       		.byte	0x1
  681 0224 FD02     		.2byte	0x2fd
  682 0226 00000000 		.4byte	.LFB9
@@ -1678,10 +1678,10 @@ ARM GAS  C:\Users\ASUS\AppData\Local\Temp\cc0yIgCS.s 			page 1
  685 022f 9C       		.byte	0x9c
  686 0230 43020000 		.4byte	0x243
  687 0234 08       		.uleb128 0x8
-ARM GAS  C:\Users\ASUS\AppData\Local\Temp\cc0yIgCS.s 			page 29
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\cch5bFkv.s 			page 29
 
 
- 688 0235 49010000 		.4byte	.LASF31
+ 688 0235 A3010000 		.4byte	.LASF31
  689 0239 01       		.byte	0x1
  690 023a FD02     		.2byte	0x2fd
  691 023c 6B000000 		.4byte	0x6b
@@ -1689,7 +1689,7 @@ ARM GAS  C:\Users\ASUS\AppData\Local\Temp\cc0yIgCS.s 			page 1
  693 0241 50       		.byte	0x50
  694 0242 00       		.byte	0
  695 0243 0F       		.uleb128 0xf
- 696 0244 8D020000 		.4byte	.LASF33
+ 696 0244 81020000 		.4byte	.LASF33
  697 0248 01       		.byte	0x1
  698 0249 3003     		.2byte	0x330
  699 024b 77000000 		.4byte	0x77
@@ -1698,7 +1698,7 @@ ARM GAS  C:\Users\ASUS\AppData\Local\Temp\cc0yIgCS.s 			page 1
  702 0257 01       		.uleb128 0x1
  703 0258 9C       		.byte	0x9c
  704 0259 0F       		.uleb128 0xf
- 705 025a 13020000 		.4byte	.LASF34
+ 705 025a 07020000 		.4byte	.LASF34
  706 025e 01       		.byte	0x1
  707 025f 7403     		.2byte	0x374
  708 0261 77000000 		.4byte	0x77
@@ -1707,7 +1707,7 @@ ARM GAS  C:\Users\ASUS\AppData\Local\Temp\cc0yIgCS.s 			page 1
  711 026d 01       		.uleb128 0x1
  712 026e 9C       		.byte	0x9c
  713 026f 12       		.uleb128 0x12
- 714 0270 51010000 		.4byte	.LASF39
+ 714 0270 06000000 		.4byte	.LASF39
  715 0274 01       		.byte	0x1
  716 0275 20       		.byte	0x20
  717 0276 6B000000 		.4byte	0x6b
@@ -1738,7 +1738,7 @@ ARM GAS  C:\Users\ASUS\AppData\Local\Temp\cc0yIgCS.s 			page 1
  742 0012 00       		.byte	0
  743 0013 02       		.uleb128 0x2
  744 0014 24       		.uleb128 0x24
-ARM GAS  C:\Users\ASUS\AppData\Local\Temp\cc0yIgCS.s 			page 30
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\cch5bFkv.s 			page 30
 
 
  745 0015 00       		.byte	0
@@ -1798,7 +1798,7 @@ ARM GAS  C:\Users\ASUS\AppData\Local\Temp\cc0yIgCS.s 			page 1
  799 004b 01       		.uleb128 0x1
  800 004c 12       		.uleb128 0x12
  801 004d 06       		.uleb128 0x6
-ARM GAS  C:\Users\ASUS\AppData\Local\Temp\cc0yIgCS.s 			page 31
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\cch5bFkv.s 			page 31
 
 
  802 004e 40       		.uleb128 0x40
@@ -1858,7 +1858,7 @@ ARM GAS  C:\Users\ASUS\AppData\Local\Temp\cc0yIgCS.s 			page 1
  856 0086 0B       		.uleb128 0xb
  857 0087 3B       		.uleb128 0x3b
  858 0088 0B       		.uleb128 0xb
-ARM GAS  C:\Users\ASUS\AppData\Local\Temp\cc0yIgCS.s 			page 32
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\cch5bFkv.s 			page 32
 
 
  859 0089 27       		.uleb128 0x27
@@ -1918,7 +1918,7 @@ ARM GAS  C:\Users\ASUS\AppData\Local\Temp\cc0yIgCS.s 			page 1
  913 00c7 31       		.uleb128 0x31
  914 00c8 13       		.uleb128 0x13
  915 00c9 00       		.byte	0
-ARM GAS  C:\Users\ASUS\AppData\Local\Temp\cc0yIgCS.s 			page 33
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\cch5bFkv.s 			page 33
 
 
  916 00ca 00       		.byte	0
@@ -1978,7 +1978,7 @@ ARM GAS  C:\Users\ASUS\AppData\Local\Temp\cc0yIgCS.s 			page 1
  970 0103 40       		.uleb128 0x40
  971 0104 18       		.uleb128 0x18
  972 0105 9742     		.uleb128 0x2117
-ARM GAS  C:\Users\ASUS\AppData\Local\Temp\cc0yIgCS.s 			page 34
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\cch5bFkv.s 			page 34
 
 
  973 0107 19       		.uleb128 0x19
@@ -2038,7 +2038,7 @@ ARM GAS  C:\Users\ASUS\AppData\Local\Temp\cc0yIgCS.s 			page 1
  1027 000e 0000     		.2byte	0
  1028 0010 00000000 		.4byte	.LFB2
  1029 0014 28000000 		.4byte	.LFE2-.LFB2
-ARM GAS  C:\Users\ASUS\AppData\Local\Temp\cc0yIgCS.s 			page 35
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\cch5bFkv.s 			page 35
 
 
  1030 0018 00000000 		.4byte	.LFB3
@@ -2098,7 +2098,7 @@ ARM GAS  C:\Users\ASUS\AppData\Local\Temp\cc0yIgCS.s 			page 1
  1084 0000 33010000 		.section	.debug_str,"MS",%progbits,1
  1084      02004600 
  1084      00000201 
-ARM GAS  C:\Users\ASUS\AppData\Local\Temp\cc0yIgCS.s 			page 36
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\cch5bFkv.s 			page 36
 
 
  1084      FB0E0D00 
@@ -2106,211 +2106,211 @@ ARM GAS  C:\Users\ASUS\AppData\Local\Temp\cc0yIgCS.s 			page 1
  1085              	.LASF15:
  1086 0000 72656731 		.ascii	"reg16\000"
  1086      3600
- 1087              	.LASF14:
- 1088 0006 72656738 		.ascii	"reg8\000"
- 1088      00
+ 1087              	.LASF39:
+ 1088 0006 50574D5F 		.ascii	"PWM_Slave_initVar\000"
+ 1088      536C6176 
+ 1088      655F696E 
+ 1088      69745661 
+ 1088      7200
  1089              	.LASF29:
- 1090 000b 72657375 		.ascii	"result\000"
+ 1090 0018 72657375 		.ascii	"result\000"
  1090      6C7400
  1091              	.LASF22:
- 1092 0012 70657269 		.ascii	"period\000"
+ 1092 001f 70657269 		.ascii	"period\000"
  1092      6F6400
  1093              	.LASF3:
- 1094 0019 73686F72 		.ascii	"short unsigned int\000"
+ 1094 0026 73686F72 		.ascii	"short unsigned int\000"
  1094      7420756E 
  1094      7369676E 
  1094      65642069 
  1094      6E7400
  1095              	.LASF30:
- 1096 002c 50574D5F 		.ascii	"PWM_Slave_WriteControlRegister\000"
+ 1096 0039 50574D5F 		.ascii	"PWM_Slave_WriteControlRegister\000"
  1096      536C6176 
  1096      655F5772 
  1096      69746543 
  1096      6F6E7472 
  1097              	.LASF21:
- 1098 004b 50574D5F 		.ascii	"PWM_Slave_WriteCompare\000"
+ 1098 0058 50574D5F 		.ascii	"PWM_Slave_WriteCompare\000"
  1098      536C6176 
  1098      655F5772 
  1098      69746543 
  1098      6F6D7061 
- 1099              	.LASF11:
- 1100 0062 666C6F61 		.ascii	"float\000"
- 1100      7400
- 1101              	.LASF38:
- 1102 0068 50574D5F 		.ascii	"PWM_Slave_ReadControlRegister\000"
- 1102      536C6176 
- 1102      655F5265 
- 1102      6164436F 
- 1102      6E74726F 
- 1103              	.LASF1:
- 1104 0086 756E7369 		.ascii	"unsigned char\000"
- 1104      676E6564 
- 1104      20636861 
- 1104      7200
- 1105              	.LASF35:
- 1106 0094 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
- 1106      43313120 
- 1106      352E342E 
- 1106      31203230 
- 1106      31363036 
- 1107 00c7 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
- 1107      20726576 
- 1107      6973696F 
- 1107      6E203233 
- 1107      37373135 
-ARM GAS  C:\Users\ASUS\AppData\Local\Temp\cc0yIgCS.s 			page 37
+ 1099              	.LASF37:
+ 1100 006f 433A5C55 		.ascii	"C:\\Users\\weiro\\code repository for ece4191\\ece4"
+ 1100      73657273 
+ 1100      5C776569 
+ 1100      726F5C63 
+ 1100      6F646520 
+ 1101 009e 3139315C 		.ascii	"191\\DC_Motor_1\\Design01.cydsn\000"
+ 1101      44435F4D 
+ 1101      6F746F72 
+ 1101      5F315C44 
+ 1101      65736967 
+ 1102              	.LASF11:
+ 1103 00bc 666C6F61 		.ascii	"float\000"
+ 1103      7400
+ 1104              	.LASF38:
+ 1105 00c2 50574D5F 		.ascii	"PWM_Slave_ReadControlRegister\000"
+ 1105      536C6176 
+ 1105      655F5265 
+ 1105      6164436F 
+ 1105      6E74726F 
+ 1106              	.LASF1:
+ 1107 00e0 756E7369 		.ascii	"unsigned char\000"
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\cch5bFkv.s 			page 37
 
 
- 1108 00fa 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
- 1108      66756E63 
- 1108      74696F6E 
- 1108      2D736563 
- 1108      74696F6E 
- 1109              	.LASF19:
- 1110 0122 50574D5F 		.ascii	"PWM_Slave_Stop\000"
- 1110      536C6176 
- 1110      655F5374 
- 1110      6F7000
- 1111              	.LASF5:
- 1112 0131 6C6F6E67 		.ascii	"long unsigned int\000"
- 1112      20756E73 
- 1112      69676E65 
- 1112      6420696E 
- 1112      7400
- 1113              	.LASF9:
- 1114 0143 75696E74 		.ascii	"uint8\000"
- 1114      3800
- 1115              	.LASF31:
- 1116 0149 636F6E74 		.ascii	"control\000"
- 1116      726F6C00 
- 1117              	.LASF39:
- 1118 0151 50574D5F 		.ascii	"PWM_Slave_initVar\000"
- 1118      536C6176 
- 1118      655F696E 
- 1118      69745661 
- 1118      7200
- 1119              	.LASF20:
- 1120 0163 50574D5F 		.ascii	"PWM_Slave_WritePeriod\000"
- 1120      536C6176 
- 1120      655F5772 
- 1120      69746550 
- 1120      6572696F 
- 1121              	.LASF12:
- 1122 0179 646F7562 		.ascii	"double\000"
- 1122      6C6500
- 1123              	.LASF10:
- 1124 0180 75696E74 		.ascii	"uint16\000"
- 1124      313600
- 1125              	.LASF8:
- 1126 0187 756E7369 		.ascii	"unsigned int\000"
- 1126      676E6564 
- 1126      20696E74 
- 1126      00
- 1127              	.LASF7:
- 1128 0194 6C6F6E67 		.ascii	"long long unsigned int\000"
- 1128      206C6F6E 
- 1128      6720756E 
- 1128      7369676E 
- 1128      65642069 
- 1129              	.LASF26:
- 1130 01ab 50574D5F 		.ascii	"PWM_Slave_Init\000"
- 1130      536C6176 
- 1130      655F496E 
- 1130      697400
- 1131              	.LASF37:
-ARM GAS  C:\Users\ASUS\AppData\Local\Temp\cc0yIgCS.s 			page 38
+ 1107      676E6564 
+ 1107      20636861 
+ 1107      7200
+ 1108              	.LASF35:
+ 1109 00ee 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 1109      43313120 
+ 1109      352E342E 
+ 1109      31203230 
+ 1109      31363036 
+ 1110 0121 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 1110      20726576 
+ 1110      6973696F 
+ 1110      6E203233 
+ 1110      37373135 
+ 1111 0154 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 1111      66756E63 
+ 1111      74696F6E 
+ 1111      2D736563 
+ 1111      74696F6E 
+ 1112              	.LASF19:
+ 1113 017c 50574D5F 		.ascii	"PWM_Slave_Stop\000"
+ 1113      536C6176 
+ 1113      655F5374 
+ 1113      6F7000
+ 1114              	.LASF5:
+ 1115 018b 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1115      20756E73 
+ 1115      69676E65 
+ 1115      6420696E 
+ 1115      7400
+ 1116              	.LASF9:
+ 1117 019d 75696E74 		.ascii	"uint8\000"
+ 1117      3800
+ 1118              	.LASF31:
+ 1119 01a3 636F6E74 		.ascii	"control\000"
+ 1119      726F6C00 
+ 1120              	.LASF20:
+ 1121 01ab 50574D5F 		.ascii	"PWM_Slave_WritePeriod\000"
+ 1121      536C6176 
+ 1121      655F5772 
+ 1121      69746550 
+ 1121      6572696F 
+ 1122              	.LASF12:
+ 1123 01c1 646F7562 		.ascii	"double\000"
+ 1123      6C6500
+ 1124              	.LASF10:
+ 1125 01c8 75696E74 		.ascii	"uint16\000"
+ 1125      313600
+ 1126              	.LASF8:
+ 1127 01cf 756E7369 		.ascii	"unsigned int\000"
+ 1127      676E6564 
+ 1127      20696E74 
+ 1127      00
+ 1128              	.LASF7:
+ 1129 01dc 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1129      206C6F6E 
+ 1129      6720756E 
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\cch5bFkv.s 			page 38
 
 
- 1132 01ba 433A5C55 		.ascii	"C:\\Users\\ASUS\\Monash\\Year 4 Sem 1 (July 2023)\\"
- 1132      73657273 
- 1132      5C415355 
- 1132      535C4D6F 
- 1132      6E617368 
- 1133 01e8 45434520 		.ascii	"ECE 4191\\ece4191\\DC_Motor_1\\Design01.cydsn\000"
- 1133      34313931 
- 1133      5C656365 
- 1133      34313931 
- 1133      5C44435F 
+ 1129      7369676E 
+ 1129      65642069 
+ 1130              	.LASF26:
+ 1131 01f3 50574D5F 		.ascii	"PWM_Slave_Init\000"
+ 1131      536C6176 
+ 1131      655F496E 
+ 1131      697400
+ 1132              	.LASF14:
+ 1133 0202 72656738 		.ascii	"reg8\000"
+ 1133      00
  1134              	.LASF34:
- 1135 0213 50574D5F 		.ascii	"PWM_Slave_ReadPeriod\000"
+ 1135 0207 50574D5F 		.ascii	"PWM_Slave_ReadPeriod\000"
  1135      536C6176 
  1135      655F5265 
  1135      61645065 
  1135      72696F64 
  1136              	.LASF17:
- 1137 0228 73697A65 		.ascii	"sizetype\000"
+ 1137 021c 73697A65 		.ascii	"sizetype\000"
  1137      74797065 
  1137      00
  1138              	.LASF36:
- 1139 0231 47656E65 		.ascii	"Generated_Source\\PSoC5\\PWM_Slave.c\000"
+ 1139 0225 47656E65 		.ascii	"Generated_Source\\PSoC5\\PWM_Slave.c\000"
  1139      72617465 
  1139      645F536F 
  1139      75726365 
  1139      5C50536F 
  1140              	.LASF6:
- 1141 0254 6C6F6E67 		.ascii	"long long int\000"
+ 1141 0248 6C6F6E67 		.ascii	"long long int\000"
  1141      206C6F6E 
  1141      6720696E 
  1141      7400
  1142              	.LASF32:
- 1143 0262 50574D5F 		.ascii	"PWM_Slave_ReadStatusRegister\000"
+ 1143 0256 50574D5F 		.ascii	"PWM_Slave_ReadStatusRegister\000"
  1143      536C6176 
  1143      655F5265 
  1143      61645374 
  1143      61747573 
  1144              	.LASF25:
- 1145 027f 696E7465 		.ascii	"interruptMode\000"
+ 1145 0273 696E7465 		.ascii	"interruptMode\000"
  1145      72727570 
  1145      744D6F64 
  1145      6500
  1146              	.LASF33:
- 1147 028d 50574D5F 		.ascii	"PWM_Slave_ReadCompare\000"
+ 1147 0281 50574D5F 		.ascii	"PWM_Slave_ReadCompare\000"
  1147      536C6176 
  1147      655F5265 
  1147      6164436F 
  1147      6D706172 
  1148              	.LASF2:
- 1149 02a3 73686F72 		.ascii	"short int\000"
+ 1149 0297 73686F72 		.ascii	"short int\000"
  1149      7420696E 
  1149      7400
  1150              	.LASF28:
- 1151 02ad 6374726C 		.ascii	"ctrl\000"
+ 1151 02a1 6374726C 		.ascii	"ctrl\000"
  1151      00
  1152              	.LASF4:
- 1153 02b2 6C6F6E67 		.ascii	"long int\000"
-ARM GAS  C:\Users\ASUS\AppData\Local\Temp\cc0yIgCS.s 			page 39
+ 1153 02a6 6C6F6E67 		.ascii	"long int\000"
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\cch5bFkv.s 			page 39
 
 
  1153      20696E74 
  1153      00
  1154              	.LASF13:
- 1155 02bb 63686172 		.ascii	"char\000"
+ 1155 02af 63686172 		.ascii	"char\000"
  1155      00
  1156              	.LASF18:
- 1157 02c0 50574D5F 		.ascii	"PWM_Slave_Enable\000"
+ 1157 02b4 50574D5F 		.ascii	"PWM_Slave_Enable\000"
  1157      536C6176 
  1157      655F456E 
  1157      61626C65 
  1157      00
  1158              	.LASF16:
- 1159 02d1 6C6F6E67 		.ascii	"long double\000"
+ 1159 02c5 6C6F6E67 		.ascii	"long double\000"
  1159      20646F75 
  1159      626C6500 
  1160              	.LASF0:
- 1161 02dd 7369676E 		.ascii	"signed char\000"
+ 1161 02d1 7369676E 		.ascii	"signed char\000"
  1161      65642063 
  1161      68617200 
  1162              	.LASF23:
- 1163 02e9 636F6D70 		.ascii	"compare\000"
+ 1163 02dd 636F6D70 		.ascii	"compare\000"
  1163      61726500 
  1164              	.LASF24:
- 1165 02f1 50574D5F 		.ascii	"PWM_Slave_SetInterruptMode\000"
+ 1165 02e5 50574D5F 		.ascii	"PWM_Slave_SetInterruptMode\000"
  1165      536C6176 
  1165      655F5365 
  1165      74496E74 
  1165      65727275 
  1166              	.LASF27:
- 1167 030c 50574D5F 		.ascii	"PWM_Slave_Start\000"
+ 1167 0300 50574D5F 		.ascii	"PWM_Slave_Start\000"
  1167      536C6176 
  1167      655F5374 
  1167      61727400 
