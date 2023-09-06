@@ -13,7 +13,7 @@
 <v>Output</v>
 </TreeKeys>
 <TreeStates>
-<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="DC_Motor_1\Design01\Design01.cydwr\Pins">
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="DC_Motor_1\Design01\Source Files\main.c">
 <ExpandedNodeIds>
 <v>DC_Motor_1</v>
 <v>DC_Motor_1\Design01</v>
@@ -291,17 +291,12 @@
 </TreeStatesV2>
 </CyGuid_1b906a0f-a7b6-4e4d-a428-82f98b53cb35>
 </dataGuid>
-<dataGuid v="5f2be1a5-0687-4501-bb8c-cf21cb8211bf">
-<CyGuid_5f2be1a5-0687-4501-bb8c-cf21cb8211bf type_name="CyDesigner.Common.ProjMgmt.GUI.CyBookmarkData" version="1">
-<indicators />
-</CyGuid_5f2be1a5-0687-4501-bb8c-cf21cb8211bf>
-</dataGuid>
 </userData>
 </CyGuid_fdba8dfd-b15b-4469-9bbb-9e40c3e70997>
 <Unloaded />
 <OpenDocs>
-<name v=".\Design01.cydsn\Design01.cydwr" />
 <name v=".\Design01.cydsn\TopDesign\TopDesign.cysch" />
+<name v=".\Design01.cydsn\Design01.cydwr" />
 <name v=".\Design01.cydsn\main.c" />
 </OpenDocs>
 <OpenDocsLayout><![CDATA[<?xml version="1.0"?><!--
@@ -310,7 +305,7 @@
   Copyright (c) 2001-2016 Actipro Software LLC.  All rights reserved.
   http://www.actiprosoftware.com
 
---><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Horizontal"><TabbedMdiContainer Size="1233, 487" SelectedTabbedMdiWindow="0e8e9773-db92-4800-abae-36f43fe03470"><ToolWindow Key="Start Page:bd4649ab-da6b-4d04-a663-c722b8bf99db:Start Page" Guid="fefca7bd-a4e6-42b3-b0a0-7634106ba9ab" /><DocumentWindow Key="C:\Users\ASUS\Monash\Year 4 Sem 1 (July 2023)\ECE 4191\ece4191\DC_Motor_1\Design01.cydsn\Design01.cydwr" Guid="15c6b3ff-307d-4601-a5a6-fd5a0648a95b" /><DocumentWindow Key="C:\Users\ASUS\Monash\Year 4 Sem 1 (July 2023)\ECE 4191\ece4191\DC_Motor_1\Design01.cydsn\TopDesign\TopDesign.cysch" Guid="8a526646-72b0-4a16-b3e4-47981ecb4610" /><DocumentWindow Key="C:\Users\ASUS\Monash\Year 4 Sem 1 (July 2023)\ECE 4191\ece4191\DC_Motor_1\Design01.cydsn\main.c" Guid="0e8e9773-db92-4800-abae-36f43fe03470" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
+--><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Horizontal"><TabbedMdiContainer Size="1233, 487" SelectedTabbedMdiWindow="4dee4938-2a01-4c76-9726-ff603387603f"><ToolWindow Key="Start Page:bd4649ab-da6b-4d04-a663-c722b8bf99db:Start Page" Guid="fefca7bd-a4e6-42b3-b0a0-7634106ba9ab" /><DocumentWindow Key="C:\Users\ASUS\Monash\Year 4 Sem 1 (July 2023)\ECE 4191\ece4191\DC_Motor_1\Design01.cydsn\TopDesign\TopDesign.cysch" Guid="cf1fb80e-8447-48ac-8386-8dd6b232fdf9" /><DocumentWindow Key="C:\Users\ASUS\Monash\Year 4 Sem 1 (July 2023)\ECE 4191\ece4191\DC_Motor_1\Design01.cydsn\Design01.cydwr" Guid="05052348-45f9-45ab-b9cf-ea6db1b12657" /><DocumentWindow Key="C:\Users\ASUS\Monash\Year 4 Sem 1 (July 2023)\ECE 4191\ece4191\DC_Motor_1\Design01.cydsn\main.c" Guid="4dee4938-2a01-4c76-9726-ff603387603f" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
 <config v="" />
 <AutoUpdate v="true" />
 </CyGuid_843a90a4-0c4b-4e44-991d-05e7fb117a21>

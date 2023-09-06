@@ -415,9 +415,6 @@ void move2puck()
     }
     reset_count();
 }
-
-
-
 /*
 void F_or_R_1(int dist_count, int flag_FR)
 {
@@ -920,6 +917,9 @@ int main(void)
         // Flick
         step++;
     }
+    CyDelay(500);
+    
+    // go home
 }
 
 /* [] END OF FILE */
