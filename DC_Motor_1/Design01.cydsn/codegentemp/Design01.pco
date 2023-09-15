@@ -1,5 +1,5 @@
 # Design01
-# 2023-09-06 12:13:59Z
+# 2023-09-07 06:16:35Z
 
 # IO_0@[IOP=(1)][IoId=(0)] is reserved: SWDDebugEnabled
 dont_use_io iocell 1 0
@@ -26,8 +26,8 @@ set_io "led_green(0)" iocell 0 3
 set_io "Right_Trigger(0)" iocell 0 6
 set_io "Right_Echo(0)" iocell 0 7
 set_io "IR_input(0)" iocell 3 7
-set_io "Left_Trigger(0)" iocell 3 5
-set_io "Left_Echo(0)" iocell 3 6
+set_io "Left_Trigger(0)" iocell 3 6
+set_io "Left_Echo(0)" iocell 3 5
 set_io "led_red(0)" iocell 0 2
 set_io "Front_Trigger_2(0)" iocell 12 4
 set_io "Front_Echo_2(0)" iocell 2 2
@@ -35,9 +35,9 @@ set_io "led_blue(0)" iocell 0 4
 set_io "S1(0)" iocell 2 4
 set_io "S2(0)" iocell 2 3
 set_io "S0(0)" iocell 2 5
-set_io "S3(0)" iocell 2 0
+set_io "S3(0)" iocell 2 7
 set_io "CS_LED(0)" iocell 2 6
-set_io "CS_out(0)" iocell 2 7
+set_io "CS_out(0)" iocell 2 0
 set_io "small_servo(0)" iocell 12 5
 set_io "big_servo(0)" iocell 0 5
 set_location "\QuadDec_1:Cnt16:CounterUDB:reload\" 2 1 0 0

@@ -122,11 +122,11 @@
 #define S2__SLW CYREG_PRT2_SLW
 
 /* S3 */
-#define S3__0__INTTYPE CYREG_PICU2_INTTYPE0
-#define S3__0__MASK 0x01u
-#define S3__0__PC CYREG_PRT2_PC0
+#define S3__0__INTTYPE CYREG_PICU2_INTTYPE7
+#define S3__0__MASK 0x80u
+#define S3__0__PC CYREG_PRT2_PC7
 #define S3__0__PORT 2u
-#define S3__0__SHIFT 0u
+#define S3__0__SHIFT 7u
 #define S3__AG CYREG_PRT2_AG
 #define S3__AMUX CYREG_PRT2_AMUX
 #define S3__BIE CYREG_PRT2_BIE
@@ -141,7 +141,7 @@
 #define S3__INTTYPE_BASE CYDEV_PICU_INTTYPE_PICU2_BASE
 #define S3__LCD_COM_SEG CYREG_PRT2_LCD_COM_SEG
 #define S3__LCD_EN CYREG_PRT2_LCD_EN
-#define S3__MASK 0x01u
+#define S3__MASK 0x80u
 #define S3__PORT 2u
 #define S3__PRT CYREG_PRT2_PRT
 #define S3__PRTDSI__CAPS_SEL CYREG_PRT2_CAPS_SEL
@@ -152,7 +152,7 @@
 #define S3__PRTDSI__OUT_SEL1 CYREG_PRT2_OUT_SEL1
 #define S3__PRTDSI__SYNC_OUT CYREG_PRT2_SYNC_OUT
 #define S3__PS CYREG_PRT2_PS
-#define S3__SHIFT 0u
+#define S3__SHIFT 7u
 #define S3__SLW CYREG_PRT2_SLW
 
 /* Rx_1 */
@@ -316,11 +316,11 @@
 #define CS_LED__SLW CYREG_PRT2_SLW
 
 /* CS_out */
-#define CS_out__0__INTTYPE CYREG_PICU2_INTTYPE7
-#define CS_out__0__MASK 0x80u
-#define CS_out__0__PC CYREG_PRT2_PC7
+#define CS_out__0__INTTYPE CYREG_PICU2_INTTYPE0
+#define CS_out__0__MASK 0x01u
+#define CS_out__0__PC CYREG_PRT2_PC0
 #define CS_out__0__PORT 2u
-#define CS_out__0__SHIFT 7u
+#define CS_out__0__SHIFT 0u
 #define CS_out__AG CYREG_PRT2_AG
 #define CS_out__AMUX CYREG_PRT2_AMUX
 #define CS_out__BIE CYREG_PRT2_BIE
@@ -335,7 +335,7 @@
 #define CS_out__INTTYPE_BASE CYDEV_PICU_INTTYPE_PICU2_BASE
 #define CS_out__LCD_COM_SEG CYREG_PRT2_LCD_COM_SEG
 #define CS_out__LCD_EN CYREG_PRT2_LCD_EN
-#define CS_out__MASK 0x80u
+#define CS_out__MASK 0x01u
 #define CS_out__PORT 2u
 #define CS_out__PRT CYREG_PRT2_PRT
 #define CS_out__PRTDSI__CAPS_SEL CYREG_PRT2_CAPS_SEL
@@ -346,7 +346,7 @@
 #define CS_out__PRTDSI__OUT_SEL1 CYREG_PRT2_OUT_SEL1
 #define CS_out__PRTDSI__SYNC_OUT CYREG_PRT2_SYNC_OUT
 #define CS_out__PS CYREG_PRT2_PS
-#define CS_out__SHIFT 7u
+#define CS_out__SHIFT 0u
 #define CS_out__SLW CYREG_PRT2_SLW
 
 /* UART_1 */
@@ -1012,11 +1012,11 @@
 #define led_blue__SLW CYREG_PRT0_SLW
 
 /* Left_Echo */
-#define Left_Echo__0__INTTYPE CYREG_PICU3_INTTYPE6
-#define Left_Echo__0__MASK 0x40u
-#define Left_Echo__0__PC CYREG_PRT3_PC6
+#define Left_Echo__0__INTTYPE CYREG_PICU3_INTTYPE5
+#define Left_Echo__0__MASK 0x20u
+#define Left_Echo__0__PC CYREG_PRT3_PC5
 #define Left_Echo__0__PORT 3u
-#define Left_Echo__0__SHIFT 6u
+#define Left_Echo__0__SHIFT 5u
 #define Left_Echo__AG CYREG_PRT3_AG
 #define Left_Echo__AMUX CYREG_PRT3_AMUX
 #define Left_Echo__BIE CYREG_PRT3_BIE
@@ -1031,7 +1031,7 @@
 #define Left_Echo__INTTYPE_BASE CYDEV_PICU_INTTYPE_PICU3_BASE
 #define Left_Echo__LCD_COM_SEG CYREG_PRT3_LCD_COM_SEG
 #define Left_Echo__LCD_EN CYREG_PRT3_LCD_EN
-#define Left_Echo__MASK 0x40u
+#define Left_Echo__MASK 0x20u
 #define Left_Echo__PORT 3u
 #define Left_Echo__PRT CYREG_PRT3_PRT
 #define Left_Echo__PRTDSI__CAPS_SEL CYREG_PRT3_CAPS_SEL
@@ -1042,7 +1042,7 @@
 #define Left_Echo__PRTDSI__OUT_SEL1 CYREG_PRT3_OUT_SEL1
 #define Left_Echo__PRTDSI__SYNC_OUT CYREG_PRT3_SYNC_OUT
 #define Left_Echo__PS CYREG_PRT3_PS
-#define Left_Echo__SHIFT 6u
+#define Left_Echo__SHIFT 5u
 #define Left_Echo__SLW CYREG_PRT3_SLW
 
 /* PWM_Slave */
@@ -1532,11 +1532,11 @@
 #define Front_Echo_2__SLW CYREG_PRT2_SLW
 
 /* Left_Trigger */
-#define Left_Trigger__0__INTTYPE CYREG_PICU3_INTTYPE5
-#define Left_Trigger__0__MASK 0x20u
-#define Left_Trigger__0__PC CYREG_PRT3_PC5
+#define Left_Trigger__0__INTTYPE CYREG_PICU3_INTTYPE6
+#define Left_Trigger__0__MASK 0x40u
+#define Left_Trigger__0__PC CYREG_PRT3_PC6
 #define Left_Trigger__0__PORT 3u
-#define Left_Trigger__0__SHIFT 5u
+#define Left_Trigger__0__SHIFT 6u
 #define Left_Trigger__AG CYREG_PRT3_AG
 #define Left_Trigger__AMUX CYREG_PRT3_AMUX
 #define Left_Trigger__BIE CYREG_PRT3_BIE
@@ -1551,7 +1551,7 @@
 #define Left_Trigger__INTTYPE_BASE CYDEV_PICU_INTTYPE_PICU3_BASE
 #define Left_Trigger__LCD_COM_SEG CYREG_PRT3_LCD_COM_SEG
 #define Left_Trigger__LCD_EN CYREG_PRT3_LCD_EN
-#define Left_Trigger__MASK 0x20u
+#define Left_Trigger__MASK 0x40u
 #define Left_Trigger__PORT 3u
 #define Left_Trigger__PRT CYREG_PRT3_PRT
 #define Left_Trigger__PRTDSI__CAPS_SEL CYREG_PRT3_CAPS_SEL
@@ -1562,7 +1562,7 @@
 #define Left_Trigger__PRTDSI__OUT_SEL1 CYREG_PRT3_OUT_SEL1
 #define Left_Trigger__PRTDSI__SYNC_OUT CYREG_PRT3_SYNC_OUT
 #define Left_Trigger__PS CYREG_PRT3_PS
-#define Left_Trigger__SHIFT 5u
+#define Left_Trigger__SHIFT 6u
 #define Left_Trigger__SLW CYREG_PRT3_SLW
 
 /* Motor_1_IN_1 */

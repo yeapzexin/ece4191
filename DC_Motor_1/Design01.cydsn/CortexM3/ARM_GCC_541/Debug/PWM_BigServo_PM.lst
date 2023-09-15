@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\weiro\AppData\Local\Temp\cc5K6TPc.s 			page 1
+ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccUi5cOy.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\weiro\AppData\Local\Temp\cc5K6TPc.s 			page 1
   28:Generated_Source\PSoC5/PWM_BigServo_PM.c **** *  Saves the current user configuration of the component.
   29:Generated_Source\PSoC5/PWM_BigServo_PM.c **** *
   30:Generated_Source\PSoC5/PWM_BigServo_PM.c **** * Parameters:
-ARM GAS  C:\Users\weiro\AppData\Local\Temp\cc5K6TPc.s 			page 2
+ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccUi5cOy.s 			page 2
 
 
   31:Generated_Source\PSoC5/PWM_BigServo_PM.c **** *  None
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\weiro\AppData\Local\Temp\cc5K6TPc.s 			page 1
   68:Generated_Source\PSoC5/PWM_BigServo_PM.c **** 
   69:Generated_Source\PSoC5/PWM_BigServo_PM.c **** 
   70:Generated_Source\PSoC5/PWM_BigServo_PM.c **** /*******************************************************************************
-ARM GAS  C:\Users\weiro\AppData\Local\Temp\cc5K6TPc.s 			page 3
+ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccUi5cOy.s 			page 3
 
 
   71:Generated_Source\PSoC5/PWM_BigServo_PM.c **** * Function Name: PWM_BigServo_RestoreConfig
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\weiro\AppData\Local\Temp\cc5K6TPc.s 			page 1
  108:Generated_Source\PSoC5/PWM_BigServo_PM.c ****             #endif /* (PWM_BigServo_KillModeMinTime) */
  109:Generated_Source\PSoC5/PWM_BigServo_PM.c **** 
  110:Generated_Source\PSoC5/PWM_BigServo_PM.c ****             #if(PWM_BigServo_UseControl)
-ARM GAS  C:\Users\weiro\AppData\Local\Temp\cc5K6TPc.s 			page 4
+ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccUi5cOy.s 			page 4
 
 
  111:Generated_Source\PSoC5/PWM_BigServo_PM.c ****                 PWM_BigServo_WriteControlRegister(PWM_BigServo_backup.PWMControlRegister);
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\weiro\AppData\Local\Temp\cc5K6TPc.s 			page 1
  145:Generated_Source\PSoC5/PWM_BigServo_PM.c ****         {
  146:Generated_Source\PSoC5/PWM_BigServo_PM.c ****             /* Component is disabled */
  147:Generated_Source\PSoC5/PWM_BigServo_PM.c ****             PWM_BigServo_backup.PWMEnableState = 0u;
-ARM GAS  C:\Users\weiro\AppData\Local\Temp\cc5K6TPc.s 			page 5
+ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccUi5cOy.s 			page 5
 
 
   82              		.loc 1 147 0
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\weiro\AppData\Local\Temp\cc5K6TPc.s 			page 1
  177:Generated_Source\PSoC5/PWM_BigServo_PM.c **** *******************************************************************************/
  178:Generated_Source\PSoC5/PWM_BigServo_PM.c **** void PWM_BigServo_Wakeup(void) 
  179:Generated_Source\PSoC5/PWM_BigServo_PM.c **** {
-ARM GAS  C:\Users\weiro\AppData\Local\Temp\cc5K6TPc.s 			page 6
+ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccUi5cOy.s 			page 6
 
 
  107              		.loc 1 179 0
@@ -352,18 +352,18 @@ ARM GAS  C:\Users\weiro\AppData\Local\Temp\cc5K6TPc.s 			page 1
  148 000b 01       		.uleb128 0x1
  149 000c 53000000 		.4byte	.LASF23
  150 0010 0C       		.byte	0xc
- 151 0011 96010000 		.4byte	.LASF24
- 152 0015 49010000 		.4byte	.LASF25
+ 151 0011 49010000 		.4byte	.LASF24
+ 152 0015 F0010000 		.4byte	.LASF25
  153 0019 00000000 		.4byte	.Ldebug_ranges0+0
  154 001d 00000000 		.4byte	0
  155 0021 00000000 		.4byte	.Ldebug_line0
  156 0025 02       		.uleb128 0x2
-ARM GAS  C:\Users\weiro\AppData\Local\Temp\cc5K6TPc.s 			page 7
+ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccUi5cOy.s 			page 7
 
 
  157 0026 01       		.byte	0x1
  158 0027 06       		.byte	0x6
- 159 0028 27020000 		.4byte	.LASF0
+ 159 0028 E4010000 		.4byte	.LASF0
  160 002c 02       		.uleb128 0x2
  161 002d 01       		.byte	0x1
  162 002e 08       		.byte	0x8
@@ -371,15 +371,15 @@ ARM GAS  C:\Users\weiro\AppData\Local\Temp\cc5K6TPc.s 			page 1
  164 0033 02       		.uleb128 0x2
  165 0034 02       		.byte	0x2
  166 0035 05       		.byte	0x5
- 167 0036 51020000 		.4byte	.LASF2
+ 167 0036 94010000 		.4byte	.LASF2
  168 003a 02       		.uleb128 0x2
  169 003b 02       		.byte	0x2
  170 003c 07       		.byte	0x7
- 171 003d 14020000 		.4byte	.LASF3
+ 171 003d D1010000 		.4byte	.LASF3
  172 0041 02       		.uleb128 0x2
  173 0042 04       		.byte	0x4
  174 0043 05       		.byte	0x5
- 175 0044 C4010000 		.4byte	.LASF4
+ 175 0044 77010000 		.4byte	.LASF4
  176 0048 02       		.uleb128 0x2
  177 0049 04       		.byte	0x4
  178 004a 07       		.byte	0x7
@@ -412,13 +412,13 @@ ARM GAS  C:\Users\weiro\AppData\Local\Temp\cc5K6TPc.s 			page 1
  205 007e 02       		.uleb128 0x2
  206 007f 08       		.byte	0x8
  207 0080 04       		.byte	0x4
- 208 0081 F5010000 		.4byte	.LASF10
+ 208 0081 B2010000 		.4byte	.LASF10
  209 0085 02       		.uleb128 0x2
  210 0086 01       		.byte	0x1
  211 0087 08       		.byte	0x8
- 212 0088 BF010000 		.4byte	.LASF11
+ 212 0088 72010000 		.4byte	.LASF11
  213 008c 04       		.uleb128 0x4
-ARM GAS  C:\Users\weiro\AppData\Local\Temp\cc5K6TPc.s 			page 8
+ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccUi5cOy.s 			page 8
 
 
  214 008d F5000000 		.4byte	.LASF13
@@ -430,11 +430,11 @@ ARM GAS  C:\Users\weiro\AppData\Local\Temp\cc5K6TPc.s 			page 1
  220 009d 02       		.uleb128 0x2
  221 009e 08       		.byte	0x8
  222 009f 04       		.byte	0x4
- 223 00a0 45020000 		.4byte	.LASF14
+ 223 00a0 49020000 		.4byte	.LASF14
  224 00a4 02       		.uleb128 0x2
  225 00a5 04       		.byte	0x4
  226 00a6 07       		.byte	0x7
- 227 00a7 6E020000 		.4byte	.LASF15
+ 227 00a7 7A020000 		.4byte	.LASF15
  228 00ab 06       		.uleb128 0x6
  229 00ac 01       		.byte	0x1
  230 00ad 03       		.byte	0x3
@@ -453,7 +453,7 @@ ARM GAS  C:\Users\weiro\AppData\Local\Temp\cc5K6TPc.s 			page 1
  243 00c6 8B       		.byte	0x8b
  244 00c7 AB000000 		.4byte	0xab
  245 00cb 09       		.uleb128 0x9
- 246 00cc FC010000 		.4byte	.LASF17
+ 246 00cc B9010000 		.4byte	.LASF17
  247 00d0 01       		.byte	0x1
  248 00d1 2A       		.byte	0x2a
  249 00d2 00000000 		.4byte	.LFB0
@@ -469,7 +469,7 @@ ARM GAS  C:\Users\weiro\AppData\Local\Temp\cc5K6TPc.s 			page 1
  259 00eb 01       		.uleb128 0x1
  260 00ec 9C       		.byte	0x9c
  261 00ed 0A       		.uleb128 0xa
- 262 00ee 5B020000 		.4byte	.LASF19
+ 262 00ee 67020000 		.4byte	.LASF19
  263 00f2 01       		.byte	0x1
  264 00f3 88       		.byte	0x88
  265 00f4 00000000 		.4byte	.LFB2
@@ -478,14 +478,14 @@ ARM GAS  C:\Users\weiro\AppData\Local\Temp\cc5K6TPc.s 			page 1
  268 00fd 9C       		.byte	0x9c
  269 00fe 0C010000 		.4byte	0x10c
  270 0102 0B       		.uleb128 0xb
-ARM GAS  C:\Users\weiro\AppData\Local\Temp\cc5K6TPc.s 			page 9
+ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccUi5cOy.s 			page 9
 
 
  271 0103 1E000000 		.4byte	.LVL0
  272 0107 3C010000 		.4byte	0x13c
  273 010b 00       		.byte	0
  274 010c 0A       		.uleb128 0xa
- 275 010d E1010000 		.4byte	.LASF20
+ 275 010d 9E010000 		.4byte	.LASF20
  276 0111 01       		.byte	0x1
  277 0112 B2       		.byte	0xb2
  278 0113 00000000 		.4byte	.LFB3
@@ -506,13 +506,13 @@ ARM GAS  C:\Users\weiro\AppData\Local\Temp\cc5K6TPc.s 			page 1
  293 0137 03       		.byte	0x3
  294 0138 00000000 		.4byte	PWM_BigServo_backup
  295 013c 0D       		.uleb128 0xd
- 296 013d 33020000 		.4byte	.LASF21
- 297 0141 33020000 		.4byte	.LASF21
+ 296 013d 55020000 		.4byte	.LASF21
+ 297 0141 55020000 		.4byte	.LASF21
  298 0145 03       		.byte	0x3
  299 0146 93       		.byte	0x93
  300 0147 0D       		.uleb128 0xd
- 301 0148 CD010000 		.4byte	.LASF22
- 302 014c CD010000 		.4byte	.LASF22
+ 301 0148 80010000 		.4byte	.LASF22
+ 302 014c 80010000 		.4byte	.LASF22
  303 0150 03       		.byte	0x3
  304 0151 DB       		.byte	0xdb
  305 0152 00       		.byte	0
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\weiro\AppData\Local\Temp\cc5K6TPc.s 			page 1
  325 0011 00       		.byte	0
  326 0012 00       		.byte	0
  327 0013 02       		.uleb128 0x2
-ARM GAS  C:\Users\weiro\AppData\Local\Temp\cc5K6TPc.s 			page 10
+ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccUi5cOy.s 			page 10
 
 
  328 0014 24       		.uleb128 0x24
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\weiro\AppData\Local\Temp\cc5K6TPc.s 			page 1
  382 004a 07       		.uleb128 0x7
  383 004b 0D       		.uleb128 0xd
  384 004c 00       		.byte	0
-ARM GAS  C:\Users\weiro\AppData\Local\Temp\cc5K6TPc.s 			page 11
+ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccUi5cOy.s 			page 11
 
 
  385 004d 03       		.uleb128 0x3
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\weiro\AppData\Local\Temp\cc5K6TPc.s 			page 1
  439 0084 0E       		.uleb128 0xe
  440 0085 3A       		.uleb128 0x3a
  441 0086 0B       		.uleb128 0xb
-ARM GAS  C:\Users\weiro\AppData\Local\Temp\cc5K6TPc.s 			page 12
+ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccUi5cOy.s 			page 12
 
 
  442 0087 3B       		.uleb128 0x3b
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\weiro\AppData\Local\Temp\cc5K6TPc.s 			page 1
  496 00c0 0B       		.uleb128 0xb
  497 00c1 00       		.byte	0
  498 00c2 00       		.byte	0
-ARM GAS  C:\Users\weiro\AppData\Local\Temp\cc5K6TPc.s 			page 13
+ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccUi5cOy.s 			page 13
 
 
  499 00c3 00       		.byte	0
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\weiro\AppData\Local\Temp\cc5K6TPc.s 			page 1
  540 002a 50574D5F 		.ascii	"PWM_BigServo_RestoreConfig\000"
  540      42696753 
  540      6572766F 
-ARM GAS  C:\Users\weiro\AppData\Local\Temp\cc5K6TPc.s 			page 14
+ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccUi5cOy.s 			page 14
 
 
  540      5F526573 
@@ -837,89 +837,89 @@ ARM GAS  C:\Users\weiro\AppData\Local\Temp\cc5K6TPc.s 			page 1
  559              	.LASF9:
  560 0143 666C6F61 		.ascii	"float\000"
  560      7400
- 561              	.LASF25:
-ARM GAS  C:\Users\weiro\AppData\Local\Temp\cc5K6TPc.s 			page 15
+ 561              	.LASF24:
+ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccUi5cOy.s 			page 15
 
 
- 562 0149 433A5C55 		.ascii	"C:\\Users\\weiro\\code repository for ece4191\\ece4"
- 562      73657273 
- 562      5C776569 
- 562      726F5C63 
- 562      6F646520 
- 563 0178 3139315C 		.ascii	"191\\DC_Motor_1\\Design01.cydsn\000"
- 563      44435F4D 
- 563      6F746F72 
- 563      5F315C44 
- 563      65736967 
- 564              	.LASF24:
- 565 0196 47656E65 		.ascii	"Generated_Source\\PSoC5\\PWM_BigServo_PM.c\000"
- 565      72617465 
- 565      645F536F 
- 565      75726365 
- 565      5C50536F 
- 566              	.LASF11:
- 567 01bf 63686172 		.ascii	"char\000"
- 567      00
- 568              	.LASF4:
- 569 01c4 6C6F6E67 		.ascii	"long int\000"
- 569      20696E74 
- 569      00
- 570              	.LASF22:
- 571 01cd 50574D5F 		.ascii	"PWM_BigServo_Enable\000"
- 571      42696753 
- 571      6572766F 
- 571      5F456E61 
- 571      626C6500 
- 572              	.LASF20:
- 573 01e1 50574D5F 		.ascii	"PWM_BigServo_Wakeup\000"
- 573      42696753 
- 573      6572766F 
- 573      5F57616B 
- 573      65757000 
- 574              	.LASF10:
- 575 01f5 646F7562 		.ascii	"double\000"
- 575      6C6500
- 576              	.LASF17:
- 577 01fc 50574D5F 		.ascii	"PWM_BigServo_SaveConfig\000"
- 577      42696753 
- 577      6572766F 
- 577      5F536176 
- 577      65436F6E 
- 578              	.LASF3:
- 579 0214 73686F72 		.ascii	"short unsigned int\000"
- 579      7420756E 
- 579      7369676E 
- 579      65642069 
- 579      6E7400
- 580              	.LASF0:
- 581 0227 7369676E 		.ascii	"signed char\000"
- 581      65642063 
- 581      68617200 
- 582              	.LASF21:
- 583 0233 50574D5F 		.ascii	"PWM_BigServo_Stop\000"
- 583      42696753 
-ARM GAS  C:\Users\weiro\AppData\Local\Temp\cc5K6TPc.s 			page 16
+ 562 0149 47656E65 		.ascii	"Generated_Source\\PSoC5\\PWM_BigServo_PM.c\000"
+ 562      72617465 
+ 562      645F536F 
+ 562      75726365 
+ 562      5C50536F 
+ 563              	.LASF11:
+ 564 0172 63686172 		.ascii	"char\000"
+ 564      00
+ 565              	.LASF4:
+ 566 0177 6C6F6E67 		.ascii	"long int\000"
+ 566      20696E74 
+ 566      00
+ 567              	.LASF22:
+ 568 0180 50574D5F 		.ascii	"PWM_BigServo_Enable\000"
+ 568      42696753 
+ 568      6572766F 
+ 568      5F456E61 
+ 568      626C6500 
+ 569              	.LASF2:
+ 570 0194 73686F72 		.ascii	"short int\000"
+ 570      7420696E 
+ 570      7400
+ 571              	.LASF20:
+ 572 019e 50574D5F 		.ascii	"PWM_BigServo_Wakeup\000"
+ 572      42696753 
+ 572      6572766F 
+ 572      5F57616B 
+ 572      65757000 
+ 573              	.LASF10:
+ 574 01b2 646F7562 		.ascii	"double\000"
+ 574      6C6500
+ 575              	.LASF17:
+ 576 01b9 50574D5F 		.ascii	"PWM_BigServo_SaveConfig\000"
+ 576      42696753 
+ 576      6572766F 
+ 576      5F536176 
+ 576      65436F6E 
+ 577              	.LASF3:
+ 578 01d1 73686F72 		.ascii	"short unsigned int\000"
+ 578      7420756E 
+ 578      7369676E 
+ 578      65642069 
+ 578      6E7400
+ 579              	.LASF0:
+ 580 01e4 7369676E 		.ascii	"signed char\000"
+ 580      65642063 
+ 580      68617200 
+ 581              	.LASF25:
+ 582 01f0 433A5C55 		.ascii	"C:\\Users\\ASUS\\Monash\\Year 4 Sem 1 (July 2023)\\"
+ 582      73657273 
+ 582      5C415355 
+ 582      535C4D6F 
+ 582      6E617368 
+ 583 021e 45434520 		.ascii	"ECE 4191\\ece4191\\DC_Motor_1\\Design01.cydsn\000"
+ 583      34313931 
+ 583      5C656365 
+ 583      34313931 
+ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccUi5cOy.s 			page 16
 
 
- 583      6572766F 
- 583      5F53746F 
- 583      7000
+ 583      5C44435F 
  584              	.LASF14:
- 585 0245 6C6F6E67 		.ascii	"long double\000"
+ 585 0249 6C6F6E67 		.ascii	"long double\000"
  585      20646F75 
  585      626C6500 
- 586              	.LASF2:
- 587 0251 73686F72 		.ascii	"short int\000"
- 587      7420696E 
- 587      7400
+ 586              	.LASF21:
+ 587 0255 50574D5F 		.ascii	"PWM_BigServo_Stop\000"
+ 587      42696753 
+ 587      6572766F 
+ 587      5F53746F 
+ 587      7000
  588              	.LASF19:
- 589 025b 50574D5F 		.ascii	"PWM_BigServo_Sleep\000"
+ 589 0267 50574D5F 		.ascii	"PWM_BigServo_Sleep\000"
  589      42696753 
  589      6572766F 
  589      5F536C65 
  589      657000
  590              	.LASF15:
- 591 026e 73697A65 		.ascii	"sizetype\000"
+ 591 027a 73697A65 		.ascii	"sizetype\000"
  591      74797065 
  591      00
  592              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

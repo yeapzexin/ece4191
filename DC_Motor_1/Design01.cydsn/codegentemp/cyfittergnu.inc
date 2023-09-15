@@ -122,11 +122,11 @@
 .set S2__SLW, CYREG_PRT2_SLW
 
 /* S3 */
-.set S3__0__INTTYPE, CYREG_PICU2_INTTYPE0
-.set S3__0__MASK, 0x01
-.set S3__0__PC, CYREG_PRT2_PC0
+.set S3__0__INTTYPE, CYREG_PICU2_INTTYPE7
+.set S3__0__MASK, 0x80
+.set S3__0__PC, CYREG_PRT2_PC7
 .set S3__0__PORT, 2
-.set S3__0__SHIFT, 0
+.set S3__0__SHIFT, 7
 .set S3__AG, CYREG_PRT2_AG
 .set S3__AMUX, CYREG_PRT2_AMUX
 .set S3__BIE, CYREG_PRT2_BIE
@@ -141,7 +141,7 @@
 .set S3__INTTYPE_BASE, CYDEV_PICU_INTTYPE_PICU2_BASE
 .set S3__LCD_COM_SEG, CYREG_PRT2_LCD_COM_SEG
 .set S3__LCD_EN, CYREG_PRT2_LCD_EN
-.set S3__MASK, 0x01
+.set S3__MASK, 0x80
 .set S3__PORT, 2
 .set S3__PRT, CYREG_PRT2_PRT
 .set S3__PRTDSI__CAPS_SEL, CYREG_PRT2_CAPS_SEL
@@ -152,7 +152,7 @@
 .set S3__PRTDSI__OUT_SEL1, CYREG_PRT2_OUT_SEL1
 .set S3__PRTDSI__SYNC_OUT, CYREG_PRT2_SYNC_OUT
 .set S3__PS, CYREG_PRT2_PS
-.set S3__SHIFT, 0
+.set S3__SHIFT, 7
 .set S3__SLW, CYREG_PRT2_SLW
 
 /* Rx_1 */
@@ -316,11 +316,11 @@
 .set CS_LED__SLW, CYREG_PRT2_SLW
 
 /* CS_out */
-.set CS_out__0__INTTYPE, CYREG_PICU2_INTTYPE7
-.set CS_out__0__MASK, 0x80
-.set CS_out__0__PC, CYREG_PRT2_PC7
+.set CS_out__0__INTTYPE, CYREG_PICU2_INTTYPE0
+.set CS_out__0__MASK, 0x01
+.set CS_out__0__PC, CYREG_PRT2_PC0
 .set CS_out__0__PORT, 2
-.set CS_out__0__SHIFT, 7
+.set CS_out__0__SHIFT, 0
 .set CS_out__AG, CYREG_PRT2_AG
 .set CS_out__AMUX, CYREG_PRT2_AMUX
 .set CS_out__BIE, CYREG_PRT2_BIE
@@ -335,7 +335,7 @@
 .set CS_out__INTTYPE_BASE, CYDEV_PICU_INTTYPE_PICU2_BASE
 .set CS_out__LCD_COM_SEG, CYREG_PRT2_LCD_COM_SEG
 .set CS_out__LCD_EN, CYREG_PRT2_LCD_EN
-.set CS_out__MASK, 0x80
+.set CS_out__MASK, 0x01
 .set CS_out__PORT, 2
 .set CS_out__PRT, CYREG_PRT2_PRT
 .set CS_out__PRTDSI__CAPS_SEL, CYREG_PRT2_CAPS_SEL
@@ -346,7 +346,7 @@
 .set CS_out__PRTDSI__OUT_SEL1, CYREG_PRT2_OUT_SEL1
 .set CS_out__PRTDSI__SYNC_OUT, CYREG_PRT2_SYNC_OUT
 .set CS_out__PS, CYREG_PRT2_PS
-.set CS_out__SHIFT, 7
+.set CS_out__SHIFT, 0
 .set CS_out__SLW, CYREG_PRT2_SLW
 
 /* UART_1 */
@@ -1012,11 +1012,11 @@
 .set led_blue__SLW, CYREG_PRT0_SLW
 
 /* Left_Echo */
-.set Left_Echo__0__INTTYPE, CYREG_PICU3_INTTYPE6
-.set Left_Echo__0__MASK, 0x40
-.set Left_Echo__0__PC, CYREG_PRT3_PC6
+.set Left_Echo__0__INTTYPE, CYREG_PICU3_INTTYPE5
+.set Left_Echo__0__MASK, 0x20
+.set Left_Echo__0__PC, CYREG_PRT3_PC5
 .set Left_Echo__0__PORT, 3
-.set Left_Echo__0__SHIFT, 6
+.set Left_Echo__0__SHIFT, 5
 .set Left_Echo__AG, CYREG_PRT3_AG
 .set Left_Echo__AMUX, CYREG_PRT3_AMUX
 .set Left_Echo__BIE, CYREG_PRT3_BIE
@@ -1031,7 +1031,7 @@
 .set Left_Echo__INTTYPE_BASE, CYDEV_PICU_INTTYPE_PICU3_BASE
 .set Left_Echo__LCD_COM_SEG, CYREG_PRT3_LCD_COM_SEG
 .set Left_Echo__LCD_EN, CYREG_PRT3_LCD_EN
-.set Left_Echo__MASK, 0x40
+.set Left_Echo__MASK, 0x20
 .set Left_Echo__PORT, 3
 .set Left_Echo__PRT, CYREG_PRT3_PRT
 .set Left_Echo__PRTDSI__CAPS_SEL, CYREG_PRT3_CAPS_SEL
@@ -1042,7 +1042,7 @@
 .set Left_Echo__PRTDSI__OUT_SEL1, CYREG_PRT3_OUT_SEL1
 .set Left_Echo__PRTDSI__SYNC_OUT, CYREG_PRT3_SYNC_OUT
 .set Left_Echo__PS, CYREG_PRT3_PS
-.set Left_Echo__SHIFT, 6
+.set Left_Echo__SHIFT, 5
 .set Left_Echo__SLW, CYREG_PRT3_SLW
 
 /* PWM_Slave */
@@ -1532,11 +1532,11 @@
 .set Front_Echo_2__SLW, CYREG_PRT2_SLW
 
 /* Left_Trigger */
-.set Left_Trigger__0__INTTYPE, CYREG_PICU3_INTTYPE5
-.set Left_Trigger__0__MASK, 0x20
-.set Left_Trigger__0__PC, CYREG_PRT3_PC5
+.set Left_Trigger__0__INTTYPE, CYREG_PICU3_INTTYPE6
+.set Left_Trigger__0__MASK, 0x40
+.set Left_Trigger__0__PC, CYREG_PRT3_PC6
 .set Left_Trigger__0__PORT, 3
-.set Left_Trigger__0__SHIFT, 5
+.set Left_Trigger__0__SHIFT, 6
 .set Left_Trigger__AG, CYREG_PRT3_AG
 .set Left_Trigger__AMUX, CYREG_PRT3_AMUX
 .set Left_Trigger__BIE, CYREG_PRT3_BIE
@@ -1551,7 +1551,7 @@
 .set Left_Trigger__INTTYPE_BASE, CYDEV_PICU_INTTYPE_PICU3_BASE
 .set Left_Trigger__LCD_COM_SEG, CYREG_PRT3_LCD_COM_SEG
 .set Left_Trigger__LCD_EN, CYREG_PRT3_LCD_EN
-.set Left_Trigger__MASK, 0x20
+.set Left_Trigger__MASK, 0x40
 .set Left_Trigger__PORT, 3
 .set Left_Trigger__PRT, CYREG_PRT3_PRT
 .set Left_Trigger__PRTDSI__CAPS_SEL, CYREG_PRT3_CAPS_SEL
@@ -1562,7 +1562,7 @@
 .set Left_Trigger__PRTDSI__OUT_SEL1, CYREG_PRT3_OUT_SEL1
 .set Left_Trigger__PRTDSI__SYNC_OUT, CYREG_PRT3_SYNC_OUT
 .set Left_Trigger__PS, CYREG_PRT3_PS
-.set Left_Trigger__SHIFT, 5
+.set Left_Trigger__SHIFT, 6
 .set Left_Trigger__SLW, CYREG_PRT3_SLW
 
 /* Motor_1_IN_1 */
