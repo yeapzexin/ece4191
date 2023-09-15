@@ -1,0 +1,29 @@
+# Project Settings
+*.cywrk.*
+*.cyprj.*
+
+# Generated Assets and Resources
+Debug/
+Release/
+Export/
+CortexM0/
+*_datasheet.pdf
+*_timing.html
+*.cycdx
+*.cyfit
+*.rpt
+*.svd
+*.log
+*.zip
+
+# Miscellaneous files
+*.gsvd
+*.html
+*.pdf
+*/ComponentUpdateLog.txt
+
+# Folders
+*codegentemp/
+*CoretexM3/
+*Debug/
+*Generated_Source/
