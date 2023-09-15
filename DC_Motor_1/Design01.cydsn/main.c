@@ -29,9 +29,9 @@ double DISTANCE_PT_TURN = 0;
 double PT_TURN_COUNT = 0;
 int Count_Master = 0;
 int Count_Slave = 0;
-char string_1[20];
-char string_2[20];
-char string_3[20];
+char string_1[200];
+char string_2[200];
+char string_3[200];
 double error = 0;
 double accumulated_error = 0;
 double last_error = 0;
@@ -45,8 +45,11 @@ float PWM_Slave = 20000;
 float PWM_Master_puck = 5000;
 float PWM_Slave_puck = 5000;
 int is_moving = 0;
-uint16 front_det_count_1, front_det_count_2, right_det_count, left_det_count = 0;
-float front_measured_1, front_measured_2, right_measured, left_measured = 0;
+int ultrasonic_count = 0;
+double ultrasonic_measure = 0;
+double front_measured_1, front_measured_2, right_measured, left_measured = 0;
+int ultrasonic_flag = 0;
+int echo_select = 0;
 double x_coord = 0;
 double y_coord = 0;
 int direction = 0;
@@ -59,13 +62,6 @@ int down_big = 615;
 int up_big = 525;
 int open_small = 980;
 int close_small  = 940;
-
-CY_ISR(Color_sensing)
-{
-    // Ready to do the capture --> to count the pulse
-    PWM_ColorSensor_ReadStatusRegister();
-    compare_ready = 1;
-}
 
 CY_ISR (Speed_Control)
 {
@@ -83,7 +79,7 @@ CY_ISR (Speed_Control)
         //    PWM_Slave = 23000;
         //}
     
-        PWM_Slave_WriteCompare(PWM_Slave);
+        PWM_Wheels_WriteCompare2(PWM_Slave);
         last_error = error;
     }
 
@@ -91,13 +87,64 @@ CY_ISR (Speed_Control)
     //UART_1_PutString(string_3);
 }
 
-CY_ISR(dist_front_detection_1)
+CY_ISR(ultrasonic_trigger)
 {
+    if (ultrasonic_flag == 0)
+    {
+        // front 1
+        echo_select = 0;
+    }
+    else if (ultrasonic_flag == 1)
+    {
+        // front 2
+        echo_select = 1;
+    }
+    else if (ultrasonic_flag == 2)
+    {
+        // left
+        echo_select = 2;
+    }
+    else if (ultrasonic_flag == 3)
+    {
+        // right
+        echo_select = 3;
+    }
+    Control_Reg_2_Write(echo_select);
+    CyDelay(50);
     Timer_2_ReadStatusRegister();
-    front_det_count_1 = Timer_2_ReadCounter();
-    front_measured_1 = (65535-front_det_count_1)/58;
-    sprintf(string_1, "Front dist 1: %lf\n", front_measured_1);
-    UART_1_PutString(string_1);
+    Trigger_Write(1);
+    CyDelayUs(10);
+    Trigger_Write(0);
+}
+
+CY_ISR(ultrasonic_echo)
+{
+    Timer_3_ReadStatusRegister();
+    ultrasonic_count = Timer_3_ReadCounter();
+    ultrasonic_measure = (65535-ultrasonic_count)/58;
+    sprintf(string_1, "Front dist 1: %lf\n", ultrasonic_measure);
+    
+    if (ultrasonic_flag == 0)
+    {
+        // front 1
+        front_measured_1 = ultrasonic_measure;
+    }
+    else if (ultrasonic_flag == 1)
+    {
+        // front 2
+        front_measured_2 = ultrasonic_measure;
+    }
+    else if (ultrasonic_flag == 2)
+    {
+        // left
+        left_measured = ultrasonic_measure;
+    }
+    else if (ultrasonic_flag == 3)
+    {
+        // right
+        right_measured = ultrasonic_measure;
+    }
+    
     if(front_measured_1 <= 15)
     {
         wall_detected_10 = 1;
@@ -107,40 +154,12 @@ CY_ISR(dist_front_detection_1)
         wall_detected_10 = 0;
     }
 }
-/*
-CY_ISR(dist_front_detection_2)
-{
-    Timer_2_ReadStatusRegister(); // havent modify
-    front_det_count_2 = Timer_2_ReadCounter();
-    front_measured_2 = (65535-front_det_count_2)/58;
-    sprintf(string_1, "Front dist 2: %lf\n", front_measured_2);
-    UART_1_PutString(string_1);
-}
 
-CY_ISR(dist_right_detection)
+CY_ISR(Color_sensing)
 {
-    Timer_2_ReadStatusRegister(); // havent modify
-    right_det_count = Timer_2_ReadCounter();
-    front_measured_1 = (65535-right_det_count)/58;
-    //sprintf(string_1, "front dist: %lf\n", front_measured_1);
-    //UART_1_PutString(string_1);
-}
-*/
-CY_ISR(dist_left_detection)
-{
-    Timer_4_ReadStatusRegister();
-    left_det_count = Timer_4_ReadCounter();
-    left_measured = (65535-left_det_count)/58;
-    sprintf(string_1, "Left dist 1: %lf\n", left_measured);
-    UART_1_PutString(string_1);
-    if(left_measured <= 50)
-    {
-        slit_detected = 0;
-    }
-    else
-    {
-        slit_detected = 1;
-    }
+    // Ready to do the capture --> to count the pulse
+    PWM_ColorSensor_ReadStatusRegister();
+    compare_ready = 1;
 }
 
 void stop()
@@ -394,9 +413,6 @@ void move2slit()
 void move2puck()
 {
     double avg_count, avg_dist;
-    //PWM_Master_WriteCompare(PWM_Master_puck);
-    
-    //PWM_Slave_WriteCompare(PWM_Slave_puck);
     while (IR_input_Read() == 1)
     {
         forward();
@@ -595,7 +611,6 @@ void CW(int PT_TURN_COUNT, int flag_CW)
 {
     while(abs(Count_Master) <= PT_TURN_COUNT && abs(Count_Slave) <= PT_TURN_COUNT)
     {
-        //Place your application code here.
         Count_Master = QuadDec_1_GetCounter();
         Count_Slave = QuadDec_2_GetCounter();
         if (flag_CW == 1)
@@ -746,16 +761,11 @@ int main(void)
     Timer_1_Start();
     Timer_2_Start();
     Timer_3_Start();
-    Timer_4_Start();
-    Timer_5_Start();
-    isr_2_StartEx(dist_front_detection_1);
-    //isr_3_StartEx(dist_right_detection);
-    isr_4_StartEx(dist_left_detection);
-    //isr_5_StartEx(dist_front_detection_2);
+    isr_2_StartEx(ultrasonic_trigger);
+    isr_3_StartEx(ultrasonic_echo);
     PWM_ColorSensor_Start();
     
-    PWM_Master_Start();
-    PWM_Slave_Start();
+    PWM_Wheels_Start();
     PWM_SmallServo_Start();
     PWM_BigServo_Start();
     QuadDec_1_Start();
@@ -767,43 +777,15 @@ int main(void)
 
     int flag_FR = 1;
     int flag_CW = 1;
-    PWM_Master_WriteCompare(PWM_Master);
-    PWM_Slave_WriteCompare(PWM_Master);
+    PWM_Wheels_WriteCompare1(PWM_Master);
+    PWM_Wheels_WriteCompare2(PWM_Master);
     double dist_trav = 0;
     double dist_count = dist_trav*CM_COUNT_CONV;
     CyDelay(2000);
-    /*
-    while(1)
-    {
-        CyDelay(50);
-        while(Front_Echo_Read()==0)
-        {
-            Front_Trigger_Write(1);
-            CyDelayUs(10);
-            Front_Trigger_Write(0);
-        }
-    }
-    */
     
     // move to hug left wall
     while (step == 0)
     {
-        Color_Sensing_Function();
-        //move2slit();
-        /*
-        while (slit_detected == 1)
-        {
-            forward();
-            CyDelay(50);
-            while(Left_Echo_Read()==0)
-            {
-                Left_Trigger_Write(1);
-                CyDelayUs(10);
-                Left_Trigger_Write(0);
-            }
-        }
-        */
-        /*
         flag_FR = 1;
         dist_trav = 50;
         move_fixed_dist(dist_trav, flag_FR); // move forward
@@ -816,7 +798,6 @@ int main(void)
         CW(PT_TURN_COUNT, flag_CW); // turn CW facing front wall
         
         step++; 
-        */
     }
     wall_detected_10 = 0;
     CyDelay(500);

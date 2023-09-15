@@ -37,14 +37,14 @@ extern uint8 Timer_2_initVar;
 **************************************/
 
 #define Timer_2_Resolution                 16u
-#define Timer_2_UsingFixedFunction         0u
+#define Timer_2_UsingFixedFunction         1u
 #define Timer_2_UsingHWCaptureCounter      0u
 #define Timer_2_SoftwareCaptureMode        0u
 #define Timer_2_SoftwareTriggerMode        0u
-#define Timer_2_UsingHWEnable              1u
+#define Timer_2_UsingHWEnable              0u
 #define Timer_2_EnableTriggerMode          0u
-#define Timer_2_InterruptOnCaptureCount    1u
-#define Timer_2_RunModeUsed                1u
+#define Timer_2_InterruptOnCaptureCount    0u
+#define Timer_2_RunModeUsed                0u
 #define Timer_2_ControlRegRemoved          0u
 
 #if defined(Timer_2_TimerUDB_sCTRLReg_SyncCtl_ctrlreg__CONTROL_REG)
@@ -168,15 +168,15 @@ void Timer_2_Wakeup(void)        ;
 *    Initialial Parameter Constants
 ***************************************/
 
-#define Timer_2_INIT_PERIOD             65535u
-#define Timer_2_INIT_CAPTURE_MODE       ((uint8)((uint8)2u << Timer_2_CTRL_CAP_MODE_SHIFT))
+#define Timer_2_INIT_PERIOD             999u
+#define Timer_2_INIT_CAPTURE_MODE       ((uint8)((uint8)0u << Timer_2_CTRL_CAP_MODE_SHIFT))
 #define Timer_2_INIT_TRIGGER_MODE       ((uint8)((uint8)0u << Timer_2_CTRL_TRIG_MODE_SHIFT))
 #if (Timer_2_UsingFixedFunction)
-    #define Timer_2_INIT_INTERRUPT_MODE (((uint8)((uint8)0u << Timer_2_STATUS_TC_INT_MASK_SHIFT)) | \
-                                                  ((uint8)((uint8)1 << Timer_2_STATUS_CAPTURE_INT_MASK_SHIFT)))
+    #define Timer_2_INIT_INTERRUPT_MODE (((uint8)((uint8)1u << Timer_2_STATUS_TC_INT_MASK_SHIFT)) | \
+                                                  ((uint8)((uint8)0 << Timer_2_STATUS_CAPTURE_INT_MASK_SHIFT)))
 #else
-    #define Timer_2_INIT_INTERRUPT_MODE (((uint8)((uint8)0u << Timer_2_STATUS_TC_INT_MASK_SHIFT)) | \
-                                                 ((uint8)((uint8)1 << Timer_2_STATUS_CAPTURE_INT_MASK_SHIFT)) | \
+    #define Timer_2_INIT_INTERRUPT_MODE (((uint8)((uint8)1u << Timer_2_STATUS_TC_INT_MASK_SHIFT)) | \
+                                                 ((uint8)((uint8)0 << Timer_2_STATUS_CAPTURE_INT_MASK_SHIFT)) | \
                                                  ((uint8)((uint8)0 << Timer_2_STATUS_FIFOFULL_INT_MASK_SHIFT)))
 #endif /* (Timer_2_UsingFixedFunction) */
 #define Timer_2_INIT_CAPTURE_COUNT      (2u)

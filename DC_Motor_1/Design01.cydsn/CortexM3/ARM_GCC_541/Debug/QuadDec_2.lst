@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccJCsHBk.s 			page 1
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccsepz33.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccJCsHBk.s 			page 1
   28:Generated_Source\PSoC5/QuadDec_2.c **** /*******************************************************************************
   29:Generated_Source\PSoC5/QuadDec_2.c **** * Function Name: QuadDec_2_Init
   30:Generated_Source\PSoC5/QuadDec_2.c **** ********************************************************************************
-ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccJCsHBk.s 			page 2
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccsepz33.s 			page 2
 
 
   31:Generated_Source\PSoC5/QuadDec_2.c **** *
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccJCsHBk.s 			page 1
   68:Generated_Source\PSoC5/QuadDec_2.c **** *
   69:Generated_Source\PSoC5/QuadDec_2.c **** *******************************************************************************/
   70:Generated_Source\PSoC5/QuadDec_2.c **** void QuadDec_2_Enable(void) 
-ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccJCsHBk.s 			page 3
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccsepz33.s 			page 3
 
 
   71:Generated_Source\PSoC5/QuadDec_2.c **** {
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccJCsHBk.s 			page 1
  125:Generated_Source\PSoC5/QuadDec_2.c ****         QuadDec_2_Cnt16_Start();
  126:Generated_Source\PSoC5/QuadDec_2.c ****         QuadDec_2_Cnt16_WriteCounter(QuadDec_2_COUNTER_INIT_VALUE);
  127:Generated_Source\PSoC5/QuadDec_2.c ****     #endif /* QuadDec_2_COUNTER_SIZE == QuadDec_2_COUNTER_SIZE_8_BIT */
-ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccJCsHBk.s 			page 4
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccsepz33.s 			page 4
 
 
  128:Generated_Source\PSoC5/QuadDec_2.c ****     
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccJCsHBk.s 			page 1
  170:Generated_Source\PSoC5/QuadDec_2.c ****     enableInterrupts = CyEnterCriticalSection();
   57              		.loc 1 170 0
   58 0006 FFF7FEFF 		bl	CyEnterCriticalSection
-ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccJCsHBk.s 			page 5
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccsepz33.s 			page 5
 
 
   59              	.LVL1:
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccJCsHBk.s 			page 1
  200:Generated_Source\PSoC5/QuadDec_2.c **** *
  201:Generated_Source\PSoC5/QuadDec_2.c **** *******************************************************************************/
  202:Generated_Source\PSoC5/QuadDec_2.c **** int16 QuadDec_2_GetCounter(void) 
-ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccJCsHBk.s 			page 6
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccsepz33.s 			page 6
 
 
  203:Generated_Source\PSoC5/QuadDec_2.c **** {
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccJCsHBk.s 			page 1
  107              		.thumb
  108              		.thumb_func
  109              		.type	QuadDec_2_SetCounter, %function
-ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccJCsHBk.s 			page 7
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccsepz33.s 			page 7
 
 
  110              	QuadDec_2_SetCounter:
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccJCsHBk.s 			page 1
  131              	.L9:
  267:Generated_Source\PSoC5/QuadDec_2.c ****         }
  268:Generated_Source\PSoC5/QuadDec_2.c ****         else
-ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccJCsHBk.s 			page 8
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccsepz33.s 			page 8
 
 
  269:Generated_Source\PSoC5/QuadDec_2.c ****         {
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccJCsHBk.s 			page 1
  303:Generated_Source\PSoC5/QuadDec_2.c **** *    Bit      Description
  304:Generated_Source\PSoC5/QuadDec_2.c **** *     0        Counter overflow.
  305:Generated_Source\PSoC5/QuadDec_2.c **** *     1        Counter underflow.
-ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccJCsHBk.s 			page 9
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccsepz33.s 			page 9
 
 
  306:Generated_Source\PSoC5/QuadDec_2.c **** *     2        Counter reset due to index, if index input is used.
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccJCsHBk.s 			page 1
  178              		.loc 1 333 0
  179              		.cfi_startproc
  180              		@ args = 0, pretend = 0, frame = 0
-ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccJCsHBk.s 			page 10
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccsepz33.s 			page 10
 
 
  181              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccJCsHBk.s 			page 1
  223 0012 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
  224 0014 43F01003 		orr	r3, r3, #16
  225 0018 1370     		strb	r3, [r2]
-ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccJCsHBk.s 			page 11
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccsepz33.s 			page 11
 
 
   84:Generated_Source\PSoC5/QuadDec_2.c **** 
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccJCsHBk.s 			page 1
  273              	.L26:
  274              		.align	2
  275              	.L25:
-ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccJCsHBk.s 			page 12
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccsepz33.s 			page 12
 
 
  276 0020 00000000 		.word	.LANCHOR0
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccJCsHBk.s 			page 1
  307              		.bss
  308              		.set	.LANCHOR0,. + 0
  309              		.type	QuadDec_2_initVar, %object
-ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccJCsHBk.s 			page 13
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccsepz33.s 			page 13
 
 
  310              		.size	QuadDec_2_initVar, 1
@@ -736,10 +736,10 @@ ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccJCsHBk.s 			page 1
  322 0006 00000000 		.4byte	.Ldebug_abbrev0
  323 000a 04       		.byte	0x4
  324 000b 01       		.uleb128 0x1
- 325 000c AD000000 		.4byte	.LASF37
+ 325 000c FA000000 		.4byte	.LASF37
  326 0010 0C       		.byte	0xc
- 327 0011 79010000 		.4byte	.LASF38
- 328 0015 5A020000 		.4byte	.LASF39
+ 327 0011 C6010000 		.4byte	.LASF38
+ 328 0015 65000000 		.4byte	.LASF39
  329 0019 00000000 		.4byte	.Ldebug_ranges0+0
  330 001d 00000000 		.4byte	0
  331 0021 00000000 		.4byte	.Ldebug_line0
@@ -750,27 +750,27 @@ ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccJCsHBk.s 			page 1
  336 002c 03       		.uleb128 0x3
  337 002d 04       		.byte	0x4
  338 002e 07       		.byte	0x7
- 339 002f 22020000 		.4byte	.LASF0
+ 339 002f 6F020000 		.4byte	.LASF0
  340 0033 03       		.uleb128 0x3
  341 0034 08       		.byte	0x8
  342 0035 05       		.byte	0x5
- 343 0036 BC020000 		.4byte	.LASF1
+ 343 0036 B0020000 		.4byte	.LASF1
  344 003a 03       		.uleb128 0x3
  345 003b 08       		.byte	0x8
  346 003c 04       		.byte	0x4
- 347 003d 03030000 		.4byte	.LASF2
+ 347 003d F7020000 		.4byte	.LASF2
  348 0041 03       		.uleb128 0x3
  349 0042 01       		.byte	0x1
  350 0043 06       		.byte	0x6
- 351 0044 0F030000 		.4byte	.LASF3
+ 351 0044 03030000 		.4byte	.LASF3
  352 0048 03       		.uleb128 0x3
  353 0049 01       		.byte	0x1
  354 004a 08       		.byte	0x8
- 355 004b 9F000000 		.4byte	.LASF4
+ 355 004b EC000000 		.4byte	.LASF4
  356 004f 03       		.uleb128 0x3
  357 0050 02       		.byte	0x2
  358 0051 05       		.byte	0x5
- 359 0052 CF020000 		.4byte	.LASF5
+ 359 0052 C3020000 		.4byte	.LASF5
  360 0056 03       		.uleb128 0x3
  361 0057 02       		.byte	0x2
  362 0058 07       		.byte	0x7
@@ -778,56 +778,56 @@ ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccJCsHBk.s 			page 1
  364 005d 03       		.uleb128 0x3
  365 005e 04       		.byte	0x4
  366 005f 05       		.byte	0x5
-ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccJCsHBk.s 			page 14
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccsepz33.s 			page 14
 
 
- 367 0060 DF020000 		.4byte	.LASF7
+ 367 0060 D3020000 		.4byte	.LASF7
  368 0064 03       		.uleb128 0x3
  369 0065 04       		.byte	0x4
  370 0066 07       		.byte	0x7
- 371 0067 10020000 		.4byte	.LASF8
+ 371 0067 5D020000 		.4byte	.LASF8
  372 006b 03       		.uleb128 0x3
  373 006c 08       		.byte	0x8
  374 006d 07       		.byte	0x7
- 375 006e 6B000000 		.4byte	.LASF9
+ 375 006e B8000000 		.4byte	.LASF9
  376 0072 03       		.uleb128 0x3
  377 0073 04       		.byte	0x4
  378 0074 07       		.byte	0x7
- 379 0075 B3020000 		.4byte	.LASF10
+ 379 0075 A7020000 		.4byte	.LASF10
  380 0079 03       		.uleb128 0x3
  381 007a 01       		.byte	0x1
  382 007b 08       		.byte	0x8
- 383 007c E8020000 		.4byte	.LASF11
+ 383 007c DC020000 		.4byte	.LASF11
  384 0080 04       		.uleb128 0x4
- 385 0081 D9020000 		.4byte	.LASF12
+ 385 0081 CD020000 		.4byte	.LASF12
  386 0085 02       		.byte	0x2
  387 0086 E801     		.2byte	0x1e8
  388 0088 48000000 		.4byte	0x48
  389 008c 04       		.uleb128 0x4
- 390 008d E3010000 		.4byte	.LASF13
+ 390 008d 30020000 		.4byte	.LASF13
  391 0091 02       		.byte	0x2
  392 0092 E901     		.2byte	0x1e9
  393 0094 56000000 		.4byte	0x56
  394 0098 04       		.uleb128 0x4
- 395 0099 51010000 		.4byte	.LASF14
+ 395 0099 9E010000 		.4byte	.LASF14
  396 009d 02       		.byte	0x2
  397 009e EC01     		.2byte	0x1ec
  398 00a0 4F000000 		.4byte	0x4f
  399 00a4 04       		.uleb128 0x4
- 400 00a5 6C010000 		.4byte	.LASF15
+ 400 00a5 B9010000 		.4byte	.LASF15
  401 00a9 02       		.byte	0x2
  402 00aa ED01     		.2byte	0x1ed
  403 00ac 5D000000 		.4byte	0x5d
  404 00b0 03       		.uleb128 0x3
  405 00b1 04       		.byte	0x4
  406 00b2 04       		.byte	0x4
- 407 00b3 65000000 		.4byte	.LASF16
+ 407 00b3 B2000000 		.4byte	.LASF16
  408 00b7 03       		.uleb128 0x3
  409 00b8 08       		.byte	0x8
  410 00b9 04       		.byte	0x4
- 411 00ba DC010000 		.4byte	.LASF17
+ 411 00ba 29020000 		.4byte	.LASF17
  412 00be 04       		.uleb128 0x4
- 413 00bf 3B010000 		.4byte	.LASF18
+ 413 00bf 88010000 		.4byte	.LASF18
  414 00c3 02       		.byte	0x2
  415 00c4 9202     		.2byte	0x292
  416 00c6 CA000000 		.4byte	0xca
@@ -838,14 +838,14 @@ ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccJCsHBk.s 			page 1
  421 00d4 01       		.byte	0x1
  422 00d5 2A       		.byte	0x2a
  423 00d6 00000000 		.4byte	.LFB0
-ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccJCsHBk.s 			page 15
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccsepz33.s 			page 15
 
 
  424 00da 02000000 		.4byte	.LFE0-.LFB0
  425 00de 01       		.uleb128 0x1
  426 00df 9C       		.byte	0x9c
  427 00e0 07       		.uleb128 0x7
- 428 00e1 EA010000 		.4byte	.LASF22
+ 428 00e1 37020000 		.4byte	.LASF22
  429 00e5 01       		.byte	0x1
  430 00e6 9D       		.byte	0x9d
  431 00e7 00000000 		.4byte	.LFB3
@@ -854,7 +854,7 @@ ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccJCsHBk.s 			page 1
  434 00f0 9C       		.byte	0x9c
  435 00f1 20010000 		.4byte	0x120
  436 00f5 08       		.uleb128 0x8
- 437 00f6 B7010000 		.4byte	.LASF19
+ 437 00f6 04020000 		.4byte	.LASF19
  438 00fa 01       		.byte	0x1
  439 00fb 9F       		.byte	0x9f
  440 00fc 80000000 		.4byte	0x80
@@ -870,7 +870,7 @@ ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccJCsHBk.s 			page 1
  450 011b A7020000 		.4byte	0x2a7
  451 011f 00       		.byte	0
  452 0120 0A       		.uleb128 0xa
- 453 0121 45020000 		.4byte	.LASF41
+ 453 0121 92020000 		.4byte	.LASF41
  454 0125 01       		.byte	0x1
  455 0126 CA       		.byte	0xca
  456 0127 98000000 		.4byte	0x98
@@ -887,7 +887,7 @@ ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccJCsHBk.s 			page 1
  467 0144 01       		.uleb128 0x1
  468 0145 50       		.byte	0x50
  469 0146 08       		.uleb128 0x8
- 470 0147 72010000 		.4byte	.LASF21
+ 470 0147 BF010000 		.4byte	.LASF21
  471 014b 01       		.byte	0x1
  472 014c CD       		.byte	0xcd
  473 014d 8C000000 		.4byte	0x8c
@@ -897,8 +897,8 @@ ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccJCsHBk.s 			page 1
  477 015a B2020000 		.4byte	0x2b2
  478 015e 00       		.byte	0
  479 015f 0C       		.uleb128 0xc
- 480 0160 2D030000 		.4byte	.LASF23
-ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccJCsHBk.s 			page 16
+ 480 0160 21030000 		.4byte	.LASF23
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccsepz33.s 			page 16
 
 
  481 0164 01       		.byte	0x1
@@ -925,7 +925,7 @@ ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccJCsHBk.s 			page 1
  502 019a BD020000 		.4byte	0x2bd
  503 019e 00       		.byte	0
  504 019f 0F       		.uleb128 0xf
- 505 01a0 C8010000 		.4byte	.LASF29
+ 505 01a0 15020000 		.4byte	.LASF29
  506 01a4 01       		.byte	0x1
  507 01a5 3601     		.2byte	0x136
  508 01a7 80000000 		.4byte	0x80
@@ -943,7 +943,7 @@ ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccJCsHBk.s 			page 1
  520 01c6 9C       		.byte	0x9c
  521 01c7 DA010000 		.4byte	0x1da
  522 01cb 10       		.uleb128 0x10
- 523 01cc CA020000 		.4byte	.LASF26
+ 523 01cc BE020000 		.4byte	.LASF26
  524 01d0 01       		.byte	0x1
  525 01d1 4C01     		.2byte	0x14c
  526 01d3 80000000 		.4byte	0x80
@@ -951,19 +951,19 @@ ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccJCsHBk.s 			page 1
  528 01d8 50       		.byte	0x50
  529 01d9 00       		.byte	0
  530 01da 07       		.uleb128 0x7
- 531 01db 40010000 		.4byte	.LASF27
+ 531 01db 8D010000 		.4byte	.LASF27
  532 01df 01       		.byte	0x1
  533 01e0 46       		.byte	0x46
  534 01e1 00000000 		.4byte	.LFB1
  535 01e5 24000000 		.4byte	.LFE1-.LFB1
  536 01e9 01       		.uleb128 0x1
  537 01ea 9C       		.byte	0x9c
-ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccJCsHBk.s 			page 17
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccsepz33.s 			page 17
 
 
  538 01eb 2D020000 		.4byte	0x22d
  539 01ef 08       		.uleb128 0x8
- 540 01f0 B7010000 		.4byte	.LASF19
+ 540 01f0 04020000 		.4byte	.LASF19
  541 01f4 01       		.byte	0x1
  542 01f5 48       		.byte	0x48
  543 01f6 80000000 		.4byte	0x80
@@ -989,7 +989,7 @@ ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccJCsHBk.s 			page 1
  563 0228 A7020000 		.4byte	0x2a7
  564 022c 00       		.byte	0
  565 022d 07       		.uleb128 0x7
- 566 022e 42030000 		.4byte	.LASF28
+ 566 022e 36030000 		.4byte	.LASF28
  567 0232 01       		.byte	0x1
  568 0233 74       		.byte	0x74
  569 0234 00000000 		.4byte	.LFB2
@@ -1016,9 +1016,9 @@ ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccJCsHBk.s 			page 1
  590 0265 DA010000 		.4byte	0x1da
  591 0269 00       		.byte	0
  592 026a 0F       		.uleb128 0xf
- 593 026b 9C010000 		.4byte	.LASF30
+ 593 026b E9010000 		.4byte	.LASF30
  594 026f 01       		.byte	0x1
-ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccJCsHBk.s 			page 18
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccsepz33.s 			page 18
 
 
  595 0270 6801     		.2byte	0x168
@@ -1028,7 +1028,7 @@ ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccJCsHBk.s 			page 1
  599 027e 01       		.uleb128 0x1
  600 027f 9C       		.byte	0x9c
  601 0280 13       		.uleb128 0x13
- 602 0281 1B030000 		.4byte	.LASF42
+ 602 0281 0F030000 		.4byte	.LASF42
  603 0285 01       		.byte	0x1
  604 0286 19       		.byte	0x19
  605 0287 80000000 		.4byte	0x80
@@ -1036,18 +1036,18 @@ ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccJCsHBk.s 			page 1
  607 028c 03       		.byte	0x3
  608 028d 00000000 		.4byte	QuadDec_2_initVar
  609 0291 14       		.uleb128 0x14
- 610 0292 57010000 		.4byte	.LASF31
- 611 0296 57010000 		.4byte	.LASF31
+ 610 0292 A4010000 		.4byte	.LASF31
+ 611 0296 A4010000 		.4byte	.LASF31
  612 029a 03       		.byte	0x3
  613 029b 50       		.byte	0x50
  614 029c 14       		.uleb128 0x14
- 615 029d F9010000 		.4byte	.LASF32
- 616 02a1 F9010000 		.4byte	.LASF32
+ 615 029d 46020000 		.4byte	.LASF32
+ 616 02a1 46020000 		.4byte	.LASF32
  617 02a5 04       		.byte	0x4
  618 02a6 7D       		.byte	0x7d
  619 02a7 14       		.uleb128 0x14
- 620 02a8 2F020000 		.4byte	.LASF33
- 621 02ac 2F020000 		.4byte	.LASF33
+ 620 02a8 7C020000 		.4byte	.LASF33
+ 621 02ac 7C020000 		.4byte	.LASF33
  622 02b0 04       		.byte	0x4
  623 02b1 7E       		.byte	0x7e
  624 02b2 14       		.uleb128 0x14
@@ -1056,13 +1056,13 @@ ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccJCsHBk.s 			page 1
  627 02bb 03       		.byte	0x3
  628 02bc 5D       		.byte	0x5d
  629 02bd 14       		.uleb128 0x14
- 630 02be 82000000 		.4byte	.LASF35
- 631 02c2 82000000 		.4byte	.LASF35
+ 630 02be CF000000 		.4byte	.LASF35
+ 631 02c2 CF000000 		.4byte	.LASF35
  632 02c6 03       		.byte	0x3
  633 02c7 5A       		.byte	0x5a
  634 02c8 14       		.uleb128 0x14
- 635 02c9 ED020000 		.4byte	.LASF36
- 636 02cd ED020000 		.4byte	.LASF36
+ 635 02c9 E1020000 		.4byte	.LASF36
+ 636 02cd E1020000 		.4byte	.LASF36
  637 02d1 03       		.byte	0x3
  638 02d2 4F       		.byte	0x4f
  639 02d3 00       		.byte	0
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccJCsHBk.s 			page 1
  649 0007 03       		.uleb128 0x3
  650 0008 0E       		.uleb128 0xe
  651 0009 1B       		.uleb128 0x1b
-ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccJCsHBk.s 			page 19
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccsepz33.s 			page 19
 
 
  652 000a 0E       		.uleb128 0xe
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccJCsHBk.s 			page 1
  706 0040 3F       		.uleb128 0x3f
  707 0041 19       		.uleb128 0x19
  708 0042 03       		.uleb128 0x3
-ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccJCsHBk.s 			page 20
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccsepz33.s 			page 20
 
 
  709 0043 0E       		.uleb128 0xe
@@ -1198,7 +1198,7 @@ ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccJCsHBk.s 			page 1
  763 007b 17       		.uleb128 0x17
  764 007c 00       		.byte	0
  765 007d 00       		.byte	0
-ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccJCsHBk.s 			page 21
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccsepz33.s 			page 21
 
 
  766 007e 09       		.uleb128 0x9
@@ -1258,7 +1258,7 @@ ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccJCsHBk.s 			page 1
  820 00b7 3F       		.uleb128 0x3f
  821 00b8 19       		.uleb128 0x19
  822 00b9 03       		.uleb128 0x3
-ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccJCsHBk.s 			page 22
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccsepz33.s 			page 22
 
 
  823 00ba 0E       		.uleb128 0xe
@@ -1318,7 +1318,7 @@ ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccJCsHBk.s 			page 1
  877 00f1 03       		.uleb128 0x3
  878 00f2 0E       		.uleb128 0xe
  879 00f3 3A       		.uleb128 0x3a
-ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccJCsHBk.s 			page 23
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccsepz33.s 			page 23
 
 
  880 00f4 0B       		.uleb128 0xb
@@ -1378,7 +1378,7 @@ ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccJCsHBk.s 			page 1
  934 0130 00       		.byte	0
  935 0131 03       		.uleb128 0x3
  936 0132 0E       		.uleb128 0xe
-ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccJCsHBk.s 			page 24
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccsepz33.s 			page 24
 
 
  937 0133 3A       		.uleb128 0x3a
@@ -1438,7 +1438,7 @@ ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccJCsHBk.s 			page 1
  991 003b F3       		.byte	0xf3
  992 003c 01       		.uleb128 0x1
  993 003d 50       		.byte	0x50
-ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccJCsHBk.s 			page 25
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccsepz33.s 			page 25
 
 
  994 003e 9F       		.byte	0x9f
@@ -1498,7 +1498,7 @@ ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccJCsHBk.s 			page 1
  1048 000c 20000000 		.4byte	.LFE3
  1049 0010 00000000 		.4byte	.LFB4
  1050 0014 0E000000 		.4byte	.LFE4
-ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccJCsHBk.s 			page 26
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccsepz33.s 			page 26
 
 
  1051 0018 00000000 		.4byte	.LFB5
@@ -1551,207 +1551,207 @@ ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccJCsHBk.s 			page 1
  1079      4465635F 
  1079      325F496E 
  1079      697400
- 1080              	.LASF16:
- 1081 0065 666C6F61 		.ascii	"float\000"
- 1081      7400
- 1082              	.LASF9:
- 1083 006b 6C6F6E67 		.ascii	"long long unsigned int\000"
- 1083      206C6F6E 
- 1083      6720756E 
-ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccJCsHBk.s 			page 27
+ 1080              	.LASF39:
+ 1081 0065 433A5C55 		.ascii	"C:\\Users\\weiro\\code repository for ece4191\\ece4"
+ 1081      73657273 
+ 1081      5C776569 
+ 1081      726F5C63 
+ 1081      6F646520 
+ 1082 0094 3139315C 		.ascii	"191\\DC_Motor_1\\Design01.cydsn\000"
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccsepz33.s 			page 27
 
 
- 1083      7369676E 
- 1083      65642069 
- 1084              	.LASF35:
- 1085 0082 51756164 		.ascii	"QuadDec_2_Cnt16_WriteCounter\000"
- 1085      4465635F 
- 1085      325F436E 
- 1085      7431365F 
- 1085      57726974 
- 1086              	.LASF4:
- 1087 009f 756E7369 		.ascii	"unsigned char\000"
- 1087      676E6564 
- 1087      20636861 
- 1087      7200
- 1088              	.LASF37:
- 1089 00ad 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
- 1089      43313120 
- 1089      352E342E 
- 1089      31203230 
- 1089      31363036 
- 1090 00e0 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
- 1090      20726576 
- 1090      6973696F 
- 1090      6E203233 
- 1090      37373135 
- 1091 0113 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
- 1091      66756E63 
- 1091      74696F6E 
- 1091      2D736563 
- 1091      74696F6E 
- 1092              	.LASF18:
- 1093 013b 72656738 		.ascii	"reg8\000"
- 1093      00
- 1094              	.LASF27:
- 1095 0140 51756164 		.ascii	"QuadDec_2_Enable\000"
- 1095      4465635F 
- 1095      325F456E 
- 1095      61626C65 
- 1095      00
- 1096              	.LASF14:
- 1097 0151 696E7431 		.ascii	"int16\000"
- 1097      3600
- 1098              	.LASF31:
- 1099 0157 51756164 		.ascii	"QuadDec_2_Cnt16_Stop\000"
- 1099      4465635F 
- 1099      325F436E 
- 1099      7431365F 
- 1099      53746F70 
- 1100              	.LASF15:
- 1101 016c 696E7433 		.ascii	"int32\000"
- 1101      3200
- 1102              	.LASF21:
- 1103 0172 746D7043 		.ascii	"tmpCnt\000"
- 1103      6E7400
- 1104              	.LASF38:
- 1105 0179 47656E65 		.ascii	"Generated_Source\\PSoC5\\QuadDec_2.c\000"
- 1105      72617465 
- 1105      645F536F 
-ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccJCsHBk.s 			page 28
+ 1082      44435F4D 
+ 1082      6F746F72 
+ 1082      5F315C44 
+ 1082      65736967 
+ 1083              	.LASF16:
+ 1084 00b2 666C6F61 		.ascii	"float\000"
+ 1084      7400
+ 1085              	.LASF9:
+ 1086 00b8 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1086      206C6F6E 
+ 1086      6720756E 
+ 1086      7369676E 
+ 1086      65642069 
+ 1087              	.LASF35:
+ 1088 00cf 51756164 		.ascii	"QuadDec_2_Cnt16_WriteCounter\000"
+ 1088      4465635F 
+ 1088      325F436E 
+ 1088      7431365F 
+ 1088      57726974 
+ 1089              	.LASF4:
+ 1090 00ec 756E7369 		.ascii	"unsigned char\000"
+ 1090      676E6564 
+ 1090      20636861 
+ 1090      7200
+ 1091              	.LASF37:
+ 1092 00fa 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 1092      43313120 
+ 1092      352E342E 
+ 1092      31203230 
+ 1092      31363036 
+ 1093 012d 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 1093      20726576 
+ 1093      6973696F 
+ 1093      6E203233 
+ 1093      37373135 
+ 1094 0160 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 1094      66756E63 
+ 1094      74696F6E 
+ 1094      2D736563 
+ 1094      74696F6E 
+ 1095              	.LASF18:
+ 1096 0188 72656738 		.ascii	"reg8\000"
+ 1096      00
+ 1097              	.LASF27:
+ 1098 018d 51756164 		.ascii	"QuadDec_2_Enable\000"
+ 1098      4465635F 
+ 1098      325F456E 
+ 1098      61626C65 
+ 1098      00
+ 1099              	.LASF14:
+ 1100 019e 696E7431 		.ascii	"int16\000"
+ 1100      3600
+ 1101              	.LASF31:
+ 1102 01a4 51756164 		.ascii	"QuadDec_2_Cnt16_Stop\000"
+ 1102      4465635F 
+ 1102      325F436E 
+ 1102      7431365F 
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccsepz33.s 			page 28
 
 
- 1105      75726365 
- 1105      5C50536F 
- 1106              	.LASF30:
- 1107 019c 51756164 		.ascii	"QuadDec_2_GetInterruptMask\000"
- 1107      4465635F 
- 1107      325F4765 
- 1107      74496E74 
- 1107      65727275 
- 1108              	.LASF19:
- 1109 01b7 656E6162 		.ascii	"enableInterrupts\000"
- 1109      6C65496E 
- 1109      74657272 
- 1109      75707473 
- 1109      00
- 1110              	.LASF29:
- 1111 01c8 51756164 		.ascii	"QuadDec_2_GetEvents\000"
- 1111      4465635F 
- 1111      325F4765 
- 1111      74457665 
- 1111      6E747300 
- 1112              	.LASF17:
- 1113 01dc 646F7562 		.ascii	"double\000"
- 1113      6C6500
- 1114              	.LASF13:
- 1115 01e3 75696E74 		.ascii	"uint16\000"
- 1115      313600
- 1116              	.LASF22:
- 1117 01ea 51756164 		.ascii	"QuadDec_2_Stop\000"
- 1117      4465635F 
- 1117      325F5374 
- 1117      6F7000
- 1118              	.LASF32:
- 1119 01f9 4379456E 		.ascii	"CyEnterCriticalSection\000"
- 1119      74657243 
- 1119      72697469 
- 1119      63616C53 
- 1119      65637469 
- 1120              	.LASF8:
- 1121 0210 6C6F6E67 		.ascii	"long unsigned int\000"
- 1121      20756E73 
- 1121      69676E65 
- 1121      6420696E 
- 1121      7400
- 1122              	.LASF0:
- 1123 0222 756E7369 		.ascii	"unsigned int\000"
- 1123      676E6564 
- 1123      20696E74 
- 1123      00
- 1124              	.LASF33:
- 1125 022f 43794578 		.ascii	"CyExitCriticalSection\000"
- 1125      69744372 
- 1125      69746963 
- 1125      616C5365 
- 1125      6374696F 
- 1126              	.LASF41:
- 1127 0245 51756164 		.ascii	"QuadDec_2_GetCounter\000"
- 1127      4465635F 
-ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccJCsHBk.s 			page 29
+ 1102      53746F70 
+ 1103              	.LASF15:
+ 1104 01b9 696E7433 		.ascii	"int32\000"
+ 1104      3200
+ 1105              	.LASF21:
+ 1106 01bf 746D7043 		.ascii	"tmpCnt\000"
+ 1106      6E7400
+ 1107              	.LASF38:
+ 1108 01c6 47656E65 		.ascii	"Generated_Source\\PSoC5\\QuadDec_2.c\000"
+ 1108      72617465 
+ 1108      645F536F 
+ 1108      75726365 
+ 1108      5C50536F 
+ 1109              	.LASF30:
+ 1110 01e9 51756164 		.ascii	"QuadDec_2_GetInterruptMask\000"
+ 1110      4465635F 
+ 1110      325F4765 
+ 1110      74496E74 
+ 1110      65727275 
+ 1111              	.LASF19:
+ 1112 0204 656E6162 		.ascii	"enableInterrupts\000"
+ 1112      6C65496E 
+ 1112      74657272 
+ 1112      75707473 
+ 1112      00
+ 1113              	.LASF29:
+ 1114 0215 51756164 		.ascii	"QuadDec_2_GetEvents\000"
+ 1114      4465635F 
+ 1114      325F4765 
+ 1114      74457665 
+ 1114      6E747300 
+ 1115              	.LASF17:
+ 1116 0229 646F7562 		.ascii	"double\000"
+ 1116      6C6500
+ 1117              	.LASF13:
+ 1118 0230 75696E74 		.ascii	"uint16\000"
+ 1118      313600
+ 1119              	.LASF22:
+ 1120 0237 51756164 		.ascii	"QuadDec_2_Stop\000"
+ 1120      4465635F 
+ 1120      325F5374 
+ 1120      6F7000
+ 1121              	.LASF32:
+ 1122 0246 4379456E 		.ascii	"CyEnterCriticalSection\000"
+ 1122      74657243 
+ 1122      72697469 
+ 1122      63616C53 
+ 1122      65637469 
+ 1123              	.LASF8:
+ 1124 025d 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1124      20756E73 
+ 1124      69676E65 
+ 1124      6420696E 
+ 1124      7400
+ 1125              	.LASF0:
+ 1126 026f 756E7369 		.ascii	"unsigned int\000"
+ 1126      676E6564 
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccsepz33.s 			page 29
 
 
- 1127      325F4765 
- 1127      74436F75 
- 1127      6E746572 
- 1128              	.LASF39:
- 1129 025a 433A5C55 		.ascii	"C:\\Users\\ASUS\\Monash\\Year 4 Sem 1 (July 2023)\\"
- 1129      73657273 
- 1129      5C415355 
- 1129      535C4D6F 
- 1129      6E617368 
- 1130 0288 45434520 		.ascii	"ECE 4191\\ece4191\\DC_Motor_1\\Design01.cydsn\000"
- 1130      34313931 
- 1130      5C656365 
- 1130      34313931 
- 1130      5C44435F 
+ 1126      20696E74 
+ 1126      00
+ 1127              	.LASF33:
+ 1128 027c 43794578 		.ascii	"CyExitCriticalSection\000"
+ 1128      69744372 
+ 1128      69746963 
+ 1128      616C5365 
+ 1128      6374696F 
+ 1129              	.LASF41:
+ 1130 0292 51756164 		.ascii	"QuadDec_2_GetCounter\000"
+ 1130      4465635F 
+ 1130      325F4765 
+ 1130      74436F75 
+ 1130      6E746572 
  1131              	.LASF10:
- 1132 02b3 73697A65 		.ascii	"sizetype\000"
+ 1132 02a7 73697A65 		.ascii	"sizetype\000"
  1132      74797065 
  1132      00
  1133              	.LASF1:
- 1134 02bc 6C6F6E67 		.ascii	"long long int\000"
+ 1134 02b0 6C6F6E67 		.ascii	"long long int\000"
  1134      206C6F6E 
  1134      6720696E 
  1134      7400
  1135              	.LASF26:
- 1136 02ca 6D61736B 		.ascii	"mask\000"
+ 1136 02be 6D61736B 		.ascii	"mask\000"
  1136      00
  1137              	.LASF5:
- 1138 02cf 73686F72 		.ascii	"short int\000"
+ 1138 02c3 73686F72 		.ascii	"short int\000"
  1138      7420696E 
  1138      7400
  1139              	.LASF12:
- 1140 02d9 75696E74 		.ascii	"uint8\000"
+ 1140 02cd 75696E74 		.ascii	"uint8\000"
  1140      3800
  1141              	.LASF7:
- 1142 02df 6C6F6E67 		.ascii	"long int\000"
+ 1142 02d3 6C6F6E67 		.ascii	"long int\000"
  1142      20696E74 
  1142      00
  1143              	.LASF11:
- 1144 02e8 63686172 		.ascii	"char\000"
+ 1144 02dc 63686172 		.ascii	"char\000"
  1144      00
  1145              	.LASF36:
- 1146 02ed 51756164 		.ascii	"QuadDec_2_Cnt16_Start\000"
+ 1146 02e1 51756164 		.ascii	"QuadDec_2_Cnt16_Start\000"
  1146      4465635F 
  1146      325F436E 
  1146      7431365F 
  1146      53746172 
  1147              	.LASF2:
- 1148 0303 6C6F6E67 		.ascii	"long double\000"
+ 1148 02f7 6C6F6E67 		.ascii	"long double\000"
  1148      20646F75 
  1148      626C6500 
  1149              	.LASF3:
- 1150 030f 7369676E 		.ascii	"signed char\000"
+ 1150 0303 7369676E 		.ascii	"signed char\000"
  1150      65642063 
  1150      68617200 
  1151              	.LASF42:
- 1152 031b 51756164 		.ascii	"QuadDec_2_initVar\000"
+ 1152 030f 51756164 		.ascii	"QuadDec_2_initVar\000"
  1152      4465635F 
-ARM GAS  C:\Users\ASUS\AppData\Local\Temp\ccJCsHBk.s 			page 30
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccsepz33.s 			page 30
 
 
  1152      325F696E 
  1152      69745661 
  1152      7200
  1153              	.LASF23:
- 1154 032d 51756164 		.ascii	"QuadDec_2_SetCounter\000"
+ 1154 0321 51756164 		.ascii	"QuadDec_2_SetCounter\000"
  1154      4465635F 
  1154      325F5365 
  1154      74436F75 
  1154      6E746572 
  1155              	.LASF28:
- 1156 0342 51756164 		.ascii	"QuadDec_2_Start\000"
+ 1156 0336 51756164 		.ascii	"QuadDec_2_Start\000"
  1156      4465635F 
  1156      325F5374 
  1156      61727400 
