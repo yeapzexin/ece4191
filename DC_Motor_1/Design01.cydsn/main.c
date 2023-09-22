@@ -15,6 +15,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h> 
+#define MPU6050 0x68
 
 int initial = 0; /// 0 --> initial position at left side, 1 --> inital position at right side
 double WHEEL_DIAMETER = 5.4; //cm
@@ -48,7 +49,6 @@ int is_moving = 0;
 int ultrasonic_count = 0;
 double ultrasonic_measure = 0;
 double front_measured_1, front_measured_2, right_measured, left_measured = 0;
-int ultrasonic_flag = 0;
 int echo_select = 0;
 double x_coord = 0;
 double y_coord = 0;
@@ -62,6 +62,29 @@ int down_big = 615;
 int up_big = 525;
 int open_small = 980;
 int close_small  = 940;
+// bluetooth
+char Rx;
+char string_bt[20];
+int i = 0;
+int stop_bt = 0;
+char* tokenPtr;
+char task_info[3][20];
+int j = 0;
+// gyroscope
+uint8 array_1[6] = {0};
+int16 temp = 0;
+double yaw_rate = 0;
+double yaw_angle = 0;
+double previous_reading = 0;
+double current_reading = 0;
+double heading = 0;
+int cycles = 0;
+char string_gyro[200] = "\0";
+int cal = 1;
+int count = 0;
+int16 error_gyro = 0; //to find the error in gyroscope readings when stationary
+int16 error_gyro_avg = 0; //average error in gyroscope readings when stationary
+double threshold = 0.1; //to prevent accumulation of error due to integration
 
 CY_ISR (Speed_Control)
 {
@@ -87,36 +110,6 @@ CY_ISR (Speed_Control)
     //UART_1_PutString(string_3);
 }
 
-CY_ISR(ultrasonic_trigger)
-{
-    if (ultrasonic_flag == 0)
-    {
-        // front 1
-        echo_select = 0;
-    }
-    else if (ultrasonic_flag == 1)
-    {
-        // front 2
-        echo_select = 1;
-    }
-    else if (ultrasonic_flag == 2)
-    {
-        // left
-        echo_select = 2;
-    }
-    else if (ultrasonic_flag == 3)
-    {
-        // right
-        echo_select = 3;
-    }
-    Control_Reg_2_Write(echo_select);
-    CyDelay(50);
-    Timer_2_ReadStatusRegister();
-    Trigger_Write(1);
-    CyDelayUs(10);
-    Trigger_Write(0);
-}
-
 CY_ISR(ultrasonic_echo)
 {
     Timer_3_ReadStatusRegister();
@@ -124,22 +117,22 @@ CY_ISR(ultrasonic_echo)
     ultrasonic_measure = (65535-ultrasonic_count)/58;
     sprintf(string_1, "Front dist 1: %lf\n", ultrasonic_measure);
     
-    if (ultrasonic_flag == 0)
+    if (echo_select == 0)
     {
         // front 1
         front_measured_1 = ultrasonic_measure;
     }
-    else if (ultrasonic_flag == 1)
+    else if (echo_select == 1)
     {
         // front 2
         front_measured_2 = ultrasonic_measure;
     }
-    else if (ultrasonic_flag == 2)
+    else if (echo_select == 2)
     {
         // left
         left_measured = ultrasonic_measure;
     }
-    else if (ultrasonic_flag == 3)
+    else if (echo_select == 3)
     {
         // right
         right_measured = ultrasonic_measure;
@@ -160,6 +153,112 @@ CY_ISR(Color_sensing)
     // Ready to do the capture --> to count the pulse
     PWM_ColorSensor_ReadStatusRegister();
     compare_ready = 1;
+}
+
+CY_ISR(Bluetooth)
+{
+    Rx = UART_1_GetChar();
+    if (Rx != '!')
+    {
+        string_bt[i] = Rx;
+        i++;
+    }
+    else
+    {
+        string_bt[i] = '\0'; // terminate
+        stop_bt = 1;
+    }
+}
+
+CY_ISR(Gyroscope)
+{
+    if (is_moving==1)
+    {
+        Timer_2_ReadStatusRegister();
+        
+        //Writing the register number from where the read operation starts
+        I2C_1_MasterSendStart(MPU6050,0); //Steps 1-2
+        I2C_1_MasterWriteByte(0x43); //Step 3
+        I2C_1_MasterSendStop(); //Step 4
+        CyDelay(1);
+        
+        //Read data starting from register 0x43
+        I2C_1_MasterSendStart(MPU6050,1); //Steps 5-6
+        
+        //Step 7
+        array_1[0] = I2C_1_MasterReadByte(I2C_1_ACK_DATA); //GYRO_XOUT_H
+        array_1[1] = I2C_1_MasterReadByte(I2C_1_ACK_DATA); //GYRO_XOUT_L
+        array_1[2] = I2C_1_MasterReadByte(I2C_1_ACK_DATA); //GYRO_YOUT_H
+        array_1[3] = I2C_1_MasterReadByte(I2C_1_ACK_DATA); //GYRO_YOUT_L
+        array_1[4] = I2C_1_MasterReadByte(I2C_1_ACK_DATA); //GYRO_ZOUT_H
+        array_1[5] = I2C_1_MasterReadByte(I2C_1_NAK_DATA); //GYRO_ZOUT_L
+        
+        I2C_1_MasterSendStop(); //Step 8
+        CyDelay(1);
+        
+        temp = array_1[4] << 8 | array_1[5];
+            
+        if (cal == 1 && count < 20) //while calibrating
+        {
+            UART_1_PutString("Calibrating\n");
+            error_gyro += temp;
+            count++;
+        }
+        else if (cal == 1 && count == 20) //end of calibration and computation of average error
+        {
+            error_gyro_avg = error_gyro/20;
+            cal = 0;
+        }
+        else //after calibration and with average error computed
+        {
+            temp = temp - error_gyro_avg;
+            yaw_rate = temp/65.535;
+
+            current_reading = yaw_rate;   
+           
+            if (fabs(current_reading - previous_reading) > threshold)
+            {
+                //integration of yaw_rate
+                yaw_angle = yaw_angle + 0.5*0.1*(previous_reading + current_reading);
+                previous_reading = current_reading;
+                
+                //counting cycles beyond +360 or -360
+                cycles = fabs(yaw_angle)/360;
+                
+                if (cycles > 0)
+                {
+                    if (yaw_angle < 0)
+                    {
+                        heading = yaw_angle + cycles*360;
+                    }
+                    else
+                    {
+                        heading = yaw_angle - cycles*360;
+                    }
+                }
+                else
+                {
+                    heading = yaw_angle;
+                }
+                
+                //wrapping the heading within 0 - 360 degrees
+                if (heading < 0)
+                {
+                    heading = heading + 360;
+                }
+                
+                sprintf(string_gyro,"Heading: %lf\n",heading);
+                UART_1_PutString(string_gyro);
+            }
+            else
+            {
+                previous_reading = current_reading;
+                sprintf(string_gyro,"Heading: %lf\n",heading);
+                UART_1_PutString(string_gyro);
+            }
+                
+        }
+    }
 }
 
 void stop()
@@ -338,9 +437,12 @@ void forward2wall()
         CyDelay(50);
         while(Front_Echo_1_Read()==0)
         {
-            Front_Trigger_1_Write(1);
+            echo_select = 0;
+            Control_Reg_2_Write(echo_select);
+            CyDelay(50);
+            Trigger_Write(1);
             CyDelayUs(10);
-            Front_Trigger_1_Write(0);
+            Trigger_Write(0);
         }
     }
     stop();
@@ -380,9 +482,12 @@ void move2slit()
         CyDelay(100);
         while(Left_Echo_Read()==0)
         {
-            Left_Trigger_Write(1);
+            echo_select = 2;
+            Control_Reg_2_Write(echo_select);
+            CyDelay(50);
+            Trigger_Write(1);
             CyDelayUs(10);
-            Left_Trigger_Write(0);
+            Trigger_Write(0);
         }
     }
     stop();
@@ -652,7 +757,7 @@ void Color_Sensing_Function()
 {
     int mode = 1;
 
-    int count = 0;
+    //int count = 0;
     
     S0_Write(1);
     S1_Write(1);
@@ -747,6 +852,79 @@ void Color_Sensing_Function()
     
     //step = step +1;
 }
+
+void Gyroscope_Function()
+{
+    //Bring the sensor out of sleep mode
+    I2C_1_MasterSendStart(MPU6050,0); //Steps 1-2
+    I2C_1_MasterWriteByte(0x6B); //Step 3
+    I2C_1_MasterWriteByte(0x00); //Step 4
+    I2C_1_MasterSendStop(); //Step 5
+    CyDelay(1);
+    
+    
+    //Set the scaling factor of the sensor
+    I2C_1_MasterSendStart(MPU6050,0); //Steps 1-2
+    I2C_1_MasterWriteByte(0x1B); //Step 3
+    I2C_1_MasterWriteByte(0x08); //Step 4
+    I2C_1_MasterSendStop(); //Step 5
+    CyDelay(1);
+    
+    
+    //Activating the low-pass filter
+    I2C_1_MasterSendStart(MPU6050,0); //Steps 1-2
+    I2C_1_MasterWriteByte(0x1A); //Step 3
+    I2C_1_MasterWriteByte(0x05); //Step 4
+    I2C_1_MasterSendStop(); //Step 5    
+    CyDelay(1);
+}
+
+void Flicker_Function()
+{
+    int flag_FR = 0;
+    double dist_trav = 5;
+    Flicker_Write(1);
+    CyDelay(1000);
+    move_fixed_dist(dist_trav, flag_FR); // move forward
+    CyDelay(500);
+    Flicker_Write(0);
+    
+}
+
+float Sharp_IR()
+{
+    int Sharp_IR_analogue = 0;
+    float Sharp_IR_avg_a = 0;
+    float Sharp_IR_sum_a = 0;
+    int Sharp_IR_iter = 0;
+    float Sharp_IR_volt = 0;
+    float Sharp_IR_dist = 0;
+    while (Sharp_IR_iter < 21)
+    {
+        ADC_SAR_1_StartConvert();
+        do
+        {
+            Sharp_IR_analogue = ADC_SAR_1_IsEndConversion(ADC_SAR_1_RETURN_STATUS);
+        }
+        while(Sharp_IR_analogue==0);
+        Sharp_IR_analogue = ADC_SAR_1_GetResult8();
+        if (Sharp_IR_analogue > 0)
+        {
+            Sharp_IR_sum_a = Sharp_IR_sum_a + Sharp_IR_analogue;
+            Sharp_IR_iter++;
+        }
+        CyDelay(20);
+    }
+    Sharp_IR_avg_a = Sharp_IR_sum_a/20;
+    Sharp_IR_volt = Sharp_IR_avg_a/51;
+    Sharp_IR_dist = pow((Sharp_IR_volt-0.2)/(27.728*1.3),-1/1.205);
+    CyDelay(200);
+    sprintf(string_1,"volt(V): %lf\n",Sharp_IR_volt);
+    UART_1_PutString(string_1);
+    sprintf(string_1,"dist(cm): %lf\n",Sharp_IR_dist);
+    UART_1_PutString(string_1);
+    return Sharp_IR_dist;
+}
             
 int main(void)
 {
@@ -760,10 +938,10 @@ int main(void)
     isr_6_StartEx(Color_sensing);
     Timer_1_Start();
     Timer_2_Start();
-    Timer_3_Start();
-    isr_2_StartEx(ultrasonic_trigger);
     isr_3_StartEx(ultrasonic_echo);
     PWM_ColorSensor_Start();
+    isr_7_StartEx(Bluetooth);
+    isr_2_StartEx(Gyroscope);
     
     PWM_Wheels_Start();
     PWM_SmallServo_Start();
@@ -774,292 +952,328 @@ int main(void)
     QuadDec_2_SetCounter(0);
     UART_1_Start();
     CS_LED_Write(0);
+    I2C_1_Start();
+    Gyroscope_Function();
 
     int flag_FR = 1;
     int flag_CW = 1;
     PWM_Wheels_WriteCompare1(PWM_Master);
     PWM_Wheels_WriteCompare2(PWM_Master);
     double dist_trav = 0;
-    double dist_count = dist_trav*CM_COUNT_CONV;
+    //double dist_count = dist_trav*CM_COUNT_CONV;
     CyDelay(2000);
     
-    // move to hug left wall
-    while (step == 0)
+    for(;;)
     {
-        flag_FR = 1;
-        dist_trav = 50;
-        move_fixed_dist(dist_trav, flag_FR); // move forward
-        
-        flag_CW = 0;
-        CW(PT_TURN_COUNT, flag_CW); // turn CCW facing left wall
-        
-        forward2wall(); // move to left wall
-        flag_CW = 1;
-        CW(PT_TURN_COUNT, flag_CW); // turn CW facing front wall
-        
-        step++; 
-    }
-    wall_detected_10 = 0;
-    CyDelay(500);
-    
-    // move forward to front wall & turn 90 deg CW facing right wall
-    while (step == 1)
-    {
-        /*flag_FR = 1;
-        dist_trav = 150;
-        dist_count = dist_trav*CM_COUNT_CONV;
-        F_or_R_1(dist_count, flag_FR);*/
-        forward2wall(); // move to front wall
-        CyDelay(500);
-        flag_CW = 1;
-        CW(PT_TURN_COUNT, flag_CW); // turn CW facing right wall --> problem: Step 2 will collide with the slit wall
-        step++;
-    }
-    CyDelay(1000);
-    
-    // look for slit & adjust so that robot can fit through slit
-    while (step == 2)
-    {
-        /*flag_FR = 1;
-        dist_trav = 200;
-        dist_count = dist_trav*CM_COUNT_CONV;
-        F_or_R_2(dist_count, flag_FR);*/
-        move2slit();
-        sprintf(string_1, "step 2");
-        UART_1_PutString(string_1);
-        CyDelay(500);
-        
-        step++;
-    }
-    CyDelay(500);
-    while (step == 3)
-    {
-        dist_trav = 8.5;
-        flag_FR = 1;
-        move_fixed_dist(dist_trav, flag_FR);
-        flag_CW = 0;
-        CW(PT_TURN_COUNT, flag_CW); 
-        step++;
-    }
-    CyDelay(500);
-    // move forward until puck is detected
-    while (step == 4)
-    {
-        /*flag_FR = 1;
-        dist_trav = 10;
-        dist_count = dist_trav*CM_COUNT_CONV;
-        F_or_R_2(dist_count, flag_FR);*/
-        move2puck();
-        step++;
-    }
-    CyDelay(500);
-    
-    // color sensing & light up LED
-    while (step == 5)
-    {
-        int flag_FR = 0;
-        int dist_trav = 2;
-        move_fixed_dist(dist_trav, flag_FR); // move backward
-        CyDelay(500);
-        Color_Sensing_Function();
-        if (color_detected == 1) // red
+        /* Place your application code here. */
+        //move_fixed_dist(5, 0);
+        //Flicker_Function();
+        //CyDelay(500);
+        //stop_bt=0;
+        if (stop_bt == 1)
         {
-            led_red_Write(1);
+            if (strcmp(string_bt, "Are you ready?") == 0)
+            {
+                UART_1_PutString("Ready  "); // insert 2 white spaces to terminate
+            }
+            else if (strcmp(string_bt, "Start") == 0)
+            {
+                // start main program
+                // move to hug left wall
+                while (step == 0)
+                {
+                    flag_FR = 1;
+                    dist_trav = 50;
+                    move_fixed_dist(dist_trav, flag_FR); // move forward
+                    
+                    flag_CW = 0;
+                    CW(PT_TURN_COUNT, flag_CW); // turn CCW facing left wall
+                    
+                    forward2wall(); // move to left wall
+                    flag_CW = 1;
+                    CW(PT_TURN_COUNT, flag_CW); // turn CW facing front wall
+                    
+                    step++; 
+                }
+                wall_detected_10 = 0;
+                CyDelay(500);
+                
+                // move forward to front wall & turn 90 deg CW facing right wall
+                while (step == 1)
+                {
+                    /*flag_FR = 1;
+                    dist_trav = 150;
+                    dist_count = dist_trav*CM_COUNT_CONV;
+                    F_or_R_1(dist_count, flag_FR);*/
+                    forward2wall(); // move to front wall
+                    CyDelay(500);
+                    flag_CW = 1;
+                    CW(PT_TURN_COUNT, flag_CW); // turn CW facing right wall --> problem: Step 2 will collide with the slit wall
+                    step++;
+                }
+                CyDelay(1000);
+                
+                // look for slit & adjust so that robot can fit through slit
+                while (step == 2)
+                {
+                    /*flag_FR = 1;
+                    dist_trav = 200;
+                    dist_count = dist_trav*CM_COUNT_CONV;
+                    F_or_R_2(dist_count, flag_FR);*/
+                    move2slit();
+                    sprintf(string_1, "step 2");
+                    UART_1_PutString(string_1);
+                    CyDelay(500);
+                    
+                    step++;
+                }
+                CyDelay(500);
+                while (step == 3)
+                {
+                    dist_trav = 8.5;
+                    flag_FR = 1;
+                    move_fixed_dist(dist_trav, flag_FR);
+                    flag_CW = 0;
+                    CW(PT_TURN_COUNT, flag_CW); 
+                    step++;
+                }
+                CyDelay(500);
+                // move forward until puck is detected
+                while (step == 4)
+                {
+                    /*flag_FR = 1;
+                    dist_trav = 10;
+                    dist_count = dist_trav*CM_COUNT_CONV;
+                    F_or_R_2(dist_count, flag_FR);*/
+                    move2puck();
+                    step++;
+                }
+                CyDelay(500);
+                
+                // color sensing & light up LED
+                while (step == 5)
+                {
+                    int flag_FR = 0;
+                    int dist_trav = 2;
+                    move_fixed_dist(dist_trav, flag_FR); // move backward
+                    CyDelay(500);
+                    Color_Sensing_Function();
+                    if (color_detected == 1) // red
+                    {
+                        led_red_Write(1);
+                    }
+                    else if (color_detected == 2) // green
+                    {
+                        led_green_Write(1);
+                    }
+                    else if (color_detected == 3) // blue
+                    {
+                        led_blue_Write(1);   
+                    }
+                    step++;
+                }
+                CyDelay(500);
+                
+                // move forward & pick up puck
+                while (step == 6)
+                {
+                    flag_FR = 1;
+                    dist_trav = 18; // distance from color sensor to gripper center
+                    move_fixed_dist(dist_trav, flag_FR);
+                    PWM_BigServo_WriteCompare(down_big);
+                    CyDelay(500);
+                    PWM_SmallServo_WriteCompare(close_small);
+                    CyDelay(500);
+                    PWM_BigServo_WriteCompare(up_big);
+                    step++;
+                }
+                CyDelay(500);
+                
+                while (step == 7)
+                {
+                    // reverse (out of the slit) and move to the corner of facing the initial position
+                    flag_FR = 0;
+                    dist_trav = 50;
+                    move_fixed_dist(dist_trav, flag_FR);
+                    CyDelay(500);
+                    if (initial == 0)
+                    {
+                        flag_CW = 0; // ccw to left wall
+                    }
+                    else
+                    {
+                        flag_CW = 1; // cw to right wall
+                    }
+                    CW(PT_TURN_COUNT, flag_CW); // turn robot facing left or right wall
+                    step++;     
+                }
+                CyDelay(500);
+                wall_detected_10 = 0;
+                while (step ==8)
+                {
+                    forward2wall(); // move to left wall
+                    flag_CW = 1;
+                    CW(PT_TURN_COUNT, flag_CW); // turn CW facing base wall
+                    
+                    
+                   
+                    step++;
+                    
+                }
+                CyDelay(500);
+                
+                wall_detected_10 = 0;
+                while (step ==9)
+                {
+                    flag_FR = 0
+                    
+                    ;
+                    dist_trav = 70;
+                    move_fixed_dist(dist_trav, flag_FR);
+                    //move_fixed_dist(200); // move to corner
+                    CyDelay(500);
+                    step ++;
+                }
+                
+                while (step == 10)
+                {
+                     // move away from the corner
+                    /*
+                    flag_FR = 0;
+                    dist_trav = 50;
+                    move_fixed_dist(dist_trav, flag_FR);
+                    CyDelay(500);
+                    if (initial == 0)
+                    {
+                        flag_CW = 1;    // ccw
+                    }
+                    else
+                    {
+                        flag_CW = 0;    // cw
+                    }
+                    CW(PT_TURN_COUNT, flag_CW); // turn CCW or CW facing puck landing zone
+                    CyDelay(500);
+                    */
+                    step ++;
+                }
+                CyDelay(500);
+                
+                while (step == 11)
+                {
+                
+                    // move to puck landing
+                    /*
+                    flag_FR = 0;
+                    dist_trav = 20;
+                    move_fixed_dist(dist_trav, flag_FR);
+                    CyDelay(500);
+                    if (initial == 0)
+                    {
+                        flag_CW = 1;    // cw
+                    }
+                    else
+                    {
+                        flag_CW = 0;    // ccw
+                    }
+                    CW(PT_TURN_COUNT, flag_CW); // turn CCW or CW facing puck landing zone
+                    */
+                    step++;
+                }
+                CyDelay(500);
+                while (step ==12)
+                {
+                    // put down
+                    PWM_BigServo_WriteCompare(down_big);
+                    CyDelay(1000);
+                    PWM_SmallServo_WriteCompare(open_small);
+                    CyDelay(500);
+                    PWM_BigServo_WriteCompare(up_big);
+                    CyDelay(500);
+                    PWM_SmallServo_WriteCompare(close_small);
+                    step++;
+                }
+                CyDelay(500);
+                while (step == 13)
+                {
+                    flag_FR = 1;
+                    dist_trav = 20;
+                    move_fixed_dist(dist_trav, flag_FR);
+                    CyDelay(500);
+                    PWM_BigServo_WriteCompare(down_big);
+                    CyDelay(500);
+                    step++;
+                }
+                CyDelay(500);
+                while (step == 14)
+                {
+                    flag_FR = 0;
+                    dist_trav = 20;
+                    move_fixed_dist(dist_trav, flag_FR);
+                    CyDelay(500);
+                    PWM_BigServo_WriteCompare(up_big);
+                    CyDelay(500);
+                    step++;
+                }
+                CyDelay(500);
+                while (step == 15)
+                {
+                    if (initial == 0)
+                    {
+                        flag_CW = 1;    // cw
+                    }
+                    else
+                    {
+                        flag_CW = 0;    // ccw
+                    }
+                    CW(PT_TURN_COUNT, flag_CW); // turn CCW or CW facing puck landing zone
+                    CyDelay(500);
+                    flag_FR = 1;
+                    dist_trav = 50;
+                    move_fixed_dist(dist_trav, flag_FR);
+                    CyDelay(500);
+                    step++;
+                }
+                CyDelay(500);
+                while (step == 16)
+                {
+                    if (initial == 0)
+                    {
+                        flag_CW = 1;    // cw
+                    }
+                    else
+                    {
+                        flag_CW = 0;    // ccw
+                    }
+                    CW(PT_TURN_COUNT, flag_CW); // turn CCW or CW facing puck landing zone
+                    CyDelay(500);
+                    flag_FR = 1;
+                    dist_trav = 50;
+                    move_fixed_dist(dist_trav, flag_FR);
+                    CyDelay(500);
+                    step ++;
+                }
+                
+                // go home
+            }
+            else // task info
+            {
+                tokenPtr = strtok(string_bt, " ");
+                while (tokenPtr != NULL)
+                {
+                    strcpy(task_info[j], tokenPtr);
+                    j++;
+                    tokenPtr = strtok(NULL, " ");
+                }
+                UART_1_PutString(task_info[0]);
+                UART_1_PutString(task_info[1]);
+                UART_1_PutString(task_info[2]);
+                UART_1_PutString("Received  ");
+            }
+            i = 0;
+            j = 0;
+            stop_bt = 0;
         }
-        else if (color_detected == 2) // green
-        {
-            led_green_Write(1);
-        }
-        else if (color_detected == 3) // blue
-        {
-            led_blue_Write(1);   
-        }
-        step++;
     }
-    CyDelay(500);
-    
-    // move forward & pick up puck
-    while (step == 6)
-    {
-        flag_FR = 1;
-        dist_trav = 18; // distance from color sensor to gripper center
-        move_fixed_dist(dist_trav, flag_FR);
-        PWM_BigServo_WriteCompare(down_big);
-        CyDelay(500);
-        PWM_SmallServo_WriteCompare(close_small);
-        CyDelay(500);
-        PWM_BigServo_WriteCompare(up_big);
-        step++;
-    }
-    CyDelay(500);
-    
-    // go home? YES OF COZ XD
-    
-    while (step == 7)
-    {
-        // reverse (out of the slit) and move to the corner of facing the initial position
-        flag_FR = 0;
-        dist_trav = 50;
-        move_fixed_dist(dist_trav, flag_FR);
-        CyDelay(500);
-        if (initial == 0)
-        {
-            flag_CW = 0; // ccw to left wall
-        }
-        else
-        {
-            flag_CW = 1; // cw to right wall
-        }
-        CW(PT_TURN_COUNT, flag_CW); // turn robot facing left or right wall
-        step++;     
-    }
-    CyDelay(500);
-    wall_detected_10 = 0;
-    while (step ==8)
-    {
-        forward2wall(); // move to left wall
-        flag_CW = 1;
-        CW(PT_TURN_COUNT, flag_CW); // turn CW facing base wall
-        
-        
-       
-        step++;
-        
-    }
-    CyDelay(500);
-    
-    wall_detected_10 = 0;
-    while (step ==9)
-    {
-        flag_FR = 0
-        
-        ;
-        dist_trav = 70;
-        move_fixed_dist(dist_trav, flag_FR);
-        //move_fixed_dist(200); // move to corner
-        CyDelay(500);
-        step ++;
-    }
-    
-    while (step == 10)
-    {
-         // move away from the corner
-        /*
-        flag_FR = 0;
-        dist_trav = 50;
-        move_fixed_dist(dist_trav, flag_FR);
-        CyDelay(500);
-        if (initial == 0)
-        {
-            flag_CW = 1;    // ccw
-        }
-        else
-        {
-            flag_CW = 0;    // cw
-        }
-        CW(PT_TURN_COUNT, flag_CW); // turn CCW or CW facing puck landing zone
-        CyDelay(500);
-        */
-        step ++;
-    }
-    CyDelay(500);
-    
-    while (step == 11)
-    {
-    
-        // move to puck landing
-        /*
-        flag_FR = 0;
-        dist_trav = 20;
-        move_fixed_dist(dist_trav, flag_FR);
-        CyDelay(500);
-        if (initial == 0)
-        {
-            flag_CW = 1;    // cw
-        }
-        else
-        {
-            flag_CW = 0;    // ccw
-        }
-        CW(PT_TURN_COUNT, flag_CW); // turn CCW or CW facing puck landing zone
-        */
-        step++;
-    }
-    CyDelay(500);
-    while (step ==12)
-    {
-        // put down
-        PWM_BigServo_WriteCompare(down_big);
-        CyDelay(1000);
-        PWM_SmallServo_WriteCompare(open_small);
-        CyDelay(500);
-        PWM_BigServo_WriteCompare(up_big);
-        CyDelay(500);
-        PWM_SmallServo_WriteCompare(close_small);
-        step++;
-    }
-    CyDelay(500);
-    while (step == 13)
-    {
-        flag_FR = 1;
-        dist_trav = 20;
-        move_fixed_dist(dist_trav, flag_FR);
-        CyDelay(500);
-        PWM_BigServo_WriteCompare(down_big);
-        CyDelay(500);
-        step++;
-    }
-    CyDelay(500);
-    while (step == 14)
-    {
-        flag_FR = 0;
-        dist_trav = 20;
-        move_fixed_dist(dist_trav, flag_FR);
-        CyDelay(500);
-        PWM_BigServo_WriteCompare(up_big);
-        CyDelay(500);
-        step++;
-    }
-    CyDelay(500);
-    while (step == 15)
-    {
-        if (initial == 0)
-        {
-            flag_CW = 1;    // cw
-        }
-        else
-        {
-            flag_CW = 0;    // ccw
-        }
-        CW(PT_TURN_COUNT, flag_CW); // turn CCW or CW facing puck landing zone
-        CyDelay(500);
-        flag_FR = 1;
-        dist_trav = 50;
-        move_fixed_dist(dist_trav, flag_FR);
-        CyDelay(500);
-        step++;
-    }
-    CyDelay(500);
-    while (step == 16)
-    {
-        if (initial == 0)
-        {
-            flag_CW = 1;    // cw
-        }
-        else
-        {
-            flag_CW = 0;    // ccw
-        }
-        CW(PT_TURN_COUNT, flag_CW); // turn CCW or CW facing puck landing zone
-        CyDelay(500);
-        flag_FR = 1;
-        dist_trav = 50;
-        move_fixed_dist(dist_trav, flag_FR);
-        CyDelay(500);
-        step ++;
-    }
-    
-    // go home
 }
 
 /* [] END OF FILE */

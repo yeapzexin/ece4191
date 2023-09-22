@@ -1,6 +1,6 @@
-C:\Users\weiro\code repository for ece4191\ece4191\DC_Motor_1\Design01.cydsn\Design01.cyprj|c36fc4b6-b383-494a-b949-7c924feb20b7
-C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|1c5e5bea-8142-4053-b514-ed55d8c6b896
-C:\Users\weiro\OneDrive\Documents\PSoC Creator\4.4\Downloads ( 4.4).cylib\Downloads ( 4.4).cyprj|7557ba95-556c-41d6-bdf4-ef2c2e607f31
-C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|6851066c-acd9-4698-996d-a1b8f2ad5451
-C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|cace401d-37fc-43e7-af08-a1a54e7083a1
-C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|37a81437-e121-4b6a-a5ad-1892e3a96d05
+C:\Users\weiro\code repository for ece4191\ece4191\DC_Motor_1\Design01.cydsn\Design01.cyprj|05f6e998-baef-4327-a5f6-a83454f2f8d6
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|7f3bd0de-bb0a-43ab-b3c2-48a9806f122e
+C:\Users\weiro\OneDrive\Documents\PSoC Creator\4.4\Downloads ( 4.4).cylib\Downloads ( 4.4).cyprj|69b89ec5-7a48-4abd-b659-1c782c733c55
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|2c348245-f2e0-4e0c-bebe-ee83d65e2504
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|d21f653f-6fbe-4958-8a5b-4f967457e6a1
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|2182a4e7-aff9-4ff5-b78b-7407ca7a6e5d

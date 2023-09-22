@@ -55,6 +55,9 @@
 <v>DC_Motor_1\Design01\Source Files\main.c</v>
 <v>DC_Motor_1\Design01\Generated_Source</v>
 <v>DC_Motor_1\Design01\Generated_Source\PSoC5</v>
+<v>DC_Motor_1\Design01\Generated_Source\PSoC5\ADC_SAR_1</v>
+<v>DC_Motor_1\Design01\Generated_Source\PSoC5\ADC_SAR_1_IRQ</v>
+<v>DC_Motor_1\Design01\Generated_Source\PSoC5\ADC_SAR_1_theACLK</v>
 <v>DC_Motor_1\Design01\Generated_Source\PSoC5\big_servo</v>
 <v>DC_Motor_1\Design01\Generated_Source\PSoC5\Clock_1</v>
 <v>DC_Motor_1\Design01\Generated_Source\PSoC5\Clock_4</v>
@@ -66,11 +69,8 @@
 <v>DC_Motor_1\Design01\Generated_Source\PSoC5\CS_out</v>
 <v>DC_Motor_1\Design01\Generated_Source\PSoC5\cy_boot</v>
 <v>DC_Motor_1\Design01\Generated_Source\PSoC5\Em_EEPROM_Dynamic</v>
+<v>DC_Motor_1\Design01\Generated_Source\PSoC5\Flicker</v>
 <v>DC_Motor_1\Design01\Generated_Source\PSoC5\Front_Echo_1</v>
-<v>DC_Motor_1\Design01\Generated_Source\PSoC5\Front_Echo_2</v>
-<v>DC_Motor_1\Design01\Generated_Source\PSoC5\IR_input</v>
-<v>DC_Motor_1\Design01\Generated_Source\PSoC5\isr_1</v>
-<v>DC_Motor_1\Design01\Generated_Source\PSoC5\isr_2</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 <CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
@@ -95,6 +95,11 @@
 <v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541</v>
 <v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug</v>
 <v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files</v>
+<v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\ADC_SAR_1.lst</v>
+<v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\ADC_SAR_1_INT.lst</v>
+<v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\ADC_SAR_1_IRQ.lst</v>
+<v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\ADC_SAR_1_PM.lst</v>
+<v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\ADC_SAR_1_theACLK.lst</v>
 <v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\big_servo.lst</v>
 <v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\Clock_1.lst</v>
 <v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\Clock_4.lst</v>
@@ -117,8 +122,15 @@
 <v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\cyPm.lst</v>
 <v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\CySpc.lst</v>
 <v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\cyutils.lst</v>
+<v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\Flicker.lst</v>
 <v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\Front_Echo_1.lst</v>
 <v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\Front_Echo_2.lst</v>
+<v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\I2C_1.lst</v>
+<v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\I2C_1_BOOT.lst</v>
+<v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\I2C_1_INT.lst</v>
+<v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\I2C_1_MASTER.lst</v>
+<v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\I2C_1_PM.lst</v>
+<v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\I2C_1_SLAVE.lst</v>
 <v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\IR_input.lst</v>
 <v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\isr_1.lst</v>
 <v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\isr_2.lst</v>
@@ -161,6 +173,9 @@
 <v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\S1.lst</v>
 <v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\S2.lst</v>
 <v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\S3.lst</v>
+<v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\SCL_1.lst</v>
+<v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\SDA_1.lst</v>
+<v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\Sharp_IR.lst</v>
 <v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\small_servo.lst</v>
 <v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\Timer_1.lst</v>
 <v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\Timer_1_PM.lst</v>
@@ -190,6 +205,11 @@
 <v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541</v>
 <v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug</v>
 <v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files</v>
+<v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\ADC_SAR_1.lst</v>
+<v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\ADC_SAR_1_INT.lst</v>
+<v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\ADC_SAR_1_IRQ.lst</v>
+<v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\ADC_SAR_1_PM.lst</v>
+<v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\ADC_SAR_1_theACLK.lst</v>
 <v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\big_servo.lst</v>
 <v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\Clock_1.lst</v>
 <v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\Clock_4.lst</v>
@@ -212,13 +232,8 @@
 <v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\cyPm.lst</v>
 <v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\CySpc.lst</v>
 <v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\cyutils.lst</v>
+<v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\Flicker.lst</v>
 <v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\Front_Echo_1.lst</v>
-<v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\Front_Echo_2.lst</v>
-<v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\IR_input.lst</v>
-<v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\isr_1.lst</v>
-<v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\isr_2.lst</v>
-<v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\isr_3.lst</v>
-<v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\isr_6.lst</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 </TreeStates>
@@ -234,6 +249,7 @@
 <v>DC_Motor_1\Design01\CY8C58LP Family Datasheet</v>
 <v>DC_Motor_1\Design01\System Reference Guides</v>
 <v>DC_Motor_1\Design01\System Reference Guides\cy_boot_v6_0</v>
+<v>DC_Motor_1\Design01\ADC_SAR_v3_10.pdf</v>
 <v>DC_Motor_1\Design01\Counter_v3_0.pdf</v>
 <v>DC_Motor_1\Design01\cy_clock_v2_20</v>
 <v>DC_Motor_1\Design01\cy_clock_v2_20\cy_clock_v2_20.pdf</v>
@@ -245,6 +261,7 @@
 <v>DC_Motor_1\Design01\cy_pins_v2_20\cy_pins_v2_20.pdf</v>
 <v>DC_Motor_1\Design01\CyControlReg_v1_80</v>
 <v>DC_Motor_1\Design01\CyControlReg_v1_80\CyControlReg_v1_80.pdf</v>
+<v>DC_Motor_1\Design01\I2C_v3_50.pdf</v>
 <v>DC_Motor_1\Design01\mux_v1_10.pdf</v>
 <v>DC_Motor_1\Design01\PWM_v3_30</v>
 <v>DC_Motor_1\Design01\PWM_v3_30\PWM_v3_30.pdf</v>
@@ -263,6 +280,7 @@
 <v>DC_Motor_1\Design01\CY8C58LP Family Datasheet</v>
 <v>DC_Motor_1\Design01\System Reference Guides</v>
 <v>DC_Motor_1\Design01\System Reference Guides\cy_boot_v6_0</v>
+<v>DC_Motor_1\Design01\ADC_SAR_v3_10.pdf</v>
 <v>DC_Motor_1\Design01\Counter_v3_0.pdf</v>
 <v>DC_Motor_1\Design01\cy_clock_v2_20</v>
 <v>DC_Motor_1\Design01\cy_clock_v2_20\cy_clock_v2_20.pdf</v>
@@ -274,6 +292,7 @@
 <v>DC_Motor_1\Design01\cy_pins_v2_20\cy_pins_v2_20.pdf</v>
 <v>DC_Motor_1\Design01\CyControlReg_v1_80</v>
 <v>DC_Motor_1\Design01\CyControlReg_v1_80\CyControlReg_v1_80.pdf</v>
+<v>DC_Motor_1\Design01\I2C_v3_50.pdf</v>
 <v>DC_Motor_1\Design01\mux_v1_10.pdf</v>
 <v>DC_Motor_1\Design01\PWM_v3_30</v>
 <v>DC_Motor_1\Design01\PWM_v3_30\PWM_v3_30.pdf</v>
