@@ -1,5 +1,5 @@
 -- Project:   Design01
--- Generated: 09/22/2023 17:03:54
+-- Generated: 09/25/2023 11:50:28
 -- PSoC Creator  4.4
 
 ENTITY Design01 IS
@@ -598,6 +598,8 @@ ARCHITECTURE __DEFAULT__ OF Design01 IS
     ATTRIBUTE Location OF Tx_BT(0) : LABEL IS "P12[7]";
     ATTRIBUTE lib_model OF Sharp_IR(0) : LABEL IS "iocell32";
     ATTRIBUTE Location OF Sharp_IR(0) : LABEL IS "P3[6]";
+    ATTRIBUTE lib_model OF Flicker(0) : LABEL IS "iocell33";
+    ATTRIBUTE Location OF Flicker(0) : LABEL IS "P15[1]";
     ATTRIBUTE lib_model OF \PWM_Wheels:PWMUDB:status_2\ : LABEL IS "macrocell1";
     ATTRIBUTE lib_model OF \QuadDec_1:Cnt16:CounterUDB:reload\ : LABEL IS "macrocell2";
     ATTRIBUTE lib_model OF \QuadDec_1:Cnt16:CounterUDB:status_0\ : LABEL IS "macrocell3";

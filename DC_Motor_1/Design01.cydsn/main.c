@@ -15,6 +15,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h> 
+#include <string.h>
 #define MPU6050 0x68
 
 int initial = 0; /// 0 --> initial position at left side, 1 --> inital position at right side
@@ -42,6 +43,8 @@ double K_p = 5;
 double K_i = 0;
 double K_d = 0;
 float PWM_Master = 20000;
+float PWM_Cal = 10000;
+
 float PWM_Slave = 20000;
 float PWM_Master_puck = 5000;
 float PWM_Slave_puck = 5000;
@@ -52,8 +55,8 @@ double front_measured_1, front_measured_2, right_measured, left_measured = 0;
 int echo_select = 0;
 double x_coord = 0;
 double y_coord = 0;
-int direction = 0;
-int step = 0;
+int direction = 0; // 0(front[0]), 1(right[90]),  2(back[180]),  3(left[270])
+int step = -1;
 int compare_ready = 0;
 int color_detected = 0; // 1-red, 2-green, 3-blue
 int wall_detected_10 = 0;
@@ -64,8 +67,8 @@ int open_small = 980;
 int close_small  = 940;
 // bluetooth
 char Rx;
-char string_bt[20];
 int i = 0;
+char string_bt[200];
 int stop_bt = 0;
 char* tokenPtr;
 char task_info[3][20];
@@ -172,92 +175,90 @@ CY_ISR(Bluetooth)
 
 CY_ISR(Gyroscope)
 {
-    if (is_moving==1)
+    Timer_2_ReadStatusRegister();
+    //Timer_2_ReadStatusRegister();
+    
+    //Writing the register number from where the read operation starts
+    I2C_1_MasterSendStart(MPU6050,0); //Steps 1-2
+    I2C_1_MasterWriteByte(0x43); //Step 3
+    I2C_1_MasterSendStop(); //Step 4
+    CyDelay(1);
+    
+    //Read data starting from register 0x43
+    I2C_1_MasterSendStart(MPU6050,1); //Steps 5-6
+    
+    //Step 7
+    array_1[0] = I2C_1_MasterReadByte(I2C_1_ACK_DATA); //GYRO_XOUT_H
+    array_1[1] = I2C_1_MasterReadByte(I2C_1_ACK_DATA); //GYRO_XOUT_L
+    array_1[2] = I2C_1_MasterReadByte(I2C_1_ACK_DATA); //GYRO_YOUT_H
+    array_1[3] = I2C_1_MasterReadByte(I2C_1_ACK_DATA); //GYRO_YOUT_L
+    array_1[4] = I2C_1_MasterReadByte(I2C_1_ACK_DATA); //GYRO_ZOUT_H
+    array_1[5] = I2C_1_MasterReadByte(I2C_1_NAK_DATA); //GYRO_ZOUT_L
+    
+    I2C_1_MasterSendStop(); //Step 8
+    CyDelay(1);
+    
+    temp = array_1[4] << 8 | array_1[5];
+        
+    if (cal == 1 && count < 20) //while calibrating
     {
-        Timer_2_ReadStatusRegister();
-        
-        //Writing the register number from where the read operation starts
-        I2C_1_MasterSendStart(MPU6050,0); //Steps 1-2
-        I2C_1_MasterWriteByte(0x43); //Step 3
-        I2C_1_MasterSendStop(); //Step 4
-        CyDelay(1);
-        
-        //Read data starting from register 0x43
-        I2C_1_MasterSendStart(MPU6050,1); //Steps 5-6
-        
-        //Step 7
-        array_1[0] = I2C_1_MasterReadByte(I2C_1_ACK_DATA); //GYRO_XOUT_H
-        array_1[1] = I2C_1_MasterReadByte(I2C_1_ACK_DATA); //GYRO_XOUT_L
-        array_1[2] = I2C_1_MasterReadByte(I2C_1_ACK_DATA); //GYRO_YOUT_H
-        array_1[3] = I2C_1_MasterReadByte(I2C_1_ACK_DATA); //GYRO_YOUT_L
-        array_1[4] = I2C_1_MasterReadByte(I2C_1_ACK_DATA); //GYRO_ZOUT_H
-        array_1[5] = I2C_1_MasterReadByte(I2C_1_NAK_DATA); //GYRO_ZOUT_L
-        
-        I2C_1_MasterSendStop(); //Step 8
-        CyDelay(1);
-        
-        temp = array_1[4] << 8 | array_1[5];
-            
-        if (cal == 1 && count < 20) //while calibrating
-        {
-            UART_1_PutString("Calibrating\n");
-            error_gyro += temp;
-            count++;
-        }
-        else if (cal == 1 && count == 20) //end of calibration and computation of average error
-        {
-            error_gyro_avg = error_gyro/20;
-            cal = 0;
-        }
-        else //after calibration and with average error computed
-        {
-            temp = temp - error_gyro_avg;
-            yaw_rate = temp/65.535;
+        UART_1_PutString("Calibrating\n");
+        error_gyro += temp;
+        count++;
+    }
+    else if (cal == 1 && count == 20) //end of calibration and computation of average error
+    {
+        error_gyro_avg = error_gyro/20;
+        cal = 0;
+    }
+    else //after calibration and with average error computed
+    {
+        temp = temp - error_gyro_avg;
+        yaw_rate = temp/65.535;
 
-            current_reading = yaw_rate;   
-           
-            if (fabs(current_reading - previous_reading) > threshold)
+        current_reading = yaw_rate;   
+       
+        if (fabs(current_reading - previous_reading) > threshold)
+        {
+            //integration of yaw_rate
+            yaw_angle = yaw_angle + 0.5*0.1*(previous_reading + current_reading);
+            previous_reading = current_reading;
+            
+            //counting cycles beyond +360 or -360
+            cycles = fabs(yaw_angle)/360;
+            
+            if (cycles > 0)
             {
-                //integration of yaw_rate
-                yaw_angle = yaw_angle + 0.5*0.1*(previous_reading + current_reading);
-                previous_reading = current_reading;
-                
-                //counting cycles beyond +360 or -360
-                cycles = fabs(yaw_angle)/360;
-                
-                if (cycles > 0)
+                if (yaw_angle < 0)
                 {
-                    if (yaw_angle < 0)
-                    {
-                        heading = yaw_angle + cycles*360;
-                    }
-                    else
-                    {
-                        heading = yaw_angle - cycles*360;
-                    }
+                    heading = yaw_angle + cycles*360;
                 }
                 else
                 {
-                    heading = yaw_angle;
+                    heading = yaw_angle - cycles*360;
                 }
-                
-                //wrapping the heading within 0 - 360 degrees
-                if (heading < 0)
-                {
-                    heading = heading + 360;
-                }
-                
-                sprintf(string_gyro,"Heading: %lf\n",heading);
-                UART_1_PutString(string_gyro);
             }
             else
             {
-                previous_reading = current_reading;
-                sprintf(string_gyro,"Heading: %lf\n",heading);
-                UART_1_PutString(string_gyro);
+                heading = yaw_angle;
             }
-                
+            
+            //wrapping the heading within 0 - 360 degrees
+            if (heading < 0)
+            {
+                heading = heading + 360;
+            }
+            
+            sprintf(string_gyro,"Heading: %lf\n",heading);
+            UART_1_PutString(string_gyro);
         }
+        else
+        {
+            previous_reading = current_reading;
+            sprintf(string_gyro,"Heading: %lf\n",heading);
+            UART_1_PutString(string_gyro);
+        }
+            
     }
 }
 
@@ -548,170 +549,107 @@ void move2puck()
     }
     reset_count();
 }
-/*
-void F_or_R_1(int dist_count, int flag_FR)
-{
-    double avg_count, avg_dist;
-    //int flag_stop = 0;
-    front_measured_1 = 50;
-    //while(abs(Count_Master) <= dist_count && abs(Count_Slave) <= dist_count && front_measured>10)
-    
-    //while(abs(Count_Master) <= dist_count && abs(Count_Slave) <= dist_count && US_measured > min_distance && US_measured < max_distance)
-    sprintf(string_1,"Running F_or_R_1...\n");
-    UART_1_PutString(string_1);
-    
-    while(abs(Count_Master) <= dist_count && abs(Count_Slave) <= dist_count && wall_detected_10 == 0)
-    {
-        // Place your application code here.
-        Count_Master = QuadDec_1_GetCounter();
-        Count_Slave = QuadDec_2_GetCounter();
-        if (flag_FR==1)
-        {
-            forward();
-        }
-        else
-        {
-            reverse();
-        }
-        CyDelay(50);
-        
-        while(Front_Echo_1_Read()==0)
-        {
-            Front_Trigger_1_Write(1);
-            CyDelayUs(10);
-            Front_Trigger_1_Write(0);
-        }
-    }
-    stop();
-    avg_count = (QuadDec_1_GetCounter()+QuadDec_2_GetCounter())/2;
-    avg_dist = avg_count*(M_PI*WHEEL_DIAMETER/3667);
-    if (direction ==0)
-    {
-        y_coord = y_coord + avg_dist;
-    }
-    else if (direction ==1)
-    {
-        
-        x_coord = x_coord + avg_dist;
-    }
-    else if (direction ==2)
-    {
-        
-        y_coord = y_coord - avg_dist;
-    }
-    else if (direction ==3)
-    {
-        
-        x_coord = x_coord - avg_dist;
-    }
-    //step = step +1;
-    //
-    //QuadDec_2_SetCounter(0);
-}
 
-void F_or_R_2(int dist_count, int flag_FR)
+void gyro_cal_1()
 {
-    double avg_count, avg_dist;
-    int flag_stop = 0;
-    //while(abs(Count_Master) <= dist_count && abs(Count_Slave) <= dist_count && front_measured>10)
-    
-    //while(abs(Count_Master) <= dist_count && abs(Count_Slave) <= dist_count && US_measured > min_distance && US_measured < max_distance)
-    while(abs(Count_Master) <= dist_count && abs(Count_Slave) <= dist_count && right_measured<30)
-    {
-        // Place your application code here.
-        Count_Master = QuadDec_1_GetCounter();
-        Count_Slave = QuadDec_2_GetCounter();
-        if (flag_FR==1)
-        {
-            forward();
-        }
-        else
-        {
-            reverse();
-        }
-        CyDelay(50);
-        while(Right_Echo_Read()==0)
-        {
-            Right_Trigger_Write(1);
-            CyDelayUs(10);
-            Right_Trigger_Write(0);
-        }
+    // Determine the target angle based on the 'direction' variable
+    int ANGLE_TOLERANCE = 5;
+    int targetAngle = 0;
+    PWM_Wheels_WriteCompare1(PWM_Cal);
+    PWM_Wheels_WriteCompare2(PWM_Cal);
+    switch (direction) {
+        case 0:
+            targetAngle = 0;
+            break;
+        case 1:
+            targetAngle = 90;
+            break;
+        case 2:
+            targetAngle = 180;
+            break;
+        case 3:
+            targetAngle = 270;
+            break;
+        default:
+            // Handle invalid direction
+            return;
     }
-    stop();
-    avg_count = (QuadDec_1_GetCounter()+QuadDec_2_GetCounter())/2;
-    avg_dist = avg_count*(M_PI*WHEEL_DIAMETER/3667);
-    if (direction ==0)
-    {
-        y_coord = y_coord + avg_dist;
-    }
-    else if (direction ==1)
-    {
-        
-        x_coord = x_coord + avg_dist;
-    }
-    else if (direction ==2)
-    {
-        
-        y_coord = y_coord - avg_dist;
-    }
-    else if (direction ==3)
-    {
-        
-        x_coord = x_coord - avg_dist;
-    }
-    //step = step +1;
-    //
-    //QuadDec_2_SetCounter(0);
-}
 
-void F_or_R_3(int dist_count, int flag_FR)
-{
-    double avg_count, avg_dist;
-    int flag_stop = 0;
-    //while(abs(Count_Master) <= dist_count && abs(Count_Slave) <= dist_count && front_measured>10)
-    
-    //while(abs(Count_Master) <= dist_count && abs(Count_Slave) <= dist_count && US_measured > min_distance && US_measured < max_distance)
-    while(abs(Count_Master) <= dist_count && abs(Count_Slave) <= dist_count && IR_input_Read()==0)
-    {
-        // Place your application code here.
-        Count_Master = QuadDec_1_GetCounter();
-        Count_Slave = QuadDec_2_GetCounter();
-        if (flag_FR==1)
-        {
-            forward();
+    // Perform calibration by continuously checking heading
+    while (1) {
+        // Calculate the difference between the current heading and the target angle
+        int angleDifference = heading - targetAngle;
+
+        // Check if we are within the tolerance range
+        if (angleDifference >= -ANGLE_TOLERANCE && angleDifference <= ANGLE_TOLERANCE) {
+            // Calibration complete, within tolerance
+            stop();
+            break;
+            CyDelay(500);
+        } else if (angleDifference > 0) {
+            // Turn counterclockwise
+            turn_anticlockwise();
+        } else {
+            // Turn clockwise
+            turn_clockwise();
         }
-        else
-        {
-            reverse();
-        }
-    }
-    stop();
-    avg_count = (QuadDec_1_GetCounter()+QuadDec_2_GetCounter())/2;
-    avg_dist = avg_count*(M_PI*WHEEL_DIAMETER/3667);
-    if (direction ==0)
-    {
-        y_coord = y_coord + avg_dist;
-    }
-    else if (direction ==1)
-    {
         
-        x_coord = x_coord + avg_dist;
+        CyDelay(50);
     }
-    else if (direction ==2)
-    {
-        
-        y_coord = y_coord - avg_dist;
-    }
-    else if (direction ==3)
-    {
-        
-        x_coord = x_coord - avg_dist;
-    }
-    //step = step +1;
-    //
-    //QuadDec_2_SetCounter(0);
+    CyDelay(200);
+    PWM_Wheels_WriteCompare1(PWM_Master);
+    PWM_Wheels_WriteCompare2(PWM_Master);
 }
-*/
+void gyro_cal_2()
+{
+    // Determine the target angle based on the 'direction' variable
+    int ANGLE_TOLERANCE = 1;
+    int targetAngle = 0;
+    PWM_Wheels_WriteCompare1(PWM_Cal);
+    PWM_Wheels_WriteCompare2(PWM_Cal);
+    switch (direction) {
+        case 0:
+            targetAngle = 0;
+            break;
+        case 1:
+            targetAngle = 90;
+            break;
+        case 2:
+            targetAngle = 180;
+            break;
+        case 3:
+            targetAngle = 270;
+            break;
+        default:
+            // Handle invalid direction
+            return;
+    }
+
+    // Perform calibration by continuously checking heading
+    while (1) {
+        // Calculate the difference between the current heading and the target angle
+        int angleDifference = heading - targetAngle;
+
+        // Check if we are within the tolerance range
+        if (angleDifference >= -ANGLE_TOLERANCE && angleDifference <= ANGLE_TOLERANCE) {
+            // Calibration complete, within tolerance
+            stop();
+            break;
+            CyDelay(500);
+        } else if (angleDifference > 0) {
+            // Turn counterclockwise
+            turn_anticlockwise();
+        } else {
+            // Turn clockwise
+            turn_clockwise();
+        }
+        
+        CyDelay(50);
+    }
+    CyDelay(200);
+    PWM_Wheels_WriteCompare1(PWM_Master);
+    PWM_Wheels_WriteCompare2(PWM_Master);
+}
 void CW(int PT_TURN_COUNT, int flag_CW)
 {
     while(abs(Count_Master) <= PT_TURN_COUNT && abs(Count_Slave) <= PT_TURN_COUNT)
@@ -727,7 +665,7 @@ void CW(int PT_TURN_COUNT, int flag_CW)
             turn_anticlockwise();
         }
     }
-    stop();
+    stop();    
     if (flag_CW == 1)
     {
         if (direction == 3)
@@ -750,6 +688,10 @@ void CW(int PT_TURN_COUNT, int flag_CW)
             direction = direction -1;
         }
     }
+    CyDelay(50);
+    gyro_cal_1();
+    CyDelay(500);
+    gyro_cal_2();
     reset_count();
 }
 
@@ -933,16 +875,14 @@ int main(void)
     WHEEL_CIRCUMFERENCE = M_PI*WHEEL_DIAMETER;
     DISTANCE_PT_TURN = M_PI*DISTANCE_BETW_WHEEL/4;
     CM_COUNT_CONV = COUNT_WHEEL/WHEEL_CIRCUMFERENCE;
-    PT_TURN_COUNT = COUNT_WHEEL * DISTANCE_PT_TURN/(M_PI*WHEEL_DIAMETER)+100;
+    PT_TURN_COUNT = COUNT_WHEEL * DISTANCE_PT_TURN/(M_PI*WHEEL_DIAMETER);
     isr_1_StartEx(Speed_Control);
     isr_6_StartEx(Color_sensing);
     Timer_1_Start();
-    Timer_2_Start();
     isr_3_StartEx(ultrasonic_echo);
     PWM_ColorSensor_Start();
     isr_7_StartEx(Bluetooth);
-    isr_2_StartEx(Gyroscope);
-    
+    Flicker_Write(0);
     PWM_Wheels_Start();
     PWM_SmallServo_Start();
     PWM_BigServo_Start();
@@ -952,7 +892,10 @@ int main(void)
     QuadDec_2_SetCounter(0);
     UART_1_Start();
     CS_LED_Write(0);
+    //ADC_SAR_1_Start();
     I2C_1_Start();
+    Timer_2_Start();
+    isr_2_StartEx(Gyroscope);
     Gyroscope_Function();
 
     int flag_FR = 1;
@@ -961,25 +904,28 @@ int main(void)
     PWM_Wheels_WriteCompare2(PWM_Master);
     double dist_trav = 0;
     //double dist_count = dist_trav*CM_COUNT_CONV;
-    CyDelay(2000);
+    
+    //Flicker_Write(1);
+    //CyDelay(5000);
+    //Flicker_Write(0);
     
     for(;;)
-    {
+    {   
         /* Place your application code here. */
-        //move_fixed_dist(5, 0);
-        //Flicker_Function();
-        //CyDelay(500);
-        //stop_bt=0;
         if (stop_bt == 1)
         {
             if (strcmp(string_bt, "Are you ready?") == 0)
             {
-                UART_1_PutString("Ready  "); // insert 2 white spaces to terminate
+                UART_1_PutString("Ready  \n"); // insert 2 white spaces to terminate
             }
             else if (strcmp(string_bt, "Start") == 0)
             {
                 // start main program
                 // move to hug left wall
+                CyDelay(1000);
+                move_fixed_dist(15, 1);
+                CyDelay(500);
+                //CW(PT_TURN_COUNT, 0);
                 while (step == 0)
                 {
                     flag_FR = 1;
@@ -1267,7 +1213,7 @@ int main(void)
                 UART_1_PutString(task_info[0]);
                 UART_1_PutString(task_info[1]);
                 UART_1_PutString(task_info[2]);
-                UART_1_PutString("Received  ");
+                UART_1_PutString("Received  \n");
             }
             i = 0;
             j = 0;
