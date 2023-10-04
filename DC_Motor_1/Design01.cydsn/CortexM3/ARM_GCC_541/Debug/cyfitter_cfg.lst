@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccAd9ofd.s 			page 1
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccmIFhDe.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccAd9ofd.s 			page 1
   29:Generated_Source\PSoC5/cyfitter_cfg.c **** 
   30:Generated_Source\PSoC5/cyfitter_cfg.c **** #if defined(__GNUC__) || defined(__ARMCC_VERSION)
   31:Generated_Source\PSoC5/cyfitter_cfg.c ****     #define CYPACKED 
-ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccAd9ofd.s 			page 2
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccmIFhDe.s 			page 2
 
 
   32:Generated_Source\PSoC5/cyfitter_cfg.c ****     #define CYPACKED_ATTR __attribute__ ((packed))
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccAd9ofd.s 			page 1
   86:Generated_Source\PSoC5/cyfitter_cfg.c **** 	(void)memcpy(dest, src, n);
   87:Generated_Source\PSoC5/cyfitter_cfg.c **** }
   88:Generated_Source\PSoC5/cyfitter_cfg.c **** CY_CFG_UNUSED
-ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccAd9ofd.s 			page 3
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccmIFhDe.s 			page 3
 
 
   89:Generated_Source\PSoC5/cyfitter_cfg.c **** static void CYCONFIGCPYCODE(void *dest, const void *src, size_t n);
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccAd9ofd.s 			page 1
   41              		.thumb
   42              		.thumb_func
   43              		.type	cfg_write_bytes32, %function
-ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccAd9ofd.s 			page 4
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccmIFhDe.s 			page 4
 
 
   44              	cfg_write_bytes32:
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccAd9ofd.s 			page 1
  181:Generated_Source\PSoC5/cyfitter_cfg.c **** 
  182:Generated_Source\PSoC5/cyfitter_cfg.c **** /* IOPINS0_3 Address: CYREG_PRT3_DR Size (bytes): 10 */
  183:Generated_Source\PSoC5/cyfitter_cfg.c **** #define BS_IOPINS0_3_VAL ((const uint8 CYFAR *)0x4800122Cu)
-ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccAd9ofd.s 			page 5
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccmIFhDe.s 			page 5
 
 
  184:Generated_Source\PSoC5/cyfitter_cfg.c **** 
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccAd9ofd.s 			page 1
   72 000c F3B2     		uxtb	r3, r6
   73              	.LVL5:
  212:Generated_Source\PSoC5/cyfitter_cfg.c **** 		baseAddr &= 0xFFFFFF00u;
-ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccAd9ofd.s 			page 6
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccmIFhDe.s 			page 6
 
 
   74              		.loc 1 212 0
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccAd9ofd.s 			page 1
  117              		.section	.text.CYMEMZERO,"ax",%progbits
  118              		.align	2
  119              		.thumb
-ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccAd9ofd.s 			page 7
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccmIFhDe.s 			page 7
 
 
  120              		.thumb_func
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccAd9ofd.s 			page 1
  243:Generated_Source\PSoC5/cyfitter_cfg.c **** 
  244:Generated_Source\PSoC5/cyfitter_cfg.c **** 
  245:Generated_Source\PSoC5/cyfitter_cfg.c **** 	/* Configure Digital Clocks based on settings from Clock DWR */
-ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccAd9ofd.s 			page 8
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccmIFhDe.s 			page 8
 
 
  246:Generated_Source\PSoC5/cyfitter_cfg.c **** 	CY_SET_XTND_REG16((void CYFAR *)(CYREG_CLKDIST_DCFG0_CFG0), 0x0017u);
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccAd9ofd.s 			page 1
  300:Generated_Source\PSoC5/cyfitter_cfg.c **** 
  301:Generated_Source\PSoC5/cyfitter_cfg.c **** /* Analog API Functions */
  302:Generated_Source\PSoC5/cyfitter_cfg.c **** 
-ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccAd9ofd.s 			page 9
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccmIFhDe.s 			page 9
 
 
  303:Generated_Source\PSoC5/cyfitter_cfg.c **** 
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccAd9ofd.s 			page 1
  326:Generated_Source\PSoC5/cyfitter_cfg.c **** 	CY_SET_XTND_REG8((void CYFAR *)(CYREG_BG_DFT1), ((bg_xover_inl_trim >> 4) & 0x0Fu));
  181              		.loc 1 326 0
  182 001c 1B09     		lsrs	r3, r3, #4
-ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccAd9ofd.s 			page 10
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccmIFhDe.s 			page 10
 
 
  183              	.LVL18:
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccAd9ofd.s 			page 1
  225              	.L13:
  226 0060 CF010049 		.word	1224737231
  227 0064 F8460040 		.word	1073759992
-ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccAd9ofd.s 			page 11
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccmIFhDe.s 			page 11
 
 
  228 0068 F9460040 		.word	1073759993
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccAd9ofd.s 			page 1
  278 0006 1A80     		strh	r2, [r3]	@ movhi
  247:Generated_Source\PSoC5/cyfitter_cfg.c **** 	CY_SET_XTND_REG16((void CYFAR *)(CYREG_CLKDIST_DCFG1_CFG0), 0x0017u);
  279              		.loc 1 247 0
-ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccAd9ofd.s 			page 12
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccmIFhDe.s 			page 12
 
 
  280 0008 1823     		movs	r3, #24
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccAd9ofd.s 			page 1
  323              	.LVL23:
  263:Generated_Source\PSoC5/cyfitter_cfg.c **** 	CY_SET_XTND_REG8((void CYFAR *)(CYREG_CLKDIST_CR), 0x08u);
  324              		.loc 1 263 0
-ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccAd9ofd.s 			page 13
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccmIFhDe.s 			page 13
 
 
  325 0050 0222     		movs	r2, #2
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccAd9ofd.s 			page 1
  369 0098 013D     		subs	r5, r5, #1
  370              	.LVL29:
  371              	.L18:
-ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccAd9ofd.s 			page 14
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccmIFhDe.s 			page 14
 
 
  275:Generated_Source\PSoC5/cyfitter_cfg.c **** 	{ 
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccAd9ofd.s 			page 1
  414 00d6 1370     		strb	r3, [r2]
  296:Generated_Source\PSoC5/cyfitter_cfg.c **** 	CY_SET_XTND_REG8((void CYFAR *)(CYREG_PM_ACT_CFG0), ((CY_GET_XTND_REG8((void CYFAR *)CYREG_PM_ACT_
  415              		.loc 1 296 0
-ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccAd9ofd.s 			page 15
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccmIFhDe.s 			page 15
 
 
  416 00d8 013A     		subs	r2, r2, #1
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccAd9ofd.s 			page 1
  353:Generated_Source\PSoC5/cyfitter_cfg.c **** *  enabled - 1 to enable the pumps, 0 to disable the pumps
  354:Generated_Source\PSoC5/cyfitter_cfg.c **** *
  355:Generated_Source\PSoC5/cyfitter_cfg.c **** * Return:
-ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccAd9ofd.s 			page 16
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccmIFhDe.s 			page 16
 
 
  356:Generated_Source\PSoC5/cyfitter_cfg.c **** *  void
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccAd9ofd.s 			page 1
  494              	cyfitter_cfg:
  495              	.LFB8:
  371:Generated_Source\PSoC5/cyfitter_cfg.c **** }
-ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccAd9ofd.s 			page 17
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccmIFhDe.s 			page 17
 
 
  372:Generated_Source\PSoC5/cyfitter_cfg.c **** 
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccAd9ofd.s 			page 1
  402:Generated_Source\PSoC5/cyfitter_cfg.c **** 
  403:Generated_Source\PSoC5/cyfitter_cfg.c **** 	{
  404:Generated_Source\PSoC5/cyfitter_cfg.c **** 
-ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccAd9ofd.s 			page 18
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccmIFhDe.s 			page 18
 
 
  405:Generated_Source\PSoC5/cyfitter_cfg.c **** 		CYPACKED typedef struct {
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccAd9ofd.s 			page 1
  536 0024 FFF7FEFF 		bl	CYMEMZERO
  537              	.LVL38:
  538              	.LBE4:
-ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccAd9ofd.s 			page 19
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccmIFhDe.s 			page 19
 
 
  439:Generated_Source\PSoC5/cyfitter_cfg.c **** 		{
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccAd9ofd.s 			page 1
  453:Generated_Source\PSoC5/cyfitter_cfg.c **** 		}
  454:Generated_Source\PSoC5/cyfitter_cfg.c **** 
  455:Generated_Source\PSoC5/cyfitter_cfg.c **** 		cfg_write_bytes32(cy_cfg_addr_table, cy_cfg_data_table);
-ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccAd9ofd.s 			page 20
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccmIFhDe.s 			page 20
 
 
  579              		.loc 1 455 0 is_stmt 1
@@ -1198,7 +1198,7 @@ ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccAd9ofd.s 			page 1
  616 0098 1370     		strb	r3, [r2]
  617              	.LBE3:
  473:Generated_Source\PSoC5/cyfitter_cfg.c **** 	}
-ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccAd9ofd.s 			page 21
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccmIFhDe.s 			page 21
 
 
  474:Generated_Source\PSoC5/cyfitter_cfg.c **** 
@@ -1258,7 +1258,7 @@ ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccAd9ofd.s 			page 1
  487:Generated_Source\PSoC5/cyfitter_cfg.c **** 	CY_SET_XTND_REG8((void CYFAR *)(CYREG_CACHE_CC_CTL), (((CYDEV_INSTRUCT_CACHE_ENABLED) != 0) ? 0x61
  659              		.loc 1 487 0
  660 00e0 1E4D     		ldr	r5, .L36+88
-ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccAd9ofd.s 			page 22
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccmIFhDe.s 			page 22
 
 
  661 00e2 6123     		movs	r3, #97
@@ -1318,7 +1318,7 @@ ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccAd9ofd.s 			page 1
  704 014c 22510040 		.word	1073762594
  705 0150 2C120048 		.word	1207964204
  706 0154 30510040 		.word	1073762608
-ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccAd9ofd.s 			page 23
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccmIFhDe.s 			page 23
 
 
  707 0158 22430040 		.word	1073759010
@@ -1378,7 +1378,7 @@ ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccAd9ofd.s 			page 1
  761 0010 0C       		.byte	0xc
  762 0011 C7020000 		.4byte	.LASF56
  763 0015 ED020000 		.4byte	.LASF57
-ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccAd9ofd.s 			page 24
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccmIFhDe.s 			page 24
 
 
  764 0019 00000000 		.4byte	.Ldebug_ranges0+0
@@ -1438,7 +1438,7 @@ ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccAd9ofd.s 			page 1
  818 007f 07       		.byte	0x7
  819 0080 58010000 		.4byte	.LASF10
  820 0084 05       		.uleb128 0x5
-ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccAd9ofd.s 			page 25
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccmIFhDe.s 			page 25
 
 
  821 0085 04       		.byte	0x4
@@ -1498,7 +1498,7 @@ ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccAd9ofd.s 			page 1
  875 00fa 09       		.uleb128 0x9
  876 00fb A5020000 		.4byte	.LASF21
  877 00ff 01       		.byte	0x1
-ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccAd9ofd.s 			page 26
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccmIFhDe.s 			page 26
 
 
  878 0100 9A       		.byte	0x9a
@@ -1558,7 +1558,7 @@ ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccAd9ofd.s 			page 1
  932 016f 51       		.byte	0x51
  933 0170 0D       		.uleb128 0xd
  934 0171 6900     		.ascii	"i\000"
-ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccAd9ofd.s 			page 27
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccmIFhDe.s 			page 27
 
 
  935 0173 01       		.byte	0x1
@@ -1618,7 +1618,7 @@ ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccAd9ofd.s 			page 1
  989 01ee 01       		.byte	0x1
  990 01ef 4D       		.byte	0x4d
  991 01f0 2C000000 		.4byte	0x2c
-ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccAd9ofd.s 			page 28
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccmIFhDe.s 			page 28
 
 
  992 01f4 90000000 		.4byte	.LLST5
@@ -1678,7 +1678,7 @@ ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccAd9ofd.s 			page 1
  1046 0261 67060000 		.4byte	0x667
  1047 0265 14       		.uleb128 0x14
  1048 0266 01       		.uleb128 0x1
-ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccAd9ofd.s 			page 29
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccmIFhDe.s 			page 29
 
 
  1049 0267 50       		.byte	0x50
@@ -1738,7 +1738,7 @@ ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccAd9ofd.s 			page 1
  1103 02c8 01       		.uleb128 0x1
  1104 02c9 52       		.byte	0x52
  1105 02ca 00       		.byte	0
-ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccAd9ofd.s 			page 30
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccmIFhDe.s 			page 30
 
 
  1106 02cb 00       		.byte	0
@@ -1798,7 +1798,7 @@ ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccAd9ofd.s 			page 1
  1160 033a 50       		.byte	0x50
  1161 033b 03       		.uleb128 0x3
  1162 033c 0A       		.byte	0xa
-ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccAd9ofd.s 			page 31
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccmIFhDe.s 			page 31
 
 
  1163 033d E001     		.2byte	0x1e0
@@ -1858,7 +1858,7 @@ ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccAd9ofd.s 			page 1
  1217 03af 20       		.uleb128 0x20
  1218 03b0 3A030000 		.4byte	.LASF42
  1219 03b4 01       		.byte	0x1
-ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccAd9ofd.s 			page 32
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccmIFhDe.s 			page 32
 
 
  1220 03b5 9601     		.2byte	0x196
@@ -1918,7 +1918,7 @@ ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccAd9ofd.s 			page 1
  1274 0429 8C010000 		.4byte	.LASF46
  1275 042d 01       		.byte	0x1
  1276 042e A101     		.2byte	0x1a1
-ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccAd9ofd.s 			page 33
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccmIFhDe.s 			page 33
 
 
  1277 0430 3A040000 		.4byte	0x43a
@@ -1978,7 +1978,7 @@ ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccAd9ofd.s 			page 1
  1331 04ab 24       		.byte	0x24
  1332 04ac 74       		.byte	0x74
  1333 04ad 00       		.sleb128 0
-ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccAd9ofd.s 			page 34
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccmIFhDe.s 			page 34
 
 
  1334 04ae 22       		.byte	0x22
@@ -2038,7 +2038,7 @@ ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccAd9ofd.s 			page 1
  1388 051e 00       		.sleb128 0
  1389 051f 32       		.byte	0x32
  1390 0520 24       		.byte	0x24
-ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccAd9ofd.s 			page 35
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccmIFhDe.s 			page 35
 
 
  1391 0521 74       		.byte	0x74
@@ -2098,7 +2098,7 @@ ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccAd9ofd.s 			page 1
  1445 0573 00       		.byte	0
  1446 0574 1A       		.uleb128 0x1a
  1447 0575 AE000000 		.4byte	.LVL52
-ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccAd9ofd.s 			page 36
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccmIFhDe.s 			page 36
 
 
  1448 0579 6C020000 		.4byte	0x26c
@@ -2158,7 +2158,7 @@ ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccAd9ofd.s 			page 1
  1502 05d6 51       		.byte	0x51
  1503 05d7 05       		.uleb128 0x5
  1504 05d8 0C       		.byte	0xc
-ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccAd9ofd.s 			page 37
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccmIFhDe.s 			page 37
 
 
  1505 05d9 1C120048 		.4byte	0x4800121c
@@ -2218,7 +2218,7 @@ ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccAd9ofd.s 			page 1
  1559 0636 24       		.uleb128 0x24
  1560 0637 F8000000 		.4byte	.LVL58
  1561 063b 16020000 		.4byte	0x216
-ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccAd9ofd.s 			page 38
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccmIFhDe.s 			page 38
 
 
  1562 063f 13       		.uleb128 0x13
@@ -2278,7 +2278,7 @@ ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccAd9ofd.s 			page 1
  1616 000d 11       		.uleb128 0x11
  1617 000e 01       		.uleb128 0x1
  1618 000f 10       		.uleb128 0x10
-ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccAd9ofd.s 			page 39
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccmIFhDe.s 			page 39
 
 
  1619 0010 17       		.uleb128 0x17
@@ -2338,7 +2338,7 @@ ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccAd9ofd.s 			page 1
  1673 0046 49       		.uleb128 0x49
  1674 0047 13       		.uleb128 0x13
  1675 0048 00       		.byte	0
-ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccAd9ofd.s 			page 40
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccmIFhDe.s 			page 40
 
 
  1676 0049 00       		.byte	0
@@ -2398,7 +2398,7 @@ ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccAd9ofd.s 			page 1
  1730 0080 18       		.uleb128 0x18
  1731 0081 9742     		.uleb128 0x2117
  1732 0083 19       		.uleb128 0x19
-ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccAd9ofd.s 			page 41
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccmIFhDe.s 			page 41
 
 
  1733 0084 01       		.uleb128 0x1
@@ -2458,7 +2458,7 @@ ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccAd9ofd.s 			page 1
  1787 00bb 17       		.uleb128 0x17
  1788 00bc 00       		.byte	0
  1789 00bd 00       		.byte	0
-ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccAd9ofd.s 			page 42
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccmIFhDe.s 			page 42
 
 
  1790 00be 0E       		.uleb128 0xe
@@ -2518,7 +2518,7 @@ ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccAd9ofd.s 			page 1
  1844 00f4 00       		.byte	0
  1845 00f5 13       		.uleb128 0x13
  1846 00f6 898201   		.uleb128 0x4109
-ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccAd9ofd.s 			page 43
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccmIFhDe.s 			page 43
 
 
  1847 00f9 01       		.byte	0x1
@@ -2578,7 +2578,7 @@ ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccAd9ofd.s 			page 1
  1901 0133 17       		.uleb128 0x17
  1902 0134 34       		.uleb128 0x34
  1903 0135 00       		.byte	0
-ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccAd9ofd.s 			page 44
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccmIFhDe.s 			page 44
 
 
  1904 0136 03       		.uleb128 0x3
@@ -2638,7 +2638,7 @@ ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccAd9ofd.s 			page 1
  1958 016e 27       		.uleb128 0x27
  1959 016f 19       		.uleb128 0x19
  1960 0170 11       		.uleb128 0x11
-ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccAd9ofd.s 			page 45
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccmIFhDe.s 			page 45
 
 
  1961 0171 01       		.uleb128 0x1
@@ -2698,7 +2698,7 @@ ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccAd9ofd.s 			page 1
  2015 01a8 01       		.byte	0x1
  2016 01a9 0B       		.uleb128 0xb
  2017 01aa 0B       		.uleb128 0xb
-ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccAd9ofd.s 			page 46
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccmIFhDe.s 			page 46
 
 
  2018 01ab 3A       		.uleb128 0x3a
@@ -2758,7 +2758,7 @@ ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccAd9ofd.s 			page 1
  2072 01e1 00       		.byte	0
  2073 01e2 00       		.byte	0
  2074 01e3 24       		.uleb128 0x24
-ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccAd9ofd.s 			page 47
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccmIFhDe.s 			page 47
 
 
  2075 01e4 898201   		.uleb128 0x4109
@@ -2818,7 +2818,7 @@ ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccAd9ofd.s 			page 1
  2129 001f 02000000 		.4byte	.LVL2
  2130 0023 08000000 		.4byte	.LVL3
  2131 0027 0200     		.2byte	0x2
-ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccAd9ofd.s 			page 48
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccmIFhDe.s 			page 48
 
 
  2132 0029 30       		.byte	0x30
@@ -2878,7 +2878,7 @@ ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccAd9ofd.s 			page 1
  2186 00b2 51       		.byte	0x51
  2187 00b3 9F       		.byte	0x9f
  2188 00b4 00000000 		.4byte	0
-ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccAd9ofd.s 			page 49
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccmIFhDe.s 			page 49
 
 
  2189 00b8 00000000 		.4byte	0
@@ -2938,7 +2938,7 @@ ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccAd9ofd.s 			page 1
  2243 0141 52       		.byte	0x52
  2244 0142 05000000 		.4byte	.LVL22-1
  2245 0146 08000000 		.4byte	.LFE1
-ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccAd9ofd.s 			page 50
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccmIFhDe.s 			page 50
 
 
  2246 014a 0400     		.2byte	0x4
@@ -2998,7 +2998,7 @@ ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccAd9ofd.s 			page 1
  2300 01d2 84000000 		.4byte	.LVL50
  2301 01d6 0100     		.2byte	0x1
  2302 01d8 54       		.byte	0x54
-ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccAd9ofd.s 			page 51
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccmIFhDe.s 			page 51
 
 
  2303 01d9 00000000 		.4byte	0
@@ -3058,7 +3058,7 @@ ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccAd9ofd.s 			page 1
  2357 0249 49000000 		.4byte	.LVL46-1
  2358 024d 0100     		.2byte	0x1
  2359 024f 50       		.byte	0x50
-ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccAd9ofd.s 			page 52
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccmIFhDe.s 			page 52
 
 
  2360 0250 00000000 		.4byte	0
@@ -3118,7 +3118,7 @@ ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccAd9ofd.s 			page 1
  2414 0018 00000000 		.4byte	.LFB4
  2415 001c 34000000 		.4byte	.LFE4-.LFB4
  2416 0020 00000000 		.4byte	.LFB0
-ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccAd9ofd.s 			page 53
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccmIFhDe.s 			page 53
 
 
  2417 0024 0C000000 		.4byte	.LFE0-.LFB0
@@ -3178,7 +3178,7 @@ ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccAd9ofd.s 			page 1
  2462 001d 4379436C 		.ascii	"CyClockStartupError\000"
  2462      6F636B53 
  2462      74617274 
-ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccAd9ofd.s 			page 54
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccmIFhDe.s 			page 54
 
 
  2462      75704572 
@@ -3238,7 +3238,7 @@ ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccAd9ofd.s 			page 1
  2486      707900
  2487              	.LASF13:
  2488 00c6 75696E74 		.ascii	"uint8\000"
-ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccAd9ofd.s 			page 55
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccmIFhDe.s 			page 55
 
 
  2488      3800
@@ -3298,7 +3298,7 @@ ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccAd9ofd.s 			page 1
  2515              	.LASF20:
  2516 0152 72656733 		.ascii	"reg32\000"
  2516      3200
-ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccAd9ofd.s 			page 56
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccmIFhDe.s 			page 56
 
 
  2517              	.LASF10:
@@ -3358,7 +3358,7 @@ ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccAd9ofd.s 			page 1
  2542      31203230 
  2542      31363036 
  2543 020d 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
-ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccAd9ofd.s 			page 57
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccmIFhDe.s 			page 57
 
 
  2543      20726576 
@@ -3418,7 +3418,7 @@ ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccAd9ofd.s 			page 1
  2566      6F646520 
  2567 031c 3139315C 		.ascii	"191\\DC_Motor_1\\Design01.cydsn\000"
  2567      44435F4D 
-ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccAd9ofd.s 			page 58
+ARM GAS  C:\Users\weiro\AppData\Local\Temp\ccmIFhDe.s 			page 58
 
 
  2567      6F746F72 

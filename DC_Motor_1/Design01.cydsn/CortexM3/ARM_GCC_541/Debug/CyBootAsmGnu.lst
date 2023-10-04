@@ -11653,7 +11653,7 @@ ARM GAS  Generated_Source\PSoC5\CyBootAsmGnu.s 			page 1
  338              	.set isr_3__INTC_CLR_PD_REG, CYREG_NVIC_CLRPEND0
  339              	.set isr_3__INTC_MASK, 0x04
  340              	.set isr_3__INTC_NUMBER, 2
- 341              	.set isr_3__INTC_PRIOR_NUM, 7
+ 341              	.set isr_3__INTC_PRIOR_NUM, 6
  342              	.set isr_3__INTC_PRIOR_REG, CYREG_NVIC_PRI_2
  343              	.set isr_3__INTC_SET_EN_REG, CYREG_NVIC_SETENA0
  344              	.set isr_3__INTC_SET_PD_REG, CYREG_NVIC_SETPEND0

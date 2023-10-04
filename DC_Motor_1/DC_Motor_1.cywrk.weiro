@@ -13,7 +13,7 @@
 <v>Output</v>
 </TreeKeys>
 <TreeStates>
-<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="DC_Motor_1">
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="DC_Motor_1\Design01\Design01.cydwr\Pins">
 <ExpandedNodeIds>
 <v>DC_Motor_1</v>
 <v>DC_Motor_1\Design01</v>
@@ -327,7 +327,7 @@
   Copyright (c) 2001-2016 Actipro Software LLC.  All rights reserved.
   http://www.actiprosoftware.com
 
---><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Horizontal"><TabbedMdiContainer Size="1536, 512" SelectedTabbedMdiWindow="899b8835-c5e4-4d45-9056-595526c4e91d"><ToolWindow Key="Start Page:bd4649ab-da6b-4d04-a663-c722b8bf99db:Start Page" Guid="d614e668-1064-44e4-93f3-c052ca346855" /><DocumentWindow Key="C:\Users\weiro\code repository for ece4191\ece4191\DC_Motor_1\Design01.cydsn\TopDesign\TopDesign.cysch" Guid="64956b82-74b3-4e65-a50c-76f8b4be45e4" /><DocumentWindow Key="C:\Users\weiro\code repository for ece4191\ece4191\DC_Motor_1\Design01.cydsn\Design01.cydwr" Guid="39ad48b3-2874-4c8a-a945-909cf11da011" /><DocumentWindow Key="C:\Users\weiro\code repository for ece4191\ece4191\DC_Motor_1\Design01.cydsn\main.c" Guid="899b8835-c5e4-4d45-9056-595526c4e91d" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
+--><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Horizontal"><TabbedMdiContainer Size="1079, 512" SelectedTabbedMdiWindow="899b8835-c5e4-4d45-9056-595526c4e91d"><ToolWindow Key="Start Page:bd4649ab-da6b-4d04-a663-c722b8bf99db:Start Page" Guid="d614e668-1064-44e4-93f3-c052ca346855" /><DocumentWindow Key="C:\Users\weiro\code repository for ece4191\ece4191\DC_Motor_1\Design01.cydsn\TopDesign\TopDesign.cysch" Guid="64956b82-74b3-4e65-a50c-76f8b4be45e4" /><DocumentWindow Key="C:\Users\weiro\code repository for ece4191\ece4191\DC_Motor_1\Design01.cydsn\Design01.cydwr" Guid="39ad48b3-2874-4c8a-a945-909cf11da011" /><DocumentWindow Key="C:\Users\weiro\code repository for ece4191\ece4191\DC_Motor_1\Design01.cydsn\main.c" Guid="899b8835-c5e4-4d45-9056-595526c4e91d" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
 <config v="" />
 <AutoUpdate v="true" />
 </CyGuid_843a90a4-0c4b-4e44-991d-05e7fb117a21>

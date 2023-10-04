@@ -227,7 +227,7 @@ void PWM_BigServo_RestoreConfig(void) ;
 *         Initialization Values
 **************************************/
 #define PWM_BigServo_INIT_PERIOD_VALUE          (649u)
-#define PWM_BigServo_INIT_COMPARE_VALUE1        (615u)
+#define PWM_BigServo_INIT_COMPARE_VALUE1        (525u)
 #define PWM_BigServo_INIT_COMPARE_VALUE2        (63u)
 #define PWM_BigServo_INIT_INTERRUPTS_MODE       (uint8)(((uint8)(0u <<   \
                                                     PWM_BigServo_STATUS_TC_INT_EN_MASK_SHIFT)) | \

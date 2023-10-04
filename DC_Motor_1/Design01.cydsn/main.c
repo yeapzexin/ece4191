@@ -99,7 +99,7 @@ CY_ISR (Speed_Control)
         //K_i = 1.2 * K_p / timer_period;
         //K_d = 0.075 * K_p * timer_period;
         //PWM_Slave = 25000 - (K_p*error + K_i*accumulated_error + K_d*derivative_error);
-        PWM_Slave = 0.65*(PWM_Master + K_p*error);
+        PWM_Slave = 0.8 * (PWM_Master + K_p*error);
         //if (PWM_Slave>25000)
         //{
         //    PWM_Slave = 23000;
@@ -118,7 +118,8 @@ CY_ISR(ultrasonic_echo)
     Timer_3_ReadStatusRegister();
     ultrasonic_count = Timer_3_ReadCounter();
     ultrasonic_measure = (65535-ultrasonic_count)/58;
-    sprintf(string_1, "Front dist 1: %lf\n", ultrasonic_measure);
+    sprintf(string_1, "Front dist 1: %lf  \n", ultrasonic_measure);
+    UART_1_PutString(string_1);
     
     if (echo_select == 0)
     {
@@ -141,7 +142,7 @@ CY_ISR(ultrasonic_echo)
         right_measured = ultrasonic_measure;
     }
     
-    if(front_measured_1 <= 15)
+    if(front_measured_1 <= 10)
     {
         wall_detected_10 = 1;
     }
@@ -306,78 +307,6 @@ void turn_clockwise()
     Motor_2_IN_3_Write(0);
     Motor_2_IN_4_Write(1);
 }
-/*
-void F_or_R(int dist_count, int flag_FR, int direction, int min_distance, int max_distance)
-{
-    double avg_count, avg_dist;
-    int flag_stop = 0;
-    //while(abs(Count_Master) <= dist_count && abs(Count_Slave) <= dist_count && front_measured>10)
-    if direction == 1
-    {
-        US_measured = front_measured;
-    }
-    else if direction == 2
-    {
-        US_measured = left
-    
-    while(abs(Count_Master) <= dist_count && abs(Count_Slave) <= dist_count && US_measured > min_distance && US_measured < max_distance)
-    {
-        // Place your application code here. 
-        Count_Master = QuadDec_1_GetCounter();
-        Count_Slave = QuadDec_2_GetCounter();
-        
-        sprintf(string_1, "Right (Master): %d\n", Count_Master);
-        UART_1_PutString(string_1);
-        sprintf(string_2, "Left (Slave): %d\n", Count_Slave);
-        UART_1_PutString(string_2);
-        sprintf(string_3, "PWM_Slave: %f\n", PWM_Slave);
-        UART_1_PutString(string_3);
-
-        CyDelay(100);
-        
-        if (flag_FR==1)
-        {
-            forward();
-        }
-        else
-        {
-            reverse();
-        }
-        CyDelay(50);
-        while(Front_Echo_Read()==0)
-        {
-            Front_Trigger_Write(1);
-            CyDelayUs(10);
-            Front_Trigger_Write(0);
-        }
-    }
-    stop();
-    avg_count = (QuadDec_1_GetCounter()+QuadDec_2_GetCounter())/2;
-    avg_dist = avg_count*(M_PI*WHEEL_DIAMETER/3667);
-    if (direction ==0)
-    {
-        y_coord = y_coord + avg_dist;
-    }
-    else if (direction ==1)
-    {
-        
-        x_coord = x_coord + avg_dist;
-    }
-    else if (direction ==2)
-    {
-        
-        y_coord = y_coord - avg_dist;
-    }
-    else if (direction ==3)
-    {
-        
-        x_coord = x_coord - avg_dist;
-    }
-    step = step +1;
-    //
-    //QuadDec_2_SetCounter(0);
-}
-*/
 
 void reset_count()
 {
@@ -429,7 +358,7 @@ void move_fixed_dist(int dist, int flag_FR)
     reset_count();
 }
 
-void forward2wall()
+void move2wall()
 {
     double avg_count, avg_dist;
     while (wall_detected_10 == 0)
@@ -650,6 +579,7 @@ void gyro_cal_2()
     PWM_Wheels_WriteCompare1(PWM_Master);
     PWM_Wheels_WriteCompare2(PWM_Master);
 }
+
 void CW(int PT_TURN_COUNT, int flag_CW)
 {
     while(abs(Count_Master) <= PT_TURN_COUNT && abs(Count_Slave) <= PT_TURN_COUNT)
@@ -867,7 +797,80 @@ float Sharp_IR()
     UART_1_PutString(string_1);
     return Sharp_IR_dist;
 }
-            
+
+void Find_Puck(int target)
+{
+    // [target] 1-Red; 2-Green; 3-Blue
+    int objective = 0;
+    while (objective == 0)
+    {
+        move2puck();
+        int flag_FR = 1;
+        int dist_trav = 4;
+        move_fixed_dist(dist_trav, flag_FR); // move backward
+        CyDelay(500);
+        Color_Sensing_Function();
+        if (color_detected == 1) // red
+        {
+            led_red_Write(1);
+            CyDelay(1000);
+            led_red_Write(0);
+            UART_1_PutString("Red  \n");
+        }
+        else if (color_detected == 2) // green
+        {
+            led_green_Write(1);
+            CyDelay(1000);
+            led_green_Write(0);
+            UART_1_PutString("Green  \n");
+        }
+        else if (color_detected == 3) // blue
+        {
+            led_blue_Write(1);
+            CyDelay(1000);
+            led_blue_Write(0);
+            UART_1_PutString("Blue  \n");
+        }
+        if (color_detected == target)
+        {
+            objective = 1;
+        }
+    }
+}
+
+void Pick_Up_Puck()
+{
+    int flag_FR = 1;
+    double dist_trav = 18; // distance from color sensor to gripper center
+    move_fixed_dist(dist_trav, flag_FR);
+    CyDelay(500);
+    PWM_BigServo_WriteCompare(down_big);
+    CyDelay(1000);
+    PWM_SmallServo_WriteCompare(close_small);
+    CyDelay(1000);
+    PWM_BigServo_WriteCompare(up_big);
+}
+
+void Put_Down_Puck()
+{
+    PWM_BigServo_WriteCompare(down_big);
+    CyDelay(1000);
+    PWM_SmallServo_WriteCompare(open_small);
+    CyDelay(500);
+    PWM_BigServo_WriteCompare(up_big);
+    CyDelay(500);
+    PWM_SmallServo_WriteCompare(close_small);
+}
+
+void Flick()
+{
+    Flicker_Write(1);
+    CyDelay(5000);
+    //move_fixed_dist(5, 0);
+    CyDelay(500);
+    Flicker_Write(0);
+}
+
 int main(void)
 {
     CyGlobalIntEnable; /* Enable global interrupts. */
@@ -895,8 +898,8 @@ int main(void)
     //ADC_SAR_1_Start();
     I2C_1_Start();
     Timer_2_Start();
-    isr_2_StartEx(Gyroscope);
-    Gyroscope_Function();
+    //isr_2_StartEx(Gyroscope);
+    //Gyroscope_Function();
 
     int flag_FR = 1;
     int flag_CW = 1;
@@ -904,10 +907,6 @@ int main(void)
     PWM_Wheels_WriteCompare2(PWM_Master);
     double dist_trav = 0;
     //double dist_count = dist_trav*CM_COUNT_CONV;
-    
-    //Flicker_Write(1);
-    //CyDelay(5000);
-    //Flicker_Write(0);
     
     for(;;)
     {   
@@ -921,11 +920,18 @@ int main(void)
             else if (strcmp(string_bt, "Start") == 0)
             {
                 // start main program
-                // move to hug left wall
+                /*Find_Puck(2);
                 CyDelay(1000);
-                move_fixed_dist(15, 1);
-                CyDelay(500);
-                //CW(PT_TURN_COUNT, 0);
+                Pick_Up_Puck();
+                CyDelay(1000);
+                move_fixed_dist(10, 0);
+                CyDelay(1000);
+                Put_Down_Puck();
+                CyDelay(1000);
+                Flick();*/
+                move2wall();
+                
+                  
                 while (step == 0)
                 {
                     flag_FR = 1;
@@ -935,7 +941,7 @@ int main(void)
                     flag_CW = 0;
                     CW(PT_TURN_COUNT, flag_CW); // turn CCW facing left wall
                     
-                    forward2wall(); // move to left wall
+                    move2wall(); // move to left wall
                     flag_CW = 1;
                     CW(PT_TURN_COUNT, flag_CW); // turn CW facing front wall
                     
@@ -951,7 +957,7 @@ int main(void)
                     dist_trav = 150;
                     dist_count = dist_trav*CM_COUNT_CONV;
                     F_or_R_1(dist_count, flag_FR);*/
-                    forward2wall(); // move to front wall
+                    move2wall(); // move to front wall
                     CyDelay(500);
                     flag_CW = 1;
                     CW(PT_TURN_COUNT, flag_CW); // turn CW facing right wall --> problem: Step 2 will collide with the slit wall
@@ -1057,7 +1063,7 @@ int main(void)
                 wall_detected_10 = 0;
                 while (step ==8)
                 {
-                    forward2wall(); // move to left wall
+                    move2wall(); // move to left wall
                     flag_CW = 1;
                     CW(PT_TURN_COUNT, flag_CW); // turn CW facing base wall
                     
