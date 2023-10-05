@@ -13,7 +13,7 @@
 <v>Output</v>
 </TreeKeys>
 <TreeStates>
-<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="DC_Motor_1\Design01\Design01.cydwr\Pins">
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
 <ExpandedNodeIds>
 <v>DC_Motor_1</v>
 <v>DC_Motor_1\Design01</v>
@@ -177,6 +177,7 @@
 <v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\SDA_1.lst</v>
 <v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\Sharp_IR.lst</v>
 <v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\small_servo.lst</v>
+<v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\SW2.lst</v>
 <v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\Timer_1.lst</v>
 <v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\Timer_1_PM.lst</v>
 <v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\Timer_2.lst</v>
@@ -191,6 +192,11 @@
 <v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\UART_1_INT.lst</v>
 <v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\UART_1_IntClock.lst</v>
 <v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\UART_1_PM.lst</v>
+<v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\UART_2.lst</v>
+<v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\UART_2_BOOT.lst</v>
+<v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\UART_2_INT.lst</v>
+<v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\UART_2_IntClock.lst</v>
+<v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\UART_2_PM.lst</v>
 <v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Design01.elf</v>
 <v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Design01.hex</v>
 <v>DC_Motor_1\Design01\CortexM3\ARM_GCC_541\Debug\Design01.map</v>
@@ -269,7 +275,8 @@
 <v>DC_Motor_1\Design01\QuadDec_v3_0\QuadDec_v3_0.pdf</v>
 <v>DC_Motor_1\Design01\Timer_v2_80</v>
 <v>DC_Motor_1\Design01\Timer_v2_80\Timer_v2_80.pdf</v>
-<v>DC_Motor_1\Design01\UART_v2_50.pdf</v>
+<v>DC_Motor_1\Design01\UART_v2_50</v>
+<v>DC_Motor_1\Design01\UART_v2_50\UART_v2_50.pdf</v>
 <v>DC_Motor_1\Design01\ZeroTerminal</v>
 <v>DC_Motor_1\Design01\ZeroTerminal\ZeroTerminal.pdf</v>
 </ExpandedNodeIds>
@@ -300,7 +307,8 @@
 <v>DC_Motor_1\Design01\QuadDec_v3_0\QuadDec_v3_0.pdf</v>
 <v>DC_Motor_1\Design01\Timer_v2_80</v>
 <v>DC_Motor_1\Design01\Timer_v2_80\Timer_v2_80.pdf</v>
-<v>DC_Motor_1\Design01\UART_v2_50.pdf</v>
+<v>DC_Motor_1\Design01\UART_v2_50</v>
+<v>DC_Motor_1\Design01\UART_v2_50\UART_v2_50.pdf</v>
 <v>DC_Motor_1\Design01\ZeroTerminal</v>
 <v>DC_Motor_1\Design01\ZeroTerminal\ZeroTerminal.pdf</v>
 </VisibleNodeIds>

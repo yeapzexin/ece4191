@@ -119,7 +119,7 @@ CY_ISR(ultrasonic_echo)
     ultrasonic_count = Timer_3_ReadCounter();
     ultrasonic_measure = (65535-ultrasonic_count)/58;
     sprintf(string_1, "Front dist 1: %lf  \n", ultrasonic_measure);
-    UART_1_PutString(string_1);
+    UART_2_PutString(string_1);
     
     if (echo_select == 0)
     {
@@ -142,13 +142,22 @@ CY_ISR(ultrasonic_echo)
         right_measured = ultrasonic_measure;
     }
     
-    if(front_measured_1 <= 10)
+    if(front_measured_2 <= 5)
     {
         wall_detected_10 = 1;
     }
     else
     {
         wall_detected_10 = 0;
+    }
+    
+    if (left_measured >= 20)
+    {
+        slit_detected = 1;
+    }
+    else
+    {
+        slit_detected = 0;
     }
 }
 
@@ -361,19 +370,17 @@ void move_fixed_dist(int dist, int flag_FR)
 void move2wall()
 {
     double avg_count, avg_dist;
+    echo_select = 1;
+    Control_Reg_2_Write(echo_select);
+    CyDelay(50);
+    wall_detected_10 = 0;
     while (wall_detected_10 == 0)
     {
         forward();
         CyDelay(50);
-        while(Front_Echo_1_Read()==0)
-        {
-            echo_select = 0;
-            Control_Reg_2_Write(echo_select);
-            CyDelay(50);
-            Trigger_Write(1);
-            CyDelayUs(10);
-            Trigger_Write(0);
-        }
+        Trigger_Write(1);
+        CyDelayUs(10);
+        Trigger_Write(0);     
     }
     stop();
     avg_count = (QuadDec_1_GetCounter()+QuadDec_2_GetCounter())/2;
@@ -403,7 +410,10 @@ void move2wall()
 void move2slit()
 {
     double avg_count, avg_dist;
-    CyDelay(500);
+    echo_select = 2;
+    Control_Reg_2_Write(echo_select);
+    CyDelay(50);
+    //CyDelay(500);
     while (slit_detected == 0)
     {
         forward();
@@ -412,9 +422,7 @@ void move2slit()
         CyDelay(100);
         while(Left_Echo_Read()==0)
         {
-            echo_select = 2;
-            Control_Reg_2_Write(echo_select);
-            CyDelay(50);
+            
             Trigger_Write(1);
             CyDelayUs(10);
             Trigger_Write(0);
@@ -443,6 +451,7 @@ void move2slit()
         x_coord = x_coord - avg_dist;
     }
     reset_count();
+    slit_detected=0;
 }
 
 void move2puck()
@@ -580,7 +589,7 @@ void gyro_cal_2()
     PWM_Wheels_WriteCompare2(PWM_Master);
 }
 
-void CW(int PT_TURN_COUNT, int flag_CW)
+void CW(int PT_TURN_COUNT, int flag_CW) // 1-clockwise; 0-anti
 {
     while(abs(Count_Master) <= PT_TURN_COUNT && abs(Count_Slave) <= PT_TURN_COUNT)
     {
@@ -620,8 +629,8 @@ void CW(int PT_TURN_COUNT, int flag_CW)
     }
     CyDelay(50);
     gyro_cal_1();
-    CyDelay(500);
-    gyro_cal_2();
+    //CyDelay(500);
+    //gyro_cal_2();
     reset_count();
 }
 
@@ -721,7 +730,58 @@ void Color_Sensing_Function()
         CyDelay(1000);
         led_blue_Write(0);
     }
-    
+    CS_LED_Write(0);
+    while (color_detected == 1) //red
+    {
+        while(Front_Echo_2_Read()==0)
+        {
+            Trigger_Write(1);
+            CyDelayUs(10);
+            Trigger_Write(0);
+        }
+        
+        if (front_measured_2 >= 10)
+        {
+            move_fixed_dist(20, 1);
+            color_detected = 0;
+        }
+    }
+    while (color_detected == 2) //green
+    {
+        CW(PT_TURN_COUNT, 1);
+        CyDelay(500);
+        move2slit();
+        CyDelay(500);
+        move_fixed_dist(20, 1);
+        CyDelay(500);
+        CW(PT_TURN_COUNT, 0);
+        CyDelay(500);
+        move_fixed_dist(30, 1);
+        CyDelay(500);
+        move2slit();
+        CyDelay(500);
+        move_fixed_dist(20, 1);
+        CyDelay(500);
+        CW(PT_TURN_COUNT, 0);
+        CyDelay(500);
+        move_fixed_dist(20, 1);
+        CyDelay(500);
+        CW(PT_TURN_COUNT, 1);
+        CyDelay(500);
+        move_fixed_dist(20, 1);
+        CyDelay(500);
+        color_detected = 0;
+    }
+    while (color_detected == 3) //blue
+    {
+        int a = y_coord;
+        sprintf(string_1, "y_coord = %lf\n", y_coord);
+        UART_2_PutString(string_1);
+        move_fixed_dist(abs(a), 0);
+        CyDelay(500);
+        color_detected = 0;
+        
+    }
     //step = step +1;
 }
 
@@ -756,11 +816,10 @@ void Flicker_Function()
     int flag_FR = 0;
     double dist_trav = 5;
     Flicker_Write(1);
-    CyDelay(1000);
+    CyDelay(5000);
     move_fixed_dist(dist_trav, flag_FR); // move forward
     CyDelay(500);
     Flicker_Write(0);
-    
 }
 
 float Sharp_IR()
@@ -862,15 +921,6 @@ void Put_Down_Puck()
     PWM_SmallServo_WriteCompare(close_small);
 }
 
-void Flick()
-{
-    Flicker_Write(1);
-    CyDelay(5000);
-    //move_fixed_dist(5, 0);
-    CyDelay(500);
-    Flicker_Write(0);
-}
-
 int main(void)
 {
     CyGlobalIntEnable; /* Enable global interrupts. */
@@ -882,10 +932,12 @@ int main(void)
     isr_1_StartEx(Speed_Control);
     isr_6_StartEx(Color_sensing);
     Timer_1_Start();
+    Timer_3_Start();
     isr_3_StartEx(ultrasonic_echo);
     PWM_ColorSensor_Start();
     isr_7_StartEx(Bluetooth);
     Flicker_Write(0);
+    Trigger_Write(0);
     PWM_Wheels_Start();
     PWM_SmallServo_Start();
     PWM_BigServo_Start();
@@ -898,8 +950,11 @@ int main(void)
     //ADC_SAR_1_Start();
     I2C_1_Start();
     Timer_2_Start();
-    //isr_2_StartEx(Gyroscope);
-    //Gyroscope_Function();
+    isr_2_StartEx(Gyroscope);
+    Gyroscope_Function();
+    wall_detected_10 = 0;
+    slit_detected = 0;
+    UART_2_Start();
 
     int flag_FR = 1;
     int flag_CW = 1;
@@ -908,10 +963,20 @@ int main(void)
     double dist_trav = 0;
     //double dist_count = dist_trav*CM_COUNT_CONV;
     
+    
     for(;;)
-    {   
+    {          
+        // Viva Voce
+        if (SW2_Read() == 0)
+        {
+            CyDelay(1000);
+            move2wall();
+            CyDelay(10000);
+            Color_Sensing_Function();
+        }
+        
         /* Place your application code here. */
-        if (stop_bt == 1)
+        /*if (stop_bt == 1)
         {
             if (strcmp(string_bt, "Are you ready?") == 0)
             {
@@ -920,7 +985,7 @@ int main(void)
             else if (strcmp(string_bt, "Start") == 0)
             {
                 // start main program
-                /*Find_Puck(2);
+                Find_Puck(2);
                 CyDelay(1000);
                 Pick_Up_Puck();
                 CyDelay(1000);
@@ -928,8 +993,8 @@ int main(void)
                 CyDelay(1000);
                 Put_Down_Puck();
                 CyDelay(1000);
-                Flick();*/
-                move2wall();
+                Flicker_Function();
+                //move2wall();
                 
                   
                 while (step == 0)
@@ -953,10 +1018,6 @@ int main(void)
                 // move forward to front wall & turn 90 deg CW facing right wall
                 while (step == 1)
                 {
-                    /*flag_FR = 1;
-                    dist_trav = 150;
-                    dist_count = dist_trav*CM_COUNT_CONV;
-                    F_or_R_1(dist_count, flag_FR);*/
                     move2wall(); // move to front wall
                     CyDelay(500);
                     flag_CW = 1;
@@ -968,10 +1029,6 @@ int main(void)
                 // look for slit & adjust so that robot can fit through slit
                 while (step == 2)
                 {
-                    /*flag_FR = 1;
-                    dist_trav = 200;
-                    dist_count = dist_trav*CM_COUNT_CONV;
-                    F_or_R_2(dist_count, flag_FR);*/
                     move2slit();
                     sprintf(string_1, "step 2");
                     UART_1_PutString(string_1);
@@ -993,10 +1050,6 @@ int main(void)
                 // move forward until puck is detected
                 while (step == 4)
                 {
-                    /*flag_FR = 1;
-                    dist_trav = 10;
-                    dist_count = dist_trav*CM_COUNT_CONV;
-                    F_or_R_2(dist_count, flag_FR);*/
                     move2puck();
                     step++;
                 }
@@ -1090,7 +1143,6 @@ int main(void)
                 while (step == 10)
                 {
                      // move away from the corner
-                    /*
                     flag_FR = 0;
                     dist_trav = 50;
                     move_fixed_dist(dist_trav, flag_FR);
@@ -1105,7 +1157,6 @@ int main(void)
                     }
                     CW(PT_TURN_COUNT, flag_CW); // turn CCW or CW facing puck landing zone
                     CyDelay(500);
-                    */
                     step ++;
                 }
                 CyDelay(500);
@@ -1114,7 +1165,6 @@ int main(void)
                 {
                 
                     // move to puck landing
-                    /*
                     flag_FR = 0;
                     dist_trav = 20;
                     move_fixed_dist(dist_trav, flag_FR);
@@ -1128,7 +1178,6 @@ int main(void)
                         flag_CW = 0;    // ccw
                     }
                     CW(PT_TURN_COUNT, flag_CW); // turn CCW or CW facing puck landing zone
-                    */
                     step++;
                 }
                 CyDelay(500);
@@ -1224,7 +1273,7 @@ int main(void)
             i = 0;
             j = 0;
             stop_bt = 0;
-        }
+        }*/
     }
 }
 

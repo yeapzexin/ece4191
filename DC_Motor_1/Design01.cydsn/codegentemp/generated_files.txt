@@ -184,6 +184,14 @@
   <file name="C:\Users\weiro\code repository for ece4191\ece4191\DC_Motor_1\Design01.cydsn\codegentemp\Flicker_aliases.h" value="HEADER;;;;;Flicker" />
   <file name="C:\Users\weiro\code repository for ece4191\ece4191\DC_Motor_1\Design01.cydsn\codegentemp\Flicker.c" value="SOURCE_C;CortexM3;;;;Flicker" />
   <file name="C:\Users\weiro\code repository for ece4191\ece4191\DC_Motor_1\Design01.cydsn\codegentemp\Flicker.h" value="HEADER;;;;;Flicker" />
+  <file name="C:\Users\weiro\code repository for ece4191\ece4191\DC_Motor_1\Design01.cydsn\codegentemp\SW2_aliases.h" value="HEADER;;;;;SW2" />
+  <file name="C:\Users\weiro\code repository for ece4191\ece4191\DC_Motor_1\Design01.cydsn\codegentemp\SW2.c" value="SOURCE_C;CortexM3;;;;SW2" />
+  <file name="C:\Users\weiro\code repository for ece4191\ece4191\DC_Motor_1\Design01.cydsn\codegentemp\SW2.h" value="HEADER;;;;;SW2" />
+  <file name="C:\Users\weiro\code repository for ece4191\ece4191\DC_Motor_1\Design01.cydsn\codegentemp\UART_2.c" value="SOURCE_C;CortexM3;;;;UART_2" />
+  <file name="C:\Users\weiro\code repository for ece4191\ece4191\DC_Motor_1\Design01.cydsn\codegentemp\UART_2.h" value="HEADER;;;;;UART_2" />
+  <file name="C:\Users\weiro\code repository for ece4191\ece4191\DC_Motor_1\Design01.cydsn\codegentemp\UART_2_PM.c" value="SOURCE_C;CortexM3;;;;UART_2" />
+  <file name="C:\Users\weiro\code repository for ece4191\ece4191\DC_Motor_1\Design01.cydsn\codegentemp\UART_2_INT.c" value="SOURCE_C;CortexM3;;;;UART_2" />
+  <file name="C:\Users\weiro\code repository for ece4191\ece4191\DC_Motor_1\Design01.cydsn\codegentemp\UART_2_BOOT.c" value="SOURCE_C;CortexM3;;;;UART_2" />
   <file name="C:\Users\weiro\code repository for ece4191\ece4191\DC_Motor_1\Design01.cydsn\codegentemp\QuadDec_1_Cnt16.c" value="SOURCE_C;CortexM3;;;;QuadDec_1_Cnt16" />
   <file name="C:\Users\weiro\code repository for ece4191\ece4191\DC_Motor_1\Design01.cydsn\codegentemp\QuadDec_1_Cnt16.h" value="HEADER;;;;;QuadDec_1_Cnt16" />
   <file name="C:\Users\weiro\code repository for ece4191\ece4191\DC_Motor_1\Design01.cydsn\codegentemp\QuadDec_1_Cnt16_PM.c" value="SOURCE_C;CortexM3;;;;QuadDec_1_Cnt16" />
@@ -196,6 +204,8 @@
   <file name="C:\Users\weiro\code repository for ece4191\ece4191\DC_Motor_1\Design01.cydsn\codegentemp\ADC_SAR_1_IRQ.h" value="HEADER;;;;;ADC_SAR_1_IRQ" />
   <file name="C:\Users\weiro\code repository for ece4191\ece4191\DC_Motor_1\Design01.cydsn\codegentemp\ADC_SAR_1_theACLK.c" value="SOURCE_C;CortexM3;;;;ADC_SAR_1_theACLK" />
   <file name="C:\Users\weiro\code repository for ece4191\ece4191\DC_Motor_1\Design01.cydsn\codegentemp\ADC_SAR_1_theACLK.h" value="HEADER;;;;;ADC_SAR_1_theACLK" />
+  <file name="C:\Users\weiro\code repository for ece4191\ece4191\DC_Motor_1\Design01.cydsn\codegentemp\UART_2_IntClock.c" value="SOURCE_C;CortexM3;;;;UART_2_IntClock" />
+  <file name="C:\Users\weiro\code repository for ece4191\ece4191\DC_Motor_1\Design01.cydsn\codegentemp\UART_2_IntClock.h" value="HEADER;;;;;UART_2_IntClock" />
   <file name="C:\Users\weiro\code repository for ece4191\ece4191\DC_Motor_1\Design01.cydsn\codegentemp\cm3gcc.ld" value="LINKER_SCRIPT;;;b98f980c-3bd1-4fc7-a887-c56a20a46fdd;;cy_boot" />
   <file name="C:\Users\weiro\code repository for ece4191\ece4191\DC_Motor_1\Design01.cydsn\codegentemp\Cm3RealView.scat" value="LINKER_SCRIPT;;;fdb8e1ae-f83a-46cf-9446-1d703716f38a;;cy_boot" />
   <file name="C:\Users\weiro\code repository for ece4191\ece4191\DC_Motor_1\Design01.cydsn\codegentemp\Cm3Start.c" value="SOURCE_C;CortexM3;;;;cy_boot" />
