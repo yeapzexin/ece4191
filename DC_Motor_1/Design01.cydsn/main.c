@@ -119,7 +119,7 @@ CY_ISR(ultrasonic_echo)
     ultrasonic_count = Timer_3_ReadCounter();
     ultrasonic_measure = (65535-ultrasonic_count)/58;
     sprintf(string_1, "Front dist 1: %lf  \n", ultrasonic_measure);
-    UART_2_PutString(string_1);
+    UART_1_PutString(string_1);
     
     if (echo_select == 0)
     {
@@ -142,7 +142,7 @@ CY_ISR(ultrasonic_echo)
         right_measured = ultrasonic_measure;
     }
     
-    if(front_measured_2 <= 5)
+    if(front_measured_2 <= 10)
     {
         wall_detected_10 = 1;
     }
@@ -325,169 +325,6 @@ void reset_count()
     Count_Slave = 0;
 }
 
-void move_fixed_dist(int dist, int flag_FR)
-{
-    double avg_count, avg_dist;
-    int dist_count = dist * CM_COUNT_CONV; // convert dist to count
-    while(abs(Count_Master) <= dist_count && abs(Count_Slave) <= dist_count)
-    {
-        Count_Master = QuadDec_1_GetCounter();
-        Count_Slave = QuadDec_2_GetCounter();
-        if (flag_FR==1)
-        {
-            forward();
-        }
-        else
-        {
-            reverse();
-        }
-    }
-    stop();
-    avg_count = (QuadDec_1_GetCounter()+QuadDec_2_GetCounter())/2;
-    avg_dist = avg_count*(M_PI*WHEEL_DIAMETER/3667);
-    if (direction ==0)
-    {
-        y_coord = y_coord + avg_dist;
-    }
-    else if (direction ==1)
-    {
-        
-        x_coord = x_coord + avg_dist;
-    }
-    else if (direction ==2)
-    {
-        
-        y_coord = y_coord - avg_dist;
-    }
-    else if (direction ==3)
-    {
-        
-        x_coord = x_coord - avg_dist;
-    }
-    reset_count();
-}
-
-void move2wall()
-{
-    double avg_count, avg_dist;
-    echo_select = 1;
-    Control_Reg_2_Write(echo_select);
-    CyDelay(50);
-    wall_detected_10 = 0;
-    while (wall_detected_10 == 0)
-    {
-        forward();
-        CyDelay(50);
-        Trigger_Write(1);
-        CyDelayUs(10);
-        Trigger_Write(0);     
-    }
-    stop();
-    avg_count = (QuadDec_1_GetCounter()+QuadDec_2_GetCounter())/2;
-    avg_dist = avg_count*(M_PI*WHEEL_DIAMETER/3667);
-    if (direction ==0)
-    {
-        y_coord = y_coord + avg_dist;
-    }
-    else if (direction ==1)
-    {
-        
-        x_coord = x_coord + avg_dist;
-    }
-    else if (direction ==2)
-    {
-        
-        y_coord = y_coord - avg_dist;
-    }
-    else if (direction ==3)
-    {
-        
-        x_coord = x_coord - avg_dist;
-    }
-    reset_count();
-}
-
-void move2slit()
-{
-    double avg_count, avg_dist;
-    echo_select = 2;
-    Control_Reg_2_Write(echo_select);
-    CyDelay(50);
-    //CyDelay(500);
-    while (slit_detected == 0)
-    {
-        forward();
-        sprintf(string_1, "moving to slit");
-        UART_1_PutString(string_1);
-        CyDelay(100);
-        while(Left_Echo_Read()==0)
-        {
-            
-            Trigger_Write(1);
-            CyDelayUs(10);
-            Trigger_Write(0);
-        }
-    }
-    stop();
-    avg_count = (QuadDec_1_GetCounter()+QuadDec_2_GetCounter())/2;
-    avg_dist = avg_count*(M_PI*WHEEL_DIAMETER/3667);
-    if (direction ==0)
-    {
-        y_coord = y_coord + avg_dist;
-    }
-    else if (direction ==1)
-    {
-        
-        x_coord = x_coord + avg_dist;
-    }
-    else if (direction ==2)
-    {
-        
-        y_coord = y_coord - avg_dist;
-    }
-    else if (direction ==3)
-    {
-        
-        x_coord = x_coord - avg_dist;
-    }
-    reset_count();
-    slit_detected=0;
-}
-
-void move2puck()
-{
-    double avg_count, avg_dist;
-    while (IR_input_Read() == 1)
-    {
-        forward();
-    }
-    stop();
-    CyDelay(500);
-    
-    avg_count = (QuadDec_1_GetCounter()+QuadDec_2_GetCounter())/2;
-    avg_dist = avg_count*(M_PI*WHEEL_DIAMETER/3667);
-    if (direction ==0)
-    {
-        y_coord = y_coord + avg_dist;
-    }
-    else if (direction ==1)
-    {
-        
-        x_coord = x_coord + avg_dist;
-    }
-    else if (direction ==2)
-    {
-        
-        y_coord = y_coord - avg_dist;
-    }
-    else if (direction ==3)
-    {
-        
-        x_coord = x_coord - avg_dist;
-    }
-    reset_count();
-}
-
 void gyro_cal_1()
 {
     // Determine the target angle based on the 'direction' variable
@@ -587,6 +424,173 @@ void gyro_cal_2()
     CyDelay(200);
     PWM_Wheels_WriteCompare1(PWM_Master);
     PWM_Wheels_WriteCompare2(PWM_Master);
+}
+
+void move_fixed_dist(int dist, int flag_FR)
+{
+    double avg_count, avg_dist;
+    int dist_count = dist * CM_COUNT_CONV; // convert dist to count
+    while(abs(Count_Master) <= dist_count && abs(Count_Slave) <= dist_count)
+    {
+        Count_Master = QuadDec_1_GetCounter();
+        Count_Slave = QuadDec_2_GetCounter();
+        if (flag_FR==1)
+        {
+            forward();
+        }
+        else
+        {
+            reverse();
+        }
+        gyro_cal_1();
+    }
+    stop();
+    avg_count = (QuadDec_1_GetCounter()+QuadDec_2_GetCounter())/2;
+    avg_dist = avg_count*(M_PI*WHEEL_DIAMETER/3667);
+    if (direction ==0)
+    {
+        y_coord = y_coord + avg_dist;
+    }
+    else if (direction ==1)
+    {
+        
+        x_coord = x_coord + avg_dist;
+    }
+    else if (direction ==2)
+    {
+        
+        y_coord = y_coord - avg_dist;
+    }
+    else if (direction ==3)
+    {
+        
+        x_coord = x_coord - avg_dist;
+    }
+    reset_count();
+}
+
+void move2wall()
+{
+    double avg_count, avg_dist;
+    echo_select = 1;
+    Control_Reg_2_Write(echo_select);
+    CyDelay(50);
+    wall_detected_10 = 0;
+    while (wall_detected_10 == 0)
+    {
+        forward();
+        CyDelay(50);
+        Trigger_Write(1);
+        CyDelayUs(10);
+        Trigger_Write(0);
+        gyro_cal_1();
+    }
+    stop();
+    avg_count = (QuadDec_1_GetCounter()+QuadDec_2_GetCounter())/2;
+    avg_dist = avg_count*(M_PI*WHEEL_DIAMETER/3667);
+    if (direction ==0)
+    {
+        y_coord = y_coord + avg_dist;
+    }
+    else if (direction ==1)
+    {
+        
+        x_coord = x_coord + avg_dist;
+    }
+    else if (direction ==2)
+    {
+        
+        y_coord = y_coord - avg_dist;
+    }
+    else if (direction ==3)
+    {
+        
+        x_coord = x_coord - avg_dist;
+    }
+    reset_count();
+}
+
+void move2slit()
+{
+    double avg_count, avg_dist;
+    echo_select = 2;
+    Control_Reg_2_Write(echo_select);
+    CyDelay(50);
+    //CyDelay(500);
+    while (slit_detected == 0)
+    {
+        forward();
+        sprintf(string_1, "moving to slit");
+        UART_1_PutString(string_1);
+        CyDelay(100);
+        while(Left_Echo_Read()==0)
+        {
+            
+            Trigger_Write(1);
+            CyDelayUs(10);
+            Trigger_Write(0);
+        }
+        gyro_cal_1();
+    }
+    stop();
+    avg_count = (QuadDec_1_GetCounter()+QuadDec_2_GetCounter())/2;
+    avg_dist = avg_count*(M_PI*WHEEL_DIAMETER/3667);
+    if (direction ==0)
+    {
+        y_coord = y_coord + avg_dist;
+    }
+    else if (direction ==1)
+    {
+        
+        x_coord = x_coord + avg_dist;
+    }
+    else if (direction ==2)
+    {
+        
+        y_coord = y_coord - avg_dist;
+    }
+    else if (direction ==3)
+    {
+        
+        x_coord = x_coord - avg_dist;
+    }
+    reset_count();
+    slit_detected=0;
+}
+
+void move2puck() // need to update to turn (routing)
+{
+    double avg_count, avg_dist;
+    while (IR_input_Read() == 1)
+    {
+        forward();
+        gyro_cal_1();
+    }
+    stop();
+    CyDelay(500);
+    
+    avg_count = (QuadDec_1_GetCounter()+QuadDec_2_GetCounter())/2;
+    avg_dist = avg_count*(M_PI*WHEEL_DIAMETER/3667);
+    if (direction ==0)
+    {
+        y_coord = y_coord + avg_dist;
+    }
+    else if (direction ==1)
+    {
+        
+        x_coord = x_coord + avg_dist;
+    }
+    else if (direction ==2)
+    {
+        
+        y_coord = y_coord - avg_dist;
+    }
+    else if (direction ==3)
+    {
+        
+        x_coord = x_coord - avg_dist;
+    }
+    reset_count();
 }
 
 void CW(int PT_TURN_COUNT, int flag_CW) // 1-clockwise; 0-anti
@@ -965,18 +969,9 @@ int main(void)
     
     
     for(;;)
-    {          
-        // Viva Voce
-        if (SW2_Read() == 0)
-        {
-            CyDelay(1000);
-            move2wall();
-            CyDelay(10000);
-            Color_Sensing_Function();
-        }
-        
+    {                  
         /* Place your application code here. */
-        /*if (stop_bt == 1)
+        if (stop_bt == 1)
         {
             if (strcmp(string_bt, "Are you ready?") == 0)
             {
@@ -1273,7 +1268,7 @@ int main(void)
             i = 0;
             j = 0;
             stop_bt = 0;
-        }*/
+        }
     }
 }
 
