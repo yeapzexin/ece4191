@@ -1,5 +1,5 @@
 # Design01
-# 2023-10-16 02:56:33Z
+# 2023-10-19 08:27:14Z
 
 # IO_0@[IOP=(1)][IoId=(0)] is reserved: SWDDebugEnabled
 dont_use_io iocell 1 0
@@ -20,6 +20,7 @@ set_io "Motor_2_Phase_B(0)" iocell 1 6
 set_io "Front_Echo_1(0)" iocell 1 4
 set_io "SCL_1(0)" iocell 12 0
 set_io "SDA_1(0)" iocell 12 1
+set_io "Trigger(0)" iocell 0 7
 set_io "led_green(0)" iocell 0 3
 set_io "Right_Echo(0)" iocell 2 0
 set_io "IR_input(0)" iocell 1 2
@@ -35,5 +36,12 @@ set_io "CS_LED(0)" iocell 3 2
 set_io "CS_out(0)" iocell 3 7
 set_io "small_servo(0)" iocell 2 7
 set_io "big_servo(0)" iocell 12 5
+set_io "Rx_BT(0)" iocell 12 6
+set_io "Tx_BT(0)" iocell 12 7
 set_io "Sharp_IR(0)" iocell 0 6
+set_io "Motor_Flicker_IN_1(0)" iocell 2 5
+set_io "Motor_Flicker_IN_2(0)" iocell 2 4
+set_io "Motor_Flicker_ENA_1(0)" iocell 2 6
+set_io "Limit_2(0)" iocell 3 1
+set_io "Limit_1(0)" iocell 3 0
 set_location "\ADC_SAR_1:ADC_SAR\" sarcell -1 -1 0

@@ -181,20 +181,30 @@
   <file name="C:\Users\weiro\code repository for ece4191\ece4191\DC_Motor_1\Design01.cydsn\codegentemp\ADC_SAR_1.h" value="HEADER;;;;;ADC_SAR_1" />
   <file name="C:\Users\weiro\code repository for ece4191\ece4191\DC_Motor_1\Design01.cydsn\codegentemp\ADC_SAR_1_INT.c" value="SOURCE_C;CortexM3;;;;ADC_SAR_1" />
   <file name="C:\Users\weiro\code repository for ece4191\ece4191\DC_Motor_1\Design01.cydsn\codegentemp\ADC_SAR_1_PM.c" value="SOURCE_C;CortexM3;;;;ADC_SAR_1" />
-  <file name="C:\Users\weiro\code repository for ece4191\ece4191\DC_Motor_1\Design01.cydsn\codegentemp\Motor_1_IN_3_aliases.h" value="HEADER;;;;;Motor_1_IN_3" />
-  <file name="C:\Users\weiro\code repository for ece4191\ece4191\DC_Motor_1\Design01.cydsn\codegentemp\Motor_1_IN_3.c" value="SOURCE_C;CortexM3;;;;Motor_1_IN_3" />
-  <file name="C:\Users\weiro\code repository for ece4191\ece4191\DC_Motor_1\Design01.cydsn\codegentemp\Motor_1_IN_3.h" value="HEADER;;;;;Motor_1_IN_3" />
-  <file name="C:\Users\weiro\code repository for ece4191\ece4191\DC_Motor_1\Design01.cydsn\codegentemp\Motor_1_IN_4_aliases.h" value="HEADER;;;;;Motor_1_IN_4" />
-  <file name="C:\Users\weiro\code repository for ece4191\ece4191\DC_Motor_1\Design01.cydsn\codegentemp\Motor_1_IN_4.c" value="SOURCE_C;CortexM3;;;;Motor_1_IN_4" />
-  <file name="C:\Users\weiro\code repository for ece4191\ece4191\DC_Motor_1\Design01.cydsn\codegentemp\Motor_1_IN_4.h" value="HEADER;;;;;Motor_1_IN_4" />
+  <file name="C:\Users\weiro\code repository for ece4191\ece4191\DC_Motor_1\Design01.cydsn\codegentemp\Motor_Flicker_IN_1_aliases.h" value="HEADER;;;;;Motor_Flicker_IN_1" />
+  <file name="C:\Users\weiro\code repository for ece4191\ece4191\DC_Motor_1\Design01.cydsn\codegentemp\Motor_Flicker_IN_1.c" value="SOURCE_C;CortexM3;;;;Motor_Flicker_IN_1" />
+  <file name="C:\Users\weiro\code repository for ece4191\ece4191\DC_Motor_1\Design01.cydsn\codegentemp\Motor_Flicker_IN_1.h" value="HEADER;;;;;Motor_Flicker_IN_1" />
+  <file name="C:\Users\weiro\code repository for ece4191\ece4191\DC_Motor_1\Design01.cydsn\codegentemp\Motor_Flicker_IN_2_aliases.h" value="HEADER;;;;;Motor_Flicker_IN_2" />
+  <file name="C:\Users\weiro\code repository for ece4191\ece4191\DC_Motor_1\Design01.cydsn\codegentemp\Motor_Flicker_IN_2.c" value="SOURCE_C;CortexM3;;;;Motor_Flicker_IN_2" />
+  <file name="C:\Users\weiro\code repository for ece4191\ece4191\DC_Motor_1\Design01.cydsn\codegentemp\Motor_Flicker_IN_2.h" value="HEADER;;;;;Motor_Flicker_IN_2" />
   <file name="C:\Users\weiro\code repository for ece4191\ece4191\DC_Motor_1\Design01.cydsn\codegentemp\Clock_2.c" value="SOURCE_C;CortexM3;;;;Clock_2" />
   <file name="C:\Users\weiro\code repository for ece4191\ece4191\DC_Motor_1\Design01.cydsn\codegentemp\Clock_2.h" value="HEADER;;;;;Clock_2" />
-  <file name="C:\Users\weiro\code repository for ece4191\ece4191\DC_Motor_1\Design01.cydsn\codegentemp\Motor_1_ENA_1_aliases.h" value="HEADER;;;;;Motor_1_ENA_1" />
-  <file name="C:\Users\weiro\code repository for ece4191\ece4191\DC_Motor_1\Design01.cydsn\codegentemp\Motor_1_ENA_1.c" value="SOURCE_C;CortexM3;;;;Motor_1_ENA_1" />
-  <file name="C:\Users\weiro\code repository for ece4191\ece4191\DC_Motor_1\Design01.cydsn\codegentemp\Motor_1_ENA_1.h" value="HEADER;;;;;Motor_1_ENA_1" />
+  <file name="C:\Users\weiro\code repository for ece4191\ece4191\DC_Motor_1\Design01.cydsn\codegentemp\Motor_Flicker_ENA_1_aliases.h" value="HEADER;;;;;Motor_Flicker_ENA_1" />
+  <file name="C:\Users\weiro\code repository for ece4191\ece4191\DC_Motor_1\Design01.cydsn\codegentemp\Motor_Flicker_ENA_1.c" value="SOURCE_C;CortexM3;;;;Motor_Flicker_ENA_1" />
+  <file name="C:\Users\weiro\code repository for ece4191\ece4191\DC_Motor_1\Design01.cydsn\codegentemp\Motor_Flicker_ENA_1.h" value="HEADER;;;;;Motor_Flicker_ENA_1" />
   <file name="C:\Users\weiro\code repository for ece4191\ece4191\DC_Motor_1\Design01.cydsn\codegentemp\PWM_Flicker.c" value="SOURCE_C;CortexM3;;;;PWM_Flicker" />
   <file name="C:\Users\weiro\code repository for ece4191\ece4191\DC_Motor_1\Design01.cydsn\codegentemp\PWM_Flicker.h" value="HEADER;;;;;PWM_Flicker" />
   <file name="C:\Users\weiro\code repository for ece4191\ece4191\DC_Motor_1\Design01.cydsn\codegentemp\PWM_Flicker_PM.c" value="SOURCE_C;CortexM3;;;;PWM_Flicker" />
+  <file name="C:\Users\weiro\code repository for ece4191\ece4191\DC_Motor_1\Design01.cydsn\codegentemp\Limit_2_aliases.h" value="HEADER;;;;;Limit_2" />
+  <file name="C:\Users\weiro\code repository for ece4191\ece4191\DC_Motor_1\Design01.cydsn\codegentemp\Limit_2.c" value="SOURCE_C;CortexM3;;;;Limit_2" />
+  <file name="C:\Users\weiro\code repository for ece4191\ece4191\DC_Motor_1\Design01.cydsn\codegentemp\Limit_2.h" value="HEADER;;;;;Limit_2" />
+  <file name="C:\Users\weiro\code repository for ece4191\ece4191\DC_Motor_1\Design01.cydsn\codegentemp\Limit_1_aliases.h" value="HEADER;;;;;Limit_1" />
+  <file name="C:\Users\weiro\code repository for ece4191\ece4191\DC_Motor_1\Design01.cydsn\codegentemp\Limit_1.c" value="SOURCE_C;CortexM3;;;;Limit_1" />
+  <file name="C:\Users\weiro\code repository for ece4191\ece4191\DC_Motor_1\Design01.cydsn\codegentemp\Limit_1.h" value="HEADER;;;;;Limit_1" />
+  <file name="C:\Users\weiro\code repository for ece4191\ece4191\DC_Motor_1\Design01.cydsn\codegentemp\isr_limit_2.c" value="SOURCE_C;CortexM3;;;;isr_limit_2" />
+  <file name="C:\Users\weiro\code repository for ece4191\ece4191\DC_Motor_1\Design01.cydsn\codegentemp\isr_limit_2.h" value="HEADER;;;;;isr_limit_2" />
+  <file name="C:\Users\weiro\code repository for ece4191\ece4191\DC_Motor_1\Design01.cydsn\codegentemp\isr_limit_1.c" value="SOURCE_C;CortexM3;;;;isr_limit_1" />
+  <file name="C:\Users\weiro\code repository for ece4191\ece4191\DC_Motor_1\Design01.cydsn\codegentemp\isr_limit_1.h" value="HEADER;;;;;isr_limit_1" />
   <file name="C:\Users\weiro\code repository for ece4191\ece4191\DC_Motor_1\Design01.cydsn\codegentemp\QuadDec_1_Cnt16.c" value="SOURCE_C;CortexM3;;;;QuadDec_1_Cnt16" />
   <file name="C:\Users\weiro\code repository for ece4191\ece4191\DC_Motor_1\Design01.cydsn\codegentemp\QuadDec_1_Cnt16.h" value="HEADER;;;;;QuadDec_1_Cnt16" />
   <file name="C:\Users\weiro\code repository for ece4191\ece4191\DC_Motor_1\Design01.cydsn\codegentemp\QuadDec_1_Cnt16_PM.c" value="SOURCE_C;CortexM3;;;;QuadDec_1_Cnt16" />

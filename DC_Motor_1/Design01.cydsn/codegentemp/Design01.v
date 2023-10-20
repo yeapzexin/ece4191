@@ -1,6 +1,6 @@
 // ======================================================================
 // Design01.v generated from TopDesign.cysch
-// 10/16/2023 at 10:56
+// 10/19/2023 at 16:27
 // This file is auto generated. ANY EDITS YOU MAKE MAY BE LOST WHEN THIS FILE IS REGENERATED!!!
 // ======================================================================
 
@@ -1923,9 +1923,25 @@ module PWM_v3_30_15 (
 
 endmodule
 
+// Component: Debouncer_v1_0
+`ifdef CY_BLK_DIR
+`undef CY_BLK_DIR
+`endif
+
+`ifdef WARP
+`define CY_BLK_DIR "C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\CyComponentLibrary\CyComponentLibrary.cylib\Debouncer_v1_0"
+`include "C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\CyComponentLibrary\CyComponentLibrary.cylib\Debouncer_v1_0\Debouncer_v1_0.v"
+`else
+`define CY_BLK_DIR "C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\CyComponentLibrary\CyComponentLibrary.cylib\Debouncer_v1_0"
+`include "C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\CyComponentLibrary\CyComponentLibrary.cylib\Debouncer_v1_0\Debouncer_v1_0.v"
+`endif
+
 // top
 module top ;
 
+          wire [1:0] Net_827;
+          wire [1:0] Net_826;
+          wire [1:0] Net_825;
           wire  Net_789;
           wire  Net_788;
           wire  Net_787;
@@ -1962,29 +1978,29 @@ module top ;
           wire  Net_610;
           wire  Net_609;
           wire  Net_608;
-          wire  Net_607;
-          wire  Net_606;
-          wire  Net_605;
-          wire  Net_604;
-          wire  Net_478;
-          wire  Net_603;
-          wire  Net_602;
-          wire  Net_601;
-          wire  Net_600;
-          wire  Net_599;
-          wire  Net_598;
-          wire  Net_494;
-          wire  Net_597;
-          wire  Net_596;
-          wire  Net_595;
-          wire  Net_594;
-          wire  Net_466;
-          wire  Net_593;
-          wire  Net_592;
-          wire  Net_591;
-          wire  Net_590;
-          wire  Net_589;
-          wire  Net_588;
+          wire  Net_1104;
+          wire  Net_1103;
+          wire  Net_1102;
+          wire  Net_1101;
+          wire  Net_840;
+          wire  Net_1100;
+          wire  Net_1099;
+          wire  Net_1098;
+          wire  Net_1097;
+          wire  Net_1096;
+          wire  Net_1095;
+          wire  Net_862;
+          wire  Net_1094;
+          wire  Net_1093;
+          wire  Net_1092;
+          wire  Net_1091;
+          wire  Net_851;
+          wire  Net_1090;
+          wire  Net_1089;
+          wire  Net_1088;
+          wire  Net_1087;
+          wire  Net_1086;
+          wire  Net_1085;
           wire  Net_312;
           wire  Net_311;
           wire  Net_310;
@@ -2072,6 +2088,8 @@ module top ;
           wire  Net_20;
           wire  Net_19;
           wire  Net_17;
+          wire [1:0] Net_883;
+          wire [1:0] Net_813;
           wire  Net_754;
           wire  Net_752;
           wire  Net_615;
@@ -4391,15 +4409,15 @@ module top ;
         .clock(Net_566),
         .cmp_sel(1'b0),
         .enable(1'b1),
-        .interrupt(Net_591),
+        .interrupt(Net_1088),
         .kill(Net_463),
-        .ph1(Net_592),
-        .ph2(Net_593),
-        .pwm(Net_466),
-        .pwm1(Net_594),
-        .pwm2(Net_595),
+        .ph1(Net_1089),
+        .ph2(Net_1090),
+        .pwm(Net_851),
+        .pwm1(Net_1091),
+        .pwm2(Net_1092),
         .reset(Net_463),
-        .tc(Net_596),
+        .tc(Net_1093),
         .trigger(1'b0));
     defparam PWM_SmallServo.Resolution = 16;
 
@@ -4422,15 +4440,15 @@ module top ;
         .clock(Net_566),
         .cmp_sel(1'b0),
         .enable(1'b1),
-        .interrupt(Net_601),
+        .interrupt(Net_1098),
         .kill(Net_567),
-        .ph1(Net_602),
-        .ph2(Net_603),
-        .pwm(Net_478),
-        .pwm1(Net_604),
-        .pwm2(Net_605),
+        .ph1(Net_1099),
+        .ph2(Net_1100),
+        .pwm(Net_840),
+        .pwm1(Net_1101),
+        .pwm2(Net_1102),
         .reset(Net_567),
-        .tc(Net_606),
+        .tc(Net_1103),
         .trigger(1'b0));
     defparam PWM_BigServo.Resolution = 16;
 
@@ -4497,7 +4515,7 @@ module top ;
 		  .input_buffer_sel(2'b00))
 		small_servo
 		 (.oe(tmpOE__small_servo_net),
-		  .y({Net_466}),
+		  .y({Net_851}),
 		  .fb({tmpFB_0__small_servo_net[0:0]}),
 		  .io({tmpIO_0__small_servo_net[0:0]}),
 		  .siovref(tmpSIOVREF__small_servo_net),
@@ -4572,7 +4590,7 @@ module top ;
 		  .input_buffer_sel(2'b00))
 		big_servo
 		 (.oe(tmpOE__big_servo_net),
-		  .y({Net_478}),
+		  .y({Net_840}),
 		  .fb({tmpFB_0__big_servo_net[0:0]}),
 		  .io({tmpIO_0__big_servo_net[0:0]}),
 		  .siovref(tmpSIOVREF__big_servo_net),
@@ -4881,11 +4899,11 @@ module top ;
         .vminus(Net_715),
         .vplus(Net_714));
 
-	wire [0:0] tmpOE__Motor_1_IN_3_net;
-	wire [0:0] tmpFB_0__Motor_1_IN_3_net;
-	wire [0:0] tmpIO_0__Motor_1_IN_3_net;
-	wire [0:0] tmpINTERRUPT_0__Motor_1_IN_3_net;
-	electrical [0:0] tmpSIOVREF__Motor_1_IN_3_net;
+	wire [0:0] tmpOE__Motor_Flicker_IN_1_net;
+	wire [0:0] tmpFB_0__Motor_Flicker_IN_1_net;
+	wire [0:0] tmpIO_0__Motor_Flicker_IN_1_net;
+	wire [0:0] tmpINTERRUPT_0__Motor_Flicker_IN_1_net;
+	electrical [0:0] tmpSIOVREF__Motor_Flicker_IN_1_net;
 
 	cy_psoc3_pins_v1_10
 		#(.id("b8e3b4e2-5939-48f1-b525-c4c1f4a734da"),
@@ -4940,13 +4958,13 @@ module top ;
 		  .ovt_needed(1'b0),
 		  .ovt_slew_control(2'b00),
 		  .input_buffer_sel(2'b00))
-		Motor_1_IN_3
-		 (.oe(tmpOE__Motor_1_IN_3_net),
+		Motor_Flicker_IN_1
+		 (.oe(tmpOE__Motor_Flicker_IN_1_net),
 		  .y({1'b0}),
-		  .fb({tmpFB_0__Motor_1_IN_3_net[0:0]}),
-		  .io({tmpIO_0__Motor_1_IN_3_net[0:0]}),
-		  .siovref(tmpSIOVREF__Motor_1_IN_3_net),
-		  .interrupt({tmpINTERRUPT_0__Motor_1_IN_3_net[0:0]}),
+		  .fb({tmpFB_0__Motor_Flicker_IN_1_net[0:0]}),
+		  .io({tmpIO_0__Motor_Flicker_IN_1_net[0:0]}),
+		  .siovref(tmpSIOVREF__Motor_Flicker_IN_1_net),
+		  .interrupt({tmpINTERRUPT_0__Motor_Flicker_IN_1_net[0:0]}),
 		  .in_clock({1'b0}),
 		  .in_clock_en({1'b1}),
 		  .in_reset({1'b0}),
@@ -4954,13 +4972,13 @@ module top ;
 		  .out_clock_en({1'b1}),
 		  .out_reset({1'b0}));
 
-	assign tmpOE__Motor_1_IN_3_net = (`CYDEV_CHIP_MEMBER_USED == `CYDEV_CHIP_MEMBER_3A && `CYDEV_CHIP_REVISION_USED < `CYDEV_CHIP_REVISION_3A_ES3) ? ~{1'b1} : {1'b1};
+	assign tmpOE__Motor_Flicker_IN_1_net = (`CYDEV_CHIP_MEMBER_USED == `CYDEV_CHIP_MEMBER_3A && `CYDEV_CHIP_REVISION_USED < `CYDEV_CHIP_REVISION_3A_ES3) ? ~{1'b1} : {1'b1};
 
-	wire [0:0] tmpOE__Motor_1_IN_4_net;
-	wire [0:0] tmpFB_0__Motor_1_IN_4_net;
-	wire [0:0] tmpIO_0__Motor_1_IN_4_net;
-	wire [0:0] tmpINTERRUPT_0__Motor_1_IN_4_net;
-	electrical [0:0] tmpSIOVREF__Motor_1_IN_4_net;
+	wire [0:0] tmpOE__Motor_Flicker_IN_2_net;
+	wire [0:0] tmpFB_0__Motor_Flicker_IN_2_net;
+	wire [0:0] tmpIO_0__Motor_Flicker_IN_2_net;
+	wire [0:0] tmpINTERRUPT_0__Motor_Flicker_IN_2_net;
+	electrical [0:0] tmpSIOVREF__Motor_Flicker_IN_2_net;
 
 	cy_psoc3_pins_v1_10
 		#(.id("51bf94ff-565d-44c7-8d9a-40dec7eb4cec"),
@@ -5015,13 +5033,13 @@ module top ;
 		  .ovt_needed(1'b0),
 		  .ovt_slew_control(2'b00),
 		  .input_buffer_sel(2'b00))
-		Motor_1_IN_4
-		 (.oe(tmpOE__Motor_1_IN_4_net),
+		Motor_Flicker_IN_2
+		 (.oe(tmpOE__Motor_Flicker_IN_2_net),
 		  .y({1'b0}),
-		  .fb({tmpFB_0__Motor_1_IN_4_net[0:0]}),
-		  .io({tmpIO_0__Motor_1_IN_4_net[0:0]}),
-		  .siovref(tmpSIOVREF__Motor_1_IN_4_net),
-		  .interrupt({tmpINTERRUPT_0__Motor_1_IN_4_net[0:0]}),
+		  .fb({tmpFB_0__Motor_Flicker_IN_2_net[0:0]}),
+		  .io({tmpIO_0__Motor_Flicker_IN_2_net[0:0]}),
+		  .siovref(tmpSIOVREF__Motor_Flicker_IN_2_net),
+		  .interrupt({tmpINTERRUPT_0__Motor_Flicker_IN_2_net[0:0]}),
 		  .in_clock({1'b0}),
 		  .in_clock_en({1'b1}),
 		  .in_reset({1'b0}),
@@ -5029,7 +5047,7 @@ module top ;
 		  .out_clock_en({1'b1}),
 		  .out_reset({1'b0}));
 
-	assign tmpOE__Motor_1_IN_4_net = (`CYDEV_CHIP_MEMBER_USED == `CYDEV_CHIP_MEMBER_3A && `CYDEV_CHIP_REVISION_USED < `CYDEV_CHIP_REVISION_3A_ES3) ? ~{1'b1} : {1'b1};
+	assign tmpOE__Motor_Flicker_IN_2_net = (`CYDEV_CHIP_MEMBER_USED == `CYDEV_CHIP_MEMBER_3A && `CYDEV_CHIP_REVISION_USED < `CYDEV_CHIP_REVISION_3A_ES3) ? ~{1'b1} : {1'b1};
 
 
 	cy_clock_v1_0
@@ -5045,11 +5063,11 @@ module top ;
 
     assign Net_754 = 1'h0;
 
-	wire [0:0] tmpOE__Motor_1_ENA_1_net;
-	wire [0:0] tmpFB_0__Motor_1_ENA_1_net;
-	wire [0:0] tmpIO_0__Motor_1_ENA_1_net;
-	wire [0:0] tmpINTERRUPT_0__Motor_1_ENA_1_net;
-	electrical [0:0] tmpSIOVREF__Motor_1_ENA_1_net;
+	wire [0:0] tmpOE__Motor_Flicker_ENA_1_net;
+	wire [0:0] tmpFB_0__Motor_Flicker_ENA_1_net;
+	wire [0:0] tmpIO_0__Motor_Flicker_ENA_1_net;
+	wire [0:0] tmpINTERRUPT_0__Motor_Flicker_ENA_1_net;
+	electrical [0:0] tmpSIOVREF__Motor_Flicker_ENA_1_net;
 
 	cy_psoc3_pins_v1_10
 		#(.id("76bfbb52-624c-434a-972c-bc1985db0523"),
@@ -5104,13 +5122,13 @@ module top ;
 		  .ovt_needed(1'b0),
 		  .ovt_slew_control(2'b00),
 		  .input_buffer_sel(2'b00))
-		Motor_1_ENA_1
-		 (.oe(tmpOE__Motor_1_ENA_1_net),
+		Motor_Flicker_ENA_1
+		 (.oe(tmpOE__Motor_Flicker_ENA_1_net),
 		  .y({Net_755}),
-		  .fb({tmpFB_0__Motor_1_ENA_1_net[0:0]}),
-		  .io({tmpIO_0__Motor_1_ENA_1_net[0:0]}),
-		  .siovref(tmpSIOVREF__Motor_1_ENA_1_net),
-		  .interrupt({tmpINTERRUPT_0__Motor_1_ENA_1_net[0:0]}),
+		  .fb({tmpFB_0__Motor_Flicker_ENA_1_net[0:0]}),
+		  .io({tmpIO_0__Motor_Flicker_ENA_1_net[0:0]}),
+		  .siovref(tmpSIOVREF__Motor_Flicker_ENA_1_net),
+		  .interrupt({tmpINTERRUPT_0__Motor_Flicker_ENA_1_net[0:0]}),
 		  .in_clock({1'b0}),
 		  .in_clock_en({1'b1}),
 		  .in_reset({1'b0}),
@@ -5118,7 +5136,7 @@ module top ;
 		  .out_clock_en({1'b1}),
 		  .out_reset({1'b0}));
 
-	assign tmpOE__Motor_1_ENA_1_net = (`CYDEV_CHIP_MEMBER_USED == `CYDEV_CHIP_MEMBER_3A && `CYDEV_CHIP_REVISION_USED < `CYDEV_CHIP_REVISION_3A_ES3) ? ~{1'b1} : {1'b1};
+	assign tmpOE__Motor_Flicker_ENA_1_net = (`CYDEV_CHIP_MEMBER_USED == `CYDEV_CHIP_MEMBER_3A && `CYDEV_CHIP_REVISION_USED < `CYDEV_CHIP_REVISION_3A_ES3) ? ~{1'b1} : {1'b1};
 
     PWM_v3_30_15 PWM_Flicker (
         .capture(1'b0),
@@ -5136,6 +5154,180 @@ module top ;
         .tc(Net_788),
         .trigger(1'b0));
     defparam PWM_Flicker.Resolution = 16;
+
+    Debouncer_v1_0 Debouncer_1 (
+        .clock(Net_566),
+        .d(Net_813[1:0]),
+        .either(Net_825[1:0]),
+        .neg(Net_826[1:0]),
+        .pos(Net_827[1:0]),
+        .q(Net_883[1:0]));
+    defparam Debouncer_1.EitherEdgeDetect = 0;
+    defparam Debouncer_1.NegEdgeDetect = 0;
+    defparam Debouncer_1.PosEdgeDetect = 0;
+    defparam Debouncer_1.SignalWidth = 2;
+
+	wire [0:0] tmpOE__Limit_2_net;
+	wire [0:0] tmpIO_0__Limit_2_net;
+	wire [0:0] tmpINTERRUPT_0__Limit_2_net;
+	electrical [0:0] tmpSIOVREF__Limit_2_net;
+
+	cy_psoc3_pins_v1_10
+		#(.id("0e0426aa-6aa7-4692-8a82-bdfa7af3ea92"),
+		  .drive_mode(3'b010),
+		  .ibuf_enabled(1'b1),
+		  .init_dr_st(1'b0),
+		  .input_clk_en(0),
+		  .input_sync(1'b0),
+		  .input_sync_mode(1'b0),
+		  .intr_mode(2'b00),
+		  .invert_in_clock(0),
+		  .invert_in_clock_en(0),
+		  .invert_in_reset(0),
+		  .invert_out_clock(0),
+		  .invert_out_clock_en(0),
+		  .invert_out_reset(0),
+		  .io_voltage(""),
+		  .layout_mode("CONTIGUOUS"),
+		  .oe_conn(1'b0),
+		  .oe_reset(0),
+		  .oe_sync(1'b0),
+		  .output_clk_en(0),
+		  .output_clock_mode(1'b0),
+		  .output_conn(1'b0),
+		  .output_mode(1'b0),
+		  .output_reset(0),
+		  .output_sync(1'b0),
+		  .pa_in_clock(-1),
+		  .pa_in_clock_en(-1),
+		  .pa_in_reset(-1),
+		  .pa_out_clock(-1),
+		  .pa_out_clock_en(-1),
+		  .pa_out_reset(-1),
+		  .pin_aliases(""),
+		  .pin_mode("I"),
+		  .por_state(4),
+		  .sio_group_cnt(0),
+		  .sio_hyst(1'b1),
+		  .sio_ibuf(""),
+		  .sio_info(2'b00),
+		  .sio_obuf(""),
+		  .sio_refsel(""),
+		  .sio_vtrip(""),
+		  .sio_hifreq(""),
+		  .sio_vohsel(""),
+		  .slew_rate(1'b0),
+		  .spanning(0),
+		  .use_annotation(1'b0),
+		  .vtrip(2'b00),
+		  .width(1),
+		  .ovt_hyst_trim(1'b0),
+		  .ovt_needed(1'b0),
+		  .ovt_slew_control(2'b00),
+		  .input_buffer_sel(2'b00))
+		Limit_2
+		 (.oe(tmpOE__Limit_2_net),
+		  .y({1'b0}),
+		  .fb({Net_813[1]}),
+		  .io({tmpIO_0__Limit_2_net[0:0]}),
+		  .siovref(tmpSIOVREF__Limit_2_net),
+		  .interrupt({tmpINTERRUPT_0__Limit_2_net[0:0]}),
+		  .in_clock({1'b0}),
+		  .in_clock_en({1'b1}),
+		  .in_reset({1'b0}),
+		  .out_clock({1'b0}),
+		  .out_clock_en({1'b1}),
+		  .out_reset({1'b0}));
+
+	assign tmpOE__Limit_2_net = (`CYDEV_CHIP_MEMBER_USED == `CYDEV_CHIP_MEMBER_3A && `CYDEV_CHIP_REVISION_USED < `CYDEV_CHIP_REVISION_3A_ES3) ? ~{1'b1} : {1'b1};
+
+	wire [0:0] tmpOE__Limit_1_net;
+	wire [0:0] tmpIO_0__Limit_1_net;
+	wire [0:0] tmpINTERRUPT_0__Limit_1_net;
+	electrical [0:0] tmpSIOVREF__Limit_1_net;
+
+	cy_psoc3_pins_v1_10
+		#(.id("55864963-bc51-4728-b7b5-5a7a370e4517"),
+		  .drive_mode(3'b010),
+		  .ibuf_enabled(1'b1),
+		  .init_dr_st(1'b0),
+		  .input_clk_en(0),
+		  .input_sync(1'b0),
+		  .input_sync_mode(1'b0),
+		  .intr_mode(2'b00),
+		  .invert_in_clock(0),
+		  .invert_in_clock_en(0),
+		  .invert_in_reset(0),
+		  .invert_out_clock(0),
+		  .invert_out_clock_en(0),
+		  .invert_out_reset(0),
+		  .io_voltage(""),
+		  .layout_mode("CONTIGUOUS"),
+		  .oe_conn(1'b0),
+		  .oe_reset(0),
+		  .oe_sync(1'b0),
+		  .output_clk_en(0),
+		  .output_clock_mode(1'b0),
+		  .output_conn(1'b0),
+		  .output_mode(1'b0),
+		  .output_reset(0),
+		  .output_sync(1'b0),
+		  .pa_in_clock(-1),
+		  .pa_in_clock_en(-1),
+		  .pa_in_reset(-1),
+		  .pa_out_clock(-1),
+		  .pa_out_clock_en(-1),
+		  .pa_out_reset(-1),
+		  .pin_aliases(""),
+		  .pin_mode("I"),
+		  .por_state(4),
+		  .sio_group_cnt(0),
+		  .sio_hyst(1'b1),
+		  .sio_ibuf(""),
+		  .sio_info(2'b00),
+		  .sio_obuf(""),
+		  .sio_refsel(""),
+		  .sio_vtrip(""),
+		  .sio_hifreq(""),
+		  .sio_vohsel(""),
+		  .slew_rate(1'b0),
+		  .spanning(0),
+		  .use_annotation(1'b0),
+		  .vtrip(2'b00),
+		  .width(1),
+		  .ovt_hyst_trim(1'b0),
+		  .ovt_needed(1'b0),
+		  .ovt_slew_control(2'b00),
+		  .input_buffer_sel(2'b00))
+		Limit_1
+		 (.oe(tmpOE__Limit_1_net),
+		  .y({1'b0}),
+		  .fb({Net_813[0]}),
+		  .io({tmpIO_0__Limit_1_net[0:0]}),
+		  .siovref(tmpSIOVREF__Limit_1_net),
+		  .interrupt({tmpINTERRUPT_0__Limit_1_net[0:0]}),
+		  .in_clock({1'b0}),
+		  .in_clock_en({1'b1}),
+		  .in_reset({1'b0}),
+		  .out_clock({1'b0}),
+		  .out_clock_en({1'b1}),
+		  .out_reset({1'b0}));
+
+	assign tmpOE__Limit_1_net = (`CYDEV_CHIP_MEMBER_USED == `CYDEV_CHIP_MEMBER_3A && `CYDEV_CHIP_REVISION_USED < `CYDEV_CHIP_REVISION_3A_ES3) ? ~{1'b1} : {1'b1};
+
+
+	cy_isr_v1_0
+		#(.int_type(2'b10))
+		isr_limit_2
+		 (.int_signal(Net_883[1]));
+
+
+
+	cy_isr_v1_0
+		#(.int_type(2'b10))
+		isr_limit_1
+		 (.int_signal(Net_883[0]));
+
 
 
 

@@ -2,7 +2,7 @@
 --	Conversion of Design01.v to vh2:
 --
 --	Cypress Semiconductor - WARP Version 6.3 IR 41
---	Mon Oct 16 10:56:32 2023
+--	Thu Oct 19 16:27:11 2023
 --
 
 USE cypress.cypress.all;
@@ -2401,9 +2401,9 @@ SIGNAL Net_463 : bit;
 SIGNAL \PWM_SmallServo:Net_63\ : bit;
 SIGNAL \PWM_SmallServo:Net_57\ : bit;
 SIGNAL \PWM_SmallServo:Net_54\ : bit;
-SIGNAL Net_466 : bit;
-SIGNAL Net_591 : bit;
-SIGNAL Net_596 : bit;
+SIGNAL Net_851 : bit;
+SIGNAL Net_1088 : bit;
+SIGNAL Net_1093 : bit;
 SIGNAL \PWM_SmallServo:Net_114\ : bit;
 SIGNAL \PWM_BigServo:Net_107\ : bit;
 SIGNAL \PWM_BigServo:Net_113\ : bit;
@@ -2411,9 +2411,9 @@ SIGNAL Net_567 : bit;
 SIGNAL \PWM_BigServo:Net_63\ : bit;
 SIGNAL \PWM_BigServo:Net_57\ : bit;
 SIGNAL \PWM_BigServo:Net_54\ : bit;
-SIGNAL Net_478 : bit;
-SIGNAL Net_601 : bit;
-SIGNAL Net_606 : bit;
+SIGNAL Net_840 : bit;
+SIGNAL Net_1098 : bit;
+SIGNAL Net_1103 : bit;
 SIGNAL \PWM_BigServo:Net_114\ : bit;
 SIGNAL tmpOE__small_servo_net_0 : bit;
 SIGNAL tmpFB_0__small_servo_net_0 : bit;
@@ -2825,24 +2825,24 @@ TERMINAL \ADC_SAR_1:Net_149\ : bit;
 TERMINAL \ADC_SAR_1:Net_255\ : bit;
 TERMINAL \ADC_SAR_1:Net_368\ : bit;
 SIGNAL \ADC_SAR_1:Net_383\ : bit;
-SIGNAL tmpOE__Motor_1_IN_3_net_0 : bit;
-SIGNAL tmpFB_0__Motor_1_IN_3_net_0 : bit;
-SIGNAL tmpIO_0__Motor_1_IN_3_net_0 : bit;
-TERMINAL tmpSIOVREF__Motor_1_IN_3_net_0 : bit;
-SIGNAL tmpINTERRUPT_0__Motor_1_IN_3_net_0 : bit;
-SIGNAL tmpOE__Motor_1_IN_4_net_0 : bit;
-SIGNAL tmpFB_0__Motor_1_IN_4_net_0 : bit;
-SIGNAL tmpIO_0__Motor_1_IN_4_net_0 : bit;
-TERMINAL tmpSIOVREF__Motor_1_IN_4_net_0 : bit;
-SIGNAL tmpINTERRUPT_0__Motor_1_IN_4_net_0 : bit;
+SIGNAL tmpOE__Motor_Flicker_IN_1_net_0 : bit;
+SIGNAL tmpFB_0__Motor_Flicker_IN_1_net_0 : bit;
+SIGNAL tmpIO_0__Motor_Flicker_IN_1_net_0 : bit;
+TERMINAL tmpSIOVREF__Motor_Flicker_IN_1_net_0 : bit;
+SIGNAL tmpINTERRUPT_0__Motor_Flicker_IN_1_net_0 : bit;
+SIGNAL tmpOE__Motor_Flicker_IN_2_net_0 : bit;
+SIGNAL tmpFB_0__Motor_Flicker_IN_2_net_0 : bit;
+SIGNAL tmpIO_0__Motor_Flicker_IN_2_net_0 : bit;
+TERMINAL tmpSIOVREF__Motor_Flicker_IN_2_net_0 : bit;
+SIGNAL tmpINTERRUPT_0__Motor_Flicker_IN_2_net_0 : bit;
 SIGNAL Net_752 : bit;
 SIGNAL Net_754 : bit;
-SIGNAL tmpOE__Motor_1_ENA_1_net_0 : bit;
+SIGNAL tmpOE__Motor_Flicker_ENA_1_net_0 : bit;
 SIGNAL Net_755 : bit;
-SIGNAL tmpFB_0__Motor_1_ENA_1_net_0 : bit;
-SIGNAL tmpIO_0__Motor_1_ENA_1_net_0 : bit;
-TERMINAL tmpSIOVREF__Motor_1_ENA_1_net_0 : bit;
-SIGNAL tmpINTERRUPT_0__Motor_1_ENA_1_net_0 : bit;
+SIGNAL tmpFB_0__Motor_Flicker_ENA_1_net_0 : bit;
+SIGNAL tmpIO_0__Motor_Flicker_ENA_1_net_0 : bit;
+TERMINAL tmpSIOVREF__Motor_Flicker_ENA_1_net_0 : bit;
+SIGNAL tmpINTERRUPT_0__Motor_Flicker_ENA_1_net_0 : bit;
 SIGNAL \PWM_Flicker:PWMUDB:km_run\ : bit;
 SIGNAL \PWM_Flicker:PWMUDB:min_kill_reg\ : bit;
 SIGNAL \PWM_Flicker:PWMUDB:ClockOutFromEnBlock\ : bit;
@@ -3264,6 +3264,29 @@ SIGNAL Net_788 : bit;
 SIGNAL \PWM_Flicker:Net_113\ : bit;
 SIGNAL \PWM_Flicker:Net_107\ : bit;
 SIGNAL \PWM_Flicker:Net_114\ : bit;
+SIGNAL \Debouncer_1:op_clk\ : bit;
+SIGNAL \Debouncer_1:DEBOUNCER[0]:d_sync_0\ : bit;
+SIGNAL Net_813_0 : bit;
+SIGNAL \Debouncer_1:DEBOUNCER[0]:d_sync_1\ : bit;
+SIGNAL Net_883_0 : bit;
+SIGNAL Net_827_0 : bit;
+SIGNAL Net_826_0 : bit;
+SIGNAL Net_825_0 : bit;
+SIGNAL \Debouncer_1:DEBOUNCER[1]:d_sync_0\ : bit;
+SIGNAL Net_813_1 : bit;
+SIGNAL \Debouncer_1:DEBOUNCER[1]:d_sync_1\ : bit;
+SIGNAL Net_883_1 : bit;
+SIGNAL Net_827_1 : bit;
+SIGNAL Net_826_1 : bit;
+SIGNAL Net_825_1 : bit;
+SIGNAL tmpOE__Limit_2_net_0 : bit;
+SIGNAL tmpIO_0__Limit_2_net_0 : bit;
+TERMINAL tmpSIOVREF__Limit_2_net_0 : bit;
+SIGNAL tmpINTERRUPT_0__Limit_2_net_0 : bit;
+SIGNAL tmpOE__Limit_1_net_0 : bit;
+SIGNAL tmpIO_0__Limit_1_net_0 : bit;
+TERMINAL tmpSIOVREF__Limit_1_net_0 : bit;
+SIGNAL tmpINTERRUPT_0__Limit_1_net_0 : bit;
 SIGNAL \PWM_Wheels:PWMUDB:min_kill_reg\\D\ : bit;
 SIGNAL \PWM_Wheels:PWMUDB:prevCapture\\D\ : bit;
 SIGNAL \PWM_Wheels:PWMUDB:trig_last\\D\ : bit;
@@ -3394,6 +3417,16 @@ SIGNAL \PWM_Flicker:PWMUDB:pwm_i_reg\\D\ : bit;
 SIGNAL \PWM_Flicker:PWMUDB:pwm1_i_reg\\D\ : bit;
 SIGNAL \PWM_Flicker:PWMUDB:pwm2_i_reg\\D\ : bit;
 SIGNAL \PWM_Flicker:PWMUDB:tc_i_reg\\D\ : bit;
+SIGNAL \Debouncer_1:DEBOUNCER[0]:d_sync_0\\D\ : bit;
+SIGNAL \Debouncer_1:DEBOUNCER[0]:d_sync_1\\D\ : bit;
+SIGNAL Net_827_0D : bit;
+SIGNAL Net_826_0D : bit;
+SIGNAL Net_825_0D : bit;
+SIGNAL \Debouncer_1:DEBOUNCER[1]:d_sync_0\\D\ : bit;
+SIGNAL \Debouncer_1:DEBOUNCER[1]:d_sync_1\\D\ : bit;
+SIGNAL Net_827_1D : bit;
+SIGNAL Net_826_1D : bit;
+SIGNAL Net_825_1D : bit;
 BEGIN
 
 zero <=  ('0') ;
@@ -7523,7 +7556,7 @@ CS_out:cy_psoc3_pins_v1_10
 		capture=>zero,
 		timer_reset=>zero,
 		tc=>\PWM_SmallServo:Net_63\,
-		compare=>Net_466,
+		compare=>Net_851,
 		interrupt=>\PWM_SmallServo:Net_54\);
 Clock_4:cy_clock_v1_0
 	GENERIC MAP(cy_registers=>"",
@@ -7543,7 +7576,7 @@ Clock_4:cy_clock_v1_0
 		capture=>zero,
 		timer_reset=>zero,
 		tc=>\PWM_BigServo:Net_63\,
-		compare=>Net_478,
+		compare=>Net_840,
 		interrupt=>\PWM_BigServo:Net_54\);
 small_servo:cy_psoc3_pins_v1_10
 	GENERIC MAP(id=>"2fc3648a-7829-4032-b028-cc67ef89350f",
@@ -7602,7 +7635,7 @@ small_servo:cy_psoc3_pins_v1_10
 		ovt_hyst_trim=>"0",
 		input_buffer_sel=>"00")
 	PORT MAP(oe=>(tmpOE__Motor_1_IN_1_net_0),
-		y=>Net_466,
+		y=>Net_851,
 		fb=>(tmpFB_0__small_servo_net_0),
 		analog=>(open),
 		io=>(tmpIO_0__small_servo_net_0),
@@ -7672,7 +7705,7 @@ big_servo:cy_psoc3_pins_v1_10
 		ovt_hyst_trim=>"0",
 		input_buffer_sel=>"00")
 	PORT MAP(oe=>(tmpOE__Motor_1_IN_1_net_0),
-		y=>Net_478,
+		y=>Net_840,
 		fb=>(tmpFB_0__big_servo_net_0),
 		analog=>(open),
 		io=>(tmpIO_0__big_servo_net_0),
@@ -8283,7 +8316,7 @@ Sharp_IR:cy_psoc3_pins_v1_10
 	PORT MAP(vout=>\ADC_SAR_1:Net_235\);
 \ADC_SAR_1:noconnect_1\:cy_analog_noconnect_v1_0
 	PORT MAP(noconnect=>\ADC_SAR_1:Net_368\);
-Motor_1_IN_3:cy_psoc3_pins_v1_10
+Motor_Flicker_IN_1:cy_psoc3_pins_v1_10
 	GENERIC MAP(id=>"b8e3b4e2-5939-48f1-b525-c4c1f4a734da",
 		drive_mode=>"110",
 		ibuf_enabled=>"1",
@@ -8341,10 +8374,10 @@ Motor_1_IN_3:cy_psoc3_pins_v1_10
 		input_buffer_sel=>"00")
 	PORT MAP(oe=>(tmpOE__Motor_1_IN_1_net_0),
 		y=>(zero),
-		fb=>(tmpFB_0__Motor_1_IN_3_net_0),
+		fb=>(tmpFB_0__Motor_Flicker_IN_1_net_0),
 		analog=>(open),
-		io=>(tmpIO_0__Motor_1_IN_3_net_0),
-		siovref=>(tmpSIOVREF__Motor_1_IN_3_net_0),
+		io=>(tmpIO_0__Motor_Flicker_IN_1_net_0),
+		siovref=>(tmpSIOVREF__Motor_Flicker_IN_1_net_0),
 		annotation=>(open),
 		in_clock=>zero,
 		in_clock_en=>tmpOE__Motor_1_IN_1_net_0,
@@ -8352,8 +8385,8 @@ Motor_1_IN_3:cy_psoc3_pins_v1_10
 		out_clock=>zero,
 		out_clock_en=>tmpOE__Motor_1_IN_1_net_0,
 		out_reset=>zero,
-		interrupt=>tmpINTERRUPT_0__Motor_1_IN_3_net_0);
-Motor_1_IN_4:cy_psoc3_pins_v1_10
+		interrupt=>tmpINTERRUPT_0__Motor_Flicker_IN_1_net_0);
+Motor_Flicker_IN_2:cy_psoc3_pins_v1_10
 	GENERIC MAP(id=>"51bf94ff-565d-44c7-8d9a-40dec7eb4cec",
 		drive_mode=>"110",
 		ibuf_enabled=>"1",
@@ -8411,10 +8444,10 @@ Motor_1_IN_4:cy_psoc3_pins_v1_10
 		input_buffer_sel=>"00")
 	PORT MAP(oe=>(tmpOE__Motor_1_IN_1_net_0),
 		y=>(zero),
-		fb=>(tmpFB_0__Motor_1_IN_4_net_0),
+		fb=>(tmpFB_0__Motor_Flicker_IN_2_net_0),
 		analog=>(open),
-		io=>(tmpIO_0__Motor_1_IN_4_net_0),
-		siovref=>(tmpSIOVREF__Motor_1_IN_4_net_0),
+		io=>(tmpIO_0__Motor_Flicker_IN_2_net_0),
+		siovref=>(tmpSIOVREF__Motor_Flicker_IN_2_net_0),
 		annotation=>(open),
 		in_clock=>zero,
 		in_clock_en=>tmpOE__Motor_1_IN_1_net_0,
@@ -8422,7 +8455,7 @@ Motor_1_IN_4:cy_psoc3_pins_v1_10
 		out_clock=>zero,
 		out_clock_en=>tmpOE__Motor_1_IN_1_net_0,
 		out_reset=>zero,
-		interrupt=>tmpINTERRUPT_0__Motor_1_IN_4_net_0);
+		interrupt=>tmpINTERRUPT_0__Motor_Flicker_IN_2_net_0);
 Clock_2:cy_clock_v1_0
 	GENERIC MAP(cy_registers=>"",
 		id=>"e9db848d-19b0-4cbc-b019-67eed739ca6b",
@@ -8433,7 +8466,7 @@ Clock_2:cy_clock_v1_0
 		is_digital=>'1')
 	PORT MAP(clock_out=>Net_752,
 		dig_domain_out=>open);
-Motor_1_ENA_1:cy_psoc3_pins_v1_10
+Motor_Flicker_ENA_1:cy_psoc3_pins_v1_10
 	GENERIC MAP(id=>"76bfbb52-624c-434a-972c-bc1985db0523",
 		drive_mode=>"110",
 		ibuf_enabled=>"1",
@@ -8491,10 +8524,10 @@ Motor_1_ENA_1:cy_psoc3_pins_v1_10
 		input_buffer_sel=>"00")
 	PORT MAP(oe=>(tmpOE__Motor_1_IN_1_net_0),
 		y=>Net_755,
-		fb=>(tmpFB_0__Motor_1_ENA_1_net_0),
+		fb=>(tmpFB_0__Motor_Flicker_ENA_1_net_0),
 		analog=>(open),
-		io=>(tmpIO_0__Motor_1_ENA_1_net_0),
-		siovref=>(tmpSIOVREF__Motor_1_ENA_1_net_0),
+		io=>(tmpIO_0__Motor_Flicker_ENA_1_net_0),
+		siovref=>(tmpSIOVREF__Motor_Flicker_ENA_1_net_0),
 		annotation=>(open),
 		in_clock=>zero,
 		in_clock_en=>tmpOE__Motor_1_IN_1_net_0,
@@ -8502,7 +8535,7 @@ Motor_1_ENA_1:cy_psoc3_pins_v1_10
 		out_clock=>zero,
 		out_clock_en=>tmpOE__Motor_1_IN_1_net_0,
 		out_reset=>zero,
-		interrupt=>tmpINTERRUPT_0__Motor_1_ENA_1_net_0);
+		interrupt=>tmpINTERRUPT_0__Motor_Flicker_ENA_1_net_0);
 \PWM_Flicker:PWMUDB:clock_enable_block\:cy_psoc3_udb_clock_enable_v1_0
 	GENERIC MAP(sync_mode=>'1')
 	PORT MAP(clock_in=>Net_752,
@@ -8708,6 +8741,159 @@ Motor_1_ENA_1:cy_psoc3_pins_v1_10
 \PWM_Flicker:PWMUDB:MODULE_10:g2:a0:g1:z1:s0:g1:u0:gs(8):g2:g3:ub\:cy_buf
 	PORT MAP(x=>zero,
 		y=>\PWM_Flicker:PWMUDB:MODULE_10:g2:a0:g1:z1:s0:g1:u0:c_8\);
+\Debouncer_1:ClkSync\:cy_psoc3_udb_clock_enable_v1_0
+	GENERIC MAP(sync_mode=>'1')
+	PORT MAP(clock_in=>Net_566,
+		enable=>tmpOE__Motor_1_IN_1_net_0,
+		clock_out=>\Debouncer_1:op_clk\);
+Limit_2:cy_psoc3_pins_v1_10
+	GENERIC MAP(id=>"0e0426aa-6aa7-4692-8a82-bdfa7af3ea92",
+		drive_mode=>"010",
+		ibuf_enabled=>"1",
+		init_dr_st=>"0",
+		input_sync=>"0",
+		input_clk_en=>'0',
+		input_sync_mode=>"0",
+		intr_mode=>"00",
+		invert_in_clock=>'0',
+		invert_in_clock_en=>'0',
+		invert_in_reset=>'0',
+		invert_out_clock=>'0',
+		invert_out_clock_en=>'0',
+		invert_out_reset=>'0',
+		io_voltage=>"",
+		layout_mode=>"CONTIGUOUS",
+		output_conn=>"0",
+		output_sync=>"0",
+		output_clk_en=>'0',
+		output_mode=>"0",
+		output_reset=>'0',
+		output_clock_mode=>"0",
+		oe_sync=>"0",
+		oe_conn=>"0",
+		oe_reset=>'0',
+		pin_aliases=>"",
+		pin_mode=>"I",
+		por_state=>4,
+		sio_group_cnt=>0,
+		sio_hifreq=>"00000000",
+		sio_hyst=>"1",
+		sio_ibuf=>"00000000",
+		sio_info=>"00",
+		sio_obuf=>"00000000",
+		sio_refsel=>"00000000",
+		sio_vtrip=>"00000000",
+		sio_vohsel=>"00000000",
+		slew_rate=>"0",
+		spanning=>'0',
+		sw_only=>'0',
+		vtrip=>"00",
+		width=>1,
+		port_alias_required=>'0',
+		port_alias_group=>"",
+		use_annotation=>"0",
+		pa_in_clock=>-1,
+		pa_in_clock_en=>-1,
+		pa_in_reset=>-1,
+		pa_out_clock=>-1,
+		pa_out_clock_en=>-1,
+		pa_out_reset=>-1,
+		ovt_needed=>"0",
+		ovt_slew_control=>"00",
+		ovt_hyst_trim=>"0",
+		input_buffer_sel=>"00")
+	PORT MAP(oe=>(tmpOE__Motor_1_IN_1_net_0),
+		y=>(zero),
+		fb=>Net_813_1,
+		analog=>(open),
+		io=>(tmpIO_0__Limit_2_net_0),
+		siovref=>(tmpSIOVREF__Limit_2_net_0),
+		annotation=>(open),
+		in_clock=>zero,
+		in_clock_en=>tmpOE__Motor_1_IN_1_net_0,
+		in_reset=>zero,
+		out_clock=>zero,
+		out_clock_en=>tmpOE__Motor_1_IN_1_net_0,
+		out_reset=>zero,
+		interrupt=>tmpINTERRUPT_0__Limit_2_net_0);
+Limit_1:cy_psoc3_pins_v1_10
+	GENERIC MAP(id=>"55864963-bc51-4728-b7b5-5a7a370e4517",
+		drive_mode=>"010",
+		ibuf_enabled=>"1",
+		init_dr_st=>"0",
+		input_sync=>"0",
+		input_clk_en=>'0',
+		input_sync_mode=>"0",
+		intr_mode=>"00",
+		invert_in_clock=>'0',
+		invert_in_clock_en=>'0',
+		invert_in_reset=>'0',
+		invert_out_clock=>'0',
+		invert_out_clock_en=>'0',
+		invert_out_reset=>'0',
+		io_voltage=>"",
+		layout_mode=>"CONTIGUOUS",
+		output_conn=>"0",
+		output_sync=>"0",
+		output_clk_en=>'0',
+		output_mode=>"0",
+		output_reset=>'0',
+		output_clock_mode=>"0",
+		oe_sync=>"0",
+		oe_conn=>"0",
+		oe_reset=>'0',
+		pin_aliases=>"",
+		pin_mode=>"I",
+		por_state=>4,
+		sio_group_cnt=>0,
+		sio_hifreq=>"00000000",
+		sio_hyst=>"1",
+		sio_ibuf=>"00000000",
+		sio_info=>"00",
+		sio_obuf=>"00000000",
+		sio_refsel=>"00000000",
+		sio_vtrip=>"00000000",
+		sio_vohsel=>"00000000",
+		slew_rate=>"0",
+		spanning=>'0',
+		sw_only=>'0',
+		vtrip=>"00",
+		width=>1,
+		port_alias_required=>'0',
+		port_alias_group=>"",
+		use_annotation=>"0",
+		pa_in_clock=>-1,
+		pa_in_clock_en=>-1,
+		pa_in_reset=>-1,
+		pa_out_clock=>-1,
+		pa_out_clock_en=>-1,
+		pa_out_reset=>-1,
+		ovt_needed=>"0",
+		ovt_slew_control=>"00",
+		ovt_hyst_trim=>"0",
+		input_buffer_sel=>"00")
+	PORT MAP(oe=>(tmpOE__Motor_1_IN_1_net_0),
+		y=>(zero),
+		fb=>Net_813_0,
+		analog=>(open),
+		io=>(tmpIO_0__Limit_1_net_0),
+		siovref=>(tmpSIOVREF__Limit_1_net_0),
+		annotation=>(open),
+		in_clock=>zero,
+		in_clock_en=>tmpOE__Motor_1_IN_1_net_0,
+		in_reset=>zero,
+		out_clock=>zero,
+		out_clock_en=>tmpOE__Motor_1_IN_1_net_0,
+		out_reset=>zero,
+		interrupt=>tmpINTERRUPT_0__Limit_1_net_0);
+isr_limit_2:cy_isr_v1_0
+	GENERIC MAP(int_type=>"10",
+		is_nmi=>'0')
+	PORT MAP(int_signal=>Net_883_1);
+isr_limit_1:cy_isr_v1_0
+	GENERIC MAP(int_type=>"10",
+		is_nmi=>'0')
+	PORT MAP(int_signal=>Net_883_0);
 \PWM_Wheels:PWMUDB:min_kill_reg\:cy_dsrff
 	PORT MAP(d=>tmpOE__Motor_1_IN_1_net_0,
 		s=>zero,
@@ -9278,5 +9464,45 @@ Net_619:cy_dff
 	PORT MAP(d=>\PWM_Flicker:PWMUDB:status_2\,
 		clk=>\PWM_Flicker:PWMUDB:ClockOutFromEnBlock\,
 		q=>\PWM_Flicker:PWMUDB:tc_i_reg\);
+\Debouncer_1:DEBOUNCER[0]:d_sync_0\:cy_dff
+	PORT MAP(d=>Net_813_0,
+		clk=>\Debouncer_1:op_clk\,
+		q=>Net_883_0);
+\Debouncer_1:DEBOUNCER[0]:d_sync_1\:cy_dff
+	PORT MAP(d=>Net_883_0,
+		clk=>\Debouncer_1:op_clk\,
+		q=>\Debouncer_1:DEBOUNCER[0]:d_sync_1\);
+Net_827_0:cy_dff
+	PORT MAP(d=>zero,
+		clk=>\Debouncer_1:op_clk\,
+		q=>Net_827_0);
+Net_826_0:cy_dff
+	PORT MAP(d=>zero,
+		clk=>\Debouncer_1:op_clk\,
+		q=>Net_826_0);
+Net_825_0:cy_dff
+	PORT MAP(d=>zero,
+		clk=>\Debouncer_1:op_clk\,
+		q=>Net_825_0);
+\Debouncer_1:DEBOUNCER[1]:d_sync_0\:cy_dff
+	PORT MAP(d=>Net_813_1,
+		clk=>\Debouncer_1:op_clk\,
+		q=>Net_883_1);
+\Debouncer_1:DEBOUNCER[1]:d_sync_1\:cy_dff
+	PORT MAP(d=>Net_883_1,
+		clk=>\Debouncer_1:op_clk\,
+		q=>\Debouncer_1:DEBOUNCER[1]:d_sync_1\);
+Net_827_1:cy_dff
+	PORT MAP(d=>zero,
+		clk=>\Debouncer_1:op_clk\,
+		q=>Net_827_1);
+Net_826_1:cy_dff
+	PORT MAP(d=>zero,
+		clk=>\Debouncer_1:op_clk\,
+		q=>Net_826_1);
+Net_825_1:cy_dff
+	PORT MAP(d=>zero,
+		clk=>\Debouncer_1:op_clk\,
+		q=>Net_825_1);
 
 END R_T_L;
